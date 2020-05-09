@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://amberyic.github.io').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="分治法 分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五大经典算法-3.分治法">
+<meta property="og:url" content="http://amberyic.github.io/2020/05/09/5-classic-algorithms-3-divide-and-conquer/index.html">
+<meta property="og:site_name" content="Zhang Hao&#39;s Blog">
+<meta property="og:description" content="分治法 分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这">
+<meta property="article:published_time" content="2020-05-09T14:49:44.917Z">
+<meta property="article:modified_time" content="2020-05-09T15:44:18.374Z">
+<meta property="article:author" content="ZhangHao">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://amberyic.github.io/2020/05/09/5-classic-algorithms-3-divide-and-conquer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>五大经典算法-3.分治法 | Zhang Hao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhang Hao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://amberyic.github.io/2020/05/09/5-classic-algorithms-3-divide-and-conquer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZhangHao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhang Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          五大经典算法-3.分治法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-09 22:49:44 / Modified: 23:44:18" itemprop="dateCreated datePublished" datetime="2020-05-09T22:49:44+08:00">2020-05-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h1><blockquote>
+<p>分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。</p>
+</blockquote>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……</p>
+<p>任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。</p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>分治法的设计思想是：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。</p>
+<p>分治策略是：对于一个规模为n的问题，若该问题可以容易地解决（比如说规模n较小）则直接解决，否则将其分解为k个规模较小的子问题，这些子问题互相独立且与原问题形式相同，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。这种算法设计策略叫做分治法。</p>
+<p>如果原问题可分割成k个子问题，1&lt;k≤n，且这些子问题都可解并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的。由分治法产生的子问题往往是原问题的较小模式，这就为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="第1题"><a href="#第1题" class="headerlink" title="第1题"></a>第1题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要数据结构哈希的基础知识，出自《leetcode》</li>
+<li>题目描述<br>Given a string containing only digits, restore it by returning all possible valid IP address combinations.<br>For example:<br>Given”25525511135”,<br>return[“255.255.11.135”, “255.255.111.35”]. (Order does not matter)<br><a href="https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第2题"><a href="#第2题" class="headerlink" title="第2题"></a>第2题</h3><ul>
+<li>难度：Media</li>
+<li>备注：出自《leetcode》</li>
+<li>题目描述<br>Implementint sqrt(int x).<br>Compute and return the square root of <em>x</em>.<br><a href="https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第3题"><a href="#第3题" class="headerlink" title="第3题"></a>第3题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
+<li>题目描述<br>Given a collection of numbers, return all possible permutations.<br>For example,<br>[1,2,3]have the following permutations:<br>[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2], and[3,2,1].<br><a href="https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第4题"><a href="#第4题" class="headerlink" title="第4题"></a>第4题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
+<li>题目描述<br>Given a collection of numbers that might contain duplicates, return all possible unique permutations.<br>For example,<br>[1,1,2]have the following unique permutations:<br>[1,1,2],[1,2,1], and[2,1,1].<br><a href="https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第K大数"><a href="#第K大数" class="headerlink" title="第K大数"></a>第K大数</h3><ul>
+<li><p>题目</p>
+<blockquote>
+<p>在一个未排序的数组中找到第k大的元素，注意此言的第k大就是排序后的第k大的数，</p>
+</blockquote>
+</li>
+<li><p>分析</p>
+<blockquote>
+<p>总是将要划界的数组段末尾的元素为划界元，将比其小的数交换至前，比其大的数交换至后，最后将划界元放在“中间位置”（左边小，右边大）。划界将数组分解成两个子数组（可能为空）。</p>
+<p>设数组下表从low开始，至high结束。<br>1、 总是取要划界的数组末尾元素为划界元x，开始划界：<br>a) 用j从low遍历到high-1（最后一个暂不处理），i=low-1，如果nums[j]比x小就将nums[++i]与nums[j]交换位置.<br>b) 遍历完后再次将nums[i+1]与nums[high]交换位置（处理最后一个元素）;<br>c) 返回划界元的位置i+1，下文称其为midpos.<br>这时的midpos位置的元素，此时就是整个数组中第N-midpos大的元素，我们所要做的就像二分法一样找到K=N-midpos的“中间位置”，即midpos=N-K.<br>2、 如果midpos==n-k，那么返回该值，这就是第k大的数。<br>3、 如果midpos&gt;n-k，那么第k大的数在左半数组.<br>4、 如果midpos&lt;n-k，那么第k大的数在右半数组.</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;思路首先：</span><br><span class="line">&#x2F;&#x2F;快排划界，如果划界过程中当前划界元的中间位置就是k则找到了</span><br><span class="line">&#x2F;&#x2F;time,o(n*lg(k)),space,o(1)</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    &#x2F;&#x2F;对数组vec，low到high的元素进行划界，并获取vec[high]的“中间位置”</span><br><span class="line">    int quickPartion(vector&lt;int&gt; &amp;vec, int low,int high)</span><br><span class="line">    &#123;</span><br><span class="line">        int x &#x3D; vec[high];</span><br><span class="line">        int i &#x3D; low - 1;</span><br><span class="line">        for (int j &#x3D; low; j &lt;&#x3D; high - 1; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (vec[j] &lt;&#x3D; x)&#x2F;&#x2F;小于x的划到左边</span><br><span class="line">                swap(vec,++i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(vec,++i,high);&#x2F;&#x2F;找到划界元的位置</span><br><span class="line">        return i;&#x2F;&#x2F;返回位置</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;交换数组元素i和j的位置</span><br><span class="line">    void swap(vector&lt;int&gt;&amp; nums, int i, int j)&#123;</span><br><span class="line">        int temp &#x3D; nums[i];</span><br><span class="line">        nums[i]&#x3D;nums[j];</span><br><span class="line">        nums[j]&#x3D;temp;</span><br><span class="line">    &#125;</span><br><span class="line">    int getQuickSortK(vector&lt;int&gt; &amp;vec, int low,int high, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        if(low &gt;&#x3D; high) return vec[low];</span><br><span class="line">        int  midpos &#x3D; quickPartion(vec, low,high);   &#x2F;&#x2F;对原数组vec[low]到vec[high]的元素进行划界</span><br><span class="line">        if (midpos &#x3D;&#x3D; vec.size() - k)      &#x2F;&#x2F;如果midpos&#x3D;&#x3D;n-k，那么返回该值，这就是第k大的数</span><br><span class="line">            return vec[midpos];</span><br><span class="line">        else if (midpos &lt; vec.size() - k)  &#x2F;&#x2F;如果midpos&lt;n-k，那么第k大的数在右半数组</span><br><span class="line">            return getQuickSortK(vec, midpos+1, high, k);</span><br><span class="line">        else                               &#x2F;&#x2F;如果midpos&gt;n-k，那么第k大的数在左半数组</span><br><span class="line">            return getQuickSortK(vec, low, midpos-1, k);</span><br><span class="line">    &#125;</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        return getQuickSortK(nums,0,nums.size()-1,k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环赛日程表"><a href="#循环赛日程表" class="headerlink" title="循环赛日程表"></a>循环赛日程表</h3><ul>
+<li><a href="https://blog.csdn.net/u014755255/article/details/50570563" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p> 设有n=2^k个运动员要进行网球循环赛。现要设计一个满足以下要求的比赛日程表：</p>
+<p>(1)每个选手必须与其他n-1个选手各赛一次；<br>(2)每个选手一天只能参赛一次；<br>(3)循环赛在n-1天内结束。<br>请按此要求将比赛日程表设计成有n行和n-1列的一个表。在表中的第i行，第j列处填入第i个选手在第j天所遇到的选手。其中1≤i≤n，1≤j≤n-1。8个选手的比赛日程表如下图：</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>按分治策略，我们可以将所有的选手分为两半，则n个选手的比赛日程表可以通过n/2个选手的比赛日程表来决定。递归地用这种一分为二的策略对选手进行划分，直到只剩下两个选手时，比赛日程表的制定就变得很简单。这时只要让这两个选手进行比赛就可以了。如上图，所列出的正方形表是8个选手的比赛日程表。其中左上角与左下角的两小块分别为选手1至选手4和选手5至选手8前3天的比赛日程。据此，将左上角小块中的所有数字按其相对位置抄到右下角，又将左下角小块中的所有数字按其相对位置抄到右上角，这样我们就分别安排好了选手1至选手4和选手5至选手8在后4天的比赛日程。依此思想容易将这个比赛日程表推广到具有任意多个选手的情形。</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">package MatchTable; &#x2F;**</span><br><span class="line"> * Created by Administrator on 2016&#x2F;1&#x2F;17.</span><br><span class="line"> *&#x2F;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class MatchTable &#123;</span><br><span class="line">    public  void Table(int k, int n, int[][] a) &#123;</span><br><span class="line">        for(int i&#x3D;1; i&lt;&#x3D; n; i++)</span><br><span class="line">            a[1][i]&#x3D;i;&#x2F;&#x2F;设置日程表第一行</span><br><span class="line"></span><br><span class="line">        int m &#x3D; 1;&#x2F;&#x2F;每次填充时，起始填充位置</span><br><span class="line">        for(int s&#x3D;1; s&lt;&#x3D;k; s++)</span><br><span class="line">        &#123;</span><br><span class="line">            n &#x2F;&#x3D; 2;</span><br><span class="line">            for(int t&#x3D;1; t&lt;&#x3D;n; t++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int i&#x3D;m+1; i&lt;&#x3D;2*m; i++)&#x2F;&#x2F;控制行</span><br><span class="line">                &#123;</span><br><span class="line">                    for(int j&#x3D;m+1; j&lt;&#x3D;2*m; j++)&#x2F;&#x2F;控制列</span><br><span class="line">                    &#123;</span><br><span class="line">                        a[i][j+(t-1)*m*2] &#x3D; a[i-m][j+(t-1)*m*2-m];&#x2F;&#x2F;右下角等于左上角的值</span><br><span class="line">                        a[i][j+(t-1)*m*2-m] &#x3D; a[i-m][j+(t-1)*m*2];&#x2F;&#x2F;左下角等于右上角的值</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            m *&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        System.out.println(&quot;请输入运动员的个数&quot;);</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line">        double x &#x3D;Math.log(n)&#x2F;Math.log(2);</span><br><span class="line">        int k &#x3D; (int)x;</span><br><span class="line">        MatchTable t &#x3D; new MatchTable();</span><br><span class="line">        int[][] a &#x3D; new int[n+1][n+1];</span><br><span class="line">        t.Table(k,n,a);</span><br><span class="line">        System.out.println(n + &quot;名运动员的比赛日程表是：&quot;);</span><br><span class="line">        for (int i &#x3D; 1;i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 1; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">                System.out.print(a[i][j] + &quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/09/5-classic-algorithms-1-exhaustive-method/" rel="prev" title="五大经典算法-1.穷举法">
+      <i class="fa fa-chevron-left"></i> 五大经典算法-1.穷举法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/09/5-classic-algorithms-4-dynamic-programming/" rel="next" title="五大经典算法-4.动态规划">
+      五大经典算法-4.动态规划 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治法"><span class="nav-number">1.</span> <span class="nav-text">分治法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">1.2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.3.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1题"><span class="nav-number">1.3.1.</span> <span class="nav-text">第1题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2题"><span class="nav-number">1.3.2.</span> <span class="nav-text">第2题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3题"><span class="nav-number">1.3.3.</span> <span class="nav-text">第3题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4题"><span class="nav-number">1.3.4.</span> <span class="nav-text">第4题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第K大数"><span class="nav-number">1.3.5.</span> <span class="nav-text">第K大数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环赛日程表"><span class="nav-number">1.3.6.</span> <span class="nav-text">循环赛日程表</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZhangHao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangHao</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
