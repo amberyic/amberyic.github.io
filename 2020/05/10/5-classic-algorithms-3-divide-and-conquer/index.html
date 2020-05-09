@@ -49,15 +49,15 @@
   <meta name="description" content="分治法 分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五大经典算法-3.分治法">
-<meta property="og:url" content="http://amberyic.github.io/2020/05/09/5-classic-algorithms-3-divide-and-conquer/index.html">
+<meta property="og:url" content="http://amberyic.github.io/2020/05/10/5-classic-algorithms-3-divide-and-conquer/index.html">
 <meta property="og:site_name" content="Zhang Hao&#39;s Blog">
 <meta property="og:description" content="分治法 分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这">
-<meta property="article:published_time" content="2020-05-09T14:49:44.917Z">
-<meta property="article:modified_time" content="2020-05-09T15:44:18.374Z">
+<meta property="article:published_time" content="2020-05-09T16:15:29.441Z">
+<meta property="article:modified_time" content="2020-05-09T16:31:50.234Z">
 <meta property="article:author" content="ZhangHao">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://amberyic.github.io/2020/05/09/5-classic-algorithms-3-divide-and-conquer/">
+<link rel="canonical" href="http://amberyic.github.io/2020/05/10/5-classic-algorithms-3-divide-and-conquer/">
 
 
 <script id="page-configurations">
@@ -168,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://amberyic.github.io/2020/05/09/5-classic-algorithms-3-divide-and-conquer/">
+    <link itemprop="mainEntityOfPage" href="http://amberyic.github.io/2020/05/10/5-classic-algorithms-3-divide-and-conquer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-09 22:49:44 / Modified: 23:44:18" itemprop="dateCreated datePublished" datetime="2020-05-09T22:49:44+08:00">2020-05-09</time>
+              <time title="Created: 2020-05-10 00:15:29 / Modified: 00:31:50" itemprop="dateCreated datePublished" datetime="2020-05-10T00:15:29+08:00">2020-05-10</time>
             </span>
 
           
@@ -212,7 +212,7 @@
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……</p>
 <p>任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。</p>
 <h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>分治法的设计思想是：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。</p>
-<p>分治策略是：对于一个规模为n的问题，若该问题可以容易地解决（比如说规模n较小）则直接解决，否则将其分解为k个规模较小的子问题，这些子问题互相独立且与原问题形式相同，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。这种算法设计策略叫做分治法。</p>
+<p>分治策略是：对于一个规模为n的问题，若该问题可以容易地解决(比如说规模n较小)则直接解决，否则将其分解为k个规模较小的子问题，这些子问题互相独立且与原问题形式相同，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。这种算法设计策略叫做分治法。</p>
 <p>如果原问题可分割成k个子问题，1&lt;k≤n，且这些子问题都可解并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的。由分治法产生的子问题往往是原问题的较小模式，这就为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="第1题"><a href="#第1题" class="headerlink" title="第1题"></a>第1题</h3><ul>
 <li>难度：Media</li>
@@ -242,8 +242,8 @@
 </li>
 <li><p>分析</p>
 <blockquote>
-<p>总是将要划界的数组段末尾的元素为划界元，将比其小的数交换至前，比其大的数交换至后，最后将划界元放在“中间位置”（左边小，右边大）。划界将数组分解成两个子数组（可能为空）。</p>
-<p>设数组下表从low开始，至high结束。<br>1、 总是取要划界的数组末尾元素为划界元x，开始划界：<br>a) 用j从low遍历到high-1（最后一个暂不处理），i=low-1，如果nums[j]比x小就将nums[++i]与nums[j]交换位置.<br>b) 遍历完后再次将nums[i+1]与nums[high]交换位置（处理最后一个元素）;<br>c) 返回划界元的位置i+1，下文称其为midpos.<br>这时的midpos位置的元素，此时就是整个数组中第N-midpos大的元素，我们所要做的就像二分法一样找到K=N-midpos的“中间位置”，即midpos=N-K.<br>2、 如果midpos==n-k，那么返回该值，这就是第k大的数。<br>3、 如果midpos&gt;n-k，那么第k大的数在左半数组.<br>4、 如果midpos&lt;n-k，那么第k大的数在右半数组.</p>
+<p>总是将要划界的数组段末尾的元素为划界元，将比其小的数交换至前，比其大的数交换至后，最后将划界元放在“中间位置”(左边小，右边大)。划界将数组分解成两个子数组(可能为空)。</p>
+<p>设数组下表从low开始，至high结束。<br>1、 总是取要划界的数组末尾元素为划界元x，开始划界：<br>a) 用j从low遍历到high-1(最后一个暂不处理)，i=low-1，如果nums[j]比x小就将nums[++i]与nums[j]交换位置.<br>b) 遍历完后再次将nums[i+1]与nums[high]交换位置(处理最后一个元素);<br>c) 返回划界元的位置i+1，下文称其为midpos.<br>这时的midpos位置的元素，此时就是整个数组中第N-midpos大的元素，我们所要做的就像二分法一样找到K=N-midpos的“中间位置”，即midpos=N-K.<br>2、 如果midpos==n-k，那么返回该值，这就是第k大的数。<br>3、 如果midpos&gt;n-k，那么第k大的数在左半数组.<br>4、 如果midpos&lt;n-k，那么第k大的数在右半数组.</p>
 </blockquote>
 </li>
 </ul>
@@ -284,12 +284,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/09/5-classic-algorithms-1-exhaustive-method/" rel="prev" title="五大经典算法-1.穷举法">
+    <a href="/2020/05/10/5-classic-algorithms-1-exhaustive-method/" rel="prev" title="五大经典算法-1.穷举法">
       <i class="fa fa-chevron-left"></i> 五大经典算法-1.穷举法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/09/5-classic-algorithms-4-dynamic-programming/" rel="next" title="五大经典算法-4.动态规划">
-      五大经典算法-4.动态规划 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/10/5-classic-algorithms-2-greedy-algorithm/" rel="next" title="五大经典算法-2.贪心算法">
+      五大经典算法-2.贪心算法 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
