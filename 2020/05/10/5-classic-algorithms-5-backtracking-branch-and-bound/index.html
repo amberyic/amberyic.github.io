@@ -46,14 +46,14 @@
   };
 </script>
 
-  <meta name="description" content="回溯法&amp;分支界定法这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。 概念 回溯法  回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。 回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种">
+  <meta name="description" content="这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。 概念 回溯法  回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。 回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五大经典算法-5.回溯法&amp;分支界定法">
 <meta property="og:url" content="http://amberyic.github.io/2020/05/10/5-classic-algorithms-5-backtracking-branch-and-bound/index.html">
 <meta property="og:site_name" content="Zhang Hao&#39;s Blog">
-<meta property="og:description" content="回溯法&amp;分支界定法这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。 概念 回溯法  回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。 回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种">
+<meta property="og:description" content="这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。 概念 回溯法  回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。 回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回">
 <meta property="article:published_time" content="2020-05-09T16:15:29.444Z">
-<meta property="article:modified_time" content="2020-05-09T16:33:01.441Z">
+<meta property="article:modified_time" content="2020-05-11T01:37:02.062Z">
 <meta property="article:author" content="ZhangHao">
 <meta name="twitter:card" content="summary">
 
@@ -190,10 +190,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-10 00:15:29 / Modified: 00:33:01" itemprop="dateCreated datePublished" datetime="2020-05-10T00:15:29+08:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 00:15:29" itemprop="dateCreated datePublished" datetime="2020-05-10T00:15:29+08:00">2020-05-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-11 09:37:02" itemprop="dateModified" datetime="2020-05-11T09:37:02+08:00">2020-05-11</time>
+              </span>
 
           
 
@@ -206,7 +212,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="回溯法-amp-分支界定法"><a href="#回溯法-amp-分支界定法" class="headerlink" title="回溯法&amp;分支界定法"></a>回溯法&amp;分支界定法</h1><p>这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。</p>
+        <p>这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。</p>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
 <li><p>回溯法</p>
 <ul>
@@ -365,10 +371,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/10/5-classic-algorithms-4-dynamic-programming/" rel="prev" title="五大经典算法-4.动态规划">
-      <i class="fa fa-chevron-left"></i> 五大经典算法-4.动态规划
+    <a href="/2020/05/10/hadoop-spark-deploy/" rel="prev" title="hadoop & spark 分布式集群搭建">
+      <i class="fa fa-chevron-left"></i> hadoop & spark 分布式集群搭建
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/11/hexo-github-deploy/" rel="next" title="Hexo + Github Page搭建博客">
+      Hexo + Github Page搭建博客 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -428,7 +437,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#回溯法-amp-分支界定法"><span class="nav-number">1.</span> <span class="nav-text">回溯法&amp;分支界定法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">1.2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.3.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-迷宫问题-maze-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.迷宫问题(maze problem)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-01背包问题"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 01背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-八皇后问题"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.八皇后问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-幂集"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.幂集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-子集和问题"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.子集和问题</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">3.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-迷宫问题-maze-problem"><span class="nav-number">3.1.</span> <span class="nav-text">1.迷宫问题(maze problem)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-01背包问题"><span class="nav-number">3.2.</span> <span class="nav-text">2. 01背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-八皇后问题"><span class="nav-number">3.3.</span> <span class="nav-text">3.八皇后问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-幂集"><span class="nav-number">3.4.</span> <span class="nav-text">4.幂集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-子集和问题"><span class="nav-number">3.5.</span> <span class="nav-text">5.子集和问题</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

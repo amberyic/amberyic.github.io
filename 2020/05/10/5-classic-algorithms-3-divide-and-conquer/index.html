@@ -46,14 +46,14 @@
   };
 </script>
 
-  <meta name="description" content="分治法 分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这">
+  <meta name="description" content="分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五大经典算法-3.分治法">
 <meta property="og:url" content="http://amberyic.github.io/2020/05/10/5-classic-algorithms-3-divide-and-conquer/index.html">
 <meta property="og:site_name" content="Zhang Hao&#39;s Blog">
-<meta property="og:description" content="分治法 分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这">
+<meta property="og:description" content="分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。  概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧">
 <meta property="article:published_time" content="2020-05-09T16:15:29.441Z">
-<meta property="article:modified_time" content="2020-05-09T16:31:50.234Z">
+<meta property="article:modified_time" content="2020-05-11T01:36:48.949Z">
 <meta property="article:author" content="ZhangHao">
 <meta name="twitter:card" content="summary">
 
@@ -190,10 +190,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-10 00:15:29 / Modified: 00:31:50" itemprop="dateCreated datePublished" datetime="2020-05-10T00:15:29+08:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 00:15:29" itemprop="dateCreated datePublished" datetime="2020-05-10T00:15:29+08:00">2020-05-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-11 09:36:48" itemprop="dateModified" datetime="2020-05-11T09:36:48+08:00">2020-05-11</time>
+              </span>
 
           
 
@@ -206,7 +212,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h1><blockquote>
+        <blockquote>
 <p>分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。</p>
 </blockquote>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……</p>
@@ -350,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治法"><span class="nav-number">1.</span> <span class="nav-text">分治法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">1.2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.3.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1题"><span class="nav-number">1.3.1.</span> <span class="nav-text">第1题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2题"><span class="nav-number">1.3.2.</span> <span class="nav-text">第2题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3题"><span class="nav-number">1.3.3.</span> <span class="nav-text">第3题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4题"><span class="nav-number">1.3.4.</span> <span class="nav-text">第4题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第K大数"><span class="nav-number">1.3.5.</span> <span class="nav-text">第K大数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环赛日程表"><span class="nav-number">1.3.6.</span> <span class="nav-text">循环赛日程表</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">3.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1题"><span class="nav-number">3.1.</span> <span class="nav-text">第1题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2题"><span class="nav-number">3.2.</span> <span class="nav-text">第2题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3题"><span class="nav-number">3.3.</span> <span class="nav-text">第3题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4题"><span class="nav-number">3.4.</span> <span class="nav-text">第4题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第K大数"><span class="nav-number">3.5.</span> <span class="nav-text">第K大数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环赛日程表"><span class="nav-number">3.6.</span> <span class="nav-text">循环赛日程表</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
