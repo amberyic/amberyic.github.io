@@ -151,6 +151,76 @@
 ]]></content>
   </entry>
   <entry>
+    <title>五大经典算法-3.分治法</title>
+    <url>/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</url>
+    <content><![CDATA[<blockquote>
+<p>分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……</p>
+<p>任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。</p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>分治法的设计思想是：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。</p>
+<p>分治策略是：对于一个规模为n的问题，若该问题可以容易地解决(比如说规模n较小)则直接解决，否则将其分解为k个规模较小的子问题，这些子问题互相独立且与原问题形式相同，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。这种算法设计策略叫做分治法。</p>
+<p>如果原问题可分割成k个子问题，1&lt;k≤n，且这些子问题都可解并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的。由分治法产生的子问题往往是原问题的较小模式，这就为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="第1题"><a href="#第1题" class="headerlink" title="第1题"></a>第1题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要数据结构哈希的基础知识，出自《leetcode》</li>
+<li>题目描述<br>Given a string containing only digits, restore it by returning all possible valid IP address combinations.<br>For example:<br>Given”25525511135”,<br>return[“255.255.11.135”, “255.255.111.35”]. (Order does not matter)<br><a href="https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第2题"><a href="#第2题" class="headerlink" title="第2题"></a>第2题</h3><ul>
+<li>难度：Media</li>
+<li>备注：出自《leetcode》</li>
+<li>题目描述<br>Implementint sqrt(int x).<br>Compute and return the square root of <em>x</em>.<br><a href="https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第3题"><a href="#第3题" class="headerlink" title="第3题"></a>第3题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
+<li>题目描述<br>Given a collection of numbers, return all possible permutations.<br>For example,<br>[1,2,3]have the following permutations:<br>[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2], and[3,2,1].<br><a href="https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第4题"><a href="#第4题" class="headerlink" title="第4题"></a>第4题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
+<li>题目描述<br>Given a collection of numbers that might contain duplicates, return all possible unique permutations.<br>For example,<br>[1,1,2]have the following unique permutations:<br>[1,1,2],[1,2,1], and[2,1,1].<br><a href="https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第K大数"><a href="#第K大数" class="headerlink" title="第K大数"></a>第K大数</h3><ul>
+<li><p>题目</p>
+<blockquote>
+<p>在一个未排序的数组中找到第k大的元素，注意此言的第k大就是排序后的第k大的数，</p>
+</blockquote>
+</li>
+<li><p>分析</p>
+<blockquote>
+<p>总是将要划界的数组段末尾的元素为划界元，将比其小的数交换至前，比其大的数交换至后，最后将划界元放在“中间位置”(左边小，右边大)。划界将数组分解成两个子数组(可能为空)。</p>
+<p>设数组下表从low开始，至high结束。<br>1、 总是取要划界的数组末尾元素为划界元x，开始划界：<br>a) 用j从low遍历到high-1(最后一个暂不处理)，i=low-1，如果nums[j]比x小就将nums[++i]与nums[j]交换位置.<br>b) 遍历完后再次将nums[i+1]与nums[high]交换位置(处理最后一个元素);<br>c) 返回划界元的位置i+1，下文称其为midpos.<br>这时的midpos位置的元素，此时就是整个数组中第N-midpos大的元素，我们所要做的就像二分法一样找到K=N-midpos的“中间位置”，即midpos=N-K.<br>2、 如果midpos==n-k，那么返回该值，这就是第k大的数。<br>3、 如果midpos&gt;n-k，那么第k大的数在左半数组.<br>4、 如果midpos&lt;n-k，那么第k大的数在右半数组.</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;思路首先：</span><br><span class="line">&#x2F;&#x2F;快排划界，如果划界过程中当前划界元的中间位置就是k则找到了</span><br><span class="line">&#x2F;&#x2F;time,o(n*lg(k)),space,o(1)</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    &#x2F;&#x2F;对数组vec，low到high的元素进行划界，并获取vec[high]的“中间位置”</span><br><span class="line">    int quickPartion(vector&lt;int&gt; &amp;vec, int low,int high)</span><br><span class="line">    &#123;</span><br><span class="line">        int x &#x3D; vec[high];</span><br><span class="line">        int i &#x3D; low - 1;</span><br><span class="line">        for (int j &#x3D; low; j &lt;&#x3D; high - 1; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (vec[j] &lt;&#x3D; x)&#x2F;&#x2F;小于x的划到左边</span><br><span class="line">                swap(vec,++i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(vec,++i,high);&#x2F;&#x2F;找到划界元的位置</span><br><span class="line">        return i;&#x2F;&#x2F;返回位置</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;交换数组元素i和j的位置</span><br><span class="line">    void swap(vector&lt;int&gt;&amp; nums, int i, int j)&#123;</span><br><span class="line">        int temp &#x3D; nums[i];</span><br><span class="line">        nums[i]&#x3D;nums[j];</span><br><span class="line">        nums[j]&#x3D;temp;</span><br><span class="line">    &#125;</span><br><span class="line">    int getQuickSortK(vector&lt;int&gt; &amp;vec, int low,int high, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        if(low &gt;&#x3D; high) return vec[low];</span><br><span class="line">        int  midpos &#x3D; quickPartion(vec, low,high);   &#x2F;&#x2F;对原数组vec[low]到vec[high]的元素进行划界</span><br><span class="line">        if (midpos &#x3D;&#x3D; vec.size() - k)      &#x2F;&#x2F;如果midpos&#x3D;&#x3D;n-k，那么返回该值，这就是第k大的数</span><br><span class="line">            return vec[midpos];</span><br><span class="line">        else if (midpos &lt; vec.size() - k)  &#x2F;&#x2F;如果midpos&lt;n-k，那么第k大的数在右半数组</span><br><span class="line">            return getQuickSortK(vec, midpos+1, high, k);</span><br><span class="line">        else                               &#x2F;&#x2F;如果midpos&gt;n-k，那么第k大的数在左半数组</span><br><span class="line">            return getQuickSortK(vec, low, midpos-1, k);</span><br><span class="line">    &#125;</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        return getQuickSortK(nums,0,nums.size()-1,k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环赛日程表"><a href="#循环赛日程表" class="headerlink" title="循环赛日程表"></a>循环赛日程表</h3><ul>
+<li><a href="https://blog.csdn.net/u014755255/article/details/50570563" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p> 设有n=2^k个运动员要进行网球循环赛。现要设计一个满足以下要求的比赛日程表：</p>
+<p>(1)每个选手必须与其他n-1个选手各赛一次；<br>(2)每个选手一天只能参赛一次；<br>(3)循环赛在n-1天内结束。<br>请按此要求将比赛日程表设计成有n行和n-1列的一个表。在表中的第i行，第j列处填入第i个选手在第j天所遇到的选手。其中1≤i≤n，1≤j≤n-1。8个选手的比赛日程表如下图：</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>按分治策略，我们可以将所有的选手分为两半，则n个选手的比赛日程表可以通过n/2个选手的比赛日程表来决定。递归地用这种一分为二的策略对选手进行划分，直到只剩下两个选手时，比赛日程表的制定就变得很简单。这时只要让这两个选手进行比赛就可以了。如上图，所列出的正方形表是8个选手的比赛日程表。其中左上角与左下角的两小块分别为选手1至选手4和选手5至选手8前3天的比赛日程。据此，将左上角小块中的所有数字按其相对位置抄到右下角，又将左下角小块中的所有数字按其相对位置抄到右上角，这样我们就分别安排好了选手1至选手4和选手5至选手8在后4天的比赛日程。依此思想容易将这个比赛日程表推广到具有任意多个选手的情形。</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package MatchTable; &#x2F;**</span><br><span class="line"> * Created by Administrator on 2016&#x2F;1&#x2F;17.</span><br><span class="line"> *&#x2F;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class MatchTable &#123;</span><br><span class="line">    public  void Table(int k, int n, int[][] a) &#123;</span><br><span class="line">        for(int i&#x3D;1; i&lt;&#x3D; n; i++)</span><br><span class="line">            a[1][i]&#x3D;i;&#x2F;&#x2F;设置日程表第一行</span><br><span class="line"></span><br><span class="line">        int m &#x3D; 1;&#x2F;&#x2F;每次填充时，起始填充位置</span><br><span class="line">        for(int s&#x3D;1; s&lt;&#x3D;k; s++)</span><br><span class="line">        &#123;</span><br><span class="line">            n &#x2F;&#x3D; 2;</span><br><span class="line">            for(int t&#x3D;1; t&lt;&#x3D;n; t++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int i&#x3D;m+1; i&lt;&#x3D;2*m; i++)&#x2F;&#x2F;控制行</span><br><span class="line">                &#123;</span><br><span class="line">                    for(int j&#x3D;m+1; j&lt;&#x3D;2*m; j++)&#x2F;&#x2F;控制列</span><br><span class="line">                    &#123;</span><br><span class="line">                        a[i][j+(t-1)*m*2] &#x3D; a[i-m][j+(t-1)*m*2-m];&#x2F;&#x2F;右下角等于左上角的值</span><br><span class="line">                        a[i][j+(t-1)*m*2-m] &#x3D; a[i-m][j+(t-1)*m*2];&#x2F;&#x2F;左下角等于右上角的值</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            m *&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        System.out.println(&quot;请输入运动员的个数&quot;);</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line">        double x &#x3D;Math.log(n)&#x2F;Math.log(2);</span><br><span class="line">        int k &#x3D; (int)x;</span><br><span class="line">        MatchTable t &#x3D; new MatchTable();</span><br><span class="line">        int[][] a &#x3D; new int[n+1][n+1];</span><br><span class="line">        t.Table(k,n,a);</span><br><span class="line">        System.out.println(n + &quot;名运动员的比赛日程表是：&quot;);</span><br><span class="line">        for (int i &#x3D; 1;i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 1; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">                System.out.print(a[i][j] + &quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>五大经典算法-2.贪心算法</title>
     <url>/2020/04/15/5-classic-algorithms-2-greedy-algorithm/</url>
     <content><![CDATA[<blockquote>
@@ -330,243 +400,6 @@
 <h3 id="Huffman编码"><a href="#Huffman编码" class="headerlink" title="Huffman编码"></a>Huffman编码</h3><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><h3 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h3>]]></content>
   </entry>
   <entry>
-    <title>五大经典算法-3.分治法</title>
-    <url>/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</url>
-    <content><![CDATA[<blockquote>
-<p>分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……</p>
-<p>任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。</p>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>分治法的设计思想是：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。</p>
-<p>分治策略是：对于一个规模为n的问题，若该问题可以容易地解决(比如说规模n较小)则直接解决，否则将其分解为k个规模较小的子问题，这些子问题互相独立且与原问题形式相同，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。这种算法设计策略叫做分治法。</p>
-<p>如果原问题可分割成k个子问题，1&lt;k≤n，且这些子问题都可解并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的。由分治法产生的子问题往往是原问题的较小模式，这就为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="第1题"><a href="#第1题" class="headerlink" title="第1题"></a>第1题</h3><ul>
-<li>难度：Media</li>
-<li>备注：需要数据结构哈希的基础知识，出自《leetcode》</li>
-<li>题目描述<br>Given a string containing only digits, restore it by returning all possible valid IP address combinations.<br>For example:<br>Given”25525511135”,<br>return[“255.255.11.135”, “255.255.111.35”]. (Order does not matter)<br><a href="https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
-</ul>
-<h3 id="第2题"><a href="#第2题" class="headerlink" title="第2题"></a>第2题</h3><ul>
-<li>难度：Media</li>
-<li>备注：出自《leetcode》</li>
-<li>题目描述<br>Implementint sqrt(int x).<br>Compute and return the square root of <em>x</em>.<br><a href="https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
-</ul>
-<h3 id="第3题"><a href="#第3题" class="headerlink" title="第3题"></a>第3题</h3><ul>
-<li>难度：Media</li>
-<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
-<li>题目描述<br>Given a collection of numbers, return all possible permutations.<br>For example,<br>[1,2,3]have the following permutations:<br>[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2], and[3,2,1].<br><a href="https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
-</ul>
-<h3 id="第4题"><a href="#第4题" class="headerlink" title="第4题"></a>第4题</h3><ul>
-<li>难度：Media</li>
-<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
-<li>题目描述<br>Given a collection of numbers that might contain duplicates, return all possible unique permutations.<br>For example,<br>[1,1,2]have the following unique permutations:<br>[1,1,2],[1,2,1], and[2,1,1].<br><a href="https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
-</ul>
-<h3 id="第K大数"><a href="#第K大数" class="headerlink" title="第K大数"></a>第K大数</h3><ul>
-<li><p>题目</p>
-<blockquote>
-<p>在一个未排序的数组中找到第k大的元素，注意此言的第k大就是排序后的第k大的数，</p>
-</blockquote>
-</li>
-<li><p>分析</p>
-<blockquote>
-<p>总是将要划界的数组段末尾的元素为划界元，将比其小的数交换至前，比其大的数交换至后，最后将划界元放在“中间位置”(左边小，右边大)。划界将数组分解成两个子数组(可能为空)。</p>
-<p>设数组下表从low开始，至high结束。<br>1、 总是取要划界的数组末尾元素为划界元x，开始划界：<br>a) 用j从low遍历到high-1(最后一个暂不处理)，i=low-1，如果nums[j]比x小就将nums[++i]与nums[j]交换位置.<br>b) 遍历完后再次将nums[i+1]与nums[high]交换位置(处理最后一个元素);<br>c) 返回划界元的位置i+1，下文称其为midpos.<br>这时的midpos位置的元素，此时就是整个数组中第N-midpos大的元素，我们所要做的就像二分法一样找到K=N-midpos的“中间位置”，即midpos=N-K.<br>2、 如果midpos==n-k，那么返回该值，这就是第k大的数。<br>3、 如果midpos&gt;n-k，那么第k大的数在左半数组.<br>4、 如果midpos&lt;n-k，那么第k大的数在右半数组.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>代码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;思路首先：</span><br><span class="line">&#x2F;&#x2F;快排划界，如果划界过程中当前划界元的中间位置就是k则找到了</span><br><span class="line">&#x2F;&#x2F;time,o(n*lg(k)),space,o(1)</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    &#x2F;&#x2F;对数组vec，low到high的元素进行划界，并获取vec[high]的“中间位置”</span><br><span class="line">    int quickPartion(vector&lt;int&gt; &amp;vec, int low,int high)</span><br><span class="line">    &#123;</span><br><span class="line">        int x &#x3D; vec[high];</span><br><span class="line">        int i &#x3D; low - 1;</span><br><span class="line">        for (int j &#x3D; low; j &lt;&#x3D; high - 1; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (vec[j] &lt;&#x3D; x)&#x2F;&#x2F;小于x的划到左边</span><br><span class="line">                swap(vec,++i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(vec,++i,high);&#x2F;&#x2F;找到划界元的位置</span><br><span class="line">        return i;&#x2F;&#x2F;返回位置</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;交换数组元素i和j的位置</span><br><span class="line">    void swap(vector&lt;int&gt;&amp; nums, int i, int j)&#123;</span><br><span class="line">        int temp &#x3D; nums[i];</span><br><span class="line">        nums[i]&#x3D;nums[j];</span><br><span class="line">        nums[j]&#x3D;temp;</span><br><span class="line">    &#125;</span><br><span class="line">    int getQuickSortK(vector&lt;int&gt; &amp;vec, int low,int high, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        if(low &gt;&#x3D; high) return vec[low];</span><br><span class="line">        int  midpos &#x3D; quickPartion(vec, low,high);   &#x2F;&#x2F;对原数组vec[low]到vec[high]的元素进行划界</span><br><span class="line">        if (midpos &#x3D;&#x3D; vec.size() - k)      &#x2F;&#x2F;如果midpos&#x3D;&#x3D;n-k，那么返回该值，这就是第k大的数</span><br><span class="line">            return vec[midpos];</span><br><span class="line">        else if (midpos &lt; vec.size() - k)  &#x2F;&#x2F;如果midpos&lt;n-k，那么第k大的数在右半数组</span><br><span class="line">            return getQuickSortK(vec, midpos+1, high, k);</span><br><span class="line">        else                               &#x2F;&#x2F;如果midpos&gt;n-k，那么第k大的数在左半数组</span><br><span class="line">            return getQuickSortK(vec, low, midpos-1, k);</span><br><span class="line">    &#125;</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        return getQuickSortK(nums,0,nums.size()-1,k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="循环赛日程表"><a href="#循环赛日程表" class="headerlink" title="循环赛日程表"></a>循环赛日程表</h3><ul>
-<li><a href="https://blog.csdn.net/u014755255/article/details/50570563" target="_blank" rel="noopener">题目</a></li>
-</ul>
-<blockquote>
-<p> 设有n=2^k个运动员要进行网球循环赛。现要设计一个满足以下要求的比赛日程表：</p>
-<p>(1)每个选手必须与其他n-1个选手各赛一次；<br>(2)每个选手一天只能参赛一次；<br>(3)循环赛在n-1天内结束。<br>请按此要求将比赛日程表设计成有n行和n-1列的一个表。在表中的第i行，第j列处填入第i个选手在第j天所遇到的选手。其中1≤i≤n，1≤j≤n-1。8个选手的比赛日程表如下图：</p>
-</blockquote>
-<ul>
-<li>分析</li>
-</ul>
-<blockquote>
-<p>按分治策略，我们可以将所有的选手分为两半，则n个选手的比赛日程表可以通过n/2个选手的比赛日程表来决定。递归地用这种一分为二的策略对选手进行划分，直到只剩下两个选手时，比赛日程表的制定就变得很简单。这时只要让这两个选手进行比赛就可以了。如上图，所列出的正方形表是8个选手的比赛日程表。其中左上角与左下角的两小块分别为选手1至选手4和选手5至选手8前3天的比赛日程。据此，将左上角小块中的所有数字按其相对位置抄到右下角，又将左下角小块中的所有数字按其相对位置抄到右上角，这样我们就分别安排好了选手1至选手4和选手5至选手8在后4天的比赛日程。依此思想容易将这个比赛日程表推广到具有任意多个选手的情形。</p>
-</blockquote>
-<ul>
-<li>代码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package MatchTable; &#x2F;**</span><br><span class="line"> * Created by Administrator on 2016&#x2F;1&#x2F;17.</span><br><span class="line"> *&#x2F;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class MatchTable &#123;</span><br><span class="line">    public  void Table(int k, int n, int[][] a) &#123;</span><br><span class="line">        for(int i&#x3D;1; i&lt;&#x3D; n; i++)</span><br><span class="line">            a[1][i]&#x3D;i;&#x2F;&#x2F;设置日程表第一行</span><br><span class="line"></span><br><span class="line">        int m &#x3D; 1;&#x2F;&#x2F;每次填充时，起始填充位置</span><br><span class="line">        for(int s&#x3D;1; s&lt;&#x3D;k; s++)</span><br><span class="line">        &#123;</span><br><span class="line">            n &#x2F;&#x3D; 2;</span><br><span class="line">            for(int t&#x3D;1; t&lt;&#x3D;n; t++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int i&#x3D;m+1; i&lt;&#x3D;2*m; i++)&#x2F;&#x2F;控制行</span><br><span class="line">                &#123;</span><br><span class="line">                    for(int j&#x3D;m+1; j&lt;&#x3D;2*m; j++)&#x2F;&#x2F;控制列</span><br><span class="line">                    &#123;</span><br><span class="line">                        a[i][j+(t-1)*m*2] &#x3D; a[i-m][j+(t-1)*m*2-m];&#x2F;&#x2F;右下角等于左上角的值</span><br><span class="line">                        a[i][j+(t-1)*m*2-m] &#x3D; a[i-m][j+(t-1)*m*2];&#x2F;&#x2F;左下角等于右上角的值</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            m *&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        System.out.println(&quot;请输入运动员的个数&quot;);</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line">        double x &#x3D;Math.log(n)&#x2F;Math.log(2);</span><br><span class="line">        int k &#x3D; (int)x;</span><br><span class="line">        MatchTable t &#x3D; new MatchTable();</span><br><span class="line">        int[][] a &#x3D; new int[n+1][n+1];</span><br><span class="line">        t.Table(k,n,a);</span><br><span class="line">        System.out.println(n + &quot;名运动员的比赛日程表是：&quot;);</span><br><span class="line">        for (int i &#x3D; 1;i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 1; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">                System.out.print(a[i][j] + &quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>hadoop &amp; spark 分布式集群搭建</title>
-    <url>/2020/03/21/hadoop-spark-deploy/</url>
-    <content><![CDATA[<p>使用三台主机搭建hadoop&amp;spark完整教程<br>主要内容: 1)系统安装与配置,2)软件安装与配置,3)hadoop&amp;spark安装与配置,4)集群启动&amp;部署验证,5)集成阿里云,6)通过IDEA提交任务到spark</p>
-<a id="more"></a>
-
-<h2 id="系统安装与配置"><a href="#系统安装与配置" class="headerlink" title="系统安装与配置"></a>系统安装与配置</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64" target="_blank" rel="noopener">https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64</a></p>
-<h3 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h3><ul>
-<li>命令行修改</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用 hostname 修改当前主机名。</span><br><span class="line">hostname new-hostname</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改/etc/sysconfig/network文件,将localhost.localdomain修改为指定hostname并保存文件退出</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">NETWORKING&#x3D;yes</span><br><span class="line">HOSTNAME&#x3D;localhost.localdomain</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改host</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vi &#x2F;etc&#x2F;hosts</span><br><span class="line">127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1 localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">将127.0.0.1 后指定的hosts改为新的hostname并保存文件退出</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装open-ssh"><a href="#安装open-ssh" class="headerlink" title="安装open-ssh"></a>安装open-ssh</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install openssh-server</span><br><span class="line">$ sudo systemctl status ssh</span><br><span class="line">$ sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo useradd -m hadoop -s &#x2F;bin&#x2F;bash</span><br><span class="line">$ sudo passwd hadoop</span><br><span class="line">修改&#x2F;etc&#x2F;sudoder文件，给hadoop用户增加sudo权限。</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改Host"><a href="#修改Host" class="headerlink" title="修改Host"></a>修改Host</h3><ul>
-<li>修改/etc/hosts文件，删除原来127.0.0.1到主机名的映射，增加如下配置。<ul>
-<li>前面是集群的IP，可以通过ip -a查看</li>
-<li>后面是主机名</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">172.30.50.42    UbuntuMaster</span><br><span class="line">172.30.50.81    UbuntuSlave1</span><br><span class="line">172.30.50.84    UbuntuSlave2</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置免密码登陆"><a href="#配置免密码登陆" class="headerlink" title="配置免密码登陆"></a>配置免密码登陆</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa   #产生公钥与私钥对，执行三次回车</span><br><span class="line">$ cat ~&#x2F;.ssh&#x2F;id_rsa.pub &gt;&gt; ~&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line">将～&#x2F;.ssh目录下的id_rsa.pub,id_rsa,authorized_keys拷贝到其他两台server</span><br></pre></td></tr></table></figure>
-
-<h2 id="软件安装与配置"><a href="#软件安装与配置" class="headerlink" title="软件安装与配置"></a>软件安装与配置</h2><h3 id="Java环境配置"><a href="#Java环境配置" class="headerlink" title="Java环境配置"></a>Java环境配置</h3><ul>
-<li>下载Java JDK，放置到/opt目录下，并解压</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mv jdk-8u241-linux-i586.tar.gz &#x2F;opt</span><br><span class="line">cd &#x2F;opt</span><br><span class="line">sudo tar -zxvf .&#x2F;jdk-8u241-linux-i586.tar.gz</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改 /etc/profile文件，增加如下语句</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># java</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export CLASSPATH&#x3D;:$JAVA_HOME&#x2F;lib:$JAVA_HOME&#x2F;jre&#x2F;lib:$CLASSPATH</span><br><span class="line">export PATH&#x3D;$JAVA_HOME&#x2F;bin:$JAVA_HOME&#x2F;jre&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-<ul>
-<li>刷新环境配置, 然后检测Java版本。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">java -version</span><br><span class="line">如果报文件找不到，执行下面的语句</span><br><span class="line">sudo apt-get install lib32stdc++6</span><br></pre></td></tr></table></figure>
-
-<h3 id="scala环境配置"><a href="#scala环境配置" class="headerlink" title="scala环境配置"></a>scala环境配置</h3><ul>
-<li>下载scala，放置到/opt目录下，并解压</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;downloads.lightbend.com&#x2F;scala&#x2F;2.12.10&#x2F;scala-2.12.10.tgz</span><br><span class="line">sudo mv .&#x2F;scala-2.12.10.tgz &#x2F;opt&#x2F;</span><br><span class="line">cd &#x2F;opt&#x2F;</span><br><span class="line">sudo tar -zxf scala-2.12.10.tgz</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改环境变量,  vim /etc/profile，添加如下语句</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export PATH&#x3D;$PATH:$SCALA_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-<ul>
-<li>刷新环境配置, 然后检测Scala版本。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">scala -version</span><br></pre></td></tr></table></figure>
-<h2 id="hadoop-amp-spark安装与配置"><a href="#hadoop-amp-spark安装与配置" class="headerlink" title="hadoop &amp; spark安装与配置"></a>hadoop &amp; spark安装与配置</h2><h3 id="hadoop的安装与配置"><a href="#hadoop的安装与配置" class="headerlink" title="hadoop的安装与配置"></a>hadoop的安装与配置</h3><ul>
-<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;archive.apache.org&#x2F;dist&#x2F;hadoop&#x2F;core&#x2F;hadoop-2.7.0&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ tar -zxvf .&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ sudo mv hadoop-2.7.0 &#x2F;opt</span><br></pre></td></tr></table></figure>
-<ul>
-<li>2) 修改环境变量，编辑/etc/profile文件，添加如下程序</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3) 在hadoop-2.7.0目录下添加目录</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir tmp</span><br><span class="line">$ mkdir hdfs</span><br><span class="line">$ mkdir hdfs&#x2F;name</span><br><span class="line">$ mkdir hdfs&#x2F;data</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>4) 修改$HADOOP_HOME/etc/hadoop/hadoop-env.sh，修改JAVA_HOME 如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>5) 修改$HADOOP_HOME/etc/hadoop/slaves，将原来的localhost删除，添加如下内容：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UbuntuSlaver1</span><br><span class="line">UbuntuSlaver2</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>6) 修改$HADOOP_HOME/etc/hadoop/core-site.xml，修改为如下内容：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;UbuntuMaster:9000&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;io.file.buffer.size&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;131072&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;tmp&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>7) 修改$HADOOP_HOME/etc/hadoop/hdfs-site.xml</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.secondary.http-address&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;UbuntuMaster:50090&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.replication&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;2&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.name.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;name&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.datanode.data.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;data&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>8) 在$HADOOP_HOME/etc/hadoop目录下复制template，生成xml，命令如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp mapred-site.xml.template mapred-site.xml</span><br><span class="line">修改$HADOOP_HOME&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:10020&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:19888&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>9) 修改$HADOOP_HOME/etc/hadoop/yarn-site.xml</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8032&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8030&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8031&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.admin.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8033&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.webapp.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8088&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="spark的安装与配置"><a href="#spark的安装与配置" class="headerlink" title="spark的安装与配置"></a>spark的安装与配置</h3><ul>
-<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget http:&#x2F;&#x2F;apache.communilink.net&#x2F;spark&#x2F;spark-2.4.5&#x2F;spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ sudo mv spark-2.4.5-bin-hadoop2.7 &#x2F;opt</span><br></pre></td></tr></table></figure>
-<ul>
-<li>2) 修改/etc/profile，增加如下内容。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-<ul>
-<li>3) 配置spark-env.sh文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh.template $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export SPARK_WORKER_MEMORY&#x3D;6g</span><br><span class="line">export HADOOP_CONF_DIR&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;etc&#x2F;hadoop</span><br><span class="line">export SPARK_MASTER_IP&#x3D;172.30.50.42</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH:$HADOOP_HOME&#x2F;lib&#x2F;native</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>4) 配置slaves文件,添加如下内容</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp $SPARK_HOME&#x2F;conf&#x2F;slaves.template $SPARK_HOME&#x2F;conf&#x2F;slaves</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">UbuntuMaster</span><br><span class="line">UbuntuSlave1</span><br><span class="line">UbuntuSlave2</span><br></pre></td></tr></table></figure>
-
-<h3 id="同步配置-amp-初始化集群"><a href="#同步配置-amp-初始化集群" class="headerlink" title="同步配置&amp;初始化集群"></a>同步配置&amp;初始化集群</h3><ul>
-<li>1) 拷贝软件配置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave2:&#x2F;opt</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2) 复制/etc/profile的配置到Slave</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># java</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export CLASSPATH&#x3D;:$JAVA_HOME&#x2F;lib:$JAVA_HOME&#x2F;jre&#x2F;lib:$CLASSPATH</span><br><span class="line">export PATH&#x3D;$JAVA_HOME&#x2F;bin:$JAVA_HOME&#x2F;jre&#x2F;bin:$PATH</span><br><span class="line"></span><br><span class="line"># scala</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export PATH&#x3D;$PATH:$SCALA_HOME&#x2F;bin</span><br><span class="line"></span><br><span class="line"># hadoop</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br><span class="line"></span><br><span class="line"># spark</span><br><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3) 初始化Hadoop集群</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hadoop namenode -format</span><br></pre></td></tr></table></figure>
-
-<h2 id="集群启动-amp-部署验证"><a href="#集群启动-amp-部署验证" class="headerlink" title="集群启动&amp;部署验证"></a>集群启动&amp;部署验证</h2><h3 id="hadoop集群启动"><a href="#hadoop集群启动" class="headerlink" title="hadoop集群启动"></a>hadoop集群启动</h3><ul>
-<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
-<li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：SecondaryNameNode，ResourceManager，NameNode<br>Slaver显示：NodeManager，DataNode</li>
-<li>3) 管理界面<br>访问<a href="http://UbuntuMaster:50070" target="_blank" rel="noopener">http://UbuntuMaster:50070</a>, 查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</li>
-</ul>
-<h3 id="hadoop集群验证"><a href="#hadoop集群验证" class="headerlink" title="hadoop集群验证"></a>hadoop集群验证</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd  $HADOOP_HOME</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -rm -r &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -mkdir &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -put $HADOOP_HOME&#x2F;README.txt &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;input</span><br><span class="line">bin&#x2F;hadoop jar share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-2.7.0.jar wordcount  &#x2F;input&#x2F;README.txt  &#x2F;output</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -cat &#x2F;output&#x2F;part-r-00000</span><br></pre></td></tr></table></figure>
-
-<h3 id="spark集群启动"><a href="#spark集群启动" class="headerlink" title="spark集群启动"></a>spark集群启动</h3><ul>
-<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
-<li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：Master<br>Slaver显示：Worker</li>
-<li>3）管理界面<br>访问<a href="http://UbuntuMaster:8080" target="_blank" rel="noopener">http://UbuntuMaster:8080</a>, 可以看到三个Worker</li>
-</ul>
-<h3 id="spark集群验证"><a href="#spark集群验证" class="headerlink" title="spark集群验证"></a>spark集群验证</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark:&#x2F;&#x2F;UbuntuMaster:7077 \</span><br><span class="line">--executor-memory 1G --total-executor-cores 2 \</span><br><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;examples&#x2F;jars&#x2F;spark-examples_2.11-2.4.5.jar \</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
-
-<h2 id="集成阿里云"><a href="#集成阿里云" class="headerlink" title="集成阿里云"></a>集成阿里云</h2><p>hadoop 2.9以后才支持oss的读写，我们使用的是2.7，需要自己配置。</p>
-<ul>
-<li><p>1）下载支持包，并解压hadoop-aliyun-2.7.2.jar<br><a href="http://gosspublic.alicdn.com/hadoop-spark/hadoop-oss-2.7.2.tar.gz" target="_blank" rel="noopener">http://gosspublic.alicdn.com/hadoop-spark/hadoop-oss-2.7.2.tar.gz</a></p>
-</li>
-<li><p>2）将文件hadoop-aliyun-2.7.2.jar复制到<code>$HADOOP_HOME/share/hadoop/tools/lib/</code>目录下</p>
-</li>
-<li><p>3）修改<code>$HADOOP_HOME/libexec/hadoop-config.sh</code>文件，再文件末尾增加<code>CLASSPATH=$CLASSPATH:$TOOL_PATH</code></p>
-</li>
-<li><p>4）修改core-site.xml的配置</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.accessKeyId&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;xxxx&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.accessKeySecret&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;xxx&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.endpoint&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;oss-us-east-1.aliyuncs.com&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.impl&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.buffer.dir&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;&#x2F;tmp&#x2F;oss&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.connection.secure.enabled&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;false&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.connection.maximum&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;2048&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="通过IDEA提交任务到spark"><a href="#通过IDEA提交任务到spark" class="headerlink" title="通过IDEA提交任务到spark"></a>通过IDEA提交任务到spark</h2><p><a href="https://blog.csdn.net/yiluohan0307/article/details/80048765" target="_blank" rel="noopener">https://blog.csdn.net/yiluohan0307/article/details/80048765</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>五大经典算法-4.动态规划</title>
     <url>/2020/04/25/5-classic-algorithms-4-dynamic-programming/</url>
     <content><![CDATA[<blockquote>
@@ -742,6 +575,173 @@
 <li>代码</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">#define MAX_ARRAY_SIZE 100000</span><br><span class="line">int data[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放最初的数据</span><br><span class="line">int cost[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放各个子问题的最优解</span><br><span class="line">int mark[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放输出最优解方案标志</span><br><span class="line">int main(int argc,char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">  int n;</span><br><span class="line">  while(scanf(&quot;%d&quot;,&amp;n),n!&#x3D;0)&#123;</span><br><span class="line">    memset(data,0,sizeof(data));</span><br><span class="line">    int i,x,T,max_T&#x3D;0;</span><br><span class="line">    &#x2F;&#x2F;初始化data</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">      scanf(&quot;%d%d&quot;,&amp;x,&amp;T);</span><br><span class="line">      if(T&gt;max_T)</span><br><span class="line">        max_T&#x3D;T;</span><br><span class="line">      data[T][x]++;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;dp初始化</span><br><span class="line">    for(i&#x3D;0;i&lt;11;i++)&#123;</span><br><span class="line">      cost[max_T][i]&#x3D;data[max_T][i];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;dp过程</span><br><span class="line">    for(i&#x3D;max_T-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">      int j;</span><br><span class="line">      for(j&#x3D;0;j&lt;11;j++)&#123;</span><br><span class="line">        int lvalue,mvalue,rvalue,maxvalue;</span><br><span class="line">        if(j&#x3D;&#x3D;0)&#123;</span><br><span class="line">          lvalue&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          lvalue&#x3D;cost[i+1][j-1];</span><br><span class="line">        &#125;</span><br><span class="line">        mvalue&#x3D;data[i+1][j];</span><br><span class="line">        if(j&#x3D;&#x3D;10)&#123;</span><br><span class="line">          rvalue&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          rvalue&#x3D;cost[i+1][j+1];</span><br><span class="line">        &#125;</span><br><span class="line">        if(lvalue&gt;mvalue)&#123;</span><br><span class="line">          maxvalue&#x3D;lvalue;</span><br><span class="line">          mark[i][j]&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          if(mvalue&gt;rvalue)&#123;</span><br><span class="line">            maxvalue&#x3D;mvalue;</span><br><span class="line">            mark[i][j]&#x3D;0;</span><br><span class="line">          &#125;else&#123;</span><br><span class="line">            maxvalue&#x3D;rvalue;</span><br><span class="line">            mark[i][j]&#x3D;1;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cost[i][j]&#x3D;data[i][j]+maxvalue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,cost[0][5]);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>hadoop &amp; spark 分布式集群搭建</title>
+    <url>/2020/03/21/hadoop-spark-deploy/</url>
+    <content><![CDATA[<p>使用三台主机搭建hadoop&amp;spark完整教程<br>主要内容: 1)系统安装与配置,2)软件安装与配置,3)hadoop&amp;spark安装与配置,4)集群启动&amp;部署验证,5)集成阿里云,6)通过IDEA提交任务到spark</p>
+<a id="more"></a>
+
+<h2 id="系统安装与配置"><a href="#系统安装与配置" class="headerlink" title="系统安装与配置"></a>系统安装与配置</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64" target="_blank" rel="noopener">https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64</a></p>
+<h3 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h3><ul>
+<li>命令行修改</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用 hostname 修改当前主机名。</span><br><span class="line">hostname new-hostname</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改/etc/sysconfig/network文件,将localhost.localdomain修改为指定hostname并保存文件退出</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">NETWORKING&#x3D;yes</span><br><span class="line">HOSTNAME&#x3D;localhost.localdomain</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改host</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vi &#x2F;etc&#x2F;hosts</span><br><span class="line">127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1 localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">将127.0.0.1 后指定的hosts改为新的hostname并保存文件退出</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装open-ssh"><a href="#安装open-ssh" class="headerlink" title="安装open-ssh"></a>安装open-ssh</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install openssh-server</span><br><span class="line">$ sudo systemctl status ssh</span><br><span class="line">$ sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo useradd -m hadoop -s &#x2F;bin&#x2F;bash</span><br><span class="line">$ sudo passwd hadoop</span><br><span class="line">修改&#x2F;etc&#x2F;sudoder文件，给hadoop用户增加sudo权限。</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改Host"><a href="#修改Host" class="headerlink" title="修改Host"></a>修改Host</h3><ul>
+<li>修改/etc/hosts文件，删除原来127.0.0.1到主机名的映射，增加如下配置。<ul>
+<li>前面是集群的IP，可以通过ip -a查看</li>
+<li>后面是主机名</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">172.30.50.42    UbuntuMaster</span><br><span class="line">172.30.50.81    UbuntuSlave1</span><br><span class="line">172.30.50.84    UbuntuSlave2</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置免密码登陆"><a href="#配置免密码登陆" class="headerlink" title="配置免密码登陆"></a>配置免密码登陆</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa   #产生公钥与私钥对，执行三次回车</span><br><span class="line">$ cat ~&#x2F;.ssh&#x2F;id_rsa.pub &gt;&gt; ~&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line">将～&#x2F;.ssh目录下的id_rsa.pub,id_rsa,authorized_keys拷贝到其他两台server</span><br></pre></td></tr></table></figure>
+
+<h2 id="软件安装与配置"><a href="#软件安装与配置" class="headerlink" title="软件安装与配置"></a>软件安装与配置</h2><h3 id="Java环境配置"><a href="#Java环境配置" class="headerlink" title="Java环境配置"></a>Java环境配置</h3><ul>
+<li>下载Java JDK，放置到/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mv jdk-8u241-linux-i586.tar.gz &#x2F;opt</span><br><span class="line">cd &#x2F;opt</span><br><span class="line">sudo tar -zxvf .&#x2F;jdk-8u241-linux-i586.tar.gz</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改 /etc/profile文件，增加如下语句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># java</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export CLASSPATH&#x3D;:$JAVA_HOME&#x2F;lib:$JAVA_HOME&#x2F;jre&#x2F;lib:$CLASSPATH</span><br><span class="line">export PATH&#x3D;$JAVA_HOME&#x2F;bin:$JAVA_HOME&#x2F;jre&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<ul>
+<li>刷新环境配置, 然后检测Java版本。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">java -version</span><br><span class="line">如果报文件找不到，执行下面的语句</span><br><span class="line">sudo apt-get install lib32stdc++6</span><br></pre></td></tr></table></figure>
+
+<h3 id="scala环境配置"><a href="#scala环境配置" class="headerlink" title="scala环境配置"></a>scala环境配置</h3><ul>
+<li>下载scala，放置到/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;downloads.lightbend.com&#x2F;scala&#x2F;2.12.10&#x2F;scala-2.12.10.tgz</span><br><span class="line">sudo mv .&#x2F;scala-2.12.10.tgz &#x2F;opt&#x2F;</span><br><span class="line">cd &#x2F;opt&#x2F;</span><br><span class="line">sudo tar -zxf scala-2.12.10.tgz</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改环境变量,  vim /etc/profile，添加如下语句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export PATH&#x3D;$PATH:$SCALA_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>刷新环境配置, 然后检测Scala版本。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">scala -version</span><br></pre></td></tr></table></figure>
+<h2 id="hadoop-amp-spark安装与配置"><a href="#hadoop-amp-spark安装与配置" class="headerlink" title="hadoop &amp; spark安装与配置"></a>hadoop &amp; spark安装与配置</h2><h3 id="hadoop的安装与配置"><a href="#hadoop的安装与配置" class="headerlink" title="hadoop的安装与配置"></a>hadoop的安装与配置</h3><ul>
+<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;archive.apache.org&#x2F;dist&#x2F;hadoop&#x2F;core&#x2F;hadoop-2.7.0&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ tar -zxvf .&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ sudo mv hadoop-2.7.0 &#x2F;opt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2) 修改环境变量，编辑/etc/profile文件，添加如下程序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3) 在hadoop-2.7.0目录下添加目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir tmp</span><br><span class="line">$ mkdir hdfs</span><br><span class="line">$ mkdir hdfs&#x2F;name</span><br><span class="line">$ mkdir hdfs&#x2F;data</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4) 修改$HADOOP_HOME/etc/hadoop/hadoop-env.sh，修改JAVA_HOME 如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>5) 修改$HADOOP_HOME/etc/hadoop/slaves，将原来的localhost删除，添加如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UbuntuSlaver1</span><br><span class="line">UbuntuSlaver2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>6) 修改$HADOOP_HOME/etc/hadoop/core-site.xml，修改为如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;UbuntuMaster:9000&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;io.file.buffer.size&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;131072&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;tmp&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>7) 修改$HADOOP_HOME/etc/hadoop/hdfs-site.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.secondary.http-address&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;UbuntuMaster:50090&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.replication&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;2&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.name.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;name&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.datanode.data.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;data&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>8) 在$HADOOP_HOME/etc/hadoop目录下复制template，生成xml，命令如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp mapred-site.xml.template mapred-site.xml</span><br><span class="line">修改$HADOOP_HOME&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:10020&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:19888&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>9) 修改$HADOOP_HOME/etc/hadoop/yarn-site.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8032&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8030&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8031&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.admin.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8033&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.webapp.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8088&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="spark的安装与配置"><a href="#spark的安装与配置" class="headerlink" title="spark的安装与配置"></a>spark的安装与配置</h3><ul>
+<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget http:&#x2F;&#x2F;apache.communilink.net&#x2F;spark&#x2F;spark-2.4.5&#x2F;spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ sudo mv spark-2.4.5-bin-hadoop2.7 &#x2F;opt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2) 修改/etc/profile，增加如下内容。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3) 配置spark-env.sh文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh.template $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export SPARK_WORKER_MEMORY&#x3D;6g</span><br><span class="line">export HADOOP_CONF_DIR&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;etc&#x2F;hadoop</span><br><span class="line">export SPARK_MASTER_IP&#x3D;172.30.50.42</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH:$HADOOP_HOME&#x2F;lib&#x2F;native</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4) 配置slaves文件,添加如下内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp $SPARK_HOME&#x2F;conf&#x2F;slaves.template $SPARK_HOME&#x2F;conf&#x2F;slaves</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">UbuntuMaster</span><br><span class="line">UbuntuSlave1</span><br><span class="line">UbuntuSlave2</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步配置-amp-初始化集群"><a href="#同步配置-amp-初始化集群" class="headerlink" title="同步配置&amp;初始化集群"></a>同步配置&amp;初始化集群</h3><ul>
+<li>1) 拷贝软件配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave2:&#x2F;opt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2) 复制/etc/profile的配置到Slave</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># java</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export CLASSPATH&#x3D;:$JAVA_HOME&#x2F;lib:$JAVA_HOME&#x2F;jre&#x2F;lib:$CLASSPATH</span><br><span class="line">export PATH&#x3D;$JAVA_HOME&#x2F;bin:$JAVA_HOME&#x2F;jre&#x2F;bin:$PATH</span><br><span class="line"></span><br><span class="line"># scala</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export PATH&#x3D;$PATH:$SCALA_HOME&#x2F;bin</span><br><span class="line"></span><br><span class="line"># hadoop</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br><span class="line"></span><br><span class="line"># spark</span><br><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3) 初始化Hadoop集群</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hadoop namenode -format</span><br></pre></td></tr></table></figure>
+
+<h2 id="集群启动-amp-部署验证"><a href="#集群启动-amp-部署验证" class="headerlink" title="集群启动&amp;部署验证"></a>集群启动&amp;部署验证</h2><h3 id="hadoop集群启动"><a href="#hadoop集群启动" class="headerlink" title="hadoop集群启动"></a>hadoop集群启动</h3><ul>
+<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
+<li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：SecondaryNameNode，ResourceManager，NameNode<br>Slaver显示：NodeManager，DataNode</li>
+<li>3) 管理界面<br>访问<a href="http://UbuntuMaster:50070" target="_blank" rel="noopener">http://UbuntuMaster:50070</a>, 查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</li>
+</ul>
+<h3 id="hadoop集群验证"><a href="#hadoop集群验证" class="headerlink" title="hadoop集群验证"></a>hadoop集群验证</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd  $HADOOP_HOME</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -rm -r &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -mkdir &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -put $HADOOP_HOME&#x2F;README.txt &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;input</span><br><span class="line">bin&#x2F;hadoop jar share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-2.7.0.jar wordcount  &#x2F;input&#x2F;README.txt  &#x2F;output</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -cat &#x2F;output&#x2F;part-r-00000</span><br></pre></td></tr></table></figure>
+
+<h3 id="spark集群启动"><a href="#spark集群启动" class="headerlink" title="spark集群启动"></a>spark集群启动</h3><ul>
+<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
+<li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：Master<br>Slaver显示：Worker</li>
+<li>3）管理界面<br>访问<a href="http://UbuntuMaster:8080" target="_blank" rel="noopener">http://UbuntuMaster:8080</a>, 可以看到三个Worker</li>
+</ul>
+<h3 id="spark集群验证"><a href="#spark集群验证" class="headerlink" title="spark集群验证"></a>spark集群验证</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark:&#x2F;&#x2F;UbuntuMaster:7077 \</span><br><span class="line">--executor-memory 1G --total-executor-cores 2 \</span><br><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;examples&#x2F;jars&#x2F;spark-examples_2.11-2.4.5.jar \</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+
+<h2 id="集成阿里云"><a href="#集成阿里云" class="headerlink" title="集成阿里云"></a>集成阿里云</h2><p>hadoop 2.9以后才支持oss的读写，我们使用的是2.7，需要自己配置。</p>
+<ul>
+<li><p>1）下载支持包，并解压hadoop-aliyun-2.7.2.jar<br><a href="http://gosspublic.alicdn.com/hadoop-spark/hadoop-oss-2.7.2.tar.gz" target="_blank" rel="noopener">http://gosspublic.alicdn.com/hadoop-spark/hadoop-oss-2.7.2.tar.gz</a></p>
+</li>
+<li><p>2）将文件hadoop-aliyun-2.7.2.jar复制到<code>$HADOOP_HOME/share/hadoop/tools/lib/</code>目录下</p>
+</li>
+<li><p>3）修改<code>$HADOOP_HOME/libexec/hadoop-config.sh</code>文件，再文件末尾增加<code>CLASSPATH=$CLASSPATH:$TOOL_PATH</code></p>
+</li>
+<li><p>4）修改core-site.xml的配置</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.accessKeyId&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;xxxx&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.accessKeySecret&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;xxx&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.endpoint&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;oss-us-east-1.aliyuncs.com&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.impl&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.buffer.dir&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;&#x2F;tmp&#x2F;oss&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.connection.secure.enabled&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;false&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.connection.maximum&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;2048&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="通过IDEA提交任务到spark"><a href="#通过IDEA提交任务到spark" class="headerlink" title="通过IDEA提交任务到spark"></a>通过IDEA提交任务到spark</h2><p><a href="https://blog.csdn.net/yiluohan0307/article/details/80048765" target="_blank" rel="noopener">https://blog.csdn.net/yiluohan0307/article/details/80048765</a></p>
 ]]></content>
   </entry>
   <entry>
