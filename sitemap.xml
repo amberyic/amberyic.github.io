@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://amberyic.github.io/2020/04/25/5-classic-algorithms-4-dynamic-programming/</loc>
+    
+    <lastmod>2020-05-14T09:39:43.299Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://amberyic.github.io/about/index.html</loc>
     
     <lastmod>2020-05-14T08:54:33.890Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://amberyic.github.io/2020/03/21/hexo-github-deploy/</loc>
     
     <lastmod>2020-05-14T08:47:47.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://amberyic.github.io/2020/04/25/5-classic-algorithms-4-dynamic-programming/</loc>
-    
-    <lastmod>2020-05-14T08:43:15.783Z</lastmod>
     
   </url>
   
