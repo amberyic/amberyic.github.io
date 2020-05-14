@@ -40,24 +40,26 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
-  <meta name="description" content="贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。 概念贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关">
+<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+  <meta name="description" content="贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。经典例题:1)活动时间安排问题,2)背包问题,3)线段覆盖(lines cover),4)数字组合问题,5)找零钱的问题,6)多机调度问题,7)小船过河问题,8)销售比赛,9)Huffman编码,10)Dijkstra算法,11)最小生成树算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五大经典算法-2.贪心算法">
-<meta property="og:url" content="http://amberyic.github.io/2020/05/10/5-classic-algorithms-2-greedy-algorithm/index.html">
+<meta property="og:url" content="http://amberyic.github.io/2020/04/15/5-classic-algorithms-2-greedy-algorithm/index.html">
 <meta property="og:site_name" content="Zhang Hao&#39;s Blog">
-<meta property="og:description" content="贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。 概念贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关">
-<meta property="article:published_time" content="2020-05-10T11:01:34.000Z">
-<meta property="article:modified_time" content="2020-05-14T07:42:28.518Z">
+<meta property="og:description" content="贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。经典例题:1)活动时间安排问题,2)背包问题,3)线段覆盖(lines cover),4)数字组合问题,5)找零钱的问题,6)多机调度问题,7)小船过河问题,8)销售比赛,9)Huffman编码,10)Dijkstra算法,11)最小生成树算法">
+<meta property="article:published_time" content="2020-04-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-14T08:43:01.387Z">
 <meta property="article:author" content="ZhangHao">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://amberyic.github.io/2020/05/10/5-classic-algorithms-2-greedy-algorithm/">
+<link rel="canonical" href="http://amberyic.github.io/2020/04/15/5-classic-algorithms-2-greedy-algorithm/">
 
 
 <script id="page-configurations">
@@ -137,14 +139,49 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -168,7 +205,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://amberyic.github.io/2020/05/10/5-classic-algorithms-2-greedy-algorithm/">
+    <link itemprop="mainEntityOfPage" href="http://amberyic.github.io/2020/04/15/5-classic-algorithms-2-greedy-algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,14 +228,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-05-10 19:01:34" itemprop="dateCreated datePublished" datetime="2020-05-10T19:01:34+08:00">2020-05-10</time>
+              <time title="Created: 2020-04-15 00:00:00" itemprop="dateCreated datePublished" datetime="2020-04-15T00:00:00+08:00">2020-04-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-14 15:42:28" itemprop="dateModified" datetime="2020-05-14T15:42:28+08:00">2020-05-14</time>
+                <time title="Modified: 2020-05-14 16:43:01" itemprop="dateModified" datetime="2020-05-14T16:43:01+08:00">2020-05-14</time>
               </span>
 
           
@@ -212,7 +249,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。</p>
+        <blockquote>
+<p>贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。<br>经典例题:1)活动时间安排问题,2)背包问题,3)线段覆盖(lines cover),4)数字组合问题,5)找零钱的问题,6)多机调度问题,7)小船过河问题,8)销售比赛,9)Huffman编码,10)Dijkstra算法,11)最小生成树算法</p>
+</blockquote>
+<a id="more"></a>
+
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。</p>
 <p>贪心算法没有固定的算法框架，算法设计的关键是贪心策略的选择。必须注意的是，贪心算法不是对所有问题都能得到整体最优解，选择的贪心策略必须具备无后效性，即某个状态以后的过程不会影响以前的状态，只与当前状态有关。</p>
 <h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><ul>
@@ -332,7 +373,7 @@
 
 </li>
 </ul>
-<h3 id="6-多机调度问题"><a href="#6-多机调度问题" class="headerlink" title="6.多机调度问题"></a>6.多机调度问题</h3><ul>
+<h3 id="多机调度问题"><a href="#多机调度问题" class="headerlink" title="多机调度问题"></a>多机调度问题</h3><ul>
 <li><p>题目</p>
 <blockquote>
 <p>n个作业组成的作业集，可由m台相同机器加工处理。要求给出一种作业调度方案，使所给的n个作业在尽可能短的时间内由m台机器加工处理完成。作业不能拆分成更小的子作业；每个作业均可在任何一台机器上加工处理。</p>
@@ -397,11 +438,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/10/5-classic-algorithms-1-exhaustive-method/" rel="prev" title="五大经典算法-1.穷举法">
+    <a href="/2020/04/10/5-classic-algorithms-1-exhaustive-method/" rel="prev" title="五大经典算法-1.穷举法">
       <i class="fa fa-chevron-left"></i> 五大经典算法-1.穷举法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/10/5-classic-algorithms-3-divide-and-conquer/" rel="next" title="五大经典算法-3.分治法">
+    <a href="/2020/04/20/5-classic-algorithms-3-divide-and-conquer/" rel="next" title="五大经典算法-3.分治法">
       五大经典算法-3.分治法 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -463,7 +504,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">3.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#活动时间安排问题"><span class="nav-number">3.1.</span> <span class="nav-text">活动时间安排问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背包问题"><span class="nav-number">3.2.</span> <span class="nav-text">背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段覆盖-lines-cover"><span class="nav-number">3.3.</span> <span class="nav-text">线段覆盖(lines cover)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字组合问题"><span class="nav-number">3.4.</span> <span class="nav-text">数字组合问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找零钱的问题"><span class="nav-number">3.5.</span> <span class="nav-text">找零钱的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-多机调度问题"><span class="nav-number">3.6.</span> <span class="nav-text">6.多机调度问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小船过河问题"><span class="nav-number">3.7.</span> <span class="nav-text">小船过河问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销售比赛"><span class="nav-number">3.8.</span> <span class="nav-text">销售比赛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Huffman编码"><span class="nav-number">3.9.</span> <span class="nav-text">Huffman编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">3.10.</span> <span class="nav-text">Dijkstra算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树算法"><span class="nav-number">3.11.</span> <span class="nav-text">最小生成树算法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">3.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#活动时间安排问题"><span class="nav-number">3.1.</span> <span class="nav-text">活动时间安排问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背包问题"><span class="nav-number">3.2.</span> <span class="nav-text">背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段覆盖-lines-cover"><span class="nav-number">3.3.</span> <span class="nav-text">线段覆盖(lines cover)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字组合问题"><span class="nav-number">3.4.</span> <span class="nav-text">数字组合问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找零钱的问题"><span class="nav-number">3.5.</span> <span class="nav-text">找零钱的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多机调度问题"><span class="nav-number">3.6.</span> <span class="nav-text">多机调度问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小船过河问题"><span class="nav-number">3.7.</span> <span class="nav-text">小船过河问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销售比赛"><span class="nav-number">3.8.</span> <span class="nav-text">销售比赛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Huffman编码"><span class="nav-number">3.9.</span> <span class="nav-text">Huffman编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">3.10.</span> <span class="nav-text">Dijkstra算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树算法"><span class="nav-number">3.11.</span> <span class="nav-text">最小生成树算法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -515,6 +556,19 @@
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
   </div>
 
+
+<div class="powered-by">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站访问量<span id="busuanzi_value_site_pv"></span>
+    </span>
+</div>
+
         
 
 
@@ -549,6 +603,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

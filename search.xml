@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>五大经典算法-1.穷举法</title>
+    <url>/2020/04/10/5-classic-algorithms-1-exhaustive-method/</url>
+    <content><![CDATA[<blockquote>
+<p>穷举法，又称枚举法，或称为暴力破解法.<br>经典例题：1)素数判断,2)鸡兔同笼,3)最大连续子序列,4)火柴棍等式,5)计算几何距离,6)计算几何,7)备选题目</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>穷举法的基本思想是根据题目的部分条件确定答案的大致范围，并在此范围内对所有可能的情况逐一验证，直到全部情况验证完毕。若某个情况验证符合题目的全部条件，则为本问题的一个解；若全部情况验证后都不符合题目的全部条件，则本题无解。</p>
+<p>从计算机的有限集合中，对每一个可能解进行判断，直到找到正确的答案。使用穷举法主要是要获取有限集合，然后一一枚举获取需要的答案。</p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><ul>
+<li>穷举法的基本思想就是从所有可能的情况中搜索正确的答案，其执行步骤如下：<br>(1)对于一种可能的情况，计算其结果。<br>(2)判断结果是否符合要求，如果不满足则执行第(1)步来搜索下一个可能的情况；如果符合要求，则表示寻找到一个正确答案。</li>
+</ul>
+<p>在使用穷举法时，需要明确问题的答案的范围，这样才可以在指定的范围内搜索答案。指定范围之后，就可以使用循环语句和条件语句逐步验证候选答案的正确性，从而得到需要的正确答案。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="素数判断"><a href="#素数判断" class="headerlink" title="素数判断"></a>素数判断</h3><ul>
+<li><p>题目</p>
+<blockquote>
+<p>判断一个区间[100,200]内部的素数.</p>
+<ul>
+<li>1 给定集合区间.</li>
+<li>2 给定判定条件.<br>所以满足使用穷举算法的条件</li>
+</ul>
+</blockquote>
+</li>
+<li><p>分析</p>
+<blockquote>
+<p>例 常数n<br>如果n=1 或 n=2<br>或 n “不能整除任意 一个大于2并且小于n的整数”，那么这个数就称之为素数。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;*素数验证*&#x2F;</span><br><span class="line">bool checkPrime(int number)&#123;</span><br><span class="line">  for (int i&#x3D;2; i&lt;number; i++)&#123;</span><br><span class="line">    if (number%i &#x3D;&#x3D; 0)&#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  int min, max, t;</span><br><span class="line">  printf(&quot;输入最小数:\n&quot;);</span><br><span class="line">  scanf(&quot;%d&quot;, &amp;min);</span><br><span class="line">  printf(&quot;输入最大数:\n&quot;);</span><br><span class="line">  scanf(&quot;%d&quot;, &amp;max);</span><br><span class="line">  if (min&gt;max) &#123;</span><br><span class="line">    printf(&quot;输入数据有误!\n&quot;);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  printf(&quot;区间范围%d~%d的素数为:\n&quot;, min, max);</span><br><span class="line">  for (int i&#x3D;min; i&lt;&#x3D;max; i++) &#123;</span><br><span class="line">    if (checkPrime(i)) &#123;</span><br><span class="line">      printf(&quot;%d\n&quot;, i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鸡兔同笼"><a href="#鸡兔同笼" class="headerlink" title="鸡兔同笼"></a>鸡兔同笼</h3><ul>
+<li>题目<blockquote>
+<p>鸡兔同笼问题最早记载中1500年前的《孙子算经》，这是我国古代一个非要有名的问题。<br>鸡兔同笼问题的原文如下：今天鸡兔同笼，上有三十五个头，下有九十四足，问鸡兔各几何？<br>这个问题的大致意思是：在一个笼子里关着若干只鸡和若干只兔，从上面看共有35个头，从下面数共有94只脚。<br>问笼中鸡和兔的数量各是多少？</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>分析<blockquote>
+<p>这个问题需要计算鸡的数量和兔的数量，我们通过分析可以知道鸡的数量应该在1~35之间。<br>这样我们可以使用穷举法来逐个判断是否符合，从而搜索答案。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">&#x2F;*</span><br><span class="line">输入参数head是笼中头的总数，foot是笼中脚的总数，chicken是鸡的总数,rabbit是兔的总数</span><br><span class="line">返回结果为0，表示没有搜索到符合条件的结果；</span><br><span class="line">返回结果为1，表示搜索到了符合条件的结果</span><br><span class="line">*&#x2F;</span><br><span class="line">int qiongju(int head, int foot, int *chicken, int *rabbit) &#123;</span><br><span class="line">  int re,i,j;</span><br><span class="line">  re&#x3D;0;</span><br><span class="line">  for (i&#x3D;0;i&lt;&#x3D;head;i++) &#123;   &#x2F;&#x2F;进行循环</span><br><span class="line">    j&#x3D;head-i;</span><br><span class="line">    if (i*2+j*4&#x3D;&#x3D;foot) &#123;    &#x2F;&#x2F;进行判断</span><br><span class="line">      re&#x3D;1;        &#x2F;&#x2F;找到答案</span><br><span class="line">      *chicken&#x3D;i;</span><br><span class="line">      *rabbit&#x3D;j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return re;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  int chicken,rabbit,head,foot;</span><br><span class="line">  cout&lt;&lt;&quot;穷举法求解鸡兔同笼问题：&quot;&lt;&lt;endl;</span><br><span class="line">  cout&lt;&lt;&quot;请输入头数：&quot;;</span><br><span class="line">  cin&gt;&gt;head;</span><br><span class="line">  cout&lt;&lt;&quot;请输入脚数：&quot;;</span><br><span class="line">  cin&gt;&gt;foot;</span><br><span class="line">  int res&#x3D;qiongju(head,foot,&amp;chicken,&amp;rabbit);</span><br><span class="line">  if (res&#x3D;&#x3D;1) &#123;</span><br><span class="line">    cout&lt;&lt;&quot;鸡有&quot;&lt;&lt;chicken&lt;&lt;&quot;只，兔有&quot;&lt;&lt;rabbit&lt;&lt;&quot;只。&quot;&lt;&lt;endl;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    cout&lt;&lt;&quot;无法求解！&quot;&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最大连续子序列"><a href="#最大连续子序列" class="headerlink" title="最大连续子序列"></a>最大连续子序列</h3><ul>
+<li><a href="https://blog.csdn.net/MadBam_boo/article/details/50867986" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p>给定K个整数的序列{ N1, N2, …, NK }，其任意连续子序列可表示为{ Ni, Ni+1, …, Nj }，其中 1 &lt;= i &lt;= j &lt;= K。最大连续子序列是所有连续子序列中元素和最大的一个，例如给定序列{ -2, 11, -4, 13, -5, -2 }，其最大连续子序列为{ 11, -4, 13 }，最大和为20。</p>
+<p>Input<br>测试输入包含若干测试用例，每个测试用例占2行，第1行给出正整数K(&lt;10000)，第2行给出K个整数，中间用空格分隔。<br>当K为0时，输入结束，该用例不被处理。</p>
+<p>Output<br>对每个测试用例，在1行里输出最大和、最大连续子序列的第一个和最后一个元素，中间用空格分隔。<br>如果最大连续子序列不唯一，则输出序号i和j最小的那个(如输入样例的第2、3组)。<br>若所有K个元素都是负数，则定义其最大和为0，输出整个序列的首尾元素。</p>
+<p>Sample Input<br>6<br>-2 11 -4 13 -5 -2<br>10<br>-10 1 2 3 4 -5 -23 3 7 -21<br>6<br>5 -8 3 2 5 0<br>1<br>10<br>3<br>-1 -5 -2<br>3<br>-1 0 -2<br>0</p>
+<p>Sample Output<br>20 11 13<br>10 1 4<br>10 3 5<br>10 10 10<br>0 -1 -2<br>0 0 0 (最后一组数据有误)</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a[200] &#x3D; &#123;0&#125;;   &#x2F;&#x2F; 数组a记录整数序列</span><br><span class="line">    &#x2F;&#x2F; count记录负数个数</span><br><span class="line">    &#x2F;&#x2F; max 最大和  max_f 最大和最前端 max_l最大和最后端</span><br><span class="line">    int n, i, j, s, count, max, max_f, max_l;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 以输入作为循环条件实现多组数据的输入</span><br><span class="line">    while(cin&gt;&gt;n) &#123;</span><br><span class="line">        if ( n &#x3D;&#x3D; 0 ) return 0;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 特殊情况的判断</span><br><span class="line">        count &#x3D; 0;</span><br><span class="line">        for ( i &#x3D; 0; i &lt; n; ++i ) &#123;</span><br><span class="line">            cin&gt;&gt;a[i];</span><br><span class="line">            if ( a[i] &lt; 0 ) count++;     &#x2F;&#x2F;记录负数个数</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (count &#x3D;&#x3D; n) &#123;</span><br><span class="line">            max &#x3D; 0;</span><br><span class="line">            max_f &#x3D; a[0];</span><br><span class="line">            max_l &#x3D; a[n-1];</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 大多数情况的操作</span><br><span class="line">        else &#123;</span><br><span class="line">            max &#x3D; a[0];max_f &#x3D; a[0];max_l &#x3D; a[0];</span><br><span class="line">            for ( i &#x3D; 0; i &lt; n; ++i ) &#123;</span><br><span class="line">                &#x2F;&#x2F;从a[0]开始计算各情况</span><br><span class="line">                s &#x3D; a[i];</span><br><span class="line">                &#x2F;&#x2F; 算法 可草稿推演</span><br><span class="line">                for ( j &#x3D; i+1; j &lt; n; ++j ) &#123;</span><br><span class="line">                    s +&#x3D; a[j];</span><br><span class="line">                    &#x2F;&#x2F;寻找最大</span><br><span class="line">                    if (s&gt;max) &#123;</span><br><span class="line">                        max &#x3D; s;</span><br><span class="line">                        max_f &#x3D; a[i];</span><br><span class="line">                        max_l &#x3D; a[j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 输出结果</span><br><span class="line">        cout&lt;&lt;max&lt;&lt;&quot; &quot;&lt;&lt;max_f&lt;&lt;&quot; &quot;&lt;&lt;max_l&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="火柴棍等式"><a href="#火柴棍等式" class="headerlink" title="火柴棍等式"></a>火柴棍等式</h3><ul>
+<li><a href="http://www.tsinsen.com/A1167" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p>给你n根火柴棍，你可以拼出多少个形如“A+B=C”的等式？等式中的A、B、C是用火柴棍拼出的整数(若该数非零，则最高位不能是0)。用火柴棍拼数字0-9的拼法如图所示：<br><img src="http://p15w49jjb.bkt.clouddn.com/odgch.GIF" alt=""></p>
+</blockquote>
+<blockquote>
+<p>注意：<br>(1)加号与等号各自需要两根火柴棍<br>(2)如果A≠B，则A+B=C与B+A=C视为不同的等式(A、B、C&gt;=0)<br>(3)n根火柴棍必须全部用上</p>
+<p>输入格式：输入共一行，又一个整数n(n&lt;=24)。<br>输出格式：输出共一行，表示能拼成的不同等式的数目。<br>样例输入1:14<br>样例输出1:2<br>样例输入2:18<br>样例输出2:9</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>【输入输出样例1解释】<br>2个等式为0+1=1和1+0=1。<br>【输入输出样例2解释】<br>9个等式为：<br>0+4=4<br>0+11=11<br>1+10=11<br>2+2=4<br>2+7=9<br>4+0=4<br>7+2=9<br>10+1=11<br>11+0=11</p>
+<p>其实是一道很简单的枚举题。<br>首先看范围，火柴棒的个数小于等于24，减去加号、等号后只有二十根。<br>再看每位数字需要的火柴棒数目，发现1最少，只要两根。<br>那么尽量多添1使得组成的数尽可能大，发现当填到1111时，火柴棒组成基本超过24，故我们大致找到一个范围小于等于1111。<br>最后只需在0~1111内枚举两个数字，使得它们和它们的和组成的火柴棒个数为n。</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#define maxn 1000</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int a[10]&#x3D;&#123;6,2,5,5,4,5,6,3,7,6&#125;;</span><br><span class="line"></span><br><span class="line">int get(int x)</span><br><span class="line">&#123;</span><br><span class="line">  int sum&#x3D;0;</span><br><span class="line">  if (x&#x3D;&#x3D;0)return a[0];</span><br><span class="line">  while(x&gt;0)sum+&#x3D;a[x%10],x&#x2F;&#x3D;10;</span><br><span class="line">  return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  int i,j,k,n,ans&#x3D;0;</span><br><span class="line">  scanf(&quot;%d&quot;,&amp;n),n-&#x3D;4;</span><br><span class="line">  for (i&#x3D;0;i&lt;&#x3D;maxn;i++)</span><br><span class="line">    if (get(i)+get(i)+get(i+i)&#x3D;&#x3D;n)ans++;</span><br><span class="line"></span><br><span class="line">  for (i&#x3D;0;i&lt;&#x3D;maxn;i++)</span><br><span class="line">    for (j&#x3D;0;j&lt;&#x3D;maxn;j++)if (i!&#x3D;j)</span><br><span class="line">      if (get(i)+get(j)+get(i+j)&#x3D;&#x3D;n)ans++;</span><br><span class="line">  printf(&quot;%d\n&quot;,ans);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="计算几何距离"><a href="#计算几何距离" class="headerlink" title="计算几何距离"></a>计算几何距离</h3><ul>
+<li><a href="https://blog.csdn.net/xinxiaxindong/article/details/75286893" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p>今天HHHH考完了期末考试,他在教学楼里闲逛,他看着教学楼里一间间的教室,于是开始思考:<br>如果从一个坐标为 (x1,y1,z1)(x1,y1,z1)的教室走到(x2,y2,z2)(x2,y2,z2)的距离为 |x1−x2|+|y1−y2|+|z1−z2||x1−x2|+|y1−y2|+|z1−z2|<br>那么有多少对教室之间的距离是不超过RR的呢?</p>
+<p>INPUT<br>第一行是一个整数T(1≤T≤10)T(1≤T≤10), 表示有TT组数据 接下来是TT组数据,对于每组数据: 第一行是两个整数  n,q(1≤n≤5×104,1≤q≤103)n,q(1≤n≤5×104,1≤q≤103), 表示有nn间教室, qq次询问. 接下来是nn行, 每行3个整数  xi,yi,zi(0≤xi,yi,zi≤10)xi,yi,zi(0≤xi,yi,zi≤10),表示这间教室的坐标. 最后是qq行,每行一个整数R(0≤R≤109)R(0≤R≤109),意思见描述.</p>
+<p>OUTPUT<br>对于每个询问RR输出一行一个整数,表示有多少对教室满足题目所述的距离关系.<br>SAMPLE INPUT<br>1 3 3 0 0 0 1 1 1 1 1 1 1 2 3<br>SAMPLE OUTPUT<br>1 1 3<br>HINT<br>对于样例,1号教室和2号教室之间的距离为3, 1号和3号之间的距离为3, 2号和3号之间的距离为0</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>题意：在一个三维空间中有N个点，q次查询，每次查询给一距离r，求出三维空间中有多少对点之间的哈密顿距离小于r。</p>
+<p>思路：一开始的时候如果按照朴素的想法，先离线处理，两两配对求出每两个点之间的距离，之后输出，但是本题中点的数目n的数据较大，如果要全部处理的话需要109左右的操作数，肯定会超时。那么这个时候我们仔细观察后发现，每一个点的范围很小，0&lt;=x,y,z&lt;=10，如果我们通过坐标来遍历每一个点，那么就只需要10^3的复杂度，显然更合适。所以本题也是如此，通过以坐标为单位的枚举，就可以得到最后的结果.</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long LL;</span><br><span class="line">const int MAX &#x3D; 10005;</span><br><span class="line">const int MOD &#x3D; 1e9+7;</span><br><span class="line">const int INF &#x3D; 0x3f3f3f3f;</span><br><span class="line"></span><br><span class="line">int n, q, t, tem;</span><br><span class="line">int a, b, c, x, y, z;</span><br><span class="line">LL aa[35];</span><br><span class="line">LL dex[15][15][15];</span><br><span class="line"></span><br><span class="line">int dis(int aa, int bb, int cc, int xx, int yy, int zz) &#123;</span><br><span class="line">  return abs(aa-xx)+abs(bb-yy)+abs(cc-zz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">  while(t--) &#123;</span><br><span class="line">    memset(aa, 0, sizeof(aa));</span><br><span class="line">    memset(dex, 0, sizeof(dex));</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;q);</span><br><span class="line">    while(n--) &#123;</span><br><span class="line">      scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);</span><br><span class="line">      ++dex[x][y][z];</span><br><span class="line">    &#125;</span><br><span class="line">    for (a &#x3D; 0; a &lt;&#x3D; 10; ++a)</span><br><span class="line">      for (b &#x3D; 0; b &lt;&#x3D; 10; ++b)</span><br><span class="line">        for (c &#x3D; 0; c &lt;&#x3D; 10; ++c)</span><br><span class="line">          if (dex[a][b][c])</span><br><span class="line">            for (x &#x3D; 0; x &lt;&#x3D; 10; ++x)</span><br><span class="line">              for (y &#x3D; 0; y &lt;&#x3D; 10; ++y)</span><br><span class="line">                for (z &#x3D; 0; z &lt;&#x3D; 10; ++z)</span><br><span class="line">                  if (dex[x][y][z]) &#123;</span><br><span class="line">                    tem &#x3D; dis(a, b, c, x, y, z);</span><br><span class="line">                    if (tem &#x3D;&#x3D; 0)</span><br><span class="line">                      aa[tem] +&#x3D; (dex[x][y][z])*(dex[x][y][z]-1)&#x2F;2;</span><br><span class="line">                    else</span><br><span class="line">                      aa[tem] +&#x3D; dex[x][y][z]*dex[a][b][c];</span><br><span class="line">                  &#125;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; 30; ++i)</span><br><span class="line">      aa[i] &#x2F;&#x3D; 2;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; 30; ++i)</span><br><span class="line">      aa[i] +&#x3D; aa[i-1];</span><br><span class="line">    while(q--) &#123;</span><br><span class="line">      scanf(&quot;%d&quot;,&amp;tem);</span><br><span class="line">      if (tem &gt; 30)</span><br><span class="line">        tem &#x3D; 30;</span><br><span class="line">      printf(&quot;%lld\n&quot;,aa[tem]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="计算几何"><a href="#计算几何" class="headerlink" title="计算几何"></a>计算几何</h3><ul>
+<li><a href="https://blog.csdn.net/u012596172/article/details/42553925" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p>Problem Description<br>E-pang Palace was built in Qin dynasty by Emperor Qin Shihuang in Xianyang, Shanxi Province. It was the largest palace ever built by human. It was so large and so magnificent that after many years of construction, it still was not completed. Building the great wall, E-pang Palace and Qin Shihuang’s tomb cost so much labor and human lives that people rose to fight against Qin Shihuang’s regime.</p>
+<p>Xiang Yu and Liu Bang were two rebel leaders at that time. Liu Bang captured Xianyang – the capital of Qin. Xiang Yu was very angry about this, and he commanded his army to march to Xianyang. Xiang Yu was the bravest and the strongest warrior at that time, and his army was much more than Liu Bang’s. So Liu Bang was frighten and retreated from Xianyang, leaving all treasures in the grand E-pang Palace untouched. When Xiang Yu took Xianyang, he burned E-pang Palce. The fire lasted for more than three months, renouncing the end of Qin dynasty.</p>
+<p>Several years later, Liu Bang defeated Xiangyu and became the first emperor of Han dynasty. He went back to E-pang Palace but saw only some pillars left. Zhang Liang and Xiao He were Liu Bang’s two most important ministers, so Liu Bang wanted to give them some awards. Liu Bang told them: “You guys can make two rectangular fences in E-pang Palace, then the land inside the fences will belongs to you. But the corners of the rectangles must be the pillars left on the ground, and two fences can’t cross or touch each other.”</p>
+<p>To simplify the problem, E-pang Palace can be consider as a plane, and pillars can be considered as points on the plane. The fences you make are rectangles, and you MUST make two rectangles. Please note that the rectangles you make must be parallel to the coordinate axes.</p>
+<p>The figures below shows 3 situations which are not qualified(Thick dots stands for pillars):</p>
+<p>Zhang Liang and Xiao He wanted the total area of their land in E-pang Palace to be maximum. Please bring your computer and go back to Han dynasty to help them so that you may change the history.</p>
+<p>Input<br>There are no more than 15 test case.</p>
+<p>For each test case:</p>
+<p>The first line is an integer N, meaning that there are N pillars left in E-pang Palace(4 &lt;=N &lt;= 30).</p>
+<p>Then N lines follow. Each line contains two integers x and y (0 &lt;= x,y &lt;= 200), indicating a pillar’s coordinate. No two pillars has the same coordinate.</p>
+<p>The input ends by N = 0.</p>
+<p>Output<br>For each test case, print the maximum total area of land Zhang Liang and Xiao He could get. If it was impossible for them to build two qualified fences, print “imp”.</p>
+<p>Sample Input<br>8 0 0 1 0 0 1 1 1 0 2 1 2 0 3 1 3 8 0 0 2 0 0 2 2 2 1 2 3 2 1 3 3 3 0</p>
+<p>Sample Output<br>2 imp</p>
+</blockquote>
+<ul>
+<li><p>分析</p>
+<blockquote>
+<p>题意 ：告诉你ｎ个点的坐标，用其中的八个点作为顶点组成两个矩形(俩矩阵不能相交)。输出俩矩阵覆盖的面积的最大值。　<br>思路 ：因为ｎ很小，可以暴力枚举，将能够组成的矩形储存起来，然后再枚举矩形从而求出最大值(注意内含的情况)。</p>
+</blockquote>
+</li>
+<li><p>代码</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn&#x3D;35;</span><br><span class="line"></span><br><span class="line">struct point &#123;</span><br><span class="line">  int x,y;</span><br><span class="line">  point() &#123;&#125;</span><br><span class="line">  point(int xx,int yy):x(xx),y(yy) &#123;&#125;</span><br><span class="line">&#125; tp[maxn];</span><br><span class="line"></span><br><span class="line">struct rectangular &#123;</span><br><span class="line">  point a,b,c,d;</span><br><span class="line">  int S;</span><br><span class="line">  rectangular() &#123;&#125;</span><br><span class="line">  rectangular(point aa,point bb,point cc,point dd,int ss):a(aa),b(bb),c(cc),d(dd),S(ss) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">vector &lt;rectangular&gt; v;</span><br><span class="line">int n;</span><br><span class="line"></span><br><span class="line">bool cmp(point p,point q) &#123;</span><br><span class="line">  if (p.x&#x3D;&#x3D;q.x)   return p.y&lt;q.y;</span><br><span class="line">  return p.x&lt;q.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void initial() &#123;</span><br><span class="line">  v.clear();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input() &#123;</span><br><span class="line">  for (int i&#x3D;0; i&lt;n; i++)  scanf(&quot;%d %d&quot;,&amp;tp[i].x,&amp;tp[i].y);</span><br><span class="line">  sort(tp,tp+n,cmp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge(point aa,point bb,point cc,point dd) &#123;</span><br><span class="line">  if (aa.x&#x3D;&#x3D;bb.x &amp;&amp; aa.y&#x3D;&#x3D;cc.y &amp;&amp; bb.y&#x3D;&#x3D;dd.y &amp;&amp; cc.x&#x3D;&#x3D;dd.x)  return true;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Area(point aa,point bb,point cc,point dd) &#123;</span><br><span class="line">  int tx&#x3D;bb.y-aa.y,ty&#x3D;cc.x-aa.x;</span><br><span class="line">  return tx*ty;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void get_rectangular() &#123;</span><br><span class="line">  for (int i&#x3D;0; i&lt;n; i++)</span><br><span class="line">    for (int j&#x3D;i+1; j&lt;n; j++)</span><br><span class="line">      for (int k&#x3D;j+1; k&lt;n; k++)</span><br><span class="line">        for (int t&#x3D;k+1; t&lt;n; t++)</span><br><span class="line">          if (judge(tp[i],tp[j],tp[k],tp[t]))</span><br><span class="line">            v.push_back(rectangular(tp[i],tp[j],tp[k],tp[t],Area(tp[i],tp[j],tp[k],tp[t])));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int In(point aa,rectangular bb) &#123;</span><br><span class="line">  if (aa.x&gt;bb.a.x &amp;&amp; aa.x&lt;bb.d.x &amp;&amp; aa.y&gt;bb.a.y &amp;&amp; aa.y&lt;bb.d.y)  return 2;</span><br><span class="line">  if (aa.x&gt;&#x3D;bb.a.x &amp;&amp; aa.x&lt;&#x3D;bb.d.x &amp;&amp; aa.y&gt;&#x3D;bb.a.y &amp;&amp; aa.y&lt;&#x3D;bb.d.y)  return 1;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int get_connect(int p,int q) &#123;</span><br><span class="line">   rectangular Min,Max;</span><br><span class="line">   if (v[p].S&lt;v[q].S)  Min&#x3D;v[p],Max&#x3D;v[q];</span><br><span class="line">   else  Min&#x3D;v[q],Max&#x3D;v[p];</span><br><span class="line">   int aa&#x3D;In(Min.a,Max),bb&#x3D;In(Min.b,Max),cc&#x3D;In(Min.c,Max),dd&#x3D;In(Min.d,Max);</span><br><span class="line">   if (aa&#x3D;&#x3D;2 &amp;&amp; bb&#x3D;&#x3D;2 &amp;&amp; cc&#x3D;&#x3D;2 &amp;&amp; dd&#x3D;&#x3D;2)  return 2;</span><br><span class="line">   if (aa&#x3D;&#x3D;0 &amp;&amp; bb&#x3D;&#x3D;0 &amp;&amp; cc&#x3D;&#x3D;0 &amp;&amp; dd&#x3D;&#x3D;0)  return 1;</span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solve() &#123;</span><br><span class="line">  get_rectangular();</span><br><span class="line">  int cnt&#x3D;v.size(),ans&#x3D;-1;</span><br><span class="line">  for (int i&#x3D;0;i&lt;cnt;i++)</span><br><span class="line">    for (int j&#x3D;i+1;j&lt;cnt;j++) &#123;</span><br><span class="line">      int num&#x3D;get_connect(i,j);</span><br><span class="line">      if (num&#x3D;&#x3D;2)        ans&#x3D;max(ans,max(v[i].S,v[j].S));</span><br><span class="line">      else if (num&#x3D;&#x3D;1)   ans&#x3D;max(ans,v[i].S+v[j].S);</span><br><span class="line">    &#125;</span><br><span class="line">  if (ans&#x3D;&#x3D;-1)  printf(&quot;imp\n&quot;);</span><br><span class="line">  else printf(&quot;%d\n&quot;,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  while(scanf(&quot;%d&quot;,&amp;n)!&#x3D;EOF) &#123;</span><br><span class="line">    if (n&#x3D;&#x3D;0)  break;</span><br><span class="line">    initial();</span><br><span class="line">    input();</span><br><span class="line">    solve();</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="备选题目"><a href="#备选题目" class="headerlink" title="备选题目"></a>备选题目</h3><ul>
+<li>换分币：用一元人民币兑换成1分、2分和5分硬币，有多少种不同的兑换方法？请输出所有可能的方案。</li>
+<li>年龄几何：张三、李四、王五、刘六的年龄成一等差数列，他们四人的年龄相加是26，相乘是880，求以他们的年龄为前4项的等差数列的前20项</li>
+<li>三色球问题：若一个口袋中放有12个球，其中有3个红的。3个白的和6个黒的，问从中任取8个共有多少种不同的颜色搭配？</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>五大经典算法-3.分治法</title>
+    <url>/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</url>
+    <content><![CDATA[<blockquote>
+<p>分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……</p>
+<p>任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。</p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>分治法的设计思想是：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。</p>
+<p>分治策略是：对于一个规模为n的问题，若该问题可以容易地解决(比如说规模n较小)则直接解决，否则将其分解为k个规模较小的子问题，这些子问题互相独立且与原问题形式相同，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。这种算法设计策略叫做分治法。</p>
+<p>如果原问题可分割成k个子问题，1&lt;k≤n，且这些子问题都可解并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的。由分治法产生的子问题往往是原问题的较小模式，这就为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="第1题"><a href="#第1题" class="headerlink" title="第1题"></a>第1题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要数据结构哈希的基础知识，出自《leetcode》</li>
+<li>题目描述<br>Given a string containing only digits, restore it by returning all possible valid IP address combinations.<br>For example:<br>Given”25525511135”,<br>return[“255.255.11.135”, “255.255.111.35”]. (Order does not matter)<br><a href="https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e?tpId=46&amp;tqId=29085&amp;tPage=3&amp;rp=3&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第2题"><a href="#第2题" class="headerlink" title="第2题"></a>第2题</h3><ul>
+<li>难度：Media</li>
+<li>备注：出自《leetcode》</li>
+<li>题目描述<br>Implementint sqrt(int x).<br>Compute and return the square root of <em>x</em>.<br><a href="https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=46&amp;tqId=29109&amp;tPage=4&amp;rp=4&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第3题"><a href="#第3题" class="headerlink" title="第3题"></a>第3题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
+<li>题目描述<br>Given a collection of numbers, return all possible permutations.<br>For example,<br>[1,2,3]have the following permutations:<br>[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2], and[3,2,1].<br><a href="https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1?tpId=46&amp;tqId=29133&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第4题"><a href="#第4题" class="headerlink" title="第4题"></a>第4题</h3><ul>
+<li>难度：Media</li>
+<li>备注：需要用到STLvector的知识，出自《leetcode》</li>
+<li>题目描述<br>Given a collection of numbers that might contain duplicates, return all possible unique permutations.<br>For example,<br>[1,1,2]have the following unique permutations:<br>[1,1,2],[1,2,1], and[2,1,1].<br><a href="https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863?tpId=46&amp;tqId=29132&amp;tPage=6&amp;rp=6&amp;ru=/ta/leetcode&amp;qru=/ta/leetcode/question-ranking</a></li>
+</ul>
+<h3 id="第K大数"><a href="#第K大数" class="headerlink" title="第K大数"></a>第K大数</h3><ul>
+<li><p>题目</p>
+<blockquote>
+<p>在一个未排序的数组中找到第k大的元素，注意此言的第k大就是排序后的第k大的数，</p>
+</blockquote>
+</li>
+<li><p>分析</p>
+<blockquote>
+<p>总是将要划界的数组段末尾的元素为划界元，将比其小的数交换至前，比其大的数交换至后，最后将划界元放在“中间位置”(左边小，右边大)。划界将数组分解成两个子数组(可能为空)。</p>
+<p>设数组下表从low开始，至high结束。<br>1、 总是取要划界的数组末尾元素为划界元x，开始划界：<br>a) 用j从low遍历到high-1(最后一个暂不处理)，i=low-1，如果nums[j]比x小就将nums[++i]与nums[j]交换位置.<br>b) 遍历完后再次将nums[i+1]与nums[high]交换位置(处理最后一个元素);<br>c) 返回划界元的位置i+1，下文称其为midpos.<br>这时的midpos位置的元素，此时就是整个数组中第N-midpos大的元素，我们所要做的就像二分法一样找到K=N-midpos的“中间位置”，即midpos=N-K.<br>2、 如果midpos==n-k，那么返回该值，这就是第k大的数。<br>3、 如果midpos&gt;n-k，那么第k大的数在左半数组.<br>4、 如果midpos&lt;n-k，那么第k大的数在右半数组.</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;思路首先：</span><br><span class="line">&#x2F;&#x2F;快排划界，如果划界过程中当前划界元的中间位置就是k则找到了</span><br><span class="line">&#x2F;&#x2F;time,o(n*lg(k)),space,o(1)</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    &#x2F;&#x2F;对数组vec，low到high的元素进行划界，并获取vec[high]的“中间位置”</span><br><span class="line">    int quickPartion(vector&lt;int&gt; &amp;vec, int low,int high)</span><br><span class="line">    &#123;</span><br><span class="line">        int x &#x3D; vec[high];</span><br><span class="line">        int i &#x3D; low - 1;</span><br><span class="line">        for (int j &#x3D; low; j &lt;&#x3D; high - 1; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (vec[j] &lt;&#x3D; x)&#x2F;&#x2F;小于x的划到左边</span><br><span class="line">                swap(vec,++i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(vec,++i,high);&#x2F;&#x2F;找到划界元的位置</span><br><span class="line">        return i;&#x2F;&#x2F;返回位置</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;交换数组元素i和j的位置</span><br><span class="line">    void swap(vector&lt;int&gt;&amp; nums, int i, int j)&#123;</span><br><span class="line">        int temp &#x3D; nums[i];</span><br><span class="line">        nums[i]&#x3D;nums[j];</span><br><span class="line">        nums[j]&#x3D;temp;</span><br><span class="line">    &#125;</span><br><span class="line">    int getQuickSortK(vector&lt;int&gt; &amp;vec, int low,int high, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        if(low &gt;&#x3D; high) return vec[low];</span><br><span class="line">        int  midpos &#x3D; quickPartion(vec, low,high);   &#x2F;&#x2F;对原数组vec[low]到vec[high]的元素进行划界</span><br><span class="line">        if (midpos &#x3D;&#x3D; vec.size() - k)      &#x2F;&#x2F;如果midpos&#x3D;&#x3D;n-k，那么返回该值，这就是第k大的数</span><br><span class="line">            return vec[midpos];</span><br><span class="line">        else if (midpos &lt; vec.size() - k)  &#x2F;&#x2F;如果midpos&lt;n-k，那么第k大的数在右半数组</span><br><span class="line">            return getQuickSortK(vec, midpos+1, high, k);</span><br><span class="line">        else                               &#x2F;&#x2F;如果midpos&gt;n-k，那么第k大的数在左半数组</span><br><span class="line">            return getQuickSortK(vec, low, midpos-1, k);</span><br><span class="line">    &#125;</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        return getQuickSortK(nums,0,nums.size()-1,k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环赛日程表"><a href="#循环赛日程表" class="headerlink" title="循环赛日程表"></a>循环赛日程表</h3><ul>
+<li><a href="https://blog.csdn.net/u014755255/article/details/50570563" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p> 设有n=2^k个运动员要进行网球循环赛。现要设计一个满足以下要求的比赛日程表：</p>
+<p>(1)每个选手必须与其他n-1个选手各赛一次；<br>(2)每个选手一天只能参赛一次；<br>(3)循环赛在n-1天内结束。<br>请按此要求将比赛日程表设计成有n行和n-1列的一个表。在表中的第i行，第j列处填入第i个选手在第j天所遇到的选手。其中1≤i≤n，1≤j≤n-1。8个选手的比赛日程表如下图：</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>按分治策略，我们可以将所有的选手分为两半，则n个选手的比赛日程表可以通过n/2个选手的比赛日程表来决定。递归地用这种一分为二的策略对选手进行划分，直到只剩下两个选手时，比赛日程表的制定就变得很简单。这时只要让这两个选手进行比赛就可以了。如上图，所列出的正方形表是8个选手的比赛日程表。其中左上角与左下角的两小块分别为选手1至选手4和选手5至选手8前3天的比赛日程。据此，将左上角小块中的所有数字按其相对位置抄到右下角，又将左下角小块中的所有数字按其相对位置抄到右上角，这样我们就分别安排好了选手1至选手4和选手5至选手8在后4天的比赛日程。依此思想容易将这个比赛日程表推广到具有任意多个选手的情形。</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package MatchTable; &#x2F;**</span><br><span class="line"> * Created by Administrator on 2016&#x2F;1&#x2F;17.</span><br><span class="line"> *&#x2F;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class MatchTable &#123;</span><br><span class="line">    public  void Table(int k, int n, int[][] a) &#123;</span><br><span class="line">        for(int i&#x3D;1; i&lt;&#x3D; n; i++)</span><br><span class="line">            a[1][i]&#x3D;i;&#x2F;&#x2F;设置日程表第一行</span><br><span class="line"></span><br><span class="line">        int m &#x3D; 1;&#x2F;&#x2F;每次填充时，起始填充位置</span><br><span class="line">        for(int s&#x3D;1; s&lt;&#x3D;k; s++)</span><br><span class="line">        &#123;</span><br><span class="line">            n &#x2F;&#x3D; 2;</span><br><span class="line">            for(int t&#x3D;1; t&lt;&#x3D;n; t++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int i&#x3D;m+1; i&lt;&#x3D;2*m; i++)&#x2F;&#x2F;控制行</span><br><span class="line">                &#123;</span><br><span class="line">                    for(int j&#x3D;m+1; j&lt;&#x3D;2*m; j++)&#x2F;&#x2F;控制列</span><br><span class="line">                    &#123;</span><br><span class="line">                        a[i][j+(t-1)*m*2] &#x3D; a[i-m][j+(t-1)*m*2-m];&#x2F;&#x2F;右下角等于左上角的值</span><br><span class="line">                        a[i][j+(t-1)*m*2-m] &#x3D; a[i-m][j+(t-1)*m*2];&#x2F;&#x2F;左下角等于右上角的值</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            m *&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        System.out.println(&quot;请输入运动员的个数&quot;);</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line">        double x &#x3D;Math.log(n)&#x2F;Math.log(2);</span><br><span class="line">        int k &#x3D; (int)x;</span><br><span class="line">        MatchTable t &#x3D; new MatchTable();</span><br><span class="line">        int[][] a &#x3D; new int[n+1][n+1];</span><br><span class="line">        t.Table(k,n,a);</span><br><span class="line">        System.out.println(n + &quot;名运动员的比赛日程表是：&quot;);</span><br><span class="line">        for (int i &#x3D; 1;i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 1; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">                System.out.print(a[i][j] + &quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>五大经典算法-5.回溯法&amp;分支界定法</title>
+    <url>/2020/05/10/5-classic-algorithms-5-backtracking-branch-and-bound/</url>
+    <content><![CDATA[<blockquote>
+<p>这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。<br>经典例题:1)迷宫问题(maze problem),2) 01背包问题,3)八皇后问题,4)幂集,5)子集和问题</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><p>回溯法</p>
+<ul>
+<li>回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。</li>
+<li>回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。</li>
+<li>许多复杂的，规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。</li>
+</ul>
+</li>
+<li><p>分支界定法</p>
+<ul>
+<li>类似于回溯法，也是一种在问题的解空间树T上搜索问题解的算法。但在一般情况下，分支限界法与回溯法的求解目标不同。回溯法的求解目标是找出T中满足约束条件的所有解，而分支限界法的求解目标则是找出满足约束条件的一个解，或是在满足约束条件的解中找出使某一目标函数值达到极大或极小的解，即在某种意义下的最优解。</li>
+</ul>
+</li>
+</ul>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><ul>
+<li>回溯法<ul>
+<li>在包含问题的所有解的解空间树中，按照深度优先搜索的策略，从根结点出发深度探索解空间树。当探索到某一结点时，要先判断该结点是否包含问题的解，如果包含，就从该结点出发继续探索下去，如果该结点不包含问题的解，则逐层向其祖先结点回溯。(其实回溯法就是对隐式图的深度优先搜索算法)。</li>
+<li>若用回溯法求问题的所有解时，要回溯到根，且根结点的所有可行的子树都要已被搜索遍才结束。</li>
+<li>而若使用回溯法求任一个解时，只要搜索到问题的一个解就可以结束。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>分支界定法<ul>
+<li>1 分支搜索算法<blockquote>
+<p>所谓“分支”就是采用广度优先的策略，依次搜索E-结点的所有分支，也就是所有相邻结点，抛弃不满足约束条件的结点，其余结点加入活结点表。然后从表中选择一个结点作为下一个E-结点，继续搜索。<br>选择下一个E-结点的方式不同，则会有几种不同的分支搜索方式。</p>
+</blockquote>
+<ul>
+<li>1)FIFO搜索</li>
+<li>2)LIFO搜索</li>
+<li>3)优先队列式搜索</li>
+</ul>
+</li>
+<li>(2)分支限界搜索算法</li>
+</ul>
+</li>
+</ul>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="1-迷宫问题-maze-problem"><a href="#1-迷宫问题-maze-problem" class="headerlink" title="1.迷宫问题(maze problem)"></a>1.迷宫问题(maze problem)</h3><ul>
+<li><a href="https://blog.csdn.net/K346K346/article/details/51289478" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p>给定一个迷宫，指明起点和终点，找出从起点出发到终点的有效可行路径，就是迷宫问题(maze problem)</p>
+<p>迷宫可以以二维数组来存储表示。0表示通路，1表示障碍。注意这里规定移动可以从上、下、左、右四方方向移动。坐标以行和列表示，均从0开始，给定起点(0,0)和终点(4,4)，迷宫表示如下：</p>
+<p>int maze[5][5]={<br>    {0,0,0,0,0},<br>    {0,1,0,1,0},<br>    {0,1,1,0,0},<br>    {0,1,1,0,1},<br>    {0,0,0,0,0}<br>};</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>那么下面的迷宫就有两条可行的路径，分别为：<br>(1)(0,0) (0,1) (0,2) (0,3) (0,4) (1,4) (2,4) (2,3) (3,3) (4,3) (4,4)；<br>(2)(0,0) (1,0) (2,0) (3,0) (4,0) (4,1) (4,2) (4,3) (4,4) ；</p>
+<p>可见，迷宫可行路径有可能是多条，且路径长度可能不一。</p>
+<p>迷宫问题的求解可以抽象为连通图的遍历，因此主要有两种方法。</p>
+<p>第一种方法是：深度优先搜索(DFS)加回溯。</p>
+<p>其优点：无需像广度优先搜索那样(BFS)记录前驱结点。<br>其缺点：找到的第一条可行路径不一定是最短路径，如果需要找到最短路径，那么需要找出所有可行路径后，再逐一比较，求出最短路径。</p>
+<p>第二种方法是：广度优先搜索(BFS)。<br>其优点：找出的第一条路径就是最短路径。<br>其缺点：需要记录结点的前驱结点，来形成路径。</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<blockquote>
+<p>方法一： 深度优先搜索(DFS)加回溯求解第一条可行路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">实现步骤</span><br><span class="line">(1)给定起点和终点，判断二者的合法性，如果不合法，返回；</span><br><span class="line">(2)如果起点和终点合法，将起点入栈；</span><br><span class="line">(3)取栈顶元素，求其邻接的未被访问的无障碍结点。求如果有，记其为已访问，并入栈。</span><br><span class="line">   如果没有则回溯上一结点，具体做法是将当前栈顶元素出栈。</span><br><span class="line">   其中，求邻接无障碍结点的顺序可任意，本文实现是以上、右、下、左的顺序求解。</span><br><span class="line">(4)重复步骤(3)，直到栈空(没有找到可行路径)或者栈顶元素等于终点(找到第一条可行路径)</span><br><span class="line"></span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct Point&#123;</span><br><span class="line">    &#x2F;&#x2F;行与列</span><br><span class="line">    int row;</span><br><span class="line">    int col;</span><br><span class="line">    Point(int x,int y)&#123;</span><br><span class="line">        this-&gt;row&#x3D;x;</span><br><span class="line">        this-&gt;col&#x3D;y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bool operator!&#x3D;(const Point&amp; rhs)&#123;</span><br><span class="line">        if (this-&gt;row!&#x3D;rhs.row||this-&gt;col!&#x3D;rhs.col)</span><br><span class="line">            return true;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;func:获取相邻未被访问的节点</span><br><span class="line">&#x2F;&#x2F;para:mark:结点标记，point：结点，m：行，n：列</span><br><span class="line">&#x2F;&#x2F;ret:邻接未被访问的结点</span><br><span class="line">Point getAdjacentNotVisitedNode(bool** mark,Point point,int m,int n)&#123;</span><br><span class="line">    Point resP(-1,-1);</span><br><span class="line">    if (point.row-1&gt;&#x3D;0&amp;&amp;mark[point.row-1][point.col]&#x3D;&#x3D;false)&#123;&#x2F;&#x2F;上节点满足条件</span><br><span class="line">        resP.row&#x3D;point.row-1;</span><br><span class="line">        resP.col&#x3D;point.col;</span><br><span class="line">        return resP;</span><br><span class="line">    &#125;</span><br><span class="line">    if (point.col+1&lt;n&amp;&amp;mark[point.row][point.col+1]&#x3D;&#x3D;false)&#123;&#x2F;&#x2F;右节点满足条件</span><br><span class="line">        resP.row&#x3D;point.row;</span><br><span class="line">        resP.col&#x3D;point.col+1;</span><br><span class="line">        return resP;</span><br><span class="line">    &#125;</span><br><span class="line">    if (point.row+1&lt;m&amp;&amp;mark[point.row+1][point.col]&#x3D;&#x3D;false)&#123;&#x2F;&#x2F;下节点满足条件</span><br><span class="line">        resP.row&#x3D;point.row+1;</span><br><span class="line">        resP.col&#x3D;point.col;</span><br><span class="line">        return resP;</span><br><span class="line">    &#125;</span><br><span class="line">    if (point.col-1&gt;&#x3D;0&amp;&amp;mark[point.row][point.col-1]&#x3D;&#x3D;false)&#123;&#x2F;&#x2F;左节点满足条件</span><br><span class="line">        resP.row&#x3D;point.row;</span><br><span class="line">        resP.col&#x3D;point.col-1;</span><br><span class="line">        return resP;</span><br><span class="line">    &#125;</span><br><span class="line">    return resP;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;func：给定二维迷宫，求可行路径</span><br><span class="line">&#x2F;&#x2F;para:maze：迷宫；m：行；n：列；startP：开始结点 endP：结束结点； pointStack：栈，存放路径结点</span><br><span class="line">&#x2F;&#x2F;ret:无</span><br><span class="line">void mazePath(void* maze,int m,int n,const Point&amp; startP,Point endP,stack&lt;Point&gt;&amp; pointStack)&#123;</span><br><span class="line">    &#x2F;&#x2F;将给定的任意列数的二维数组还原为指针数组，以支持下标操作</span><br><span class="line">    int** maze2d&#x3D;new int*[m];</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        maze2d[i]&#x3D;(int*)maze+i*n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (maze2d[startP.row][startP.col]&#x3D;&#x3D;1||maze2d[endP.row][endP.col]&#x3D;&#x3D;1)</span><br><span class="line">        return ;                    &#x2F;&#x2F;输入错误</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;建立各个节点访问标记</span><br><span class="line">    bool** mark&#x3D;new bool*[m];</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        mark[i]&#x3D;new bool[n];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        for (int j&#x3D;0;j&lt;n;++j)&#123;</span><br><span class="line">            mark[i][j]&#x3D;*((int*)maze+i*n+j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;将起点入栈</span><br><span class="line">    pointStack.push(startP);</span><br><span class="line">    mark[startP.row][startP.col]&#x3D;true;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;栈不空并且栈顶元素不为结束节点</span><br><span class="line">    while(pointStack.empty()&#x3D;&#x3D;false&amp;&amp;pointStack.top()!&#x3D;endP)&#123;</span><br><span class="line">        Point adjacentNotVisitedNode&#x3D;getAdjacentNotVisitedNode(mark,pointStack.top(),m,n);</span><br><span class="line">        if (adjacentNotVisitedNode.row&#x3D;&#x3D;-1)&#123; &#x2F;&#x2F;没有未被访问的相邻节点</span><br><span class="line">            pointStack.pop(); &#x2F;&#x2F;回溯到上一个节点</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;入栈并设置访问标志为true</span><br><span class="line">        mark[adjacentNotVisitedNode.row][adjacentNotVisitedNode.col]&#x3D;true;</span><br><span class="line">        pointStack.push(adjacentNotVisitedNode);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int maze[5][5]&#x3D;&#123;</span><br><span class="line">        &#123;0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,1,0,1,0&#125;,</span><br><span class="line">        &#123;0,1,1,0,0&#125;,</span><br><span class="line">        &#123;0,1,1,0,1&#125;,</span><br><span class="line">        &#123;0,0,0,0,0&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    Point startP(0,0);</span><br><span class="line">    Point endP(4,4);</span><br><span class="line">    stack&lt;Point&gt;  pointStack;</span><br><span class="line">    mazePath(maze,5,5,startP,endP,pointStack);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;没有找打可行解</span><br><span class="line">    if (pointStack.empty()&#x3D;&#x3D;true)</span><br><span class="line">        cout&lt;&lt;&quot;no right path&quot;&lt;&lt;endl;</span><br><span class="line">    else&#123;</span><br><span class="line">        stack&lt;Point&gt; tmpStack;</span><br><span class="line">        cout&lt;&lt;&quot;path:&quot;;</span><br><span class="line">        while(pointStack.empty()&#x3D;&#x3D;false)&#123;</span><br><span class="line">            tmpStack.push(pointStack.top());</span><br><span class="line">            pointStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        while (tmpStack.empty()&#x3D;&#x3D;false)&#123;</span><br><span class="line">            printf(&quot;(%d,%d) &quot;,tmpStack.top().row,tmpStack.top().col);</span><br><span class="line">            tmpStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    getchar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">程序输出：path:(0,0) (0,1) (0,2) (0,3) (0,4) (1,4) (2,4) (2,3) (3,3) (4,3) (4,4)。</span><br><span class="line"></span><br><span class="line">可见该条路径不是最短路径。因为程序中给定的迷宫还有一条更短路径为：(0,0) (1,0) (2,0) (3,0) (4,0) (4,1) (4,2) (4,3) (4,4) ；</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法二：改进深度优先搜索(DFS)加回溯求解最短路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">实现方法</span><br><span class="line">根据上面的方法我们可以在此基础之上进行改进，求出迷宫的最短的路径。具体做法如下：</span><br><span class="line">(1)让已经访问过的结点可以再次被访问，具体做法是将mark标记改为当前结点到起点的距离，作为当前结点的权值。即从起点开始出发，向四个方向查找，每走一步，把走过的点的值+1；</span><br><span class="line">(2)寻找栈顶元素的下一个可访问的相邻结点，条件就是栈顶元素的权值加1必须小于下一个节点的权值(墙不能走，未被访问的结点权值为0)；</span><br><span class="line">(3)如果访问到终点，记录当前最短的路径。如果不是，则继续寻找下一个结点；</span><br><span class="line">(4)重复步骤(2)和(3)直到栈空(迷宫中所有符合条件的结点均被访问)。</span><br><span class="line"></span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct Point&#123;</span><br><span class="line">    &#x2F;&#x2F;行与列</span><br><span class="line">    int row;</span><br><span class="line">    int col;</span><br><span class="line">    Point(int x,int y)&#123;</span><br><span class="line">        this-&gt;row&#x3D;x;</span><br><span class="line">        this-&gt;col&#x3D;y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bool operator!&#x3D;(const Point&amp; rhs)&#123;</span><br><span class="line">        if (this-&gt;row!&#x3D;rhs.row||this-&gt;col!&#x3D;rhs.col)</span><br><span class="line">            return true;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bool operator&#x3D;&#x3D;(const Point&amp; rhs) const&#123;</span><br><span class="line">        if (this-&gt;row&#x3D;&#x3D;rhs.row&amp;&amp;this-&gt;col&#x3D;&#x3D;rhs.col)</span><br><span class="line">            return true;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int maze[5][5]&#x3D;&#123;</span><br><span class="line">    &#123;0, 0, 0, 0,0&#125;,</span><br><span class="line">    &#123;0,-1, 0,-1,0&#125;,</span><br><span class="line">    &#123;0,-1,-1, 0,0&#125;,</span><br><span class="line">    &#123;0,-1,-1, 0,-1&#125;,</span><br><span class="line">    &#123;0, 0, 0, 0, 0&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;func:获取相邻未被访问的节点</span><br><span class="line">&#x2F;&#x2F;para:mark:结点标记；point：结点；m：行；n：列;endP:终点</span><br><span class="line">&#x2F;&#x2F;ret:邻接未被访问的结点</span><br><span class="line">Point getAdjacentNotVisitedNode(int** mark,Point point,int m,int n,Point endP)&#123;</span><br><span class="line">    Point resP(-1,-1);</span><br><span class="line">    if (point.row-1&gt;&#x3D;0)&#123;</span><br><span class="line">        if (mark[point.row-1][point.col]&#x3D;&#x3D;0||mark[point.row][point.col]+1&lt;mark[point.row-1][point.col])&#123;&#x2F;&#x2F;上节点满足条件</span><br><span class="line">            resP.row&#x3D;point.row-1;</span><br><span class="line">            resP.col&#x3D;point.col;</span><br><span class="line">            return resP;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (point.col+1&lt;n)&#123;</span><br><span class="line">        if (mark[point.row][point.col+1]&#x3D;&#x3D;0||mark[point.row][point.col]+1&lt;mark[point.row][point.col+1])&#123;&#x2F;&#x2F;右节点满足条件</span><br><span class="line">            resP.row&#x3D;point.row;</span><br><span class="line">            resP.col&#x3D;point.col+1;</span><br><span class="line">            return resP;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (point.row+1&lt;m)&#123;</span><br><span class="line">        if (mark[point.row+1][point.col]&#x3D;&#x3D;0||mark[point.row][point.col]+1&lt;mark[point.row+1][point.col])&#123;&#x2F;&#x2F;下节点满足条件</span><br><span class="line">            resP.row&#x3D;point.row+1;</span><br><span class="line">            resP.col&#x3D;point.col;</span><br><span class="line">            return resP;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (point.col-1&gt;&#x3D;0)&#123;</span><br><span class="line">        if (mark[point.row][point.col-1]&#x3D;&#x3D;0||mark[point.row][point.col]+1&lt;mark[point.row][point.col-1])&#123;&#x2F;&#x2F;左节点满足条件</span><br><span class="line">            resP.row&#x3D;point.row;</span><br><span class="line">            resP.col&#x3D;point.col-1;</span><br><span class="line">            return resP;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return resP;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;func：给定二维迷宫，求可行路径</span><br><span class="line">&#x2F;&#x2F;para:maze：迷宫；m：行；n：列；startP：开始结点 endP：结束结点； pointStack：栈，存放路径结点;vecPath:存放最短路径</span><br><span class="line">&#x2F;&#x2F;ret:无</span><br><span class="line">void mazePath(void* maze,int m,int n, Point&amp; startP, Point endP,stack&lt;Point&gt;&amp; pointStack,vector&lt;Point&gt;&amp; vecPath)&#123;</span><br><span class="line">    &#x2F;&#x2F;将给定的任意列数的二维数组还原为指针数组，以支持下标操作</span><br><span class="line">    int** maze2d&#x3D;new int*[m];</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        maze2d[i]&#x3D;(int*)maze+i*n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (maze2d[startP.row][startP.col]&#x3D;&#x3D;-1||maze2d[endP.row][endP.col]&#x3D;&#x3D;-1)</span><br><span class="line">        return ;                    &#x2F;&#x2F;输入错误</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;建立各个节点访问标记，表示结点到到起点的权值，也记录了起点到当前结点路径的长度</span><br><span class="line">    int** mark&#x3D;new int*[m];</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        mark[i]&#x3D;new int[n];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        for (int j&#x3D;0;j&lt;n;++j)&#123;</span><br><span class="line">            mark[i][j]&#x3D;*((int*)maze+i*n+j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (startP&#x3D;&#x3D;endP)&#123;&#x2F;&#x2F;起点等于终点</span><br><span class="line">        vecPath.push_back(startP);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;增加一个终点的已被访问的前驱结点集</span><br><span class="line">    vector&lt;Point&gt; visitedEndPointPreNodeVec;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;将起点入栈</span><br><span class="line">    pointStack.push(startP);</span><br><span class="line">    mark[startP.row][startP.col]&#x3D;true;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;栈不空并且栈顶元素不为结束节点</span><br><span class="line">    while(pointStack.empty()&#x3D;&#x3D;false)&#123;</span><br><span class="line">        Point adjacentNotVisitedNode&#x3D;getAdjacentNotVisitedNode(mark,pointStack.top(),m,n,endP);</span><br><span class="line">        if (adjacentNotVisitedNode.row&#x3D;&#x3D;-1)&#123; &#x2F;&#x2F;没有符合条件的相邻节点</span><br><span class="line">            pointStack.pop(); &#x2F;&#x2F;回溯到上一个节点</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if (adjacentNotVisitedNode&#x3D;&#x3D;endP)&#123;&#x2F;&#x2F;以较短的路劲，找到了终点,</span><br><span class="line">            mark[adjacentNotVisitedNode.row][adjacentNotVisitedNode.col]&#x3D;mark[pointStack.top().row][pointStack.top().col]+1;</span><br><span class="line">            pointStack.push(endP);</span><br><span class="line">            stack&lt;Point&gt; pointStackTemp&#x3D;pointStack;</span><br><span class="line">            vecPath.clear();</span><br><span class="line">            while (pointStackTemp.empty()&#x3D;&#x3D;false)&#123;</span><br><span class="line">                vecPath.push_back(pointStackTemp.top());&#x2F;&#x2F;这里vecPath存放的是逆序路径</span><br><span class="line">                pointStackTemp.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            pointStack.pop(); &#x2F;&#x2F;将终点出栈</span><br><span class="line"></span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;入栈并设置访问标志为true</span><br><span class="line">        mark[adjacentNotVisitedNode.row][adjacentNotVisitedNode.col]&#x3D;mark[pointStack.top().row][pointStack.top().col]+1;</span><br><span class="line">        pointStack.push(adjacentNotVisitedNode);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    Point startP(0,0);</span><br><span class="line">    Point endP(4,4);</span><br><span class="line">    stack&lt;Point&gt;  pointStack;</span><br><span class="line">    vector&lt;Point&gt; vecPath;</span><br><span class="line">    mazePath(maze,5,5,startP,endP,pointStack,vecPath);</span><br><span class="line"></span><br><span class="line">    if (vecPath.empty()&#x3D;&#x3D;true)</span><br><span class="line">        cout&lt;&lt;&quot;no right path&quot;&lt;&lt;endl;</span><br><span class="line">    else&#123;</span><br><span class="line">        cout&lt;&lt;&quot;shortest path:&quot;;</span><br><span class="line">        for (auto i&#x3D;vecPath.rbegin();i!&#x3D;vecPath.rend();++i)</span><br><span class="line">            printf(&quot;(%d,%d) &quot;,i-&gt;row,i-&gt;col);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法3: 广度优先搜索(BFS)求解迷宫的最短路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">广度优先搜索的优点是找出的第一条路径就是最短路径，所以经常用来搜索最短路径，思路和图的广度优先遍历一样，需要借助于队列。</span><br><span class="line">具体步骤：</span><br><span class="line">(1)从入口元素开始，判断它上下左右的邻边元素是否满足条件，如果满足条件就入队列；</span><br><span class="line">(2)取队首元素并出队列。寻找其相邻未被访问的元素，将其如队列并标记元素的前驱节点为队首元素。</span><br><span class="line">(3)重复步骤(2)，直到队列为空(没有找到可行路径)或者找到了终点。最后从终点开始，根据节点的前驱节点找出一条最短的可行路径。</span><br><span class="line"></span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct Point&#123;</span><br><span class="line">    &#x2F;&#x2F;行与列</span><br><span class="line">    int row;</span><br><span class="line">    int col;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;默认构造函数</span><br><span class="line">    Point()&#123;</span><br><span class="line">        row&#x3D;col&#x3D;-1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Point(int x,int y)&#123;</span><br><span class="line">        this-&gt;row&#x3D;x;</span><br><span class="line">        this-&gt;col&#x3D;y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bool operator&#x3D;&#x3D;(const Point&amp; rhs) const&#123;</span><br><span class="line">        if (this-&gt;row&#x3D;&#x3D;rhs.row&amp;&amp;this-&gt;col&#x3D;&#x3D;rhs.col)</span><br><span class="line">            return true;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int maze[5][5]&#x3D;&#123;</span><br><span class="line">    &#123;0,0,0,0,0&#125;,</span><br><span class="line">    &#123;0,1,0,1,0&#125;,</span><br><span class="line">    &#123;0,1,1,1,0&#125;,</span><br><span class="line">    &#123;0,1,0,0,1&#125;,</span><br><span class="line">    &#123;0,0,0,0,0&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void mazePath(void* maze,int m,int n, Point&amp; startP, Point endP,vector&lt;Point&gt;&amp; shortestPath)&#123;</span><br><span class="line">    int** maze2d&#x3D;new int*[m];</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        maze2d[i]&#x3D;(int*)maze+i*n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (maze2d[startP.row][startP.col]&#x3D;&#x3D;1||maze2d[startP.row][startP.col]&#x3D;&#x3D;1) return ; &#x2F;&#x2F;输入错误</span><br><span class="line"></span><br><span class="line">    if (startP&#x3D;&#x3D;endP)&#123; &#x2F;&#x2F;起点即终点</span><br><span class="line">        shortestPath.push_back(startP);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;mark标记每一个节点的前驱节点，如果没有则为(-1，-1)，如果有，则表示已经被访问</span><br><span class="line">    Point** mark&#x3D;new Point*[m];</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;++i)&#123;</span><br><span class="line">        mark[i]&#x3D;new Point[n];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    queue&lt;Point&gt; queuePoint;</span><br><span class="line">    queuePoint.push(startP);</span><br><span class="line">    &#x2F;&#x2F;将起点的前驱节点设置为自己</span><br><span class="line">    mark[startP.row][startP.col]&#x3D;startP;</span><br><span class="line"></span><br><span class="line">    while(queuePoint.empty()&#x3D;&#x3D;false)&#123;</span><br><span class="line">        Point pointFront&#x3D;queuePoint.front();</span><br><span class="line">        queuePoint.pop();</span><br><span class="line"></span><br><span class="line">        if (pointFront.row-1&gt;&#x3D;0 &amp;&amp; maze2d[pointFront.row-1][pointFront.col]&#x3D;&#x3D;0)&#123;&#x2F;&#x2F;上节点连通</span><br><span class="line">            if (mark[pointFront.row-1][pointFront.col]&#x3D;&#x3D;Point())&#123;&#x2F;&#x2F;上节点未被访问，满足条件，如队列</span><br><span class="line">                mark[pointFront.row-1][pointFront.col]&#x3D;pointFront;</span><br><span class="line">                queuePoint.push(Point(pointFront.row-1,pointFront.col)); &#x2F;&#x2F;入栈</span><br><span class="line">                if (Point(pointFront.row-1,pointFront.col)&#x3D;&#x3D;endP)&#123; &#x2F;&#x2F;找到终点</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (pointFront.col+1&lt;n &amp;&amp; maze2d[pointFront.row][pointFront.col+1]&#x3D;&#x3D;0)&#123;&#x2F;&#x2F;右节点连通</span><br><span class="line">            if (mark[pointFront.row][pointFront.col+1]&#x3D;&#x3D;Point())&#123;&#x2F;&#x2F;右节点未被访问，满足条件，如队列</span><br><span class="line">                mark[pointFront.row][pointFront.col+1]&#x3D;pointFront;</span><br><span class="line">                queuePoint.push(Point(pointFront.row,pointFront.col+1));    &#x2F;&#x2F;入栈</span><br><span class="line">                if (Point(pointFront.row,pointFront.col+1)&#x3D;&#x3D;endP)&#123; &#x2F;&#x2F;找到终点</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (pointFront.row+1&lt;m &amp;&amp; maze2d[pointFront.row+1][pointFront.col]&#x3D;&#x3D;0)&#123;&#x2F;&#x2F;下节点连通</span><br><span class="line">            if (mark[pointFront.row+1][pointFront.col]&#x3D;&#x3D;Point())&#123;&#x2F;&#x2F;下节点未被访问，满足条件，如队列</span><br><span class="line">                mark[pointFront.row+1][pointFront.col]&#x3D;pointFront;</span><br><span class="line">                queuePoint.push(Point(pointFront.row+1,pointFront.col));    &#x2F;&#x2F;入栈</span><br><span class="line">                if (Point(pointFront.row+1,pointFront.col)&#x3D;&#x3D;endP)&#123; &#x2F;&#x2F;找到终点</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (pointFront.col-1&gt;&#x3D;0 &amp;&amp; maze2d[pointFront.row][pointFront.col-1]&#x3D;&#x3D;0)&#123;&#x2F;&#x2F;左节点连通</span><br><span class="line">            if (mark[pointFront.row][pointFront.col-1]&#x3D;&#x3D;Point())&#123;&#x2F;&#x2F;上节点未被访问，满足条件，如队列</span><br><span class="line">                mark[pointFront.row][pointFront.col-1]&#x3D;pointFront;</span><br><span class="line">                queuePoint.push(Point(pointFront.row,pointFront.col-1));    &#x2F;&#x2F;入栈</span><br><span class="line">                if (Point(pointFront.row,pointFront.col-1)&#x3D;&#x3D;endP)&#123; &#x2F;&#x2F;找到终点</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (queuePoint.empty()&#x3D;&#x3D;false)&#123;</span><br><span class="line">        int row&#x3D;endP.row;</span><br><span class="line">        int col&#x3D;endP.col;</span><br><span class="line">        shortestPath.push_back(endP);</span><br><span class="line">        while(!(mark[row][col]&#x3D;&#x3D;startP))&#123;</span><br><span class="line">            shortestPath.push_back(mark[row][col]);</span><br><span class="line">            row&#x3D;mark[row][col].row;</span><br><span class="line">            col&#x3D;mark[row][col].col;</span><br><span class="line">        &#125;</span><br><span class="line">        shortestPath.push_back(startP);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    Point startP(0,0);</span><br><span class="line">    Point endP(4,4);</span><br><span class="line">    vector&lt;Point&gt; vecPath;</span><br><span class="line">    mazePath(maze,5,5,startP,endP,vecPath);</span><br><span class="line"></span><br><span class="line">    if (vecPath.empty()&#x3D;&#x3D;true)</span><br><span class="line">        cout&lt;&lt;&quot;no right path&quot;&lt;&lt;endl;</span><br><span class="line">    else&#123;</span><br><span class="line">        cout&lt;&lt;&quot;shortest path:&quot;;</span><br><span class="line">        for (auto i&#x3D;vecPath.rbegin();i!&#x3D;vecPath.rend();++i)</span><br><span class="line">            printf(&quot;(%d,%d) &quot;,i-&gt;row,i-&gt;col);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-01背包问题"><a href="#2-01背包问题" class="headerlink" title="2. 01背包问题"></a>2. 01背包问题</h3><ul>
+<li><p><a href="http://fuliang.iteye.com/blog/165308" target="_blank" rel="noopener">题目</a></p>
+<blockquote>
+<p>给定N中物品和一个背包。物品i的重量是Wi,其价值位Vi ，背包的容量为C。问应该如何选择装入背包的物品，使得转入背包的物品的总价值为最大？？</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>分析</p>
+<blockquote>
+<p>0-1背包是子集合选取问题,一般情况下0-1背包是个NP问题.<br>第一步　确定解空间：装入哪几种物品.<br>第二步　确定易于搜索的解空间结构：<br>可以用数组p,w分别表示各个物品价值和重量。<br>用数组x记录，是否选种物品.<br>第三步　以深度优先的方式搜索解空间，并在搜索的过程中剪枝<br>我们同样可以使用子集合问题的框架来写我们的代码，和前面子集和数问题相差无几。</p>
+</blockquote>
+</li>
+<li><p>代码</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class Knapsack&#123;</span><br><span class="line">public:</span><br><span class="line">    Knapsack(double *pp,double *ww,int nn,double cc)&#123;</span><br><span class="line">       p &#x3D; pp;</span><br><span class="line">       w &#x3D; ww;</span><br><span class="line">       n &#x3D; nn;</span><br><span class="line">       c &#x3D; cc;</span><br><span class="line">       cw &#x3D; 0;</span><br><span class="line">       cp &#x3D; 0;</span><br><span class="line">       bestp &#x3D; 0;</span><br><span class="line">       x &#x3D; new int[n];</span><br><span class="line">       cx &#x3D; new int[n];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void knapsack()&#123;</span><br><span class="line">       backtrack(0);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">    void backtrack(int i)&#123;&#x2F;&#x2F;回溯法</span><br><span class="line">        if (i &gt; n)&#123;</span><br><span class="line">            if (cp &gt; bestp)&#123;</span><br><span class="line">               bestp &#x3D; cp;</span><br><span class="line">               for (int i &#x3D; 0; i &lt; n; i++)</span><br><span class="line">             x[i] &#x3D; cx[i];</span><br><span class="line">            &#125;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (cw + w[i] &lt;&#x3D; c)&#123;&#x2F;&#x2F;搜索右子树</span><br><span class="line">          cw +&#x3D; w[i];</span><br><span class="line">          cp +&#x3D; p[i];</span><br><span class="line">          cx[i] &#x3D; 1;</span><br><span class="line">          backtrack(i+1);</span><br><span class="line">          cw -&#x3D; w[i];</span><br><span class="line">          cp -&#x3D; p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cx[i] &#x3D; 0;</span><br><span class="line">        backtrack(i+1);&#x2F;&#x2F;搜索左子树</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void printResult()&#123;</span><br><span class="line">       cout &lt;&lt; &quot;可以装入的最大价值为:&quot; &lt;&lt; bestp &lt;&lt; endl;</span><br><span class="line">       cout &lt;&lt; &quot;装入的物品依次为:&quot;;</span><br><span class="line">       for (int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">         if (x[i] &#x3D;&#x3D; 1)</span><br><span class="line">             cout &lt;&lt; i+1 &lt;&lt; &quot; &quot;;</span><br><span class="line">       &#125;</span><br><span class="line">       cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">   double *p,*w;</span><br><span class="line">   int n;</span><br><span class="line">   double c;</span><br><span class="line">   double bestp,cp,cw;&#x2F;&#x2F;最大价值，当前价值，当前重量</span><br><span class="line">   int *x,*cx;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">　　double p[4] &#x3D; &#123;9,10,7,4&#125;,w[4] &#x3D; &#123;3,5,2,1&#125;;</span><br><span class="line">    Knapsack ks &#x3D; Knapsack(p,w,4,7);</span><br><span class="line">    ks.knapsack();</span><br><span class="line">　　ks.printResult();</span><br><span class="line">　　return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-八皇后问题"><a href="#3-八皇后问题" class="headerlink" title="3.八皇后问题"></a>3.八皇后问题</h3><ul>
+<li><a href="http://fuliang.iteye.com/blog/164744" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p>八皇后问题是一个古老而著名的问题，是回溯算法的典型例题。该问题是十九世纪著名的数学家高斯1850年提出：在8X8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上.</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>第一步 定义问题的解空间<br>这个问题解空间就是8个皇后在棋盘中的位置.<br>第二步 定义解空间的结构<br>可以使用8*8的数组，但由于任意两个皇后都不能在同行，我们可以用数组下标表示<br>行，数组的值来表示皇后放的列，故可以简化为一个以维数组x[9]。<br>第三步 以深度优先的方式搜索解空间，并在搜索过程使用剪枝函数来剪枝<br>根据条件:x[i] == x[k]判断处于同一列<br>         abs(k-i) == abs(x[k]-x[i]判断是否处于同一斜线<br>我们很容易写出剪枝函数：</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int x[9];</span><br><span class="line">void print()&#123;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; 8; i++)</span><br><span class="line">           cout &lt;&lt; x[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool canPlace(int k)&#123;</span><br><span class="line">    for (int i &#x3D; 1; i &lt; k; i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;判断处于同一列或同一斜线</span><br><span class="line">       if (x[i] &#x3D;&#x3D; x[k] || abs(k-i) &#x3D;&#x3D; abs(x[k]-x[i]))</span><br><span class="line">           return false;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void queen(int i)&#123;</span><br><span class="line">    if (i &gt; 8)&#123;</span><br><span class="line">        print();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int j &#x3D; 1; j &lt;&#x3D; 8; j++)&#123;</span><br><span class="line">      x[i] &#x3D; j;</span><br><span class="line">      if (canPlace(i)) queen(i+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">  queen(1);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-幂集"><a href="#4-幂集" class="headerlink" title="4.幂集"></a>4.幂集</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>幂集的每个元素是一个集合或者是一个空集。拿集合{A, B, C}来举例，这个集合的幂集为{ {A, B, C}, {A , B}, {A , C}, {B, C},{A}, {B}, {C}, {}}。可以看出分为3中状态:</p>
+<p>1.空集<br>2.是集合中的一个元素组成的集合<br>3.是集合中的任意两个元素组成的集合<br>4.是集合中的三个元素组成的集合，就是它本身</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>算法思想，集合中每个元素有两种状态，在幂集元素的集合中，不在集合中。可以用一颗二叉树形象的表示回溯遍历的过程</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">char *result;</span><br><span class="line">char *element;</span><br><span class="line">void OutputPowerSet(int len)&#123; &#x2F;&#x2F;输出幂集中的元素</span><br><span class="line">  cout&lt;&lt;&quot;&#123; &quot;;</span><br><span class="line">  int eln &#x3D; 0;</span><br><span class="line">  for (int i &#x3D; 0; i &lt; len; i++)&#123;</span><br><span class="line">    if (result[i] !&#x3D; 0)</span><br><span class="line">    &#123;</span><br><span class="line">      if (eln &gt; 0)</span><br><span class="line">        cout&lt;&lt;&quot;, &quot;&lt;&lt;result[i];</span><br><span class="line">      else</span><br><span class="line">        cout&lt;&lt;result[i];</span><br><span class="line">      eln++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout&lt;&lt;&quot; &#125;; &quot;;</span><br><span class="line">&#125;</span><br><span class="line">void PowerSet(int k,int n)&#123;</span><br><span class="line">  if (k &gt; n)</span><br><span class="line">  &#123;</span><br><span class="line">    OutputPowerSet(n);</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    result[k-1] &#x3D; element[k-1]; &#x2F;&#x2F;元素在幂集元素集合中</span><br><span class="line">    PowerSet(k+1,n);</span><br><span class="line">    result[k-1] &#x3D; 0;&#x2F;&#x2F;元素不在幂集元素集合中</span><br><span class="line">    PowerSet(k+1,n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">  int num;</span><br><span class="line">  cin&gt;&gt;num;    &#x2F;&#x2F;输出要求幂集的初始集合元素个数</span><br><span class="line">  element &#x3D; new char[num];</span><br><span class="line">  result &#x3D; new char[num];</span><br><span class="line">  int index &#x3D; 0;</span><br><span class="line">  while(index &lt; num)&#123;</span><br><span class="line">    cin&gt;&gt;element[index];  &#x2F;&#x2F;输入集合元素，这里用字符代替</span><br><span class="line">    index++;</span><br><span class="line">  &#125;</span><br><span class="line">  PowerSet(1,num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-子集和问题"><a href="#5-子集和问题" class="headerlink" title="5.子集和问题"></a>5.子集和问题</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>存在S={x1,x2,..xn}.是一个正整数的集合，c是一个正整数。子集合问题判定是否存在一个子集S1(S1为S的子集)，使得该子集的和为c.<br>例子：S={1,3,8,9},C=9,则解为:s1={1,8},s2={9}</p>
+<p>可以看出此算法的解空间为子集树，所以利用前面讲的模板，可以得到哦以下程序</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">   名称：算法5-1</span><br><span class="line">   问题重述：</span><br><span class="line">      子集合问题,存在S&#x3D;&#123;x1,x2,..xn&#125;.是一个正整数的集合，c是一个正整数。子集合问题判定是否存在一个子集S1，使得其中一个子集的和为c.</span><br><span class="line">  时间:2013&#x2F;5&#x2F;12</span><br><span class="line">  作者：刘荣</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">bool next(int a[],int n, int i, int s, int r, int c, int bextx[], int x[])</span><br><span class="line">&#123;</span><br><span class="line">  int j;</span><br><span class="line">  if (i &gt;&#x3D; n) &#123;&#x2F;&#x2F;到达叶子结点</span><br><span class="line">    if (s &#x3D;&#x3D; c) &#123; &#x2F;&#x2F;找到一个子集</span><br><span class="line">      for (int k&#x3D;0;k&lt;n;k++) &#123;&#x2F;&#x2F;记录下子集</span><br><span class="line">        bextx[k] &#x3D; x[k];</span><br><span class="line">      &#125;</span><br><span class="line">      return true;</span><br><span class="line">    &#125; else &#123;&#x2F;&#x2F;没有找到符合的子集</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if (s &gt;c || s+r &lt;c) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  x[i] &#x3D; 1;</span><br><span class="line">  if (next(a, n, i+1, s+a[i], r-a[i], c, bextx, x)) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  x[i] &#x3D; 0;</span><br><span class="line">  return next(a, n, i+1, s, r-a[i], c, bextx, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool solve(int a[],int n,int c,int bextx[]) &#123;</span><br><span class="line">  &#x2F;&#x2F;int *bextx &#x3D; new int[n];</span><br><span class="line">  int *x &#x3D; new int[n];</span><br><span class="line">  int r &#x3D; 0;</span><br><span class="line">  for (int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">    r +&#x3D; a[i];</span><br><span class="line">  &#125;</span><br><span class="line">  return  next(a, n, 0, 0, r, c, bextx, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  int a[]&#x3D;&#123;1,2,6,8&#125;;</span><br><span class="line">  int n&#x3D;4;</span><br><span class="line">  int c&#x3D;8;</span><br><span class="line">  int *bextx &#x3D; new int[n];</span><br><span class="line">  if (solve(a,n,c,bextx)) &#123;</span><br><span class="line">    printf(&quot;找到子集： \n\r&quot;);</span><br><span class="line">    for (int i&#x3D;0;i&lt;n;i++) &#123;</span><br><span class="line">      printf(&quot;%d &quot;,bextx[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    printf(&quot;没有子集&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hexo + Github Page搭建博客</title>
+    <url>/2020/03/21/hexo-github-deploy/</url>
+    <content><![CDATA[<p>自己搭建在github Page上搭建博客的笔记.<br>Hexo是基于Node.js驱动的一款博客框架<br>主要内容:1)准备环境,2)安装)Hexo,3)GitHub绑定,4)常用命令,5)绑定域名,6)hexo备份,7)hexo恢复</p>
+<a id="more"></a>
+
+<h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><ul>
+<li>Hexo是基于Node.js驱动的一款博客框架。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git version</span><br><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><ul>
+<li>安装方法参考官网: <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ hexo init blog</span><br><span class="line">$ cd blog</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<h2 id="GitHub绑定"><a href="#GitHub绑定" class="headerlink" title="GitHub绑定"></a>GitHub绑定</h2><ul>
+<li>创建仓库名为abc.github.io的项目，其中abc为自己github的昵称</li>
+<li>然后项目就建成了，点击Settings，向下拉到最后有个GitHub Pages，点击Choose a theme选择一个主题。</li>
+<li>在博客根目录下的_config.yml文件最后增加下面的配置。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;abc&#x2F;abc.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new post &quot;article title&quot;</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ul>
+<li>自己github域名的地址<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ping abc.github.io</span><br></pre></td></tr></table></figure></li>
+<li>购买域名并将域名的A记录指到上一步得到的IP</li>
+<li>在hexo目录下的source目录下添加CNAME，写上自己的域名。</li>
+</ul>
+<h2 id="hexo备份"><a href="#hexo备份" class="headerlink" title="hexo备份"></a>hexo备份</h2><ul>
+<li>clone博客的项目，创建hexo分支。</li>
+<li>如果已经hexo d了，切换到hexo分支后，将内容从git中删除。</li>
+<li>然后将hexo 文件夹中的_config.yml、themes/、source/、scaffolds/、package.json 和 .gitignore 复制至 abc.github.io 文件夹，并删除 themes/next/下的.git目录。将内容加入到代码仓库。</li>
+<li>执行npm install 和 npm install hexo-deployer-git</li>
+<li>执行 hexo g -d 生成静态网页部署至 Github 上</li>
+</ul>
+<h2 id="hexo恢复"><a href="#hexo恢复" class="headerlink" title="hexo恢复"></a>hexo恢复</h2><ul>
+<li>克隆博客的代码仓库</li>
+<li>切换到hexo分支，执行以下命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>hadoop &amp; spark 分布式集群搭建</title>
+    <url>/2020/03/21/hadoop-spark-deploy/</url>
+    <content><![CDATA[<p>使用三台主机搭建hadoop&amp;spark完整教程<br>主要内容: 1)系统安装与配置,2)软件安装与配置,3)hadoop&amp;spark安装与配置,4)集群启动&amp;部署验证,5)集成阿里云,6)通过IDEA提交任务到spark</p>
+<a id="more"></a>
+
+<h2 id="系统安装与配置"><a href="#系统安装与配置" class="headerlink" title="系统安装与配置"></a>系统安装与配置</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64" target="_blank" rel="noopener">https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64</a></p>
+<h3 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h3><ul>
+<li>命令行修改</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用 hostname 修改当前主机名。</span><br><span class="line">hostname new-hostname</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改/etc/sysconfig/network文件,将localhost.localdomain修改为指定hostname并保存文件退出</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">NETWORKING&#x3D;yes</span><br><span class="line">HOSTNAME&#x3D;localhost.localdomain</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改host</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vi &#x2F;etc&#x2F;hosts</span><br><span class="line">127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1 localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">将127.0.0.1 后指定的hosts改为新的hostname并保存文件退出</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装open-ssh"><a href="#安装open-ssh" class="headerlink" title="安装open-ssh"></a>安装open-ssh</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install openssh-server</span><br><span class="line">$ sudo systemctl status ssh</span><br><span class="line">$ sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo useradd -m hadoop -s &#x2F;bin&#x2F;bash</span><br><span class="line">$ sudo passwd hadoop</span><br><span class="line">修改&#x2F;etc&#x2F;sudoder文件，给hadoop用户增加sudo权限。</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改Host"><a href="#修改Host" class="headerlink" title="修改Host"></a>修改Host</h3><ul>
+<li>修改/etc/hosts文件，删除原来127.0.0.1到主机名的映射，增加如下配置。<ul>
+<li>前面是集群的IP，可以通过ip -a查看</li>
+<li>后面是主机名</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">172.30.50.42    UbuntuMaster</span><br><span class="line">172.30.50.81    UbuntuSlave1</span><br><span class="line">172.30.50.84    UbuntuSlave2</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置免密码登陆"><a href="#配置免密码登陆" class="headerlink" title="配置免密码登陆"></a>配置免密码登陆</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa   #产生公钥与私钥对，执行三次回车</span><br><span class="line">$ cat ~&#x2F;.ssh&#x2F;id_rsa.pub &gt;&gt; ~&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line">将～&#x2F;.ssh目录下的id_rsa.pub,id_rsa,authorized_keys拷贝到其他两台server</span><br></pre></td></tr></table></figure>
+
+<h2 id="软件安装与配置"><a href="#软件安装与配置" class="headerlink" title="软件安装与配置"></a>软件安装与配置</h2><h3 id="Java环境配置"><a href="#Java环境配置" class="headerlink" title="Java环境配置"></a>Java环境配置</h3><ul>
+<li>下载Java JDK，放置到/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mv jdk-8u241-linux-i586.tar.gz &#x2F;opt</span><br><span class="line">cd &#x2F;opt</span><br><span class="line">sudo tar -zxvf .&#x2F;jdk-8u241-linux-i586.tar.gz</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改 /etc/profile文件，增加如下语句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># java</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export CLASSPATH&#x3D;:$JAVA_HOME&#x2F;lib:$JAVA_HOME&#x2F;jre&#x2F;lib:$CLASSPATH</span><br><span class="line">export PATH&#x3D;$JAVA_HOME&#x2F;bin:$JAVA_HOME&#x2F;jre&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<ul>
+<li>刷新环境配置, 然后检测Java版本。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">java -version</span><br><span class="line">如果报文件找不到，执行下面的语句</span><br><span class="line">sudo apt-get install lib32stdc++6</span><br></pre></td></tr></table></figure>
+
+<h3 id="scala环境配置"><a href="#scala环境配置" class="headerlink" title="scala环境配置"></a>scala环境配置</h3><ul>
+<li>下载scala，放置到/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;downloads.lightbend.com&#x2F;scala&#x2F;2.12.10&#x2F;scala-2.12.10.tgz</span><br><span class="line">sudo mv .&#x2F;scala-2.12.10.tgz &#x2F;opt&#x2F;</span><br><span class="line">cd &#x2F;opt&#x2F;</span><br><span class="line">sudo tar -zxf scala-2.12.10.tgz</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改环境变量,  vim /etc/profile，添加如下语句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export PATH&#x3D;$PATH:$SCALA_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>刷新环境配置, 然后检测Scala版本。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">scala -version</span><br></pre></td></tr></table></figure>
+<h2 id="hadoop-amp-spark安装与配置"><a href="#hadoop-amp-spark安装与配置" class="headerlink" title="hadoop &amp; spark安装与配置"></a>hadoop &amp; spark安装与配置</h2><h3 id="hadoop的安装与配置"><a href="#hadoop的安装与配置" class="headerlink" title="hadoop的安装与配置"></a>hadoop的安装与配置</h3><ul>
+<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;archive.apache.org&#x2F;dist&#x2F;hadoop&#x2F;core&#x2F;hadoop-2.7.0&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ tar -zxvf .&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ sudo mv hadoop-2.7.0 &#x2F;opt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2) 修改环境变量，编辑/etc/profile文件，添加如下程序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3) 在hadoop-2.7.0目录下添加目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir tmp</span><br><span class="line">$ mkdir hdfs</span><br><span class="line">$ mkdir hdfs&#x2F;name</span><br><span class="line">$ mkdir hdfs&#x2F;data</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4) 修改$HADOOP_HOME/etc/hadoop/hadoop-env.sh，修改JAVA_HOME 如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>5) 修改$HADOOP_HOME/etc/hadoop/slaves，将原来的localhost删除，添加如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UbuntuSlaver1</span><br><span class="line">UbuntuSlaver2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>6) 修改$HADOOP_HOME/etc/hadoop/core-site.xml，修改为如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;UbuntuMaster:9000&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;io.file.buffer.size&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;131072&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;tmp&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>7) 修改$HADOOP_HOME/etc/hadoop/hdfs-site.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.secondary.http-address&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;UbuntuMaster:50090&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.replication&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;2&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.name.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;name&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.datanode.data.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;data&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>8) 在$HADOOP_HOME/etc/hadoop目录下复制template，生成xml，命令如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp mapred-site.xml.template mapred-site.xml</span><br><span class="line">修改$HADOOP_HOME&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:10020&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:19888&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>9) 修改$HADOOP_HOME/etc/hadoop/yarn-site.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8032&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8030&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8031&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.admin.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8033&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.webapp.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8088&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="spark的安装与配置"><a href="#spark的安装与配置" class="headerlink" title="spark的安装与配置"></a>spark的安装与配置</h3><ul>
+<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget http:&#x2F;&#x2F;apache.communilink.net&#x2F;spark&#x2F;spark-2.4.5&#x2F;spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ sudo mv spark-2.4.5-bin-hadoop2.7 &#x2F;opt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2) 修改/etc/profile，增加如下内容。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3) 配置spark-env.sh文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh.template $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export SPARK_WORKER_MEMORY&#x3D;6g</span><br><span class="line">export HADOOP_CONF_DIR&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;etc&#x2F;hadoop</span><br><span class="line">export SPARK_MASTER_IP&#x3D;172.30.50.42</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH:$HADOOP_HOME&#x2F;lib&#x2F;native</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4) 配置slaves文件,添加如下内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp $SPARK_HOME&#x2F;conf&#x2F;slaves.template $SPARK_HOME&#x2F;conf&#x2F;slaves</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">UbuntuMaster</span><br><span class="line">UbuntuSlave1</span><br><span class="line">UbuntuSlave2</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步配置-amp-初始化集群"><a href="#同步配置-amp-初始化集群" class="headerlink" title="同步配置&amp;初始化集群"></a>同步配置&amp;初始化集群</h3><ul>
+<li>1) 拷贝软件配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave2:&#x2F;opt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2) 复制/etc/profile的配置到Slave</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># java</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export CLASSPATH&#x3D;:$JAVA_HOME&#x2F;lib:$JAVA_HOME&#x2F;jre&#x2F;lib:$CLASSPATH</span><br><span class="line">export PATH&#x3D;$JAVA_HOME&#x2F;bin:$JAVA_HOME&#x2F;jre&#x2F;bin:$PATH</span><br><span class="line"></span><br><span class="line"># scala</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export PATH&#x3D;$PATH:$SCALA_HOME&#x2F;bin</span><br><span class="line"></span><br><span class="line"># hadoop</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br><span class="line"></span><br><span class="line"># spark</span><br><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3) 初始化Hadoop集群</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hadoop namenode -format</span><br></pre></td></tr></table></figure>
+
+<h2 id="集群启动-amp-部署验证"><a href="#集群启动-amp-部署验证" class="headerlink" title="集群启动&amp;部署验证"></a>集群启动&amp;部署验证</h2><h3 id="hadoop集群启动"><a href="#hadoop集群启动" class="headerlink" title="hadoop集群启动"></a>hadoop集群启动</h3><ul>
+<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
+<li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：SecondaryNameNode，ResourceManager，NameNode<br>Slaver显示：NodeManager，DataNode</li>
+<li>3) 管理界面<br>访问<a href="http://UbuntuMaster:50070" target="_blank" rel="noopener">http://UbuntuMaster:50070</a>, 查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</li>
+</ul>
+<h3 id="hadoop集群验证"><a href="#hadoop集群验证" class="headerlink" title="hadoop集群验证"></a>hadoop集群验证</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd  $HADOOP_HOME</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -rm -r &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -mkdir &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -put $HADOOP_HOME&#x2F;README.txt &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;input</span><br><span class="line">bin&#x2F;hadoop jar share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-2.7.0.jar wordcount  &#x2F;input&#x2F;README.txt  &#x2F;output</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -cat &#x2F;output&#x2F;part-r-00000</span><br></pre></td></tr></table></figure>
+
+<h3 id="spark集群启动"><a href="#spark集群启动" class="headerlink" title="spark集群启动"></a>spark集群启动</h3><ul>
+<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
+<li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：Master<br>Slaver显示：Worker</li>
+<li>3）管理界面<br>访问<a href="http://UbuntuMaster:8080" target="_blank" rel="noopener">http://UbuntuMaster:8080</a>, 可以看到三个Worker</li>
+</ul>
+<h3 id="spark集群验证"><a href="#spark集群验证" class="headerlink" title="spark集群验证"></a>spark集群验证</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark:&#x2F;&#x2F;UbuntuMaster:7077 \</span><br><span class="line">--executor-memory 1G --total-executor-cores 2 \</span><br><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;examples&#x2F;jars&#x2F;spark-examples_2.11-2.4.5.jar \</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+
+<h2 id="集成阿里云"><a href="#集成阿里云" class="headerlink" title="集成阿里云"></a>集成阿里云</h2><p>hadoop 2.9以后才支持oss的读写，我们使用的是2.7，需要自己配置。</p>
+<ul>
+<li><p>1）下载支持包，并解压hadoop-aliyun-2.7.2.jar<br><a href="http://gosspublic.alicdn.com/hadoop-spark/hadoop-oss-2.7.2.tar.gz" target="_blank" rel="noopener">http://gosspublic.alicdn.com/hadoop-spark/hadoop-oss-2.7.2.tar.gz</a></p>
+</li>
+<li><p>2）将文件hadoop-aliyun-2.7.2.jar复制到<code>$HADOOP_HOME/share/hadoop/tools/lib/</code>目录下</p>
+</li>
+<li><p>3）修改<code>$HADOOP_HOME/libexec/hadoop-config.sh</code>文件，再文件末尾增加<code>CLASSPATH=$CLASSPATH:$TOOL_PATH</code></p>
+</li>
+<li><p>4）修改core-site.xml的配置</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.accessKeyId&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;xxxx&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.accessKeySecret&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;xxx&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.endpoint&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;oss-us-east-1.aliyuncs.com&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.impl&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.buffer.dir&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;&#x2F;tmp&#x2F;oss&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.connection.secure.enabled&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;false&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.oss.connection.maximum&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;2048&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="通过IDEA提交任务到spark"><a href="#通过IDEA提交任务到spark" class="headerlink" title="通过IDEA提交任务到spark"></a>通过IDEA提交任务到spark</h2><p><a href="https://blog.csdn.net/yiluohan0307/article/details/80048765" target="_blank" rel="noopener">https://blog.csdn.net/yiluohan0307/article/details/80048765</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>五大经典算法-2.贪心算法</title>
+    <url>/2020/04/15/5-classic-algorithms-2-greedy-algorithm/</url>
+    <content><![CDATA[<blockquote>
+<p>贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。<br>经典例题:1)活动时间安排问题,2)背包问题,3)线段覆盖(lines cover),4)数字组合问题,5)找零钱的问题,6)多机调度问题,7)小船过河问题,8)销售比赛,9)Huffman编码,10)Dijkstra算法,11)最小生成树算法</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。</p>
+<p>贪心算法没有固定的算法框架，算法设计的关键是贪心策略的选择。必须注意的是，贪心算法不是对所有问题都能得到整体最优解，选择的贪心策略必须具备无后效性，即某个状态以后的过程不会影响以前的状态，只与当前状态有关。</p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><ul>
+<li>1.建立数学模型来描述问题；</li>
+<li>2.把求解的问题分成若干个子问题；</li>
+<li>3.对每一子问题求解，得到子问题的局部最优解；</li>
+<li>4.把子问题的局部最优解合成原来问题的一个解。</li>
+</ul>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="活动时间安排问题"><a href="#活动时间安排问题" class="headerlink" title="活动时间安排问题"></a>活动时间安排问题</h3><ul>
+<li>题目<blockquote>
+<p>设有N个活动时间集合，每个活动都要使用同一个资源，比如说会议场，而且同一时间内只能有一个活动使用，每个活动都有一个使用活动的开始si和结束时间fi，即他的使用区间为(si,fi),现在要求你分配活动占用时间表，即哪些活动占用该会议室，哪些不占用，使得他们不冲突，要求是尽可能多的使参加的活动最大化，即所占时间区间最大化！</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>上图为每个活动的开始和结束时间，我们的任务就是设计程序输出哪些活动可以占用会议室！</p>
+</blockquote>
+<ul>
+<li>分析</li>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void GreedyChoose(int len,int *s,int *f,bool *flag);</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">  int s[11] &#x3D;&#123;1,3,0,5,3,5,6,8,8,2,12&#125;;</span><br><span class="line">  int f[11] &#x3D;&#123;4,5,6,7,8,9,10,11,12,13,14&#125;;</span><br><span class="line"></span><br><span class="line">  bool mark[11] &#x3D; &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">  GreedyChoose(11,s,f,mark);</span><br><span class="line">  for(int i&#x3D;0;i&lt;11;i++)</span><br><span class="line">    if (mark[i])</span><br><span class="line">      cout&lt;&lt;i&lt;&lt;&quot; &quot;;</span><br><span class="line">  system(&quot;pause&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void GreedyChoose(int len,int *s,int *f,bool *flag) &#123;</span><br><span class="line">  flag[0] &#x3D; true;</span><br><span class="line">  int j &#x3D; 0;</span><br><span class="line">  for(int i&#x3D;1;i&lt;len;++i)</span><br><span class="line">    if (s[i] &gt;&#x3D; f[j]) &#123;</span><br><span class="line">      flag[i] &#x3D; true;</span><br><span class="line">      j &#x3D; i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><ul>
+<li>题目<blockquote>
+<p>有一个背包，背包容量是M=150。有7个物品，物品不可以分割成任意大小。要求尽可能让装入背包中的物品总价值最大，但不能超过总容量.</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">物品</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">重量</td>
+<td align="center">35</td>
+<td align="center">30</td>
+<td align="center">60</td>
+<td align="center">50</td>
+<td align="center">40</td>
+</tr>
+<tr>
+<td align="center">价值</td>
+<td align="center">10</td>
+<td align="center">40</td>
+<td align="center">30</td>
+<td align="center">50</td>
+<td align="center">35</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>分析</p>
+<blockquote>
+<p>目标函数： ∑pi最大<br>约束条件是装入的物品总重量不超过背包容量：∑wi&lt;=M( M=150)。<br>(1)根据贪心的策略，每次挑选价值最大的物品装入背包，得到的结果是否最优？<br>(2)每次挑选所占重量最小的物品装入是否能得到最优解？<br>(3)每次选取单位重量价值最大的物品，成为解本题的策略。<br>值得注意的是，贪心算法并不是完全不可以使用，贪心策略一旦经过证明成立后，它就是一种高效的算法。<br>贪心算法还是很常见的算法之一，这是由于它简单易行，构造贪心策略不是很困难。<br>可惜的是，它需要证明后才能真正运用到题目的算法中。<br>一般来说，贪心算法的证明围绕着：整个问题的最优解一定由在贪心策略中存在的子问题的最优解得来的。<br>对于背包问题中的3种贪心策略，都是无法成立(无法被证明)的，解释如下：<br>贪心策略：选取价值最大者。反例：<br>W=30<br>物品：A B C<br>重量：28 12 12<br>价值：30 20 20<br>根据策略，首先选取物品A，接下来就无法再选取了，可是，选取B、C则更好。<br>(2)贪心策略：选取重量最小。它的反例与第一种策略的反例差不多。<br>(3)贪心策略：选取单位重量价值最大的物品。反例：<br>W=30<br>物品：A B C<br>重量：28 20 10<br>价值：28 20 10<br>根据策略，三种物品单位重量价值一样，程序无法依据现有策略作出判断，如果选择A，则答案错误。<br>但是果在条件中加一句当遇见单位价值相同的时候,优先装重量小的,这样的问题就可以解决.</p>
+<p>所以需要说明的是，贪心算法可以与随机化算法一起使用，具体的例子就不再多举了。<br>(因为这一类算法普及性不高，而且技术含量是非常高的，需要通过一些反例确定随机的对象是什么，<br>随机程度如何，但也是不能保证完全正确，只能是极大的几率正确)。</p>
+</blockquote>
+</li>
+<li><p>代码</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct Node &#123;</span><br><span class="line">  float weight;</span><br><span class="line">  float value;</span><br><span class="line">  bool mark;</span><br><span class="line">  char char_mark;</span><br><span class="line">  float pre_weight_value;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">  float Weight[7] &#x3D; &#123;35,30,60,50,40,15,20&#125;;</span><br><span class="line">  float Value [7] &#x3D; &#123;10,40,30,50,35,40,30&#125;;</span><br><span class="line">  Node array[7];</span><br><span class="line">  for(int i&#x3D;0; i&lt;7; i++) &#123;</span><br><span class="line">    array[i].value &#x3D; Value[i];</span><br><span class="line">    array[i].weight &#x3D; Weight[i];</span><br><span class="line">    array[i].char_mark &#x3D; 65 + i;</span><br><span class="line">    array[i].mark &#x3D; false;</span><br><span class="line">    array[i].pre_weight_value &#x3D; Value[i] &#x2F; Weight[i];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for(i&#x3D;0;i&lt;7;i++)</span><br><span class="line">    cout&lt;&lt;array[i].pre_weight_value&lt;&lt;&quot; &quot;;</span><br><span class="line">  cout&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">  float weight_all&#x3D;0.0;</span><br><span class="line">  float value_all &#x3D; 0.0;</span><br><span class="line">  float max &#x3D; 0.0;</span><br><span class="line">  char charArray[7];</span><br><span class="line">  int flag,n &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  while(weight_all &lt;&#x3D; 150) &#123;</span><br><span class="line">    for(int index&#x3D;0;index &lt; 7; ++index) &#123;</span><br><span class="line">      if (array[index].pre_weight_value &gt; max &amp;&amp; array[index].mark &#x3D;&#x3D; false) &#123;</span><br><span class="line">        max &#x3D; array[index].pre_weight_value ;</span><br><span class="line">        flag &#x3D; index;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    charArray[n++] &#x3D; array[flag].char_mark;</span><br><span class="line">    array[flag].mark &#x3D; true;</span><br><span class="line">    weight_all +&#x3D; array[flag].weight;</span><br><span class="line">    value_all +&#x3D; array[flag].value;</span><br><span class="line">    max &#x3D; 0.0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for(i&#x3D;0;i&lt;n-1;i++)</span><br><span class="line">    cout&lt;&lt;charArray[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">  cout&lt;&lt;endl;</span><br><span class="line">  cout&lt;&lt;&quot;weight_all:&quot;&lt;&lt;weight_all- array[n-1].weight&lt;&lt;endl;</span><br><span class="line">  cout&lt;&lt;&quot;value_all:&quot;&lt;&lt;value_all&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">  system(&quot;pause&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线段覆盖-lines-cover"><a href="#线段覆盖-lines-cover" class="headerlink" title="线段覆盖(lines cover)"></a>线段覆盖(lines cover)</h3><ul>
+<li>题目<blockquote>
+<p>在一维空间中告诉你N条线段的起始坐标与终止坐标，要求求出这些线段一共覆盖了多大的长度。<br>为了方便说明，我们采用上述表格中的数据代表10条线段的起始点和终点，注意，这里是用起始点为顺序进行排列，和上面的不一样，知道了这些我们就可以着手开始设计这个程序：</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>分析</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">  int s[10] &#x3D; &#123;2,3,4,5,6,7,8,9,10,11&#125;;</span><br><span class="line">  int f[10] &#x3D; &#123;3,5,7,6,9,8,12,10,13,15&#125;;</span><br><span class="line">  int TotalLength &#x3D; (3-2);</span><br><span class="line"></span><br><span class="line">  for(int i&#x3D;1,int j&#x3D;0; i&lt;10 ; ++i) &#123;</span><br><span class="line">    if (s[i] &gt;&#x3D; f[j]) &#123;</span><br><span class="line">      TotalLength +&#x3D; (f[i]-s[i]);</span><br><span class="line">      j &#x3D; i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      if (f[i] &lt;&#x3D; f[j]) &#123;</span><br><span class="line">        continue;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        TotalLength +&#x3D; f[i] - f[j];</span><br><span class="line">        j &#x3D; i;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout&lt;&lt;TotalLength&lt;&lt;endl;</span><br><span class="line">  system(&quot;pause&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="数字组合问题"><a href="#数字组合问题" class="headerlink" title="数字组合问题"></a>数字组合问题</h3><ul>
+<li>题目<blockquote>
+<p>设有N个正整数，现在需要你设计一个程序，使他们连接在一起成为最大的数字，例3个整数 12,456,342 很明显是45634212为最大，4个整数 342，45,7,98显然为98745342最大<br>程序要求：输入整数N 接下来一行输入N个数字，最后一行输出最大的那个数字！</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>分析<blockquote>
+<p>拿到这题目，看起要来也简单，看起来也难，简单在什么地方，简单在好像就是寻找哪个开头最大，然后连在一起就是了，难在如果N大了，假如几千几万，好像就不是那么回事了，要解答这个题目需要选对合适的贪心策略，并不是把数字由大排到小那么简单，网上的解法是将数字转化为字符串，比如a+b和b+a，用strcmp函数比较一下就知道谁大，也就知道了谁该排在谁前面，不过我觉得这个完全没必要，在这里我采用一种比较巧妙的方法来解答，不知道大家还记得冒泡排序法不，那是排序最早接触的一种方法，我们先看看它的源代码：</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">  int array[10];</span><br><span class="line">  for(int i&#x3D;0;i&lt;10;i++)</span><br><span class="line">    cin&gt;&gt;array[i];</span><br><span class="line"></span><br><span class="line">  int temp;</span><br><span class="line">  for(i&#x3D;0; i&lt;&#x3D;9 ; ++i)</span><br><span class="line">    for(int j&#x3D;0;j&lt;10-1-i;j++)</span><br><span class="line">      if (array[j] &gt; array[j+1]) &#123;</span><br><span class="line">        temp &#x3D; array[j];</span><br><span class="line">        array[j] &#x3D; array[j+1];</span><br><span class="line">        array[j+1] &#x3D; temp;</span><br><span class="line">      &#125;</span><br><span class="line">  for(i&#x3D;0;i&lt;10;i++)</span><br><span class="line">    cout&lt;&lt;array[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">  cout&lt;&lt;endl;</span><br><span class="line">  system(&quot;pause&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="找零钱的问题"><a href="#找零钱的问题" class="headerlink" title="找零钱的问题"></a>找零钱的问题</h3><ul>
+<li>题目<blockquote>
+<p>在贪心算法里面最常见的莫过于找零钱的问题了，题目大意如下，对于人民币的面值有1元 5元 10元 20元 50元 100元，下面要求设计一个程序，输入找零的钱，输出找钱方案中最少张数的方案，比如123元，最少是1张100的，1张20的，3张1元的，一共5张！</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>分析</p>
+<blockquote>
+<p>这样的题目运用的贪心策略是每次选择最大的钱，如果最后超过了，再选择次大的面值，然后次次大的面值，一直到最后与找的钱相等，这种情况大家再熟悉不过了，下面就直接看源代码：</p>
+</blockquote>
+</li>
+<li><p>代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">  int MoneyClass[6] &#x3D; &#123;100,50,20,10,5,1&#125;; &#x2F;&#x2F;记录钱的面值</span><br><span class="line">  int MoneyIndex [6] &#x3D;&#123;0&#125;;           &#x2F;&#x2F;记录每种面值的数量</span><br><span class="line">  int MoneyAll,MoneyCount &#x3D; 0,count&#x3D;0;</span><br><span class="line"></span><br><span class="line">  cout&lt;&lt;&quot;please enter the all money you want to exchange:&quot;&lt;&lt;endl;</span><br><span class="line">  cin&gt;&gt;MoneyAll;</span><br><span class="line"></span><br><span class="line">  for(int i&#x3D;0;i&lt;6;) &#123;    &#x2F;&#x2F;只有这个循环才是主体</span><br><span class="line">    if ( MoneyCount+MoneyClass[i] &gt; MoneyAll) &#123;</span><br><span class="line">      i++;</span><br><span class="line">      continue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    MoneyCount +&#x3D; MoneyClass[i];</span><br><span class="line">    ++ MoneyIndex[i];</span><br><span class="line">    ++ count;</span><br><span class="line"></span><br><span class="line">    if (MoneyCount &#x3D;&#x3D; MoneyAll)</span><br><span class="line">      break;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for(i&#x3D;0;i&lt;6;++i) &#123;     &#x2F;&#x2F;控制输出的循环</span><br><span class="line">    if (MoneyIndex[i] !&#x3D;0 ) &#123;</span><br><span class="line">      switch(i) &#123;</span><br><span class="line">      case 0:</span><br><span class="line">        cout&lt;&lt;&quot;the 100 have:&quot;&lt;&lt;MoneyIndex[i]&lt;&lt;endl;</span><br><span class="line">        break;</span><br><span class="line">      case 1:</span><br><span class="line">        cout&lt;&lt;&quot;the 50 have:&quot;&lt;&lt;MoneyIndex[i]&lt;&lt;endl;</span><br><span class="line">        break;</span><br><span class="line">      case 2:</span><br><span class="line">        cout&lt;&lt;&quot;the 20 have:&quot;&lt;&lt;MoneyIndex[i]&lt;&lt;endl;</span><br><span class="line">        break;</span><br><span class="line">      case 3:</span><br><span class="line">        cout&lt;&lt;&quot;the 10 have:&quot;&lt;&lt;MoneyIndex[i]&lt;&lt;endl;</span><br><span class="line">        break;</span><br><span class="line">      case 4:</span><br><span class="line">        cout&lt;&lt;&quot;the 5 have:&quot;&lt;&lt;MoneyIndex[i]&lt;&lt;endl;</span><br><span class="line">        break;</span><br><span class="line">      case 5:</span><br><span class="line">        cout&lt;&lt;&quot;the 1 have:&quot;&lt;&lt;MoneyIndex[i]&lt;&lt;endl;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout&lt;&lt;&quot;the total money have:&quot;&lt;&lt;count&lt;&lt;endl;</span><br><span class="line">  system(&quot;pause&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="多机调度问题"><a href="#多机调度问题" class="headerlink" title="多机调度问题"></a>多机调度问题</h3><ul>
+<li><p>题目</p>
+<blockquote>
+<p>n个作业组成的作业集，可由m台相同机器加工处理。要求给出一种作业调度方案，使所给的n个作业在尽可能短的时间内由m台机器加工处理完成。作业不能拆分成更小的子作业；每个作业均可在任何一台机器上加工处理。</p>
+</blockquote>
+</li>
+<li><p>分析</p>
+<blockquote>
+<p>这个问题是NP完全问题，还没有有效的解法(求最优解)，但是可以用贪心选择策略设计出较好的近似算法(求次优解)。当n&lt;=m时，只要将作业时间区间分配给作业即可；当n&gt;m时，首先将n个作业从大到小排序，然后依此顺序将作业分配给空闲的处理机。也就是说从剩下的作业中，选择需要处理时间最长的，然后依次选择处理时间次长的，直到所有的作业全部处理完毕，或者机器不能再处理其他作业为止。如果我们每次是将需要处理时间最短的作业分配给空闲的机器，那么可能就会出现其它所有作业都处理完了只剩所需时间最长的作业在处理的情况，这样势必效率较低。在下面的代码中没有讨论n和m的大小关系，把这两种情况合二为一了。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int speed[10010];</span><br><span class="line">int mintime[110];</span><br><span class="line"></span><br><span class="line">bool cmp( const int &amp;x,const int &amp;y) &#123;</span><br><span class="line">    return x&gt;y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  int n,m;</span><br><span class="line">  memset(speed,0,sizeof(speed));</span><br><span class="line">   memset(mintime,0,sizeof(mintime));</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">     for(int i&#x3D;0;i&lt;n;++i) cin&gt;&gt;speed[i];</span><br><span class="line">    sort(speed,speed+n,cmp);</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;++i) &#123;</span><br><span class="line">      *min_element(mintime,mintime+m)+&#x3D;speed[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;*max_element(mintime,mintime+m)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="小船过河问题"><a href="#小船过河问题" class="headerlink" title="小船过河问题"></a>小船过河问题</h3><ul>
+<li><p>题目</p>
+<blockquote>
+<p>POJ1700是一道经典的贪心算法例题。题目大意是只有一艘船，能乘2人，船的运行速度为2人中较慢一人的速度，过去后还需一个人把船划回来，问把n个人运到对岸，最少需要多久。</p>
+</blockquote>
+</li>
+<li><p>分析</p>
+<blockquote>
+<p>先将所有人过河所需的时间按照升序排序，我们考虑把单独过河所需要时间最多的两个旅行者送到对岸去，有两种方式：<br>1.最快的和次快的过河，然后最快的将船划回来；次慢的和最慢的过河，然后次快的将船划回来，所需时间为：t[0]+2<em>t[1]+t[n-1]；<br>2.最快的和最慢的过河，然后最快的将船划回来，最快的和次慢的过河，然后最快的将船划回来，所需时间为：2</em>t[0]+t[n-2]+t[n-1]。<br>算一下就知道，除此之外的其它情况用的时间一定更多。每次都运送耗时最长的两人而不影响其它人，问题具有贪心子结构的性质。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  int a[1000],t,n,sum;</span><br><span class="line">  scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">  while(t--) &#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    sum&#x3D;0;</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++) scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">    while(n&gt;3) &#123;</span><br><span class="line">      sum&#x3D;min(sum+a[1]+a[0]+a[n-1]+a[1],sum+a[n-1]+a[0]+a[n-2]+a[0]);</span><br><span class="line">      n-&#x3D;2;</span><br><span class="line">    &#125;</span><br><span class="line">    if (n&#x3D;&#x3D;3) sum+&#x3D;a[0]+a[1]+a[2];</span><br><span class="line">    else if (n&#x3D;&#x3D;2) sum+&#x3D;a[1];</span><br><span class="line">    else sum+&#x3D;a[0];</span><br><span class="line">    printf(&quot;%d\n&quot;,sum);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="销售比赛"><a href="#销售比赛" class="headerlink" title="销售比赛"></a>销售比赛</h3><ul>
+<li><p>题目</p>
+<blockquote>
+<p>假设有偶数天，要求每天必须买一件物品或者卖一件物品，只能选择一种操作并且不能不选，开始手上没有这种物品。现在给你每天的物品价格表，要求计算最大收益。</p>
+</blockquote>
+</li>
+<li><p>分析</p>
+<blockquote>
+<p>首先要明白，第一天必须买，最后一天必须卖，并且最后手上没有物品。那么除了第一天和最后一天之外我们每次取两天，小的买大的卖，并且把卖的价格放进一个最小堆。如果买的价格比堆顶还大，就交换。这样我们保证了卖的价格总是大于买的价格，一定能取得最大收益。</p>
+</blockquote>
+</li>
+<li><p>代码</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long int price[100010],t,n,res;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  ios::sync_with_stdio(false);</span><br><span class="line">  cin&gt;&gt;t;</span><br><span class="line">  while(t--) &#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    priority_queue&lt;long long int, vector&lt;long long int&gt;, greater&lt;long long int&gt; &gt; q;</span><br><span class="line">    res&#x3D;0;</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;n;i++) &#123;</span><br><span class="line">      cin&gt;&gt;price[i];</span><br><span class="line">    &#125;</span><br><span class="line">    res-&#x3D;price[1];</span><br><span class="line">    res+&#x3D;price[n];</span><br><span class="line">    for(int i&#x3D;2;i&lt;&#x3D;n-1;i&#x3D;i+2) &#123;</span><br><span class="line">      long long int buy&#x3D;min(price[i],price[i+1]);</span><br><span class="line">      long long int sell&#x3D;max(price[i],price[i+1]);</span><br><span class="line">      if (!q.empty()) &#123;</span><br><span class="line">        if (buy&gt;q.top()) &#123;</span><br><span class="line">          res&#x3D;res-2*q.top()+buy+sell;</span><br><span class="line">          q.pop();</span><br><span class="line">          q.push(buy);</span><br><span class="line">          q.push(sell);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          res&#x3D;res-buy+sell;</span><br><span class="line">          q.push(sell);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        res&#x3D;res-buy+sell;</span><br><span class="line">        q.push(sell);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Huffman编码"><a href="#Huffman编码" class="headerlink" title="Huffman编码"></a>Huffman编码</h3><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><h3 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h3>]]></content>
+  </entry>
+  <entry>
+    <title>五大经典算法-4.动态规划</title>
+    <url>/2020/04/25/5-classic-algorithms-4-dynamic-programming/</url>
+    <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
+<p>dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.<br>动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。<br>经典例题: 1)最长公共子串LCS,2)最长递增子序列LIS,3)最大连续子序列之和,4)01背包问题,5)青蛙跳台阶问题,6)收集苹果,7)数塔取数问题,8)免费馅饼问题</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>   动态规划算法的有效性依赖于待求解问题本身具有的两个重要性质：最优子结构性质和子问题重叠性质。</p>
+<p>1 、最优子结构性质。如果问题的最优解所包含的子问题的解也是最优的，我们就称该问题具有最优子结构性质(即满足最优化原理)。最优子结构性质为动态规划算法解决问题提供了重要线索。</p>
+<p>2 、子问题重叠性质。子问题重叠性质是指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简 单地查看一下结果，从而获得较高的解题效率。</p>
+<p>当我们已经确定待解决的问题需要用动态规划算法求解时，通常可以按照以下步骤设计动态规划算法：</p>
+<p>1 、分析问题的最优解，找出最优解的性质，并刻画其结构特征；</p>
+<p>2 、递归地定义最优值；</p>
+<p>3 、采用自底向上的方式计算问题的最优值；</p>
+<p>4 、根据计算最优值时得到的信息，构造最优解。</p>
+<p>1 ～ 3 步是动态规划算法解决问题的基本步骤，在只需要计算最优值的问题中，完成这三个基本步骤就可以了。如果问题需要构造最优解，还要执行第 4 步； 此时，在第 3 步通常需要记录更多的信息，以便在步骤 4 中，有足够的信息快速地构造出最优解。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="1-最长公共子串-LCS"><a href="#1-最长公共子串-LCS" class="headerlink" title="1. 最长公共子串(LCS)"></a>1. 最长公共子串(LCS)</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>一个序列 S,如果分别是两个或多个已知序列的子序列，且是所有符合此条件序列中最长的，则 S 称为已知序列的最长公共子序列。</p>
+</blockquote>
+<ul>
+<li><p>分析</p>
+<blockquote>
+<p>转移方程：</p>
+<p>dp[i,j] = 0                               IF:   i=0 || j=0</p>
+<p>dp[i,j] = dp[i-1][j-1]+1                  IF:   i&gt;0,j&gt;0, a[i] = b[j]</p>
+<p>dp[i,j] = max(dp[i-1][j],dp[i][j-1])      IF:   i&gt;0,j&gt;0, a[i] != b[j]</p>
+</blockquote>
+</li>
+<li><p>代码</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">#define M 8</span><br><span class="line">#define N 6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void printLSC(int i, int j,char *a, int status[][N])&#123;</span><br><span class="line">  if(i &#x3D;&#x3D; 0 || j&#x3D;&#x3D; 0)</span><br><span class="line">    return;</span><br><span class="line">  if(status[i][j] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">    printLSC(i-1,j-1,a,status);</span><br><span class="line">    printf(&quot;%c&quot;,a[i]);</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    if(status[i][j] &#x3D;&#x3D; 1)</span><br><span class="line">      printLSC(i-1,j,a,status);</span><br><span class="line">    else</span><br><span class="line">      printLSC(i,j-1,a,status);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">main()&#123;</span><br><span class="line">  int i,j;</span><br><span class="line"></span><br><span class="line">  char a[] &#x3D; &#123;&#39; &#39;,&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;B&#39;,&#39;D&#39;,&#39;A&#39;,&#39;B&#39;&#125;;</span><br><span class="line">  char b[] &#x3D; &#123;&#39; &#39;,&#39;B&#39;,&#39;D&#39;,&#39;C&#39;,&#39;B&#39;,&#39;A&#39;&#125;;</span><br><span class="line">  int status[M][N]; &#x2F;&#x2F;保存状态</span><br><span class="line">  int dp[M][N];</span><br><span class="line"></span><br><span class="line">  for(i &#x3D; 0; i &lt; M; i++)</span><br><span class="line">    for(j &#x3D; 0; j &lt; N; j++)&#123;</span><br><span class="line">      dp[i][j] &#x3D; 0;</span><br><span class="line">      status[i][j] &#x3D; 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  for(i &#x3D; 1; i &lt; M; i++)</span><br><span class="line">    for(j &#x3D; 1; j &lt; N; j++)&#123;</span><br><span class="line">      if(a[i] &#x3D;&#x3D; b[j])&#123;</span><br><span class="line">        dp[i][j] &#x3D; dp[i-1][j-1] + 1;</span><br><span class="line">        status[i][j] &#x3D; 0;</span><br><span class="line">      &#125;</span><br><span class="line">      else if(dp[i][j-1] &gt;&#x3D; dp[i-1][j])&#123;</span><br><span class="line">        dp[i][j] &#x3D; dp[i][j-1];</span><br><span class="line">        status[i][j] &#x3D; 2;</span><br><span class="line">      &#125;</span><br><span class="line">      else&#123;</span><br><span class="line">        dp[i][j] &#x3D; dp[i-1][j];</span><br><span class="line">        status[i][j] &#x3D; 1;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  printf(&quot;最大长度：%d&quot;,dp[M-1][N-1]);</span><br><span class="line">  printf(&quot;\n&quot;);</span><br><span class="line">  printLSC(M-1,N-1,a,status);</span><br><span class="line">  printf(&quot;\n&quot;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-最长递增子序列-LIS"><a href="#2-最长递增子序列-LIS" class="headerlink" title="2.最长递增子序列(LIS)"></a>2.最长递增子序列(LIS)</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>给定一个序列 An = a1 ,a2 ,  … , an,找出最长的子序列使得对所有 i &lt; j,ai &lt; aj 。</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>转移方程：b[k]=max(max(b[j]|a[j]&lt;a[k],j&lt;k)+1,1);</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">  int i,j,length,max&#x3D;0;</span><br><span class="line">  int a[] &#x3D; &#123;</span><br><span class="line">    1,-1,2,-3,4,-5,6,-7</span><br><span class="line">  &#125;;</span><br><span class="line">  int *b;</span><br><span class="line">  b &#x3D; (int *)malloc(sizeof(a));</span><br><span class="line">  length &#x3D; sizeof(a)&#x2F;sizeof(a[0]);</span><br><span class="line"></span><br><span class="line">  for(i &#x3D; 0; i &lt; length; i++)&#123;</span><br><span class="line">    b[i] &#x3D; 1;</span><br><span class="line">    for(j &#x3D; 0; j &lt; i; j++)&#123;</span><br><span class="line">      if(a[i] &gt; a[j] &amp;&amp; b[i] &lt;&#x3D; b[j])&#123;</span><br><span class="line">        b[i] &#x3D; b[j] + 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for(i &#x3D; 0; i &lt; length; i++)</span><br><span class="line">    if(b[i] &gt; max)</span><br><span class="line">      max &#x3D; b[i];</span><br><span class="line"></span><br><span class="line">  printf(&quot;%d&quot;,max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-最大连续子序列之和"><a href="#3-最大连续子序列之和" class="headerlink" title="3.最大连续子序列之和"></a>3.最大连续子序列之和</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>给定K个整数的序列{ N1, N2, …, NK }，其任意连续子序列可表示为{ Ni, Ni+1, …, Nj }，其中 1 &lt;= i &lt;= j &lt;= K。最大连续子序列是所有连续子序中元素和最大的一个， 例如给定序列{ -2, 11, -4, 13, -5, -2 }，其最大连续子序列为{ 11, -4, 13 }，最大和为20。</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>状态转移方程： sum[i]=max(sum[i-1]+a[i],a[i])</p>
+</blockquote>
+<ul>
+<li>题目</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">  int i,sum &#x3D; 0, max &#x3D; 0;</span><br><span class="line">  int data[] &#x3D; &#123;</span><br><span class="line">    1,-2,3,-1,7</span><br><span class="line">  &#125;;</span><br><span class="line">  for(i &#x3D; 0; i &lt; sizeof(data)&#x2F;sizeof(data[0]); i++)&#123;</span><br><span class="line">    sum +&#x3D; data[i];</span><br><span class="line">    if(sum &gt; max)</span><br><span class="line">      max &#x3D; sum;</span><br><span class="line">    if(sum &lt; 0)</span><br><span class="line">      sum &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line">  printf(&quot;%d&quot;,max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4-01背包问题"><a href="#4-01背包问题" class="headerlink" title="4.01背包问题"></a>4.01背包问题</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>有N件物品和一个容量为V的背包。第i件物品的费用是c[i]，价值是w[i]。求解将哪些物品装入背包可使价值总和最大。</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>转移方程：dp[i][j] = max(dp[i-1][j],dp[i-1][j-weight[i]] + value[i]</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">#define max(a,b) ((a)&gt;(b)?(a):(b))</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line"></span><br><span class="line">  int v &#x3D; 10 ;</span><br><span class="line">  int n &#x3D; 5 ;</span><br><span class="line"></span><br><span class="line">   int value[] &#x3D; &#123;0, 8 , 10 , 4 , 5 , 5&#125;;</span><br><span class="line">  int weight[] &#x3D; &#123;0, 6 , 4 , 2 , 4 , 3&#125;;</span><br><span class="line">  int i,j;</span><br><span class="line">  int dp[n+1][v+1];</span><br><span class="line">  for(i &#x3D; 0; i &lt; n+1; i++)</span><br><span class="line">    for(j &#x3D; 0; j &lt; v+1; j++)</span><br><span class="line">      dp[i][j] &#x3D; 0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  for(i &#x3D; 1; i &lt;&#x3D; n; i++)&#123;</span><br><span class="line">    for(j &#x3D; 1; j &lt;&#x3D; v; j++)&#123;</span><br><span class="line">      if(j &gt;&#x3D; weight[i])</span><br><span class="line">        dp[i][j] &#x3D; max(dp[i-1][j],dp[i-1][j-weight[i]] + value[i]);</span><br><span class="line">      else</span><br><span class="line">        dp[i][j] &#x3D; dp[i-1][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  printf(&quot;%d&quot;,dp[n][v]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="5-青蛙跳台阶问题"><a href="#5-青蛙跳台阶问题" class="headerlink" title="5.青蛙跳台阶问题"></a>5.青蛙跳台阶问题</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>一只青蛙可以一次跳一级台阶，也可以一次跳两级台阶，如果青蛙要跳上n级台阶，共有多少钟跳法？</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>当青蛙即将跳上n级台阶时，共有两种可能性，一种是从n-1级台阶跳一步到n级，另外一种是从n-2级台阶跳两步到n级，所以求到n级台阶的所有可能性f(n)就转变为了求到n-2级台阶的所有可能性f(n-2)和到n-1级台阶的所有可能性f(n-1)之和，以此类推至最后f(2)=f(0)+f(1)=1+1。递推公式就是f(n) = f(n - 1) + f(n - 2)</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Fibonacci &#123;</span><br><span class="line">  public int fibonacci(int n) &#123;</span><br><span class="line">    int[] dp &#x3D; &#123; 1, 1, 0 &#125;;</span><br><span class="line">    if (n &lt; 2) &#123;</span><br><span class="line">      return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 2; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">      &#x2F;&#x2F;递推公式f(n) &#x3D; f(n - 1) + f(n -2)</span><br><span class="line">      dp[2] &#x3D; dp[0] + dp[1];</span><br><span class="line">      dp[0] &#x3D; dp[1];</span><br><span class="line">      dp[1] &#x3D; dp[2];</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[2];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    Fibonacci fb &#x3D; new Fibonacci();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10; i++) &#123;</span><br><span class="line">      System.out.print(fb.fibonacci(i));</span><br><span class="line">      System.out.print(&quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>相关题目 – 青蛙变态跳台阶问题</li>
+</ul>
+<blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</p>
+</blockquote>
+<h3 id="6-收集苹果"><a href="#6-收集苹果" class="headerlink" title="6.收集苹果"></a>6.收集苹果</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>平面上有N*M个格子，每个格子中放着一定数量的苹果。你从左上角的格子开始，每一步只能向下走或是向右走，每次走到一个格子上就把格子里的苹果收集起来，这样下去，你最多能收集到多少个苹果。<br>输入：<br>第一行输入行数和列数<br>然后逐行输入每个格子的中的苹果的数量<br>输出：<br>最多能收到的苹果的个数。</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>这是一个典型的二维数组DP问题<br>基本状态：<br>当你到达第x行第y列的格子的时候，收集到的苹果的数量dp[x][y]。<br>转移方程：<br>由于你只能向右走或者向下走，所以当你到达第x行第y列的格子的时候，你可能是从第x-1行第y列或者第x行第y-1列到达该格子的，而我们最后只要收集苹果最多的那一种方案。<br>所以：<br>dp[x][y] = max( if(x&gt;0) dp[x-1][y] , if(y&gt;0) dp[x][y-1])</p>
+</blockquote>
+<ul>
+<li>题目</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[100][100];</span><br><span class="line">int dp[100][100];</span><br><span class="line">int m,n;</span><br><span class="line"></span><br><span class="line">void dp_fun(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">  dp[x][y] &#x3D; a[x][y];</span><br><span class="line">  int max &#x3D; 0;</span><br><span class="line">  if(x &gt; 0 &amp;&amp; max &lt; dp[x-1][y])</span><br><span class="line">  &#123;</span><br><span class="line">    max &#x3D; dp[x-1][y];</span><br><span class="line">  &#125;</span><br><span class="line">  if(y &gt; 0 &amp;&amp; max &lt; dp[x][y-1])</span><br><span class="line">  &#123;</span><br><span class="line">    max &#x3D; dp[x][y-1];</span><br><span class="line">  &#125;</span><br><span class="line">  dp[x][y] +&#x3D; max;</span><br><span class="line">  if(x&lt;m-1)</span><br><span class="line">  &#123;</span><br><span class="line">    dp_fun(x+1,y);</span><br><span class="line">  &#125;</span><br><span class="line">  if(y&lt;n-1)</span><br><span class="line">  &#123;</span><br><span class="line">    dp_fun(x,y+1);</span><br><span class="line">  &#125;</span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  memset(dp,0,sizeof(dp));</span><br><span class="line">  cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">  for(int i&#x3D;0;i&lt;m;i++)</span><br><span class="line">  &#123;</span><br><span class="line">    for(int j&#x3D;0;j&lt;n;j++)</span><br><span class="line">    &#123;</span><br><span class="line">      cin&gt;&gt;a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dp_fun(0,0);</span><br><span class="line">  for(int i&#x3D;0;i&lt;m;i++)</span><br><span class="line">  &#123;</span><br><span class="line">    for(int j&#x3D;0;j&lt;n;j++)</span><br><span class="line">    &#123;</span><br><span class="line">      cout&lt;&lt;dp[i][j]&lt;&lt;&quot;\t&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="7-数塔取数问题"><a href="#7-数塔取数问题" class="headerlink" title="7.数塔取数问题"></a>7.数塔取数问题</h3><ul>
+<li><a href="http://www.cnblogs.com/DiaoCow/archive/2010/04/18/1714859.html" target="_blank" rel="noopener">题目</a></li>
+</ul>
+<blockquote>
+<p>一个高度为N的由正整数组成的三角形，从上走到下，求经过的数字和的最大值。<br>每次只能走到下一层相邻的数上，例如从第3层的6向下走，只能走到第4层的2或9上。<br>5<br>8 4<br>3 6 9<br>7 2 9 5<br>例子中的最优方案是：5 + 8 + 6 + 9 = 28。</p>
+</blockquote>
+<ul>
+<li>分析<blockquote>
+<p>站在位置9，我们可以选择沿12方向移动，也可以选择沿着15方向移动，现在我们假设“已经求的”沿12方向的最大值x和沿15方向的最大值y，那么站在9的最大值必然是：Max(x,y) + 9。<br>因此不难得出，对于任意节点i,其状态转移方程为：m[i] = Max(a[i的左孩子] , a[i的右孩子]) + a[i]<br>首先什么是“数塔类型”？从某一点转向另一点或者说是从某一状态转向另一状态，有多种选择方式(比如这里的9-&gt;12 , 9-&gt;15)，从中选取一条能产生最优值的路径。<br>这类问题的思考方法：假设后续步骤的结果已知，比如这里假设已经知道沿12方向的最大值x和沿15方向的最大值y。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include    &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">#define        N    10000</span><br><span class="line">#define        Max(a,b)    ((a) &gt; (b) ? (a) : (b))</span><br><span class="line"></span><br><span class="line">int     a[N];</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int        n , m , i , k , j;</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%d&quot;,&amp;m);</span><br><span class="line">    while(m-- &gt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">        k &#x3D; (1 + n) * n &#x2F; 2;</span><br><span class="line">        for(i &#x3D; 1 ; i &lt;&#x3D; k; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,a+i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        k &#x3D; k - n;</span><br><span class="line">        for(i &#x3D; k , j &#x3D; 0 ; i &gt;&#x3D; 1 ; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            a[i] &#x3D; a[i] + Max(a[i+n],a[i+n-1]);</span><br><span class="line">            if(++j &#x3D;&#x3D; n -1)</span><br><span class="line">            &#123;</span><br><span class="line">                n--;</span><br><span class="line">                j &#x3D; 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,a[1]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return    0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-免费馅饼问题"><a href="#8-免费馅饼问题" class="headerlink" title="8.免费馅饼问题"></a>8.免费馅饼问题</h3><ul>
+<li>题目</li>
+</ul>
+<blockquote>
+<p>都说天上不会掉馅饼，但有一天gameboy正走在回家的小径上，忽然天上掉下大把大把的馅饼。说来gameboy的人品实在是太好了，这馅饼别处都不掉，就掉落在他身旁的10米范围内。馅饼如果掉在了地上当然就不能吃了，所以gameboy马上卸下身上的背包去接。但由于小径两侧都不能站人，所以他只能在小径上接。由于gameboy平时老呆在房间里玩游戏，虽然在游戏中是个身手敏捷的高手，但在现实中运动神经特别迟钝，每秒种只有在移动不超过一米的范围内接住坠落的馅饼。现在给这条小径如图标上坐标：<br><img src="http://p15w49jjb.bkt.clouddn.com/x7crw.gif" alt=""></p>
+</blockquote>
+<blockquote>
+<p>为了使问题简化，假设在接下来的一段时间里，馅饼都掉落在0-10这11个位置。开始时gameboy站在5这个位置，因此在第一秒，他只能接到4,5,6这三个位置中期中一个位置上的馅饼。问gameboy最多可能接到多少个馅饼？(假设他的背包可以容纳无穷多个馅饼)</p>
+<p>Input<br>输入数据有多组。每组数据的第一行为以正整数n(0&lt;n&lt;100000)，表示有n个馅饼掉在这条小径上。在结下来的n行中，每行有两个整数x,T(0&lt;T&lt;100000),表示在第T秒有一个馅饼掉在x点上。同一秒钟在同一点上可能掉下多个馅饼。n=0时输入结束。</p>
+<p>Output<br>每一组输入数据对应一行输出。输出一个整数m，表示gameboy最多可能接到m个馅饼。<br>提示：本题的输入数据量比较大，建议用scanf读入，用cin可能会超时。</p>
+<p>Sample Input<br>6 5 1 4 1 6 1 7 2 7 2 8 3 0</p>
+<p>Sample Output<br>4</p>
+</blockquote>
+<ul>
+<li>分析</li>
+</ul>
+<blockquote>
+<p>类似于DP中的数塔，不过要倒过来算，从下往上算，最后输出初始位置的数即可， 为了便于判断边界，可以将数组宽度开大一些，让它从1~11计数，这样就不用单独计算边界了， 如果数塔不懂，可以看我之前发的经典数塔题。</p>
+</blockquote>
+<ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">#define MAX_ARRAY_SIZE 100000</span><br><span class="line">int data[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放最初的数据</span><br><span class="line">int cost[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放各个子问题的最优解</span><br><span class="line">int mark[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放输出最优解方案标志</span><br><span class="line">int main(int argc,char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">  int n;</span><br><span class="line">  while(scanf(&quot;%d&quot;,&amp;n),n!&#x3D;0)&#123;</span><br><span class="line">    memset(data,0,sizeof(data));</span><br><span class="line">    int i,x,T,max_T&#x3D;0;</span><br><span class="line">    &#x2F;&#x2F;初始化data</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">      scanf(&quot;%d%d&quot;,&amp;x,&amp;T);</span><br><span class="line">      if(T&gt;max_T)</span><br><span class="line">        max_T&#x3D;T;</span><br><span class="line">      data[T][x]++;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;dp初始化</span><br><span class="line">    for(i&#x3D;0;i&lt;11;i++)&#123;</span><br><span class="line">      cost[max_T][i]&#x3D;data[max_T][i];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;dp过程</span><br><span class="line">    for(i&#x3D;max_T-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">      int j;</span><br><span class="line">      for(j&#x3D;0;j&lt;11;j++)&#123;</span><br><span class="line">        int lvalue,mvalue,rvalue,maxvalue;</span><br><span class="line">        if(j&#x3D;&#x3D;0)&#123;</span><br><span class="line">          lvalue&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          lvalue&#x3D;cost[i+1][j-1];</span><br><span class="line">        &#125;</span><br><span class="line">        mvalue&#x3D;data[i+1][j];</span><br><span class="line">        if(j&#x3D;&#x3D;10)&#123;</span><br><span class="line">          rvalue&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          rvalue&#x3D;cost[i+1][j+1];</span><br><span class="line">        &#125;</span><br><span class="line">        if(lvalue&gt;mvalue)&#123;</span><br><span class="line">          maxvalue&#x3D;lvalue;</span><br><span class="line">          mark[i][j]&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          if(mvalue&gt;rvalue)&#123;</span><br><span class="line">            maxvalue&#x3D;mvalue;</span><br><span class="line">            mark[i][j]&#x3D;0;</span><br><span class="line">          &#125;else&#123;</span><br><span class="line">            maxvalue&#x3D;rvalue;</span><br><span class="line">            mark[i][j]&#x3D;1;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cost[i][j]&#x3D;data[i][j]+maxvalue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,cost[0][5]);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+</search>

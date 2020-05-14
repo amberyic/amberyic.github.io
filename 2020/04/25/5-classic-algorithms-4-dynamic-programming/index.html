@@ -40,26 +40,28 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
-  <meta name="description" content="概念 dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。  思想   动态规划算法的有效性依赖于待求解问">
+<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+  <meta name="description" content="概念 dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。经典例题: 1)最长公共子串LCS,2)最长递增">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五大经典算法-4.动态规划">
-<meta property="og:url" content="http://amberyic.github.io/2020/05/10/5-classic-algorithms-4-dynamic-programming/index.html">
+<meta property="og:url" content="http://amberyic.github.io/2020/04/25/5-classic-algorithms-4-dynamic-programming/index.html">
 <meta property="og:site_name" content="Zhang Hao&#39;s Blog">
-<meta property="og:description" content="概念 dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。  思想   动态规划算法的有效性依赖于待求解问">
+<meta property="og:description" content="概念 dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。经典例题: 1)最长公共子串LCS,2)最长递增">
 <meta property="og:image" content="http://p15w49jjb.bkt.clouddn.com/x7crw.gif">
-<meta property="article:published_time" content="2020-05-10T13:01:34.000Z">
-<meta property="article:modified_time" content="2020-05-14T07:42:47.671Z">
+<meta property="article:published_time" content="2020-04-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-14T08:43:15.783Z">
 <meta property="article:author" content="ZhangHao">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://p15w49jjb.bkt.clouddn.com/x7crw.gif">
 
-<link rel="canonical" href="http://amberyic.github.io/2020/05/10/5-classic-algorithms-4-dynamic-programming/">
+<link rel="canonical" href="http://amberyic.github.io/2020/04/25/5-classic-algorithms-4-dynamic-programming/">
 
 
 <script id="page-configurations">
@@ -139,14 +141,49 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -170,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://amberyic.github.io/2020/05/10/5-classic-algorithms-4-dynamic-programming/">
+    <link itemprop="mainEntityOfPage" href="http://amberyic.github.io/2020/04/25/5-classic-algorithms-4-dynamic-programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -193,14 +230,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-05-10 21:01:34" itemprop="dateCreated datePublished" datetime="2020-05-10T21:01:34+08:00">2020-05-10</time>
+              <time title="Created: 2020-04-25 00:00:00" itemprop="dateCreated datePublished" datetime="2020-04-25T00:00:00+08:00">2020-04-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-14 15:42:47" itemprop="dateModified" datetime="2020-05-14T15:42:47+08:00">2020-05-14</time>
+                <time title="Modified: 2020-05-14 16:43:15" itemprop="dateModified" datetime="2020-05-14T16:43:15+08:00">2020-05-14</time>
               </span>
 
           
@@ -215,8 +252,10 @@
 
       
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
-<p>dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.<br>动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。</p>
+<p>dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.<br>动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。<br>经典例题: 1)最长公共子串LCS,2)最长递增子序列LIS,3)最大连续子序列之和,4)01背包问题,5)青蛙跳台阶问题,6)收集苹果,7)数塔取数问题,8)免费馅饼问题</p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>   动态规划算法的有效性依赖于待求解问题本身具有的两个重要性质：最优子结构性质和子问题重叠性质。</p>
 <p>1 、最优子结构性质。如果问题的最优解所包含的子问题的解也是最优的，我们就称该问题具有最优子结构性质(即满足最优化原理)。最优子结构性质为动态规划算法解决问题提供了重要线索。</p>
 <p>2 、子问题重叠性质。子问题重叠性质是指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简 单地查看一下结果，从而获得较高的解题效率。</p>
@@ -397,7 +436,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/10/5-classic-algorithms-3-divide-and-conquer/" rel="prev" title="五大经典算法-3.分治法">
+    <a href="/2020/04/20/5-classic-algorithms-3-divide-and-conquer/" rel="prev" title="五大经典算法-3.分治法">
       <i class="fa fa-chevron-left"></i> 五大经典算法-3.分治法
     </a></div>
       <div class="post-nav-item">
@@ -515,6 +554,19 @@
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
   </div>
 
+
+<div class="powered-by">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站访问量<span id="busuanzi_value_site_pv"></span>
+    </span>
+</div>
+
         
 
 
@@ -549,6 +601,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

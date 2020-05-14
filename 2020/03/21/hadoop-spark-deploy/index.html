@@ -40,20 +40,22 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
-  <meta name="description" content="系统安装与配置下载https:&#x2F;&#x2F;ubuntu.com&#x2F;download&#x2F;server&#x2F;thank-you?version&#x3D;18.04.4&amp;architecture&#x3D;amd64 修改主机名 命令行修改  12使用 hostname 修改当前主机名。hostname new-hostname  修改&#x2F;etc&#x2F;sysconfig&#x2F;network文件,将localhost.localdomain">
+<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+  <meta name="description" content="使用三台主机搭建hadoop&amp;spark完整教程主要内容: 1)系统安装与配置,2)软件安装与配置,3)hadoop&amp;spark安装与配置,4)集群启动&amp;部署验证,5)集成阿里云,6)通过IDEA提交任务到spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hadoop &amp; spark 分布式集群搭建">
 <meta property="og:url" content="http://amberyic.github.io/2020/03/21/hadoop-spark-deploy/index.html">
 <meta property="og:site_name" content="Zhang Hao&#39;s Blog">
-<meta property="og:description" content="系统安装与配置下载https:&#x2F;&#x2F;ubuntu.com&#x2F;download&#x2F;server&#x2F;thank-you?version&#x3D;18.04.4&amp;architecture&#x3D;amd64 修改主机名 命令行修改  12使用 hostname 修改当前主机名。hostname new-hostname  修改&#x2F;etc&#x2F;sysconfig&#x2F;network文件,将localhost.localdomain">
-<meta property="article:published_time" content="2020-03-21T09:01:34.000Z">
-<meta property="article:modified_time" content="2020-05-14T06:17:12.477Z">
+<meta property="og:description" content="使用三台主机搭建hadoop&amp;spark完整教程主要内容: 1)系统安装与配置,2)软件安装与配置,3)hadoop&amp;spark安装与配置,4)集群启动&amp;部署验证,5)集成阿里云,6)通过IDEA提交任务到spark">
+<meta property="article:published_time" content="2020-03-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-14T08:49:46.257Z">
 <meta property="article:author" content="ZhangHao">
 <meta name="twitter:card" content="summary">
 
@@ -137,14 +139,49 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -191,14 +228,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-21 17:01:34" itemprop="dateCreated datePublished" datetime="2020-03-21T17:01:34+08:00">2020-03-21</time>
+              <time title="Created: 2020-03-21 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-21T00:00:00+08:00">2020-03-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-14 14:17:12" itemprop="dateModified" datetime="2020-05-14T14:17:12+08:00">2020-05-14</time>
+                <time title="Modified: 2020-05-14 16:49:46" itemprop="dateModified" datetime="2020-05-14T16:49:46+08:00">2020-05-14</time>
               </span>
 
           
@@ -212,7 +249,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="系统安装与配置"><a href="#系统安装与配置" class="headerlink" title="系统安装与配置"></a>系统安装与配置</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64" target="_blank" rel="noopener">https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64</a></p>
+        <p>使用三台主机搭建hadoop&amp;spark完整教程<br>主要内容: 1)系统安装与配置,2)软件安装与配置,3)hadoop&amp;spark安装与配置,4)集群启动&amp;部署验证,5)集成阿里云,6)通过IDEA提交任务到spark</p>
+<a id="more"></a>
+
+<h2 id="系统安装与配置"><a href="#系统安装与配置" class="headerlink" title="系统安装与配置"></a>系统安装与配置</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64" target="_blank" rel="noopener">https://ubuntu.com/download/server/thank-you?version=18.04.4&amp;architecture=amd64</a></p>
 <h3 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h3><ul>
 <li>命令行修改</li>
 </ul>
@@ -385,13 +425,10 @@
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/03/21/hexo-github-deploy/" rel="prev" title="Hexo + Github Page搭建博客">
-      <i class="fa fa-chevron-left"></i> Hexo + Github Page搭建博客
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/10/5-classic-algorithms-1-exhaustive-method/" rel="next" title="五大经典算法-1.穷举法">
-      五大经典算法-1.穷举法 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/21/hexo-github-deploy/" rel="next" title="Hexo + Github Page搭建博客">
+      Hexo + Github Page搭建博客 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -504,6 +541,19 @@
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
   </div>
 
+
+<div class="powered-by">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站访问量<span id="busuanzi_value_site_pv"></span>
+    </span>
+</div>
+
         
 
 
@@ -538,6 +588,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
