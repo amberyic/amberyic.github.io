@@ -149,6 +149,12 @@
 <li>三色球问题：若一个口袋中放有12个球，其中有3个红的。3个白的和6个黒的，问从中任取8个共有多少种不同的颜色搭配？</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>五大经典算法</category>
+      </categories>
+      <tags>
+        <tag>穷举法</tag>
+      </tags>
   </entry>
   <entry>
     <title>五大经典算法-3.分治法</title>
@@ -219,6 +225,12 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package MatchTable; &#x2F;**</span><br><span class="line"> * Created by Administrator on 2016&#x2F;1&#x2F;17.</span><br><span class="line"> *&#x2F;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class MatchTable &#123;</span><br><span class="line">    public  void Table(int k, int n, int[][] a) &#123;</span><br><span class="line">        for(int i&#x3D;1; i&lt;&#x3D; n; i++)</span><br><span class="line">            a[1][i]&#x3D;i;&#x2F;&#x2F;设置日程表第一行</span><br><span class="line"></span><br><span class="line">        int m &#x3D; 1;&#x2F;&#x2F;每次填充时，起始填充位置</span><br><span class="line">        for(int s&#x3D;1; s&lt;&#x3D;k; s++)</span><br><span class="line">        &#123;</span><br><span class="line">            n &#x2F;&#x3D; 2;</span><br><span class="line">            for(int t&#x3D;1; t&lt;&#x3D;n; t++)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int i&#x3D;m+1; i&lt;&#x3D;2*m; i++)&#x2F;&#x2F;控制行</span><br><span class="line">                &#123;</span><br><span class="line">                    for(int j&#x3D;m+1; j&lt;&#x3D;2*m; j++)&#x2F;&#x2F;控制列</span><br><span class="line">                    &#123;</span><br><span class="line">                        a[i][j+(t-1)*m*2] &#x3D; a[i-m][j+(t-1)*m*2-m];&#x2F;&#x2F;右下角等于左上角的值</span><br><span class="line">                        a[i][j+(t-1)*m*2-m] &#x3D; a[i-m][j+(t-1)*m*2];&#x2F;&#x2F;左下角等于右上角的值</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            m *&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        System.out.println(&quot;请输入运动员的个数&quot;);</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line">        double x &#x3D;Math.log(n)&#x2F;Math.log(2);</span><br><span class="line">        int k &#x3D; (int)x;</span><br><span class="line">        MatchTable t &#x3D; new MatchTable();</span><br><span class="line">        int[][] a &#x3D; new int[n+1][n+1];</span><br><span class="line">        t.Table(k,n,a);</span><br><span class="line">        System.out.println(n + &quot;名运动员的比赛日程表是：&quot;);</span><br><span class="line">        for (int i &#x3D; 1;i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 1; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">                System.out.print(a[i][j] + &quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>五大经典算法</category>
+      </categories>
+      <tags>
+        <tag>分支算法</tag>
+      </tags>
   </entry>
   <entry>
     <title>五大经典算法-2.贪心算法</title>
@@ -398,6 +410,12 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long int price[100010],t,n,res;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  ios::sync_with_stdio(false);</span><br><span class="line">  cin&gt;&gt;t;</span><br><span class="line">  while(t--) &#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    priority_queue&lt;long long int, vector&lt;long long int&gt;, greater&lt;long long int&gt; &gt; q;</span><br><span class="line">    res&#x3D;0;</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;n;i++) &#123;</span><br><span class="line">      cin&gt;&gt;price[i];</span><br><span class="line">    &#125;</span><br><span class="line">    res-&#x3D;price[1];</span><br><span class="line">    res+&#x3D;price[n];</span><br><span class="line">    for(int i&#x3D;2;i&lt;&#x3D;n-1;i&#x3D;i+2) &#123;</span><br><span class="line">      long long int buy&#x3D;min(price[i],price[i+1]);</span><br><span class="line">      long long int sell&#x3D;max(price[i],price[i+1]);</span><br><span class="line">      if (!q.empty()) &#123;</span><br><span class="line">        if (buy&gt;q.top()) &#123;</span><br><span class="line">          res&#x3D;res-2*q.top()+buy+sell;</span><br><span class="line">          q.pop();</span><br><span class="line">          q.push(buy);</span><br><span class="line">          q.push(sell);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          res&#x3D;res-buy+sell;</span><br><span class="line">          q.push(sell);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        res&#x3D;res-buy+sell;</span><br><span class="line">        q.push(sell);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Huffman编码"><a href="#Huffman编码" class="headerlink" title="Huffman编码"></a>Huffman编码</h3><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><h3 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h3>]]></content>
+      <categories>
+        <category>五大经典算法</category>
+      </categories>
+      <tags>
+        <tag>贪心算法</tag>
+      </tags>
   </entry>
   <entry>
     <title>五大经典算法-4.动态规划</title>
@@ -576,6 +594,12 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">#define MAX_ARRAY_SIZE 100000</span><br><span class="line">int data[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放最初的数据</span><br><span class="line">int cost[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放各个子问题的最优解</span><br><span class="line">int mark[MAX_ARRAY_SIZE][11];&#x2F;&#x2F;存放输出最优解方案标志</span><br><span class="line">int main(int argc,char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">  int n;</span><br><span class="line">  while(scanf(&quot;%d&quot;,&amp;n),n!&#x3D;0)&#123;</span><br><span class="line">    memset(data,0,sizeof(data));</span><br><span class="line">    int i,x,T,max_T&#x3D;0;</span><br><span class="line">    &#x2F;&#x2F;初始化data</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">      scanf(&quot;%d%d&quot;,&amp;x,&amp;T);</span><br><span class="line">      if(T&gt;max_T)</span><br><span class="line">        max_T&#x3D;T;</span><br><span class="line">      data[T][x]++;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;dp初始化</span><br><span class="line">    for(i&#x3D;0;i&lt;11;i++)&#123;</span><br><span class="line">      cost[max_T][i]&#x3D;data[max_T][i];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;dp过程</span><br><span class="line">    for(i&#x3D;max_T-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">      int j;</span><br><span class="line">      for(j&#x3D;0;j&lt;11;j++)&#123;</span><br><span class="line">        int lvalue,mvalue,rvalue,maxvalue;</span><br><span class="line">        if(j&#x3D;&#x3D;0)&#123;</span><br><span class="line">          lvalue&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          lvalue&#x3D;cost[i+1][j-1];</span><br><span class="line">        &#125;</span><br><span class="line">        mvalue&#x3D;data[i+1][j];</span><br><span class="line">        if(j&#x3D;&#x3D;10)&#123;</span><br><span class="line">          rvalue&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          rvalue&#x3D;cost[i+1][j+1];</span><br><span class="line">        &#125;</span><br><span class="line">        if(lvalue&gt;mvalue)&#123;</span><br><span class="line">          maxvalue&#x3D;lvalue;</span><br><span class="line">          mark[i][j]&#x3D;-1;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          if(mvalue&gt;rvalue)&#123;</span><br><span class="line">            maxvalue&#x3D;mvalue;</span><br><span class="line">            mark[i][j]&#x3D;0;</span><br><span class="line">          &#125;else&#123;</span><br><span class="line">            maxvalue&#x3D;rvalue;</span><br><span class="line">            mark[i][j]&#x3D;1;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cost[i][j]&#x3D;data[i][j]+maxvalue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,cost[0][5]);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>五大经典算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
   </entry>
   <entry>
     <title>五大经典算法-5.回溯法&amp;分支界定法</title>
@@ -729,6 +753,13 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">   名称：算法5-1</span><br><span class="line">   问题重述：</span><br><span class="line">      子集合问题,存在S&#x3D;&#123;x1,x2,..xn&#125;.是一个正整数的集合，c是一个正整数。子集合问题判定是否存在一个子集S1，使得其中一个子集的和为c.</span><br><span class="line">  时间:2013&#x2F;5&#x2F;12</span><br><span class="line">  作者：刘荣</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">bool next(int a[],int n, int i, int s, int r, int c, int bextx[], int x[])</span><br><span class="line">&#123;</span><br><span class="line">  int j;</span><br><span class="line">  if (i &gt;&#x3D; n) &#123;&#x2F;&#x2F;到达叶子结点</span><br><span class="line">    if (s &#x3D;&#x3D; c) &#123; &#x2F;&#x2F;找到一个子集</span><br><span class="line">      for (int k&#x3D;0;k&lt;n;k++) &#123;&#x2F;&#x2F;记录下子集</span><br><span class="line">        bextx[k] &#x3D; x[k];</span><br><span class="line">      &#125;</span><br><span class="line">      return true;</span><br><span class="line">    &#125; else &#123;&#x2F;&#x2F;没有找到符合的子集</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if (s &gt;c || s+r &lt;c) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  x[i] &#x3D; 1;</span><br><span class="line">  if (next(a, n, i+1, s+a[i], r-a[i], c, bextx, x)) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  x[i] &#x3D; 0;</span><br><span class="line">  return next(a, n, i+1, s, r-a[i], c, bextx, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool solve(int a[],int n,int c,int bextx[]) &#123;</span><br><span class="line">  &#x2F;&#x2F;int *bextx &#x3D; new int[n];</span><br><span class="line">  int *x &#x3D; new int[n];</span><br><span class="line">  int r &#x3D; 0;</span><br><span class="line">  for (int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">    r +&#x3D; a[i];</span><br><span class="line">  &#125;</span><br><span class="line">  return  next(a, n, 0, 0, r, c, bextx, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  int a[]&#x3D;&#123;1,2,6,8&#125;;</span><br><span class="line">  int n&#x3D;4;</span><br><span class="line">  int c&#x3D;8;</span><br><span class="line">  int *bextx &#x3D; new int[n];</span><br><span class="line">  if (solve(a,n,c,bextx)) &#123;</span><br><span class="line">    printf(&quot;找到子集： \n\r&quot;);</span><br><span class="line">    for (int i&#x3D;0;i&lt;n;i++) &#123;</span><br><span class="line">      printf(&quot;%d &quot;,bextx[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    printf(&quot;没有子集&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>五大经典算法</category>
+      </categories>
+      <tags>
+        <tag>回溯法</tag>
+        <tag>分支界定法</tag>
+      </tags>
   </entry>
   <entry>
     <title>hadoop &amp; spark 分布式集群搭建</title>
@@ -940,5 +971,84 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
 ]]></content>
+  </entry>
+  <entry>
+    <title>网赚系列-1.联盟营销的工作原理</title>
+    <url>/2020/05/17/internet-earning-series-1-affiliate-marketing-process-and-working-principle/</url>
+    <content><![CDATA[<p>联盟营销的工作原理<br>1.什么是联盟营销<br>2.为什么选择联盟营销来赚钱<br>3.联盟营销的运作流程<br>4.联盟营销赚钱的案例</p>
+<a id="more"></a>
+<h1 id="联盟营销的工作原理"><a href="#联盟营销的工作原理" class="headerlink" title="联盟营销的工作原理"></a>联盟营销的工作原理</h1><h2 id="1-什么是联盟营销"><a href="#1-什么是联盟营销" class="headerlink" title="1.什么是联盟营销"></a>1.什么是联盟营销</h2><ul>
+<li>Affiliate Marketing:通常是指网络联盟营销，其实是一种按营销效果付费的新型网络营销方式。</li>
+</ul>
+<blockquote>
+<p> Affiliate marketing is a type of performance-based marketing in which a business rewards one or more affiliates for each visitor or customer brought by the affiliate’s own marketing efforts. The industry has four core players: the merchant (also known as ‘retailer’ or ‘brand’), the network (that contains offers for the affiliate to choose from and also takes care of the payments), the publisher (also known as ‘the affiliate’), and the customer.</p>
+</blockquote>
+<ul>
+<li><p>商家利用网站联盟服务，扩展其线上及线下业务扩大销售空间和销售渠道，按照营销世纪效果支付费用。</p>
+</li>
+<li><p>affiliate marketing这种网络联盟营销模式大致有四个要素：</p>
+<ul>
+<li>Merchant:产品的广告商，有的也称之为advertiser</li>
+<li>Publisher:发布商，也就是通常我们所说的网络加盟经销商。通常意义上讲，这个角色就是想要通过联盟营销赚钱的你。</li>
+<li>Customer:顾客，这个不用解释了</li>
+<li>Affiliate Network:联盟平台，通过这个将以上三者联系在一起</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>简单来讲：商家给你一件商品，如果你把这个产品推广出去，并且有人下单付费了，那么你就可以赚到佣金。</p>
+</blockquote>
+<h2 id="2-为什么选择联盟营销来赚钱"><a href="#2-为什么选择联盟营销来赚钱" class="headerlink" title="2.为什么选择联盟营销来赚钱"></a>2.为什么选择联盟营销来赚钱</h2><ul>
+<li>起步门槛底，没有任何风险</li>
+<li>没有库存，没有资金压力</li>
+<li>不需要客服，维护起来方便</li>
+<li>办公地点不限制</li>
+<li>收益是可持续的。</li>
+<li>潜力无限大<blockquote>
+<p>中国生产的货品，老外通过包装可以获得很大的溢价空间，我们其实可以取赚这部分钱。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-联盟营销的运作流程"><a href="#3-联盟营销的运作流程" class="headerlink" title="3.联盟营销的运作流程"></a>3.联盟营销的运作流程</h2><ul>
+<li>选取产品-&gt;进行推广-&gt;客户购买-&gt;获取佣金</li>
+<li>基本过程：<ul>
+<li>1.建好网站（利用网站推广联盟及其产品这是最常规的方法），然后至少加入1-3个联盟项目（对于新手，建议初期先加入一个，先熟悉一下），然后获得对方批准。</li>
+<li>2.写几篇文章来介绍产品，就是product review</li>
+<li>3.把得到批准的联盟链接加到产品上（这是一个很特殊的链接，包含你的ID，商家用来识别加盟商的）</li>
+<li>4.吸引目标客户流量到你的网站上，使你的网站在google或主要搜索引擎中排名前列（在某些特定的关键词下）</li>
+<li>5.客户在搜索引擎输入产品关键词，访问你的产品介绍页面</li>
+<li>6.从你的联盟链接中购买产品</li>
+<li>7.挣到佣金</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-联盟营销赚钱的案例"><a href="#4-联盟营销赚钱的案例" class="headerlink" title="4.联盟营销赚钱的案例"></a>4.联盟营销赚钱的案例</h2><ul>
+<li>网站类（博客,独立站）<ul>
+<li>通过SEO倒流</li>
+</ul>
+</li>
+<li>商城类(Shein， 北美省钱快报…)</li>
+<li>工具类</li>
+</ul>
+<hr>
+<h2 id="我的理解："><a href="#我的理解：" class="headerlink" title="我的理解："></a>我的理解：</h2><ul>
+<li>1.这是一门网赚生意<ul>
+<li>联盟营销起源于亚马逊，他提高了营销的效率，在整个营销过程中的参与者都能够获得利润。</li>
+</ul>
+</li>
+<li>2.这是一件有趣的事情<ul>
+<li>中间有很多的套路，需要对于规则和人性有很深入的理解才能赚到钱，一旦掌握了这门技术，可以在多个领域里面应用。</li>
+</ul>
+</li>
+</ul>
+<p>本文系顾小北老师《联盟营销网络赚钱系列》的第一课笔记。<br>想看视频的同学看这里：<a href="https://www.bilibili.com/video/BV1vQ4y1A7cR" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1vQ4y1A7cR</a></p>
+]]></content>
+      <categories>
+        <category>联盟营销</category>
+      </categories>
+      <tags>
+        <tag>联盟营销</tag>
+        <tag>网赚项目</tag>
+      </tags>
   </entry>
 </search>
