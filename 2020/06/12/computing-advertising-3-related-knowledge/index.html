@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+<meta name="baidu-site-verification" content="sQB1vh2KeG" />
+<meta name="shenma-site-verification" content="142706695a47156bb1eafc7c9cc28602_1590550933">
+<meta name="360-site-verification" content="f27b0d2d893155c9abee1f0021113a52" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://imzhanghao.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"default"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-166608124-1');
+</script>
+
+  <meta name="description" content="3.相关知识最优化Optimization什么是最优化问题 无约束最优化问题：  $$ minf(x) $$ 带约束最优化问题：  $$ minf(x) \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)&#x3D;0 $$  无约束优化问题一般思路 目标函数不可&#x2F;不易求导 下降单纯形法（Ameoba变形虫法）   目标函数易求导 梯度下降法 批处理模式：训练集上的梯度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算广告|3.相关方法">
+<meta property="og:url" content="https://imzhanghao.com/2020/06/12/computing-advertising-3-related-knowledge/index.html">
+<meta property="og:site_name" content="张浩写字的地方">
+<meta property="og:description" content="3.相关知识最优化Optimization什么是最优化问题 无约束最优化问题：  $$ minf(x) $$ 带约束最优化问题：  $$ minf(x) \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)&#x3D;0 $$  无约束优化问题一般思路 目标函数不可&#x2F;不易求导 下降单纯形法（Ameoba变形虫法）   目标函数易求导 梯度下降法 批处理模式：训练集上的梯度">
+<meta property="article:published_time" content="2020-06-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-06-18T08:57:58.433Z">
+<meta property="article:author" content="ZhangHao">
+<meta property="article:tag" content="计算广告">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://imzhanghao.com/2020/06/12/computing-advertising-3-related-knowledge/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>计算广告|3.相关方法 | 张浩写字的地方</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-166608124-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">张浩写字的地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">算法工程师的世界</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/12/computing-advertising-3-related-knowledge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="ZhangHao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张浩写字的地方">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算广告|3.相关方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-12 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-12T00:00:00+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-18 16:57:58" itemprop="dateModified" datetime="2020-06-18T16:57:58+08:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
+                    <span itemprop="name">计算广告</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="3-相关知识"><a href="#3-相关知识" class="headerlink" title="3.相关知识"></a>3.相关知识</h1><h2 id="最优化Optimization"><a href="#最优化Optimization" class="headerlink" title="最优化Optimization"></a>最优化Optimization</h2><h3 id="什么是最优化问题"><a href="#什么是最优化问题" class="headerlink" title="什么是最优化问题"></a>什么是最优化问题</h3><ul>
+<li>无约束最优化问题：<br>  $$ minf(x) $$</li>
+<li>带约束最优化问题：<br>  $$ minf(x) \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0 $$</li>
+</ul>
+<h3 id="无约束优化问题一般思路"><a href="#无约束优化问题一般思路" class="headerlink" title="无约束优化问题一般思路"></a>无约束优化问题一般思路</h3><ul>
+<li>目标函数不可/不易求导<ul>
+<li>下降单纯形法（Ameoba变形虫法）</li>
+</ul>
+</li>
+<li>目标函数易求导<ul>
+<li>梯度下降法</li>
+<li>批处理模式：训练集上的梯度分解为各个样本梯度的和，可以并行实现。</li>
+<li>串行模式：随机梯度下降法（Stochastic Gradient Descent，SGD）【好用】</li>
+</ul>
+</li>
+</ul>
+<h3 id="批处理梯度法的问题与拟牛顿法"><a href="#批处理梯度法的问题与拟牛顿法" class="headerlink" title="批处理梯度法的问题与拟牛顿法"></a>批处理梯度法的问题与拟牛顿法</h3><ul>
+<li>梯度法zigzag更新过程<ul>
+<li>等高线和梯度垂直，因为等高线的形状是压扁的形状，所以会来回的跳，性能不好。</li>
+</ul>
+</li>
+<li>牛顿法：<ul>
+<li>不仅考虑一阶导，还考虑二阶导。但是Hession阵可能不正定。</li>
+</ul>
+</li>
+<li>拟牛顿法<ul>
+<li>用近似但正定的Hession阵确保稳定求解<a id="more"></a>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="BFGS和L-BFGS方法"><a href="#BFGS和L-BFGS方法" class="headerlink" title="BFGS和L-BFGS方法"></a>BFGS和L-BFGS方法</h3><ul>
+<li>BFGS（Broyden，Fletcher，Oldfarb，and Shanno）<ul>
+<li>拟牛顿法是一种，用函数值和特征的变化量来近似Hession矩阵，以保证正定性，并减少计算量。</li>
+<li>Hession集合公式（空间复杂度为N方）</li>
+</ul>
+</li>
+<li>L（Limited memory）- BFGS<ul>
+<li>将Hession逆用{n*k}*{k*k}*{k*n}的方式近似【矩阵分解】</li>
+<li>空间复杂度为n*k</li>
+</ul>
+</li>
+</ul>
+<h3 id="Trust-Region方法"><a href="#Trust-Region方法" class="headerlink" title="Trust-Region方法"></a>Trust-Region方法</h3><ul>
+<li>方法思想<ul>
+<li>不近似Hession阵，但每次迭代将自变量限制在临域内</li>
+<li>先步长，后方向</li>
+</ul>
+</li>
+<li>上述子问题虽非凸优化，但是满足KKT条件</li>
+<li>对于LR模型收敛速度经常好于L-BFGS</li>
+</ul>
+<h3 id="带约束优化：拉格朗日法"><a href="#带约束优化：拉格朗日法" class="headerlink" title="带约束优化：拉格朗日法"></a>带约束优化：拉格朗日法</h3><p>原问题（Primary Problem）==&gt; 拉格朗日对偶函数(Lagrangian dual function) ==&gt; 对偶问题(Dual problem)</p>
+<h2 id="信息检索Information-Retrieval"><a href="#信息检索Information-Retrieval" class="headerlink" title="信息检索Information Retrieval"></a>信息检索Information Retrieval</h2><h3 id="文档的表示与相似度量"><a href="#文档的表示与相似度量" class="headerlink" title="文档的表示与相似度量"></a>文档的表示与相似度量</h3><ul>
+<li>词袋（Bag of Words，BoW）表示<ul>
+<li>用关键词TFIDF组成的矢量来表示文档。</li>
+</ul>
+</li>
+<li>TF-IDF<ul>
+<li>TF（term frequency）： 某文档中词出现的次数</li>
+<li>IDF（inverse document frequency）：总文档数/某个词出现的文档数，然后取log</li>
+</ul>
+</li>
+<li>向量空间模型<ul>
+<li>用余弦距离来衡量两个文档的相似度</li>
+</ul>
+</li>
+</ul>
+<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><ul>
+<li>文档集<ul>
+<li>D1=“谷歌地图之父跳槽Facebook”</li>
+<li>D2=“谷歌地图创始人拉斯离开谷歌加盟Facebook”</li>
+<li>D3=“谷歌地图创始人跳槽Facebook与Wave项目取消有关”</li>
+<li>D4=“谷歌地图创始人拉斯加盟社交网络Facebook”</li>
+</ul>
+</li>
+<li>关键词（Term）<ul>
+<li>{谷歌，地图，之父，跳槽，Facebook，……}</li>
+</ul>
+</li>
+<li>倒排链<ul>
+<li>谷歌-&gt;{D1，D2，D3，D4}，地图-&gt;{D1,D2,D3,D4},之父-&gt;{D1,D3,D4},跳槽-&gt;{D1,D3},Facebook-&gt;{D1,D2,D3,D4},……</li>
+</ul>
+</li>
+</ul>
+<h2 id="统计机器学习Statistical-Machine-Learning"><a href="#统计机器学习Statistical-Machine-Learning" class="headerlink" title="统计机器学习Statistical Machine Learning"></a>统计机器学习Statistical Machine Learning</h2><h3 id="贝叶斯学习"><a href="#贝叶斯学习" class="headerlink" title="贝叶斯学习"></a>贝叶斯学习</h3><ul>
+<li>贝叶斯公式<br>$$P(\Theta | X ) = \frac{P(X | \Theta)P(\Theta)}{P(X)}$$<ul>
+<li>统计机器学习最核心的概念和公式。</li>
+<li>频率学派 VS 贝叶斯学派</li>
+<li>X是观测的变量，Theta是要估计的参数。</li>
+<li>$P(\Theta | X ) $ 是后验概率Posterior，所有的分类都是追求后验概率最大的原则。</li>
+<li>$P(X | \Theta)$是likelihood(已知是黑人，黑人拥有黑色皮肤的概率)，$P(\Theta)$是prior（黑人在中国出现的概率）.</li>
+<li>$P(X)$ 是evidence</li>
+<li>贝叶斯的核心是认为所有参数都是不确定的。</li>
+</ul>
+</li>
+<li>若干模型估计方法</li>
+</ul>
+<h3 id="指数族分布"><a href="#指数族分布" class="headerlink" title="指数族分布"></a>指数族分布</h3><ul>
+<li>归一化形式：$P(x|\Theta)=h(x)g(\Theta)exp\left { \Theta^Tu(x) \right }$</li>
+<li>若干重要指数族分布</li>
+</ul>
+<h3 id="指数族贝叶斯学习"><a href="#指数族贝叶斯学习" class="headerlink" title="指数族贝叶斯学习"></a>指数族贝叶斯学习</h3><ul>
+<li>共轭先验：使先验分布与后验分布形式一致的先验分布</li>
+<li>指数族分布共轭先验<ul>
+<li>一般形式：<br>  $$p(\Theta|\eta)=exp\left { \chi ^{T} \Theta-vg(\Theta)-b(\chi ,v))) \right }$$</li>
+<li>其中$\eta=\left { \chi, v \right }$为超参数（hyperperameter）</li>
+</ul>
+</li>
+<li>指数族后验部分的超参数：<pre><code>$$\tilde{\chi} = \chi + \sum_{N}^{i=1}u(x_i)$$
+$$\tilde{v} = v + N$$</code></pre></li>
+</ul>
+<h3 id="指数族分布（二）"><a href="#指数族分布（二）" class="headerlink" title="指数族分布（二）"></a>指数族分布（二）</h3><ul>
+<li>最大似然估计：$-\triangledown ln \textbf{g}(\theta_{ML} )=\frac{1}{N}\sum_{i=1}^{N}u(x_i)$ </li>
+<li>混合模型：$P(x|\omega , \Theta)=\sum_{k=1}^{K}w_kh(x)g(\Theta_k)exp\left { \Theta_{k}^{T}u(x) \right }$<ul>
+<li>EM算法</li>
+</ul>
+</li>
+</ul>
+<h2 id="深度学习Deep-Learning"><a href="#深度学习Deep-Learning" class="headerlink" title="深度学习Deep Learning"></a>深度学习Deep Learning</h2><h3 id="深度学习是什么？"><a href="#深度学习是什么？" class="headerlink" title="深度学习是什么？"></a>深度学习是什么？</h3><ul>
+<li>基于规则的系统<ul>
+<li>img of 8 –&gt; 人工设计程序 –&gt; num of 8</li>
+</ul>
+</li>
+<li>传统机器学习<ul>
+<li>img of 8 –&gt; 人工设计特征 –&gt; 将特征映射到结果 –&gt; num of 8</li>
+</ul>
+</li>
+<li>深度学习(表示学习)<ul>
+<li>img of 8 –&gt; 自动提取特征 –&gt; 将特征映射到结果 –&gt; num of 8</li>
+<li>img of 8 –&gt; 原始特征 –&gt; 额外的层和抽象特征 –&gt; 将特征映射到结果 –&gt; num of 8 </li>
+</ul>
+</li>
+</ul>
+<h3 id="全连接多层感知机（Multi-layer-Perceptron-MLP）"><a href="#全连接多层感知机（Multi-layer-Perceptron-MLP）" class="headerlink" title="全连接多层感知机（Multi-layer Perceptron, MLP）"></a>全连接多层感知机（Multi-layer Perceptron, MLP）</h3><h3 id="深度学习的工程本质"><a href="#深度学习的工程本质" class="headerlink" title="深度学习的工程本质"></a>深度学习的工程本质</h3><ul>
+<li>浅层模型与深度模型<ul>
+<li>深度模型比浅层模型表示能力更强</li>
+</ul>
+</li>
+<li>优化方法是关键<ul>
+<li>找到了GPU这条优化方法</li>
+</ul>
+</li>
+<li>数据的作用<ul>
+<li>深度学习和大数据关系非常紧密</li>
+</ul>
+</li>
+</ul>
+<h3 id="几种重要的神经网络结构"><a href="#几种重要的神经网络结构" class="headerlink" title="几种重要的神经网络结构"></a>几种重要的神经网络结构</h3><ul>
+<li>CNN（Convolutional Neural Networks, 卷积神经网络）<ul>
+<li>采样层-&gt;卷积层-&gt;采样层-&gt;全连接层MLP</li>
+<li>参数共享</li>
+<li>图像领域</li>
+</ul>
+</li>
+<li>RNN（Recurrent Neural Networks，递归神经网络）<ul>
+<li>用递归的方式设计网络结构</li>
+<li>sequence到sequence的学习</li>
+<li>语言领域</li>
+<li>LSTM（Long-Short Term Memory，长短期记忆）是一种时间递归神经网络(RNN)</li>
+</ul>
+</li>
+<li>GAN（Generative Adversarial Network，生成对抗网络）</li>
+</ul>
+<h3 id="深度学习优化基础设施"><a href="#深度学习优化基础设施" class="headerlink" title="深度学习优化基础设施"></a>深度学习优化基础设施</h3><ul>
+<li>GPU方案<ul>
+<li>并行渲染屏幕上每个像素点，与并行计算各神经元很相似</li>
+<li>与CPU方案相比，可以加速数倍乃至十数倍</li>
+</ul>
+</li>
+<li>并行计算方法<ul>
+<li>SGD过程可以分解到多台机器上进行，分别更新参数</li>
+<li>可以采用parameter server的计算框架，水平扩展性强</li>
+</ul>
+</li>
+<li>开源框架<ul>
+<li>Tensorflow，Caffe，Mxnet，可以一定程度上忽略硬件</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据运营三板斧-–-用户增长"><a href="#数据运营三板斧-–-用户增长" class="headerlink" title="数据运营三板斧 – 用户增长"></a>数据运营三板斧 – 用户增长</h2><h3 id="用户增长的基础：用户转化漏斗"><a href="#用户增长的基础：用户转化漏斗" class="headerlink" title="用户增长的基础：用户转化漏斗"></a>用户增长的基础：用户转化漏斗</h3><ul>
+<li>用户转化漏斗示例<ul>
+<li>移动用户获取：下载-&gt;激活-&gt;留存-&gt;时长</li>
+<li>电商用户转化：到达商品页-&gt;加入购物车-&gt;完成订单-&gt;交易确认</li>
+</ul>
+</li>
+<li>漏斗的设计原则与作用<ul>
+<li>原则：整个漏斗过程用于优化一个唯一的目标</li>
+<li>作用：将该目标分解为若干比率的乘积，便于发现问题并优化</li>
+<li>示例：总用户时长 = 下载量 X 激活率 X 留存率 X 平均用户时长</li>
+</ul>
+</li>
+<li>转化漏斗相关常见度量<ul>
+<li>转化率 - 激活数与点击数的比</li>
+<li>「次日/七日/月」留存率 - 某日激活的用户中，「次日/七日/月」后活跃的用户占比</li>
+<li>「日/月」活跃用户（DAU，MAU）- 每「日/月」活跃的独立用户数</li>
+<li>用户时长 - 每个活跃用户平均消耗的时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="找到增长的障碍：多维度报表分析"><a href="#找到增长的障碍：多维度报表分析" class="headerlink" title="找到增长的障碍：多维度报表分析"></a>找到增长的障碍：多维度报表分析</h3><ul>
+<li>通过漏斗发现问题<ul>
+<li>某页游用户转化漏斗：</li>
+<li>到达（5130）–19.1%–&gt;注册（980）–14.0%–&gt; 参与（431）–83.0%–&gt; 充值<ul>
+<li>注册率偏低，应该进一步分析？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在多维度报表中找到症结<ul>
+<li>注册率19.1%  – IE(25.1%),Chrome(3.5%),FireFox(22.7%)</li>
+</ul>
+</li>
+<li>数据魔方（Data Cube）<ul>
+<li>什么是数据魔方？ 1）用户可以较灵活选择维度组合，得到定制化报表。2）为人工决策提供便利</li>
+<li>技术方案：OLAP数据库</li>
+<li>开源方案：Saiku+MySQL</li>
+</ul>
+</li>
+</ul>
+<h3 id="驱动新产品特征：利用A-B测试"><a href="#驱动新产品特征：利用A-B测试" class="headerlink" title="驱动新产品特征：利用A/B测试"></a>驱动新产品特征：利用A/B测试</h3><ul>
+<li>为什么需要A/B测试？<ul>
+<li>多维情况下，魔方里大部分区域数据非常稀疏。极端情形：对于新Feature，需要主动分配测试流量</li>
+<li>某维度上的两个选项（例如两个不同的模型），数据并不是完全可比</li>
+<li>因此，我们需要一个主动的A/B测试框架，以便：1）主动分配流量给新的产品特征；2）保证对比实验的各组在数据上完全可比；3）尽可能在同样的流量规模上容纳更多的实验。</li>
+</ul>
+</li>
+<li>A/B测试并不是万能的<ul>
+<li>用户产品过于依赖数据会丧失对关键创新的把握。- 汽车无法从“跑得更快的马”进化而来</li>
+<li>多数情况下，需要测试的可行组合太多，必须先经过人的筛选，或更复杂的E&amp;E策略。- 每天数十万的新闻，那些有可能最受用户欢迎？</li>
+<li>博弈性场景无法通过A/B测试获得可靠性结论</li>
+<li>A/B测试最适合的场景：理性产品、被动反应场景</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" rel="tag"># 计算广告</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/11/computing-advertising-2-business-system/" rel="prev" title="计算广告|2.认识商业体系">
+      <i class="fa fa-chevron-left"></i> 计算广告|2.认识商业体系
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-相关知识"><span class="nav-number">1.</span> <span class="nav-text">3.相关知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最优化Optimization"><span class="nav-number">1.1.</span> <span class="nav-text">最优化Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是最优化问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是最优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无约束优化问题一般思路"><span class="nav-number">1.1.2.</span> <span class="nav-text">无约束优化问题一般思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批处理梯度法的问题与拟牛顿法"><span class="nav-number">1.1.3.</span> <span class="nav-text">批处理梯度法的问题与拟牛顿法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFGS和L-BFGS方法"><span class="nav-number">1.1.4.</span> <span class="nav-text">BFGS和L-BFGS方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trust-Region方法"><span class="nav-number">1.1.5.</span> <span class="nav-text">Trust-Region方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带约束优化：拉格朗日法"><span class="nav-number">1.1.6.</span> <span class="nav-text">带约束优化：拉格朗日法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息检索Information-Retrieval"><span class="nav-number">1.2.</span> <span class="nav-text">信息检索Information Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档的表示与相似度量"><span class="nav-number">1.2.1.</span> <span class="nav-text">文档的表示与相似度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#倒排索引"><span class="nav-number">1.2.2.</span> <span class="nav-text">倒排索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计机器学习Statistical-Machine-Learning"><span class="nav-number">1.3.</span> <span class="nav-text">统计机器学习Statistical Machine Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯学习"><span class="nav-number">1.3.1.</span> <span class="nav-text">贝叶斯学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指数族分布"><span class="nav-number">1.3.2.</span> <span class="nav-text">指数族分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指数族贝叶斯学习"><span class="nav-number">1.3.3.</span> <span class="nav-text">指数族贝叶斯学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指数族分布（二）"><span class="nav-number">1.3.4.</span> <span class="nav-text">指数族分布（二）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度学习Deep-Learning"><span class="nav-number">1.4.</span> <span class="nav-text">深度学习Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习是什么？"><span class="nav-number">1.4.1.</span> <span class="nav-text">深度学习是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全连接多层感知机（Multi-layer-Perceptron-MLP）"><span class="nav-number">1.4.2.</span> <span class="nav-text">全连接多层感知机（Multi-layer Perceptron, MLP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习的工程本质"><span class="nav-number">1.4.3.</span> <span class="nav-text">深度学习的工程本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几种重要的神经网络结构"><span class="nav-number">1.4.4.</span> <span class="nav-text">几种重要的神经网络结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习优化基础设施"><span class="nav-number">1.4.5.</span> <span class="nav-text">深度学习优化基础设施</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据运营三板斧-–-用户增长"><span class="nav-number">1.5.</span> <span class="nav-text">数据运营三板斧 – 用户增长</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户增长的基础：用户转化漏斗"><span class="nav-number">1.5.1.</span> <span class="nav-text">用户增长的基础：用户转化漏斗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找到增长的障碍：多维度报表分析"><span class="nav-number">1.5.2.</span> <span class="nav-text">找到增长的障碍：多维度报表分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#驱动新产品特征：利用A-B测试"><span class="nav-number">1.5.3.</span> <span class="nav-text">驱动新产品特征：利用A&#x2F;B测试</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ZhangHao"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">ZhangHao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/amberyic" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhanghaokdd@163.com" title="E-Mail → mailto:zhanghaokdd@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/chanming1989" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;chanming1989" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/amberyic" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-gratipay"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/amberyic" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/amberyic" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备20008129号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=20008129" rel="noopener" target="_blank">陕公网安备20008129号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangHao</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+<div class="powered-by">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站访问量<span id="busuanzi_value_site_pv"></span>
+    </span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

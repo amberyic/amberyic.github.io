@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+<meta name="baidu-site-verification" content="sQB1vh2KeG" />
+<meta name="shenma-site-verification" content="142706695a47156bb1eafc7c9cc28602_1590550933">
+<meta name="360-site-verification" content="f27b0d2d893155c9abee1f0021113a52" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://imzhanghao.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"default"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-166608124-1');
+</script>
+
+  <meta name="description" content="认识商业化体系计算广告逻辑与挑战：六大算法问题商业化体系大闭环广告点击以后，就从媒体网站到了广告主的网站上。 计算广告的核心挑战 计算广告的核心问题，是为一系列用户与环境的组合，找到最合适的广告投放策略以优化整体广告活动的利润。 优化问题描述：$$\max \limits_{a_{1},…,T}\sum_{i&#x3D;1}^{T}{r(a_{i},u_{i},c_{i}) - q(a_{i},u_{i},">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算广告|2.认识商业体系">
+<meta property="og:url" content="https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/index.html">
+<meta property="og:site_name" content="张浩写字的地方">
+<meta property="og:description" content="认识商业化体系计算广告逻辑与挑战：六大算法问题商业化体系大闭环广告点击以后，就从媒体网站到了广告主的网站上。 计算广告的核心挑战 计算广告的核心问题，是为一系列用户与环境的组合，找到最合适的广告投放策略以优化整体广告活动的利润。 优化问题描述：$$\max \limits_{a_{1},…,T}\sum_{i&#x3D;1}^{T}{r(a_{i},u_{i},c_{i}) - q(a_{i},u_{i},">
+<meta property="article:published_time" content="2020-06-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-06-18T08:43:48.583Z">
+<meta property="article:author" content="ZhangHao">
+<meta property="article:tag" content="计算广告">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>计算广告|2.认识商业体系 | 张浩写字的地方</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-166608124-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">张浩写字的地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">算法工程师的世界</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="ZhangHao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张浩写字的地方">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算广告|2.认识商业体系
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-11 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-11T00:00:00+08:00">2020-06-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-18 16:43:48" itemprop="dateModified" datetime="2020-06-18T16:43:48+08:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
+                    <span itemprop="name">计算广告</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="认识商业化体系"><a href="#认识商业化体系" class="headerlink" title="认识商业化体系"></a>认识商业化体系</h1><h2 id="计算广告逻辑与挑战：六大算法问题"><a href="#计算广告逻辑与挑战：六大算法问题" class="headerlink" title="计算广告逻辑与挑战：六大算法问题"></a>计算广告逻辑与挑战：六大算法问题</h2><h3 id="商业化体系大闭环"><a href="#商业化体系大闭环" class="headerlink" title="商业化体系大闭环"></a>商业化体系大闭环</h3><p>广告点击以后，就从媒体网站到了广告主的网站上。</p>
+<h3 id="计算广告的核心挑战"><a href="#计算广告的核心挑战" class="headerlink" title="计算广告的核心挑战"></a>计算广告的核心挑战</h3><ul>
+<li>计算广告的核心问题，是为一系列用户与环境的组合，找到最合适的广告投放策略以优化整体广告活动的利润。</li>
+<li>优化问题描述：<br>$$\max \limits_{a_{1},…,T}\sum_{i=1}^{T}{r(a_{i},u_{i},c_{i}) - q(a_{i},u_{i},c_{i})} \    s.t.\sum_{i=1}^{T}d(a_{i},u_{i},c_{i},k) \leqslant D_{k},\forall k$$<ul>
+<li>决策对象：一组广告展示，a：广告，u：用户，c：上下文，r：收入(eCPM)，q：成本</li>
+<li>这个公式是一个普适性的公式，适合于广告主、媒体、ADX等等～</li>
+<li>优化的是一组广告的投放，后面预算的约束。</li>
+</ul>
+</li>
+</ul>
+<h3 id="广告业务的转化漏斗和目标"><a href="#广告业务的转化漏斗和目标" class="headerlink" title="广告业务的转化漏斗和目标"></a>广告业务的转化漏斗和目标</h3><ul>
+<li><p>展示页–点击–&gt;落地页–转化–&gt;转化页</p>
+<ul>
+<li>从媒体网站到广告主网站</li>
+<li>广告排序的唯一指标：u代表点击率，v代表转化率<br>$$eCPM=r(a,u,c)=u(a,u,c)*v(a,u)$$</li>
+</ul>
+</li>
+<li><p>如果标识一个用户？</p>
+<ul>
+<li>PC Web/Mobile Web环境 – Cookie:存续行差，跨域时需要映射。</li>
+<li>iOS应用 – IDFA：存续性好于cookie，但iOS10有更严格的政策。</li>
+<li>Android应用 – Android ID：存续性好于IDFA；IMEI：在中国有部分使用。</li>
+<li>无以上ID场景 – FingerPrint（IP+User Agent）：存在http头中，可作缺省标识。<a id="more"></a></li>
+</ul>
+</li>
+<li><p>商业化体系六大算法问题</p>
+<ul>
+<li>A1.特征提取：受众定向</li>
+<li>A2.微观优化：eCPM估计</li>
+<li>A3.宏观优化：机制设计</li>
+<li>A4.受限优化：在线分配</li>
+<li>A5.强化学习：探索与利用</li>
+<li>A6.重定向：个性化推荐</li>
+</ul>
+</li>
+<li><p>用户决策的转化漏斗模型</p>
+<ul>
+<li>【选择】曝光（exposure）1.1主要取决于广告位的天然属性。</li>
+<li>【选择】关注（attention）2.1不要干扰或者打断用户的任务；2.2明确揭示推荐的原因；2.3符合用户兴趣或者需求。</li>
+<li>【解释】理解（comprehension）3.1广告在用户能理解的兴趣范围；3.2与关注程度相匹配的理解门槛。</li>
+<li>【解释】信息接收（message acceptance）4.1广告商／广告认可度；4.2广告位认可度</li>
+<li>【态度】保持（retention）5.1艺术性带来的记忆效果</li>
+<li>【态度】购买（purchase）6.1在用户的价格敏感接收范围内</li>
+</ul>
+</li>
+</ul>
+<h3 id="在线广告主要结算方式详解"><a href="#在线广告主要结算方式详解" class="headerlink" title="在线广告主要结算方式详解"></a>在线广告主要结算方式详解</h3><table>
+<thead>
+<tr>
+<th>结算方式</th>
+<th>点击率估计／点击价值估计</th>
+<th>优缺点</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPT</td>
+<td>需求方</td>
+<td>1.可以充分发挥橱窗效应。<br>2.无法利用受众定向技术</td>
+<td>高曝光的品牌广告</td>
+</tr>
+<tr>
+<td>CPM</td>
+<td>需求方</td>
+<td>1.可以利用受众定向选择目标人群。<br>2.合约售卖下，受众划分不能过细。</td>
+<td>1.有受众选择需求的品牌广告<br>2.实时竞价广告交易</td>
+</tr>
+<tr>
+<td>CPC</td>
+<td>供给方／需求方</td>
+<td>1.可以非常精细地划分受众人群。<br>2.比较合理的供给方和需求方分工.</td>
+<td>竞价广告网络</td>
+</tr>
+<tr>
+<td>CPS</td>
+<td>供给方</td>
+<td>1.需求方无任何风险。<br>2.供给方运营难度加大.</td>
+<td>1.效果类广告联盟<br>2.效果类DSP</td>
+</tr>
+</tbody></table>
+<h3 id="CPA-CPS的问题与合理场景"><a href="#CPA-CPS的问题与合理场景" class="headerlink" title="CPA/CPS的问题与合理场景"></a>CPA/CPS的问题与合理场景</h3><ul>
+<li>存在的问题<ul>
+<li>由供给方同时负责优化点击和转化率，并非普适的合理模式<br></li>
+<li>存在劫持、代销等多种相应的灰色手段<br></li>
+<li>用于优化的数据对于单个广告主来说严重不足<br></li>
+</ul>
+</li>
+<li>适用的场景<ul>
+<li>转化过程一致且规范的广告市场<br></li>
+<li>例：淘宝客（转化流程为淘宝统一提供）、APP下载（转化流程在Apple Store或Google Play）<br></li>
+<li>在大多数场景下，CPC可能更合理<br></li>
+</ul>
+</li>
+</ul>
+<h2 id="商业化产品体系概览：六大产品问题"><a href="#商业化产品体系概览：六大产品问题" class="headerlink" title="商业化产品体系概览：六大产品问题"></a>商业化产品体系概览：六大产品问题</h2><ul>
+<li><p>商业产品设计运营原则</p>
+<ul>
+<li>商业产品，即面向产品客户而非一般用户的产品，其中最典型的代表就是广告产品。</li>
+<li>相对于产品功能，要特别关注产品中的策略部分。</li>
+<li>要特别关注数据，让运营和产品优化形成闭环。所有产品特征和策略的成功与否，要严格根据数据的反馈来判断。</li>
+<li>优化的是确定的商业目标，而非使用便捷性。</li>
+</ul>
+</li>
+<li><p>商业化体系六大产品问题</p>
+<ul>
+<li>P1.供需接口</li>
+<li>P2.竞价机制</li>
+<li>P3.数据运营</li>
+<li>P4.标签体系</li>
+<li>P5.程序化交易</li>
+<li>P6.原生广告</li>
+</ul>
+</li>
+<li><p>需求方层级组织</p>
+<ul>
+<li>广告主–&gt;广告计划–&gt;广告组–&gt;广告创意.</li>
+<li>广告活动（Campaign）概念上对应于广告主的一次投放合同，其中包括了预算、时间范围等基本信息。</li>
+<li>广告组（Ad Group）对于于一个具体的广告投放策略，主要是设定受众定向条件和出价。</li>
+<li>广告创意（Creative）则是最终展示出来的素材，可能在同一个组策略下有不同尺寸的创意存在。</li>
+</ul>
+</li>
+</ul>
+<h2 id="商业化产品系统框架：六大系统技术"><a href="#商业化产品系统框架：六大系统技术" class="headerlink" title="商业化产品系统框架：六大系统技术"></a>商业化产品系统框架：六大系统技术</h2><ul>
+<li><p>个性化系统一般框架: 主要组成模块</p>
+<ul>
+<li>【受众定向平台】分布式计算平台：灵活的海量数据挖掘平台，机器学习算法的分布式架构</li>
+<li>【高并发投送系统】在线投放引擎：十毫秒级别的实时决策，百亿次/天的投放系统</li>
+<li>【流式计算平台】流计算平台：日志的准实时挖掘和反馈</li>
+<li>【数据高速公路】数据高速公路：内部及外部TB级数据实时收集</li>
+</ul>
+</li>
+<li><p>Web-scale技术问题比较</p>
+<table align="center">
+<tr><td></td><td>搜索</td><td>搜索广告</td><td>显示广告</td><td>个性化推荐</td></tr>
+<tr><td>主要准则</td><td>相关性</td><td colspan=2>利润</td><td>用户兴趣</td></tr>
+<tr><td>其他目标</td><td>垂直领域决定</td><td colspan=2>质量、安全性</td><td>多样性、新鲜度</td></tr>
+<tr><td>索引规模</td><td>十亿级</td><td>百万/千万级</td><td>千万级</td><td>百万级 亿级</td></tr>
+<tr><td>个性化</td><td colspan=2>较少的个性化需求</td><td colspan=2>亿级规模用户上的个性化</td></tr>
+<tr><td>检索信号</td><td colspan=2>较明确</td><td colspan=2>较分散</td></tr>
+<tr><td>DownStream优化</td><td colspan=3>不适用</td><td>适用</td></tr>
+</table>
+</li>
+<li><p>广告系统有什么特点？</p>
+<ul>
+<li>高并发、低延迟的要求 –  同时关注QPS和Latency</li>
+<li>数据处理的规模很大 – （用户、环境、信息）三元组上的数据建模</li>
+<li>数据处理的速度优于精度</li>
+<li>主流程的一致性要求不高</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>广告系统有什么设计原则？<ul>
+<li>建立弱一致性系统的设计思维方式。 – 例：Near-line page fetcher</li>
+<li>大量数据尽量环形单向流动。– 避免集中读写形成的单点性能瓶颈</li>
+<li>在线时不要发生与关系行数据库的交互 – 增删改查的传统需求实际上不存在</li>
+<li>充分利用开源社区的成熟技术</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>开源软件的优势与顾虑<ul>
+<li>优势 - 1.大量细分使用场景都有开源方案. 2.大型互联网公司的开源产品经过充分测试.</li>
+<li>顾虑 - 1.需要仔细甄别好的和不太好的开源项目. 2.在遇到深层次bug时无能为力.</li>
+<li>核心业务逻辑不应该是选择开源.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>商业化产品六大系统技术<ul>
+<li>S1.流量接入：代码和SDK</li>
+<li>S2.投放引擎：高并发服务</li>
+<li>S3.侯选查询：实施索引</li>
+<li>S4.特征存储：No-sql数据库</li>
+<li>S5.离线学习：分布式计算</li>
+<li>S6.在线学习：流式计算</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" rel="tag"># 计算广告</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/10/computing-advertising-1-curriculum-structure/" rel="prev" title="计算广告|1.课程体系">
+      <i class="fa fa-chevron-left"></i> 计算广告|1.课程体系
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/12/computing-advertising-3-related-knowledge/" rel="next" title="计算广告|3.相关方法">
+      计算广告|3.相关方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认识商业化体系"><span class="nav-number">1.</span> <span class="nav-text">认识商业化体系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算广告逻辑与挑战：六大算法问题"><span class="nav-number">1.1.</span> <span class="nav-text">计算广告逻辑与挑战：六大算法问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#商业化体系大闭环"><span class="nav-number">1.1.1.</span> <span class="nav-text">商业化体系大闭环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算广告的核心挑战"><span class="nav-number">1.1.2.</span> <span class="nav-text">计算广告的核心挑战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告业务的转化漏斗和目标"><span class="nav-number">1.1.3.</span> <span class="nav-text">广告业务的转化漏斗和目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线广告主要结算方式详解"><span class="nav-number">1.1.4.</span> <span class="nav-text">在线广告主要结算方式详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPA-CPS的问题与合理场景"><span class="nav-number">1.1.5.</span> <span class="nav-text">CPA&#x2F;CPS的问题与合理场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#商业化产品体系概览：六大产品问题"><span class="nav-number">1.2.</span> <span class="nav-text">商业化产品体系概览：六大产品问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#商业化产品系统框架：六大系统技术"><span class="nav-number">1.3.</span> <span class="nav-text">商业化产品系统框架：六大系统技术</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ZhangHao"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">ZhangHao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/amberyic" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhanghaokdd@163.com" title="E-Mail → mailto:zhanghaokdd@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/chanming1989" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;chanming1989" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/amberyic" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-gratipay"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/amberyic" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/amberyic" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备20008129号 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=20008129" rel="noopener" target="_blank">陕公网安备20008129号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangHao</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+<div class="powered-by">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站访问量<span id="busuanzi_value_site_pv"></span>
+    </span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>
