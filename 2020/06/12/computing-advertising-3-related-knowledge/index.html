@@ -61,14 +61,14 @@
   gtag('config', 'UA-166608124-1');
 </script>
 
-  <meta name="description" content="3.相关知识最优化Optimization什么是最优化问题 无约束最优化问题：  $$ minf(x) $$ 带约束最优化问题：  $$ minf(x) \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)&#x3D;0 $$  无约束优化问题一般思路 目标函数不可&#x2F;不易求导 下降单纯形法（Ameoba变形虫法）   目标函数易求导 梯度下降法 批处理模式：训练集上的梯度">
+  <meta name="description" content="3.相关知识最优化Optimization什么是最优化问题 无约束最优化问题：$$ minf(x) $$ 带约束最优化问题：$$ min f(x)  \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)&#x3D;0 $$  无约束优化问题一般思路 目标函数不可&#x2F;不易求导 下降单纯形法（Ameoba变形虫法）   目标函数易求导 梯度下降法 批处理模式：训练集上的梯度分解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算广告|3.相关方法">
 <meta property="og:url" content="https://imzhanghao.com/2020/06/12/computing-advertising-3-related-knowledge/index.html">
 <meta property="og:site_name" content="张浩写字的地方">
-<meta property="og:description" content="3.相关知识最优化Optimization什么是最优化问题 无约束最优化问题：  $$ minf(x) $$ 带约束最优化问题：  $$ minf(x) \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)&#x3D;0 $$  无约束优化问题一般思路 目标函数不可&#x2F;不易求导 下降单纯形法（Ameoba变形虫法）   目标函数易求导 梯度下降法 批处理模式：训练集上的梯度">
+<meta property="og:description" content="3.相关知识最优化Optimization什么是最优化问题 无约束最优化问题：$$ minf(x) $$ 带约束最优化问题：$$ min f(x)  \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)&#x3D;0 $$  无约束优化问题一般思路 目标函数不可&#x2F;不易求导 下降单纯形法（Ameoba变形虫法）   目标函数易求导 梯度下降法 批处理模式：训练集上的梯度分解">
 <meta property="article:published_time" content="2020-06-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-06-18T08:57:58.433Z">
+<meta property="article:modified_time" content="2020-06-18T09:13:32.565Z">
 <meta property="article:author" content="ZhangHao">
 <meta property="article:tag" content="计算广告">
 <meta name="twitter:card" content="summary">
@@ -264,7 +264,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 16:57:58" itemprop="dateModified" datetime="2020-06-18T16:57:58+08:00">2020-06-18</time>
+                <time title="Modified: 2020-06-18 17:13:32" itemprop="dateModified" datetime="2020-06-18T17:13:32+08:00">2020-06-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,8 +290,8 @@
 
       
         <h1 id="3-相关知识"><a href="#3-相关知识" class="headerlink" title="3.相关知识"></a>3.相关知识</h1><h2 id="最优化Optimization"><a href="#最优化Optimization" class="headerlink" title="最优化Optimization"></a>最优化Optimization</h2><h3 id="什么是最优化问题"><a href="#什么是最优化问题" class="headerlink" title="什么是最优化问题"></a>什么是最优化问题</h3><ul>
-<li>无约束最优化问题：<br>  $$ minf(x) $$</li>
-<li>带约束最优化问题：<br>  $$ minf(x) \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0 $$</li>
+<li>无约束最优化问题：<br>$$ minf(x) $$</li>
+<li>带约束最优化问题：<br>$$ min f(x)  \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0 $$</li>
 </ul>
 <h3 id="无约束优化问题一般思路"><a href="#无约束优化问题一般思路" class="headerlink" title="无约束优化问题一般思路"></a>无约束优化问题一般思路</h3><ul>
 <li>目标函数不可/不易求导<ul>
@@ -395,15 +395,14 @@
 <h3 id="指数族贝叶斯学习"><a href="#指数族贝叶斯学习" class="headerlink" title="指数族贝叶斯学习"></a>指数族贝叶斯学习</h3><ul>
 <li>共轭先验：使先验分布与后验分布形式一致的先验分布</li>
 <li>指数族分布共轭先验<ul>
-<li>一般形式：<br>  $$p(\Theta|\eta)=exp\left { \chi ^{T} \Theta-vg(\Theta)-b(\chi ,v))) \right }$$</li>
+<li>一般形式：<br>$$p(\Theta|\eta)=exp\left { \chi ^{T} \Theta-vg(\Theta)-b(\chi ,v))) \right }$$</li>
 <li>其中$\eta=\left { \chi, v \right }$为超参数（hyperperameter）</li>
 </ul>
 </li>
-<li>指数族后验部分的超参数：<pre><code>$$\tilde{\chi} = \chi + \sum_{N}^{i=1}u(x_i)$$
-$$\tilde{v} = v + N$$</code></pre></li>
+<li>指数族后验部分的超参数：<br>$$\tilde{\chi} = \chi + \sum_{N}^{i=1}u(x_i)$$<br>$$\tilde{v} = v + N$$</li>
 </ul>
 <h3 id="指数族分布（二）"><a href="#指数族分布（二）" class="headerlink" title="指数族分布（二）"></a>指数族分布（二）</h3><ul>
-<li>最大似然估计：$-\triangledown ln \textbf{g}(\theta_{ML} )=\frac{1}{N}\sum_{i=1}^{N}u(x_i)$ </li>
+<li>最大似然估计：$-\triangledown ln \textbf{g}(\theta_{ML} )=\frac{1}{N}\sum_{i=1}^{N}u(x_i)$</li>
 <li>混合模型：$P(x|\omega , \Theta)=\sum_{k=1}^{K}w_kh(x)g(\Theta_k)exp\left { \Theta_{k}^{T}u(x) \right }$<ul>
 <li>EM算法</li>
 </ul>
@@ -420,7 +419,7 @@ $$\tilde{v} = v + N$$</code></pre></li>
 </li>
 <li>深度学习(表示学习)<ul>
 <li>img of 8 –&gt; 自动提取特征 –&gt; 将特征映射到结果 –&gt; num of 8</li>
-<li>img of 8 –&gt; 原始特征 –&gt; 额外的层和抽象特征 –&gt; 将特征映射到结果 –&gt; num of 8 </li>
+<li>img of 8 –&gt; 原始特征 –&gt; 额外的层和抽象特征 –&gt; 将特征映射到结果 –&gt; num of 8</li>
 </ul>
 </li>
 </ul>
@@ -762,6 +761,54 @@ $$\tilde{v} = v + N$$</code></pre></li>
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
