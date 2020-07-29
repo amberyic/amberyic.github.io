@@ -3018,8 +3018,8 @@
   <entry>
     <title>6.多方数据变现 -- 程序化交易</title>
     <url>/2020/06/22/computing-advertising-6-programmatic-direct-buying/</url>
-    <content><![CDATA[<p>#6.多方数据变现 – 程序化交易</p>
-<h2 id="一、与证券类似的交易：程序化交易若干模式"><a href="#一、与证券类似的交易：程序化交易若干模式" class="headerlink" title="一、与证券类似的交易：程序化交易若干模式"></a>一、与证券类似的交易：程序化交易若干模式</h2><h3 id="P5-IAB总结的程序化相关交易方式"><a href="#P5-IAB总结的程序化相关交易方式" class="headerlink" title="P5.IAB总结的程序化相关交易方式"></a>P5.IAB总结的程序化相关交易方式</h3><h3 id="P5-实时竞价过程示意"><a href="#P5-实时竞价过程示意" class="headerlink" title="P5.实时竞价过程示意"></a>P5.实时竞价过程示意</h3><h3 id="P5-实时竞价特点"><a href="#P5-实时竞价特点" class="headerlink" title="P5.实时竞价特点"></a>P5.实时竞价特点</h3><ul>
+    <content><![CDATA[<p>#计算广告|6.多方数据变现 – 程序化交易</p>
+<h2 id="与证券类似的交易：程序化交易若干模式"><a href="#与证券类似的交易：程序化交易若干模式" class="headerlink" title="与证券类似的交易：程序化交易若干模式"></a>与证券类似的交易：程序化交易若干模式</h2><h3 id="P5-IAB总结的程序化相关交易方式"><a href="#P5-IAB总结的程序化相关交易方式" class="headerlink" title="P5.IAB总结的程序化相关交易方式"></a>P5.IAB总结的程序化相关交易方式</h3><h3 id="P5-实时竞价过程示意"><a href="#P5-实时竞价过程示意" class="headerlink" title="P5.实时竞价过程示意"></a>P5.实时竞价过程示意</h3><h3 id="P5-实时竞价特点"><a href="#P5-实时竞价特点" class="headerlink" title="P5.实时竞价特点"></a>P5.实时竞价特点</h3><ul>
 <li><p>每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这时的服务器与带宽成本大大增加。</p>
 </li>
 <li><p>在询价过程中，Ad Exchange要等待一个约定的时间片（一般情况为100ms），这使得用户看到的广告延迟增加，对CTR有负面影响。</p>
@@ -3050,7 +3050,7 @@
 </li>
 <li><p>产品形式和前述的RTB/PMP完全不同，需要独立的广告投放系统，或者是自建一个专门的ADX，用DSP接入。</p>
 <h3 id="思考：对媒体和广告主而言，什么情况下需要程序化交易？"><a href="#思考：对媒体和广告主而言，什么情况下需要程序化交易？" class="headerlink" title="思考：对媒体和广告主而言，什么情况下需要程序化交易？"></a>思考：对媒体和广告主而言，什么情况下需要程序化交易？</h3><a id="more"></a>
-<h2 id="二、“证劵交易所”：广告交易平台"><a href="#二、“证劵交易所”：广告交易平台" class="headerlink" title="二、“证劵交易所”：广告交易平台"></a>二、“证劵交易所”：广告交易平台</h2><h3 id="广告交易平台（ADX）"><a href="#广告交易平台（ADX）" class="headerlink" title="广告交易平台（ADX）"></a>广告交易平台（ADX）</h3></li>
+<h2 id="“证劵交易所”：广告交易平台"><a href="#“证劵交易所”：广告交易平台" class="headerlink" title="“证劵交易所”：广告交易平台"></a>“证劵交易所”：广告交易平台</h2><h3 id="广告交易平台（ADX）"><a href="#广告交易平台（ADX）" class="headerlink" title="广告交易平台（ADX）"></a>广告交易平台（ADX）</h3></li>
 <li><p>关键特征</p>
 <ul>
 <li>用实时竞价（RTB）方式连接广告和（上下文，用户）</li>
@@ -3106,7 +3106,7 @@
 </ul>
 </li>
 <li><p>在线分配框架    </p>
-<h2 id="三、“券商下单系统”：需求方平台"><a href="#三、“券商下单系统”：需求方平台" class="headerlink" title="三、“券商下单系统”：需求方平台"></a>三、“券商下单系统”：需求方平台</h2><h3 id="定制化用户标签"><a href="#定制化用户标签" class="headerlink" title="定制化用户标签"></a>定制化用户标签</h3></li>
+<h2 id="“券商下单系统”：需求方平台"><a href="#“券商下单系统”：需求方平台" class="headerlink" title="“券商下单系统”：需求方平台"></a>“券商下单系统”：需求方平台</h2><h3 id="定制化用户标签"><a href="#定制化用户标签" class="headerlink" title="定制化用户标签"></a>定制化用户标签</h3></li>
 <li><p>定制化标签</p>
 <ul>
 <li>根据广告主需求加工的标签体系</li>
@@ -3221,7 +3221,7 @@
 <li>在广告主端完全采用CPC结算方式</li>
 <li>不会将cross-site数据用于推荐</li>
 </ul>
-<h2 id="四、多渠道库存管理：供给方平台"><a href="#四、多渠道库存管理：供给方平台" class="headerlink" title="四、多渠道库存管理：供给方平台"></a>四、多渠道库存管理：供给方平台</h2><p>###网络优化（Network Optimization）与SSP</p>
+<h2 id="多渠道库存管理：供给方平台"><a href="#多渠道库存管理：供给方平台" class="headerlink" title="多渠道库存管理：供给方平台"></a>多渠道库存管理：供给方平台</h2><p>###网络优化（Network Optimization）与SSP</p>
 </li>
 <li><p>网络优化问题</p>
 <ul>
@@ -3293,7 +3293,7 @@
 <li>收取30%～40%的费用，成为媒体直接对接其他需求方的动力</li>
 <li>Network Optimization功能不太重要</li>
 </ul>
-<h2 id="五、数据资产金融化：数据管理产品"><a href="#五、数据资产金融化：数据管理产品" class="headerlink" title="五、数据资产金融化：数据管理产品"></a>五、数据资产金融化：数据管理产品</h2><h3 id="三方数据的概念"><a href="#三方数据的概念" class="headerlink" title="三方数据的概念"></a>三方数据的概念</h3></li>
+<h2 id="数据资产金融化：数据管理产品"><a href="#数据资产金融化：数据管理产品" class="headerlink" title="数据资产金融化：数据管理产品"></a>数据资产金融化：数据管理产品</h2><h3 id="三方数据的概念"><a href="#三方数据的概念" class="headerlink" title="三方数据的概念"></a>三方数据的概念</h3></li>
 <li><p>第一方数据：广告主的数据</p>
 </li>
 <li><p>第二方数据：广告平台数据</p>
