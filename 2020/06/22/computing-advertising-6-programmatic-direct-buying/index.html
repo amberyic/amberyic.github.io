@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+<meta name="baidu-site-verification" content="sQB1vh2KeG" />
+<meta name="shenma-site-verification" content="142706695a47156bb1eafc7c9cc28602_1590550933">
+<meta name="360-site-verification" content="f27b0d2d893155c9abee1f0021113a52" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Noto Sans SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://imzhanghao.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"default"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-166608124-1');
+</script>
+
+  <meta name="description" content="#6.多方数据变现 – 程序化交易 一、与证券类似的交易：程序化交易若干模式P5.IAB总结的程序化相关交易方式P5.实时竞价过程示意P5.实时竞价特点 每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这时的服务器与带宽成本大大增加。  在询价过程中，Ad Exchange要等待一个约定的时间片（一般情况为100ms），这使得用户看到的广告延迟增加，对CTR有负面影响。  原理上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.多方数据变现 -- 程序化交易">
+<meta property="og:url" content="https://imzhanghao.com/2020/06/22/computing-advertising-6-programmatic-direct-buying/index.html">
+<meta property="og:site_name" content="张浩写字的地方">
+<meta property="og:description" content="#6.多方数据变现 – 程序化交易 一、与证券类似的交易：程序化交易若干模式P5.IAB总结的程序化相关交易方式P5.实时竞价过程示意P5.实时竞价特点 每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这时的服务器与带宽成本大大增加。  在询价过程中，Ad Exchange要等待一个约定的时间片（一般情况为100ms），这使得用户看到的广告延迟增加，对CTR有负面影响。  原理上">
+<meta property="article:published_time" content="2020-06-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-29T13:27:49.402Z">
+<meta property="article:author" content="ZhangHao">
+<meta property="article:tag" content="程序化交易">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://imzhanghao.com/2020/06/22/computing-advertising-6-programmatic-direct-buying/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>6.多方数据变现 -- 程序化交易 | 张浩写字的地方</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-166608124-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">张浩写字的地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">算法工程师的世界</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/22/computing-advertising-6-programmatic-direct-buying/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="ZhangHao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张浩写字的地方">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          6.多方数据变现 -- 程序化交易
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-22 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-22T00:00:00+08:00">2020-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-29 21:27:49" itemprop="dateModified" datetime="2020-07-29T21:27:49+08:00">2020-07-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
+                    <span itemprop="name">计算广告</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>#6.多方数据变现 – 程序化交易</p>
+<h2 id="一、与证券类似的交易：程序化交易若干模式"><a href="#一、与证券类似的交易：程序化交易若干模式" class="headerlink" title="一、与证券类似的交易：程序化交易若干模式"></a>一、与证券类似的交易：程序化交易若干模式</h2><h3 id="P5-IAB总结的程序化相关交易方式"><a href="#P5-IAB总结的程序化相关交易方式" class="headerlink" title="P5.IAB总结的程序化相关交易方式"></a>P5.IAB总结的程序化相关交易方式</h3><h3 id="P5-实时竞价过程示意"><a href="#P5-实时竞价过程示意" class="headerlink" title="P5.实时竞价过程示意"></a>P5.实时竞价过程示意</h3><h3 id="P5-实时竞价特点"><a href="#P5-实时竞价特点" class="headerlink" title="P5.实时竞价特点"></a>P5.实时竞价特点</h3><ul>
+<li><p>每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这时的服务器与带宽成本大大增加。</p>
+</li>
+<li><p>在询价过程中，Ad Exchange要等待一个约定的时间片（一般情况为100ms），这使得用户看到的广告延迟增加，对CTR有负面影响。</p>
+</li>
+<li><p>原理上DSP可以以极低的出价参与竞价，这样虽不能获得流量，却可以低成本得到在媒体网站上的行为数据，这里存在着潜在的信息泄漏风险。</p>
+<ul>
+<li>Programmatic </li>
+<li>RealTime</li>
+</ul>
+<h3 id="P5-优选（Preferred-Deal）"><a href="#P5-优选（Preferred-Deal）" class="headerlink" title="P5.优选（Preferred Deal）"></a>P5.优选（Preferred Deal）</h3><h3 id="P5-私有市场（PMP）"><a href="#P5-私有市场（PMP）" class="headerlink" title="P5.私有市场（PMP）"></a>P5.私有市场（PMP）</h3></li>
+<li><p>媒体位了保证广告主的质量，希望将竞拍限制在一些被邀请需求方的小范围内。这种程序化交易，叫做私有市场。（Private Marketplace，PMP）</p>
+</li>
+<li><p>坚固了优选和实时竞价的好处</p>
+<ul>
+<li>广告主的质量可以由少量被邀请需求方很好地控制，这有利于确保媒体的价值不受伤害。</li>
+<li>在需求方之间保留了竞价关系，有利于提高媒体的变现能力</li>
+</ul>
+</li>
+<li><p>交易接口的形式与一般RTB一致</p>
+<h3 id="P5-程序化直投（PDB）"><a href="#P5-程序化直投（PDB）" class="headerlink" title="P5.程序化直投（PDB）"></a>P5.程序化直投（PDB）</h3></li>
+<li><p>DSP可根据广告主需求，进行媒介采买，并且将采买的广告资源二次分配给广告主的不同子品牌或产品，这叫程序化直投（Programmatic Direct Buy，PDB）</p>
+</li>
+<li><p>本质上是一种GD或Network的投放方式</p>
+<ul>
+<li>如果子品牌有保量需求，是GD市场</li>
+<li>如果子品牌没有保量需求，可以用竞价广告网络的方式运营</li>
+</ul>
+</li>
+<li><p>产品形式和前述的RTB/PMP完全不同，需要独立的广告投放系统，或者是自建一个专门的ADX，用DSP接入。</p>
+<h3 id="思考：对媒体和广告主而言，什么情况下需要程序化交易？"><a href="#思考：对媒体和广告主而言，什么情况下需要程序化交易？" class="headerlink" title="思考：对媒体和广告主而言，什么情况下需要程序化交易？"></a>思考：对媒体和广告主而言，什么情况下需要程序化交易？</h3><a id="more"></a>
+<h2 id="二、“证劵交易所”：广告交易平台"><a href="#二、“证劵交易所”：广告交易平台" class="headerlink" title="二、“证劵交易所”：广告交易平台"></a>二、“证劵交易所”：广告交易平台</h2><h3 id="广告交易平台（ADX）"><a href="#广告交易平台（ADX）" class="headerlink" title="广告交易平台（ADX）"></a>广告交易平台（ADX）</h3></li>
+<li><p>关键特征</p>
+<ul>
+<li>用实时竞价（RTB）方式连接广告和（上下文，用户）</li>
+<li>按照展示上的竞价收取广告主费用</li>
+</ul>
+</li>
+<li><p>类比</p>
+<ul>
+<li>实时竞价 &lt;==&gt; 股票实时交易</li>
+<li>广告交易市场 &lt;==&gt; 证券交易所</li>
+<li>需求方平台 &lt;==&gt; 券商</li>
+</ul>
+<h3 id="广告交易平台特点"><a href="#广告交易平台特点" class="headerlink" title="广告交易平台特点"></a>广告交易平台特点</h3></li>
+<li><p>优化目标：取出价最高的报价展示</p>
+</li>
+<li><p>关键特点</p>
+<ul>
+<li>竞价方式不向广告主做量的约定，而是根据变现能力，即eCPM，来决定每次展示分配给哪个广告主。</li>
+<li>按人群售卖，淡化媒体和广告位的概念</li>
+<li>无需再满足广告主品牌独立的要求</li>
+<li>采用分成结算，运营方的现金流状况大为改善</li>
+</ul>
+<h3 id="ADX系统架构"><a href="#ADX系统架构" class="headerlink" title="ADX系统架构"></a>ADX系统架构</h3><h3 id="ADX主要技术点"><a href="#ADX主要技术点" class="headerlink" title="ADX主要技术点"></a>ADX主要技术点</h3></li>
+<li><p>由于实时竞价的功能需求，广告交易市场解决供给方和需求方用户身份对应的问题，在web的广告环境下，这需要用到cookie-mapping的技术。</p>
+</li>
+<li><p>实践中当考虑到带宽和服务成本带来的约束时，希望用更少的询价请求完成尽可能高效的变现，在这种问题的情况下，公式的优化问题会有所变化，这一问题成为询价优化。</p>
+<h3 id="两域名Cookie-Mapping（例：媒体与DMP）"><a href="#两域名Cookie-Mapping（例：媒体与DMP）" class="headerlink" title="两域名Cookie Mapping（例：媒体与DMP）"></a>两域名Cookie Mapping（例：媒体与DMP）</h3></li>
+<li><p>1.用户到达媒体页面</p>
+</li>
+<li><p>2.向媒体的服务器请求cookie mapping js代码</p>
+</li>
+<li><p>3.媒体的cookie mapping服务返回该段JS代码</p>
+</li>
+<li><p>4.JS代码判断需要mapping的话（最近已经做过则可以不做），向DMP发起cookie mapping请求，并传送媒体的标识（mid）及媒体方的cookie（mck）；</p>
+</li>
+<li><p>DMP返回一个1*1的beacon，并记录下媒体方cookie（mck）与己方cookie(dck)的对应关系。</p>
+<h3 id="三域名Cookie-Mapping（例：ADX与DSP）"><a href="#三域名Cookie-Mapping（例：ADX与DSP）" class="headerlink" title="三域名Cookie Mapping（例：ADX与DSP）"></a>三域名Cookie Mapping（例：ADX与DSP）</h3></li>
+<li><p>1.用户访问广告主页面</p>
+</li>
+<li><p>2.选择性家在一个DSP域名下的iframe</p>
+</li>
+<li><p>3.DSP判断需要mapping的话，返回包括多个beacon的动态html，此处多个beacon的目的是为了同时与多个ADX交换cookie</p>
+</li>
+<li><p>4.通过其中的某个beacon，向对应的ADX发送cookie-mapping请求，并带有ADX标识</p>
+</li>
+<li><p>5.ADX通过302重定向向DSP返回ADX标识（xid）以及其域名下的cookie（xck）</p>
+</li>
+<li><p>6.DSP返回beacon，并记录下ADX cookie（xid）与己方cookie（dck）对应关系</p>
+<h3 id="询价优化（Call-Out-Optimization）"><a href="#询价优化（Call-Out-Optimization）" class="headerlink" title="询价优化（Call Out Optimization）"></a>询价优化（Call Out Optimization）</h3></li>
+<li><p>问题</p>
+<ul>
+<li>在带宽和服务成本的约束下，获得更高的eCPM</li>
+</ul>
+</li>
+<li><p>在线分配框架    </p>
+<h2 id="三、“券商下单系统”：需求方平台"><a href="#三、“券商下单系统”：需求方平台" class="headerlink" title="三、“券商下单系统”：需求方平台"></a>三、“券商下单系统”：需求方平台</h2><h3 id="定制化用户标签"><a href="#定制化用户标签" class="headerlink" title="定制化用户标签"></a>定制化用户标签</h3></li>
+<li><p>定制化标签</p>
+<ul>
+<li>根据广告主需求加工的标签体系</li>
+<li>往往要排到第一方数据</li>
+</ul>
+</li>
+<li><p>定制化标签经典方式：</p>
+<ul>
+<li>网站重定向 -&gt; 个性化重定向</li>
+<li>搜索重定向</li>
+<li>新客推荐（Look-alike）</li>
+</ul>
+<h3 id="重定向（Retargeting）原理"><a href="#重定向（Retargeting）原理" class="headerlink" title="重定向（Retargeting）原理"></a>重定向（Retargeting）原理</h3><h3 id="重定向分类"><a href="#重定向分类" class="headerlink" title="重定向分类"></a>重定向分类</h3></li>
+<li><p>网站重定向（Site retargeting）</p>
+<ul>
+<li>根据用户在广告主网站上的行为进行重定向</li>
+</ul>
+</li>
+<li><p>搜索重定向（Search retargeting）</p>
+<ul>
+<li>根据用户与广告主相关的搜索行为进行重定向</li>
+</ul>
+</li>
+<li><p>个性化重定向（Personalizied retargeting）</p>
+<ul>
+<li>根据用户在广告主网站上关注的具体产品和购买阶段，推送商品粒度的广告，可以视为一个站外推荐引擎</li>
+</ul>
+<h3 id="新客推荐（Look-alike）"><a href="#新客推荐（Look-alike）" class="headerlink" title="新客推荐（Look-alike）"></a>新客推荐（Look-alike）</h3></li>
+<li><p>问题：</p>
+<ul>
+<li>对于中小电商，仅对老用户重定向营销远远不够</li>
+<li>对于某些类型的广告商，大多数用户无法通过重定向渠道捕捉，例如银行</li>
+</ul>
+</li>
+<li><p>新客推荐：</p>
+<ul>
+<li>由广告商提供一部分种子用户，DSP通过网络行为的相似性为其找到潜在用户</li>
+<li>是一种广告商自定义标签，可视为拓展重定向</li>
+<li>在同样reach水平下，效果应好与通用标签</li>
+</ul>
+<h3 id="DSP产品策略"><a href="#DSP产品策略" class="headerlink" title="DSP产品策略"></a>DSP产品策略</h3></li>
+<li><p>DSP展示决策过程：</p>
+</li>
+<li><p>关键产品策略：</p>
+<ul>
+<li>点击价值预估、出价策略</li>
+</ul>
+<h3 id="invitemedia"><a href="#invitemedia" class="headerlink" title="invitemedia"></a>invitemedia</h3></li>
+<li><p>核心业务：</p>
+<ul>
+<li>传统业务是提供比较透明的Adx采买功能，并收取固定比例的佣金。</li>
+<li>正在提供越来越深入的采买ROI优化服务</li>
+</ul>
+</li>
+<li><p>其他点评：</p>
+<ul>
+<li>与DFA，Adx已整合，客减少ck mappiing带来的损失</li>
+<li>改称doubleclick bid manager，并提供更多的优化功能</li>
+</ul>
+<h3 id="DSP产品特点"><a href="#DSP产品特点" class="headerlink" title="DSP产品特点"></a>DSP产品特点</h3></li>
+<li><p>优化目标</p>
+</li>
+<li><p>关键特点：</p>
+<ul>
+<li>需要支持定制化的用户划分能力</li>
+<li>由于DSP是完全面向广告主的产品，需要在量的约束下投放，着产生了对于出价策略的需求。</li>
+<li>在按CPS等效果结算的DSP中，需要同时估计点击率点击价值。并且由于出价的要求，估计要尽可能准确。</li>
+</ul>
+<h3 id="DSP系统架构"><a href="#DSP系统架构" class="headerlink" title="DSP系统架构"></a>DSP系统架构</h3><h3 id="Look-alike问题建模"><a href="#Look-alike问题建模" class="headerlink" title="Look-alike问题建模"></a>Look-alike问题建模</h3></li>
+<li><p>问题：p(y=1|x(a,u))</p>
+<ul>
+<li>y不再是点击行为，而是表示用户能否成为广告主用户的二元变量</li>
+<li>模型评估的是用户属性，因此与上下文c无关</li>
+</ul>
+</li>
+<li><p>训练集构建：</p>
+<ul>
+<li>方法一：根据广告主提供的种子用户集，凡是出现在该种子用户集中的u，其对应的y标为1，否则标为0.</li>
+<li>方法二：根据广告投放的记录，将惦记过该广告主广告一定次数（一般设为1）以上的用户，其对应的y标为1，否则标为0.</li>
+</ul>
+<h3 id="点击价值估计"><a href="#点击价值估计" class="headerlink" title="点击价值估计"></a>点击价值估计</h3></li>
+<li><p>点击价值分解：</p>
+</li>
+<li><p>到达率：</p>
+<ul>
+<li>主要与媒体匹配程度、广告主页面加载速度相关</li>
+</ul>
+</li>
+<li><p>转化率：</p>
+<ul>
+<li>行为稀疏、定义与广告主类型密切相关</li>
+</ul>
+<h3 id="从电商角度看推荐"><a href="#从电商角度看推荐" class="headerlink" title="从电商角度看推荐"></a>从电商角度看推荐</h3></li>
+<li><p>站内推荐、站外推荐、新客推荐</p>
+</li>
+</ul>
+<h3 id="DSP出价策略"><a href="#DSP出价策略" class="headerlink" title="DSP出价策略"></a>DSP出价策略</h3><ul>
+<li>估计没有预算的限制：只要按照eCPM水平出价，就可以保证在第二高价的情况下每次展示都有利润。</li>
+<li>在有预算约束的情况下，我们需要估计eCPM以及当前展示的市场价格，并在尽可能将出价集中在那些利润率较高的展示上。</li>
+</ul>
+<h3 id="Criteo"><a href="#Criteo" class="headerlink" title="Criteo"></a>Criteo</h3><ul>
+<li><p>核心功能：</p>
+<ul>
+<li>基于站外推荐的个性化重定向系统</li>
+<li>动态创意技术</li>
+<li>与广告主商品库的准实时Feed接口</li>
+</ul>
+</li>
+<li><p>其他点评：</p>
+<ul>
+<li>兼容RTB和优选方式购买流量</li>
+<li>在广告主端完全采用CPC结算方式</li>
+<li>不会将cross-site数据用于推荐</li>
+</ul>
+<h2 id="四、多渠道库存管理：供给方平台"><a href="#四、多渠道库存管理：供给方平台" class="headerlink" title="四、多渠道库存管理：供给方平台"></a>四、多渠道库存管理：供给方平台</h2><p>###网络优化（Network Optimization）与SSP</p>
+</li>
+<li><p>网络优化问题</p>
+<ul>
+<li>接入多个AdNetWork，动态决定某次展示分配给谁</li>
+<li>相当于DSP不主动出击的交易平台</li>
+</ul>
+</li>
+<li><p>供给方平台（Supply Side Platform，SSP）</p>
+<ul>
+<li>综合利用各种需求方预算，在不伤害媒体品牌属性的前台下优化收入</li>
+<li>也会提供通过RTB对接DSP的接口</li>
+<li>与Ad Exchange的边界越来越模糊</li>
+</ul>
+<h3 id="移动广告Mediation"><a href="#移动广告Mediation" class="headerlink" title="移动广告Mediation"></a>移动广告Mediation</h3></li>
+<li><p>网络优化问题</p>
+<ul>
+<li>接入多个Ad Network，动态决定某次展示分配给谁</li>
+<li>相当于DSP不主动出价的交易平台</li>
+</ul>
+</li>
+<li><p>供给方平台（Supply Side Platform，SSP）</p>
+<ul>
+<li>综合利用各种需求方预算，在不伤害媒体品牌属性的前提下优化收入</li>
+<li>也会提供功过RTB对接DSP的接口</li>
+<li>与Ad Exchange的边界越来越模糊</li>
+</ul>
+<h3 id="SSP产品策略"><a href="#SSP产品策略" class="headerlink" title="SSP产品策略"></a>SSP产品策略</h3></li>
+<li><p>SSP展示决策过程–动态分配（Dynamic Allocation）</p>
+<h3 id="P5-Header-Bidding"><a href="#P5-Header-Bidding" class="headerlink" title="P5.Header Bidding"></a>P5.Header Bidding</h3></li>
+<li><p>什么是Header Bidding</p>
+<ul>
+<li>媒体绕开Google、Mopub等ADX，通过客户端聚合JS代码或SDK的方式，直接向其他ADN或者ADX发起询价。</li>
+</ul>
+</li>
+<li><p>商业本质</p>
+<ul>
+<li>打破Google、Mopub对于市场的垄断</li>
+<li>媒体欢迎的原因主要是更低的费率、更公平的竞价</li>
+</ul>
+</li>
+<li><p>产品问题</p>
+<ul>
+<li>聚合多家JS或者SDK带来巨大的延时</li>
+<li>不如Server端RTB方式灵活、但避免了cookie mapping的损失。</li>
+</ul>
+<h3 id="P5-Header-Bidding决策过程"><a href="#P5-Header-Bidding决策过程" class="headerlink" title="P5.Header Bidding决策过程"></a>P5.Header Bidding决策过程</h3><h3 id="Admeld"><a href="#Admeld" class="headerlink" title="Admeld"></a>Admeld</h3></li>
+<li><p>核心功能：</p>
+<ul>
+<li>Yield Optimizer，统一优化Premium sales，netwrok和RTB流量</li>
+<li>以优化媒体利益为目标</li>
+</ul>
+</li>
+<li><p>其他点评</p>
+<ul>
+<li>起重要做的部分除RTB，还有多network接入时eCPM的估计和选择。</li>
+<li>会从DMP购买标签数据用于优化广告效果</li>
+<li>主要进行广告位和时间维度上eCPM估计和流量切分</li>
+</ul>
+<h3 id="mopub"><a href="#mopub" class="headerlink" title="mopub"></a>mopub</h3></li>
+<li><p>核心功能</p>
+<ul>
+<li>领先的移动Mediation平台，通过SDK对接媒体，需求方聚合FAN，Admob等多家的SDK</li>
+<li>有自己的Marketplace即RTB市场</li>
+<li>提供媒体上传自己签约的广告合同功能</li>
+</ul>
+</li>
+<li><p>其他点评：</p>
+<ul>
+<li>收取30%～40%的费用，成为媒体直接对接其他需求方的动力</li>
+<li>Network Optimization功能不太重要</li>
+</ul>
+<h2 id="五、数据资产金融化：数据管理产品"><a href="#五、数据资产金融化：数据管理产品" class="headerlink" title="五、数据资产金融化：数据管理产品"></a>五、数据资产金融化：数据管理产品</h2><h3 id="三方数据的概念"><a href="#三方数据的概念" class="headerlink" title="三方数据的概念"></a>三方数据的概念</h3></li>
+<li><p>第一方数据：广告主的数据</p>
+</li>
+<li><p>第二方数据：广告平台数据</p>
+</li>
+<li><p>第三方数据：其他来源数据</p>
+<h3 id="第三方DMP"><a href="#第三方DMP" class="headerlink" title="第三方DMP"></a>第三方DMP</h3></li>
+<li><p>目的</p>
+<ul>
+<li>聚合多种原始行为数据，加工成统一标签后，在公开市场上售卖</li>
+<li>聚合多种加工后标签数据，在公开市场上售卖</li>
+</ul>
+</li>
+<li><p>主要特征</p>
+<ul>
+<li>主要负责第三方数据的收集、加工和流转，不一定直接从事广告交易</li>
+<li>对于广告交易平台、SSP等合作进行数据变现</li>
+</ul>
+<h3 id="第三方DMP商业模式"><a href="#第三方DMP商业模式" class="headerlink" title="第三方DMP商业模式"></a>第三方DMP商业模式</h3></li>
+<li><p>DMP从多个DP那里收集原始数据，按照自己的逻辑加工成用户标签，并向DSP出售标签数据收入。</p>
+</li>
+<li><p>DMP获得的收入按照一定的比例分给DP</p>
+<h3 id="第一方DMP"><a href="#第一方DMP" class="headerlink" title="第一方DMP"></a>第一方DMP</h3></li>
+<li><p>目的：</p>
+<ul>
+<li>为网站提供第一方数据加工和应用能力</li>
+<li>结合公开市场第三方数据，加工跨媒体用户标签，支持网站业务运营和广告投放</li>
+</ul>
+</li>
+<li><p>主要特征：</p>
+<ul>
+<li>第一方用户定制化标签</li>
+<li>统一的对外数据接口</li>
+</ul>
+<h3 id="第一方DMP的商业模式"><a href="#第一方DMP的商业模式" class="headerlink" title="第一方DMP的商业模式"></a>第一方DMP的商业模式</h3></li>
+<li><p>DMP应数据源（Data Provider，DP）的要求，收集第一方数据，并加工成第一方需要的用户标签。</p>
+</li>
+<li><p>DP可以根据这些用户标签进行站内的运营，也可以用来指导DSP进行广告投放。</p>
+</li>
+<li><p>DMP会向DP收取费用，但是绝对不会把数据二次变现。</p>
+<h3 id="Audience-Science"><a href="#Audience-Science" class="headerlink" title="Audience Science"></a>Audience Science</h3></li>
+<li><p>核心业务</p>
+<ul>
+<li>主要提供面向publisher的数据加工服务</li>
+<li>直接运营ad network进行数据变现</li>
+</ul>
+</li>
+<li><p>其他点评</p>
+<ul>
+<li>较早提出受众定向（audience targeting）的概念</li>
+<li>数据标签不像bluekai那样在市场上公开出售</li>
+<li>使用标签创造的营收按照一定比例跟publisher分成</li>
+</ul>
+<h3 id="为什么数据不能共享"><a href="#为什么数据不能共享" class="headerlink" title="为什么数据不能共享"></a>为什么数据不能共享</h3></li>
+<li><p>疑问：数据交换似乎在发生啊？</p>
+<ul>
+<li>那往往是因为有更高层次的交换，即投资关系</li>
+</ul>
+</li>
+<li><p>为什么大公司不能把数据共享出来</p>
+<ul>
+<li>你见过大公司把钱共享出来么？</li>
+<li>短时的贴补性共享时可行的</li>
+</ul>
+</li>
+<li><p>政府数据时可以共享的，这本质上是转移支付</p>
+<h3 id="数据交易该怎么做？"><a href="#数据交易该怎么做？" class="headerlink" title="数据交易该怎么做？"></a>数据交易该怎么做？</h3></li>
+<li><p>数据传输附着在实时竞价过程中，无额外开销</p>
+</li>
+<li><p>需求方可以自由的选择需要的部分人群数据，并且按照实际的广告展示付费</p>
+<h3 id="如何给数据定价"><a href="#如何给数据定价" class="headerlink" title="如何给数据定价"></a>如何给数据定价</h3></li>
+<li><p>市场化的竞价方式是唯一的选择</p>
+</li>
+<li><p>目前数据的价值是被低估的</p>
+<ul>
+<li>上页的交易方式并未限制数据供给次数</li>
+<li>这间接地抬高了流量价格，而低估了数据价格</li>
+</ul>
+</li>
+<li><p>能否采用竞价的交易方式？</p>
+<ul>
+<li>不限量供应的商品，是无法竞价的</li>
+<li>数据的限量供应应该怎么做？</li>
+</ul>
+<h2 id="对抗数据的黑客：隐私保护和数据安全"><a href="#对抗数据的黑客：隐私保护和数据安全" class="headerlink" title="对抗数据的黑客：隐私保护和数据安全"></a>对抗数据的黑客：隐私保护和数据安全</h2><h3 id="数据隐私的初步认识"><a href="#数据隐私的初步认识" class="headerlink" title="数据隐私的初步认识"></a>数据隐私的初步认识</h3></li>
+<li><p>隐私安全基本原则</p>
+<ul>
+<li>A29:欧盟负责隐私保护条例制定的委员会</li>
+<li>A29原则：</li>
+</ul>
+<ul>
+<li>Personal Identifiable Information（PII）不能使用</li>
+<li>用户可以要求系统停止记录和使用自己的行为数据</li>
+<li>不能长期保存和使用用户的行为数据</li>
+</ul>
+</li>
+<li><p>Quasi-identifier 与K-anonymity</p>
+<ul>
+<li>Quasi-identifier：朝阳区，35岁，在360上班</li>
+<li>K-anonymity:北京市，30～40岁，互联网行业</li>
+</ul>
+<h3 id="互联网行为数据隐私问题"><a href="#互联网行为数据隐私问题" class="headerlink" title="互联网行为数据隐私问题"></a>互联网行为数据隐私问题</h3></li>
+<li><p>细数行为数据的挑战</p>
+<ul>
+<li>从一个人的观影购物记录，能否反推他是谁？</li>
+<li>实际案例：Netflix推荐大赛，有人从数据集里面发现了自己的同事是同性恋</li>
+<li>理论研究：Robust De-anonymization of Large Sparse Datasets</li>
+</ul>
+</li>
+<li><p>深度个性化系统也有隐私安全风险</p>
+<ul>
+<li>相关研究课题是差分隐私（Differential Privacy）</li>
+</ul>
+</li>
+<li><p>隐私是大数据头上的达摩克利斯之剑</p>
+<h3 id="差分隐私（Differential-Privacy）"><a href="#差分隐私（Differential-Privacy）" class="headerlink" title="差分隐私（Differential Privacy）"></a>差分隐私（Differential Privacy）</h3></li>
+<li><p>差分隐私的问题</p>
+<ul>
+<li>最大化个性化系统准确率的同时，最小化隐私泄漏风险</li>
+<li>需要对原始数据做一定的随机化处理</li>
+</ul>
+</li>
+<li><p>部分成果已经使用在iOS 10当中</p>
+<h3 id="需求方数据安全问题"><a href="#需求方数据安全问题" class="headerlink" title="需求方数据安全问题"></a>需求方数据安全问题</h3></li>
+<li><p>英孚访客和华尔街访客在广告投放中混用受众</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>ZhangHao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://imzhanghao.com/2020/06/22/computing-advertising-6-programmatic-direct-buying/" title="6.多方数据变现 -- 程序化交易">https://imzhanghao.com/2020/06/22/computing-advertising-6-programmatic-direct-buying/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%8C%96%E4%BA%A4%E6%98%93/" rel="tag"># 程序化交易</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/18/computing-advertising-5-lean-data-monetization/" rel="prev" title="计算广告|5.竞价广告 - 精细数据变现">
+      <i class="fa fa-chevron-left"></i> 计算广告|5.竞价广告 - 精细数据变现
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、与证券类似的交易：程序化交易若干模式"><span class="nav-number">1.</span> <span class="nav-text">一、与证券类似的交易：程序化交易若干模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-IAB总结的程序化相关交易方式"><span class="nav-number">1.1.</span> <span class="nav-text">P5.IAB总结的程序化相关交易方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-实时竞价过程示意"><span class="nav-number">1.2.</span> <span class="nav-text">P5.实时竞价过程示意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-实时竞价特点"><span class="nav-number">1.3.</span> <span class="nav-text">P5.实时竞价特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-优选（Preferred-Deal）"><span class="nav-number">1.4.</span> <span class="nav-text">P5.优选（Preferred Deal）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-私有市场（PMP）"><span class="nav-number">1.5.</span> <span class="nav-text">P5.私有市场（PMP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-程序化直投（PDB）"><span class="nav-number">1.6.</span> <span class="nav-text">P5.程序化直投（PDB）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考：对媒体和广告主而言，什么情况下需要程序化交易？"><span class="nav-number">1.7.</span> <span class="nav-text">思考：对媒体和广告主而言，什么情况下需要程序化交易？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、“证劵交易所”：广告交易平台"><span class="nav-number">2.</span> <span class="nav-text">二、“证劵交易所”：广告交易平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#广告交易平台（ADX）"><span class="nav-number">2.1.</span> <span class="nav-text">广告交易平台（ADX）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告交易平台特点"><span class="nav-number">2.2.</span> <span class="nav-text">广告交易平台特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADX系统架构"><span class="nav-number">2.3.</span> <span class="nav-text">ADX系统架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADX主要技术点"><span class="nav-number">2.4.</span> <span class="nav-text">ADX主要技术点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两域名Cookie-Mapping（例：媒体与DMP）"><span class="nav-number">2.5.</span> <span class="nav-text">两域名Cookie Mapping（例：媒体与DMP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三域名Cookie-Mapping（例：ADX与DSP）"><span class="nav-number">2.6.</span> <span class="nav-text">三域名Cookie Mapping（例：ADX与DSP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#询价优化（Call-Out-Optimization）"><span class="nav-number">2.7.</span> <span class="nav-text">询价优化（Call Out Optimization）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、“券商下单系统”：需求方平台"><span class="nav-number">3.</span> <span class="nav-text">三、“券商下单系统”：需求方平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定制化用户标签"><span class="nav-number">3.1.</span> <span class="nav-text">定制化用户标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向（Retargeting）原理"><span class="nav-number">3.2.</span> <span class="nav-text">重定向（Retargeting）原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向分类"><span class="nav-number">3.3.</span> <span class="nav-text">重定向分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新客推荐（Look-alike）"><span class="nav-number">3.4.</span> <span class="nav-text">新客推荐（Look-alike）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DSP产品策略"><span class="nav-number">3.5.</span> <span class="nav-text">DSP产品策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#invitemedia"><span class="nav-number">3.6.</span> <span class="nav-text">invitemedia</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DSP产品特点"><span class="nav-number">3.7.</span> <span class="nav-text">DSP产品特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DSP系统架构"><span class="nav-number">3.8.</span> <span class="nav-text">DSP系统架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Look-alike问题建模"><span class="nav-number">3.9.</span> <span class="nav-text">Look-alike问题建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点击价值估计"><span class="nav-number">3.10.</span> <span class="nav-text">点击价值估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从电商角度看推荐"><span class="nav-number">3.11.</span> <span class="nav-text">从电商角度看推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DSP出价策略"><span class="nav-number">3.12.</span> <span class="nav-text">DSP出价策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Criteo"><span class="nav-number">3.13.</span> <span class="nav-text">Criteo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、多渠道库存管理：供给方平台"><span class="nav-number">4.</span> <span class="nav-text">四、多渠道库存管理：供给方平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#移动广告Mediation"><span class="nav-number">4.1.</span> <span class="nav-text">移动广告Mediation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSP产品策略"><span class="nav-number">4.2.</span> <span class="nav-text">SSP产品策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-Header-Bidding"><span class="nav-number">4.3.</span> <span class="nav-text">P5.Header Bidding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5-Header-Bidding决策过程"><span class="nav-number">4.4.</span> <span class="nav-text">P5.Header Bidding决策过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Admeld"><span class="nav-number">4.5.</span> <span class="nav-text">Admeld</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mopub"><span class="nav-number">4.6.</span> <span class="nav-text">mopub</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、数据资产金融化：数据管理产品"><span class="nav-number">5.</span> <span class="nav-text">五、数据资产金融化：数据管理产品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三方数据的概念"><span class="nav-number">5.1.</span> <span class="nav-text">三方数据的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方DMP"><span class="nav-number">5.2.</span> <span class="nav-text">第三方DMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方DMP商业模式"><span class="nav-number">5.3.</span> <span class="nav-text">第三方DMP商业模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一方DMP"><span class="nav-number">5.4.</span> <span class="nav-text">第一方DMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一方DMP的商业模式"><span class="nav-number">5.5.</span> <span class="nav-text">第一方DMP的商业模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Audience-Science"><span class="nav-number">5.6.</span> <span class="nav-text">Audience Science</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么数据不能共享"><span class="nav-number">5.7.</span> <span class="nav-text">为什么数据不能共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据交易该怎么做？"><span class="nav-number">5.8.</span> <span class="nav-text">数据交易该怎么做？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何给数据定价"><span class="nav-number">5.9.</span> <span class="nav-text">如何给数据定价</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对抗数据的黑客：隐私保护和数据安全"><span class="nav-number">6.</span> <span class="nav-text">对抗数据的黑客：隐私保护和数据安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据隐私的初步认识"><span class="nav-number">6.1.</span> <span class="nav-text">数据隐私的初步认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互联网行为数据隐私问题"><span class="nav-number">6.2.</span> <span class="nav-text">互联网行为数据隐私问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#差分隐私（Differential-Privacy）"><span class="nav-number">6.3.</span> <span class="nav-text">差分隐私（Differential Privacy）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求方数据安全问题"><span class="nav-number">6.4.</span> <span class="nav-text">需求方数据安全问题</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ZhangHao"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">ZhangHao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/amberyic" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhanghaokdd@163.com" title="E-Mail → mailto:zhanghaokdd@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/chanming1989" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;chanming1989" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/amberyic" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-gratipay"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/amberyic" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/amberyic" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备20008129号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangHao</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+<div class="powered-by">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站访问量<span id="busuanzi_value_site_pv"></span>
+    </span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>
