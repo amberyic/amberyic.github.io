@@ -1,297 +1,248 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
-<meta name="baidu-site-verification" content="sQB1vh2KeG" />
-<meta name="shenma-site-verification" content="142706695a47156bb1eafc7c9cc28602_1590550933">
-<meta name="360-site-verification" content="f27b0d2d893155c9abee1f0021113a52" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<link rel="stylesheet" href="/css/main.css">
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Noto Sans SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <meta name="author" content="ZhangHao">
 
 
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://imzhanghao.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":true,"style":"default"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    <meta name="subtitle" content="算法工程师的世界">
+
+
+
+    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
+
+
+<title>计算广告|5.竞价广告-精细数据变现 | 张浩写字的地方</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-166608124-1');
-</script>
-
-  <meta name="description" content="竞价广告 - 精细数据变现市场经济的规则：机制设计问题竞价交易问题 将对象a&#x3D;{1,2,…,A}排放到位置s&#x3D;{1,2,…,S} 对象a的出价（bid）为$b_a$,而其对位置s的计价为$r_{as}&#x3D;u_{s}v_{a}(u_1&gt;u_2&gt;…&gt;u_S)$ $v_a$为点击价值,$u_s$视为点击率 对称纳什均衡（Symmetric Nash equilibrium） (vs-ps">
-<meta property="og:type" content="article">
-<meta property="og:title" content="计算广告|5.竞价广告 - 精细数据变现">
-<meta property="og:url" content="https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/index.html">
-<meta property="og:site_name" content="张浩写字的地方">
-<meta property="og:description" content="竞价广告 - 精细数据变现市场经济的规则：机制设计问题竞价交易问题 将对象a&#x3D;{1,2,…,A}排放到位置s&#x3D;{1,2,…,S} 对象a的出价（bid）为$b_a$,而其对位置s的计价为$r_{as}&#x3D;u_{s}v_{a}(u_1&gt;u_2&gt;…&gt;u_S)$ $v_a$为点击价值,$u_s$视为点击率 对称纳什均衡（Symmetric Nash equilibrium） (vs-ps">
-<meta property="article:published_time" content="2020-06-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-25T07:50:00.825Z">
-<meta property="article:author" content="ZhangHao">
-<meta property="article:tag" content="竞价广告">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/">
+        
+    
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
-
-  <title>计算广告|5.竞价广告 - 精细数据变现 | 张浩写字的地方</title>
-  
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-166608124-1');
-      }
-    </script>
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-<link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">张浩写字的地方</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <h1 class="site-subtitle" itemprop="description">算法工程师的世界</h1>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
-  </ul>
-
-</nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="Searching..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          计算广告|5.竞价广告 - 精细数据变现
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-18 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-18T00:00:00+08:00">2020-06-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-25 15:50:00" itemprop="dateModified" datetime="2020-07-25T15:50:00+08:00">2020-07-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">计算广告</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
         </div>
-      </header>
+    </nav>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
 
-      
-        <h1 id="竞价广告-精细数据变现"><a href="#竞价广告-精细数据变现" class="headerlink" title="竞价广告 - 精细数据变现"></a>竞价广告 - 精细数据变现</h1><h2 id="市场经济的规则：机制设计问题"><a href="#市场经济的规则：机制设计问题" class="headerlink" title="市场经济的规则：机制设计问题"></a>市场经济的规则：机制设计问题</h2><h3 id="竞价交易问题"><a href="#竞价交易问题" class="headerlink" title="竞价交易问题"></a>竞价交易问题</h3><ul>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">计算广告|5.竞价广告-精细数据变现</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ZhangHao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">June 18, 2020</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/">计算广告</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="竞价广告-精细数据变现"><a href="#竞价广告-精细数据变现" class="headerlink" title="竞价广告 - 精细数据变现"></a>竞价广告 - 精细数据变现</h1><h2 id="市场经济的规则：机制设计问题"><a href="#市场经济的规则：机制设计问题" class="headerlink" title="市场经济的规则：机制设计问题"></a>市场经济的规则：机制设计问题</h2><h3 id="竞价交易问题"><a href="#竞价交易问题" class="headerlink" title="竞价交易问题"></a>竞价交易问题</h3><ul>
 <li>将对象a={1,2,…,A}排放到位置s={1,2,…,S}</li>
 <li>对象a的出价（bid）为$b_a$,而其对位置s的计价为$r_{as}=u_{s}v_{a}(u_1&gt;u_2&gt;…&gt;u_S)$</li>
 <li>$v_a$为点击价值,$u_s$视为点击率</li>
@@ -335,7 +286,7 @@
 <h2 id="最赚钱的广告产品：搜索广告"><a href="#最赚钱的广告产品：搜索广告" class="headerlink" title="最赚钱的广告产品：搜索广告"></a>最赚钱的广告产品：搜索广告</h2><h3 id="搜索广告基本产品形式"><a href="#搜索广告基本产品形式" class="headerlink" title="搜索广告基本产品形式"></a>搜索广告基本产品形式</h3><ul>
 <li>分为北（North）、东（East）、南（South）三个区域</li>
 <li>广告一般带有底色</li>
-<li>位置次序：North1，North2，…，East1，East2，East3… </li>
+<li>位置次序：North1，North2，…，East1，East2，East3…</li>
 <li>南区或重复北区、或重复东区</li>
 </ul>
 <h3 id="搜索广告产品新形式"><a href="#搜索广告产品新形式" class="headerlink" title="搜索广告产品新形式"></a>搜索广告产品新形式</h3><ul>
@@ -380,7 +331,7 @@
 <li>英语培训 -&gt; {外语培训班，四级证书，…}</li>
 </ul>
 </li>
-<li>否定匹配 </li>
+<li>否定匹配</li>
 </ul>
 <h3 id="查询扩展主要方法"><a href="#查询扩展主要方法" class="headerlink" title="查询扩展主要方法"></a>查询扩展主要方法</h3><ul>
 <li>基于推荐的方法<ul>
@@ -395,7 +346,7 @@
 </li>
 <li>基于历史效果的方法<ul>
 <li>记录某些对特定广告主eCPM较高的关键词</li>
-<li>利用广告本身的历史eCPM数据。  </li>
+<li>利用广告本身的历史eCPM数据。</li>
 </ul>
 </li>
 </ul>
@@ -411,7 +362,7 @@
 <li>广告放置策略优化</li>
 </ul>
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
-<li>1.搜索广告与展示广告最根本的技术区别是什么？ </li>
+<li>1.搜索广告与展示广告最根本的技术区别是什么？</li>
 <li>2.社交信息流的广告放置问题应该如何建模。</li>
 </ul>
 <h3 id="Google-AdWords"><a href="#Google-AdWords" class="headerlink" title="Google AdWords"></a>Google AdWords</h3><ul>
@@ -587,7 +538,7 @@
 <li>cookie（u）and creative（a）</li>
 <li>gender（u）and topic（c）</li>
 <li>category（a）and category（u）</li>
-<li>creative（a）and gender（u） </li>
+<li>creative（a）and gender（u）</li>
 </ul>
 </li>
 </ul>
@@ -698,317 +649,69 @@
 </li>
 </ul>
 <h3 id="思考：在非RTB流量的ROI优化过程中，最重要的操作原则是什么？"><a href="#思考：在非RTB流量的ROI优化过程中，最重要的操作原则是什么？" class="headerlink" title="思考：在非RTB流量的ROI优化过程中，最重要的操作原则是什么？"></a>思考：在非RTB流量的ROI优化过程中，最重要的操作原则是什么？</h3>
-    </div>
+        </div>
 
-    
-    
-    
         
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ZhangHao</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/">https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
 
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>Post author:  </strong>ZhangHao
-  </li>
-  <li class="post-copyright-link">
-    <strong>Post link: </strong>
-    <a href="https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/" title="计算广告|5.竞价广告 - 精细数据变现">https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
-  </li>
-</ul>
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AB%9E%E4%BB%B7%E5%B9%BF%E5%91%8A/"># 竞价广告</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/06/22/computing-advertising-6-programmatic-direct-buying/">计算广告|6.多方数据变现-程序化交易</a>
+            
+            
+            <a class="next" rel="next" href="/2020/06/15/computing-advertising-4-agreement-based-advertising/">计算广告|4.合约广告</a>
+            
+        </section>
+
+
+    </article>
 </div>
-
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E7%AB%9E%E4%BB%B7%E5%B9%BF%E5%91%8A/" rel="tag"># 竞价广告</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/06/15/computing-advertising-4-agreement-based-advertising/" rel="prev" title="计算广告|4.合约广告">
-      <i class="fa fa-chevron-left"></i> 计算广告|4.合约广告
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/22/computing-advertising-6-programmatic-direct-buying/" rel="next" title="计算广告|6.多方数据变现 -- 程序化交易">
-      计算广告|6.多方数据变现 -- 程序化交易 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#竞价广告-精细数据变现"><span class="nav-number">1.</span> <span class="nav-text">竞价广告 - 精细数据变现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#市场经济的规则：机制设计问题"><span class="nav-number">1.1.</span> <span class="nav-text">市场经济的规则：机制设计问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#竞价交易问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">竞价交易问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2-广义第二高价和VCG"><span class="nav-number">1.1.2.</span> <span class="nav-text">P2.广义第二高价和VCG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2-市场保留价和价格挤压"><span class="nav-number">1.1.3.</span> <span class="nav-text">P2.市场保留价和价格挤压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2-整体计价过程"><span class="nav-number">1.1.4.</span> <span class="nav-text">P2.整体计价过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2-GSP广告竞价示例（货币单位：元，MRP-0-25）"><span class="nav-number">1.1.5.</span> <span class="nav-text">P2.GSP广告竞价示例（货币单位：元，MRP&#x3D;0.25）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最赚钱的广告产品：搜索广告"><span class="nav-number">1.2.</span> <span class="nav-text">最赚钱的广告产品：搜索广告</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索广告基本产品形式"><span class="nav-number">1.2.1.</span> <span class="nav-text">搜索广告基本产品形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索广告产品新形式"><span class="nav-number">1.2.2.</span> <span class="nav-text">搜索广告产品新形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动搜索广告"><span class="nav-number">1.2.3.</span> <span class="nav-text">移动搜索广告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索广告产品策略"><span class="nav-number">1.2.4.</span> <span class="nav-text">搜索广告产品策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索广告计算概貌"><span class="nav-number">1.2.5.</span> <span class="nav-text">搜索广告计算概貌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索广告系统架构"><span class="nav-number">1.2.6.</span> <span class="nav-text">搜索广告系统架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询扩展主要模式"><span class="nav-number">1.2.7.</span> <span class="nav-text">查询扩展主要模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询扩展主要方法"><span class="nav-number">1.2.8.</span> <span class="nav-text">查询扩展主要方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告位智能放置"><span class="nav-number">1.2.9.</span> <span class="nav-text">广告位智能放置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">1.2.10.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-AdWords"><span class="nav-number">1.2.11.</span> <span class="nav-text">Google AdWords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#淘宝直通车"><span class="nav-number">1.2.12.</span> <span class="nav-text">淘宝直通车</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剩余流量变现产品：竞价广告网络"><span class="nav-number">1.3.</span> <span class="nav-text">剩余流量变现产品：竞价广告网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#竞价广告网络产品原理"><span class="nav-number">1.3.1.</span> <span class="nav-text">竞价广告网络产品原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告网络产品示例"><span class="nav-number">1.3.2.</span> <span class="nav-text">广告网络产品示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告网络产品策略"><span class="nav-number">1.3.3.</span> <span class="nav-text">广告网络产品策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告网络计算概貌"><span class="nav-number">1.3.4.</span> <span class="nav-text">广告网络计算概貌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告网络系统架构"><span class="nav-number">1.3.5.</span> <span class="nav-text">广告网络系统架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#facebook-audience-networdk"><span class="nav-number">1.3.6.</span> <span class="nav-text">facebook audience networdk</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与搜索技术不同：广告检索技术"><span class="nav-number">1.4.</span> <span class="nav-text">与搜索技术不同：广告检索技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lucene"><span class="nav-number">1.4.1.</span> <span class="nav-text">Lucene</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-布尔表达式检索"><span class="nav-number">1.4.2.</span> <span class="nav-text">S3.布尔表达式检索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-布尔表达式检索-index示例"><span class="nav-number">1.4.3.</span> <span class="nav-text">S3.布尔表达式检索 - index示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-相关性检索"><span class="nav-number">1.4.4.</span> <span class="nav-text">S3.相关性检索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Weight-And-WAND-检索算法"><span class="nav-number">1.4.5.</span> <span class="nav-text">S3.Weight-And(WAND)检索算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-最近邻检索"><span class="nav-number">1.4.6.</span> <span class="nav-text">S3.最近邻检索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-语义检索-word2vec"><span class="nav-number">1.4.7.</span> <span class="nav-text">S3.语义检索 - word2vec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考-倒排索引再广告系统中是必须的么？"><span class="nav-number">1.4.8.</span> <span class="nav-text">思考: 倒排索引再广告系统中是必须的么？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让系统更快的学习：短时数据统计与反馈"><span class="nav-number">1.5.</span> <span class="nav-text">让系统更快的学习：短时数据统计与反馈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#短时用户行为反馈"><span class="nav-number">1.5.1.</span> <span class="nav-text">短时用户行为反馈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流式计算平台-Storm"><span class="nav-number">1.5.2.</span> <span class="nav-text">流式计算平台 - Storm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S6-kafka-by-Linkedin"><span class="nav-number">1.5.3.</span> <span class="nav-text">S6. kafka by Linkedin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S6-Apache-Storm-By-twitter"><span class="nav-number">1.5.4.</span> <span class="nav-text">S6.Apache Storm By twitter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用算法优化收入：点击率预测"><span class="nav-number">1.6.</span> <span class="nav-text">用算法优化收入：点击率预测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-点击率预测问题"><span class="nav-number">1.6.1.</span> <span class="nav-text">A2.点击率预测问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-逻辑回归（Logistic-Regression）"><span class="nav-number">1.6.2.</span> <span class="nav-text">A2.逻辑回归（Logistic Regression）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-动态特征-多层次点击反馈"><span class="nav-number">1.6.3.</span> <span class="nav-text">A2.动态特征 - 多层次点击反馈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-归一化点击率-COEC"><span class="nav-number">1.6.4.</span> <span class="nav-text">A2.归一化点击率 - COEC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-在线广告常见bias特征"><span class="nav-number">1.6.5.</span> <span class="nav-text">A2.在线广告常见bias特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-消除偏差的点击率模型训练过程"><span class="nav-number">1.6.6.</span> <span class="nav-text">A2.消除偏差的点击率模型训练过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-点击反馈的平滑"><span class="nav-number">1.6.7.</span> <span class="nav-text">A2.点击反馈的平滑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-点击率模型的校准"><span class="nav-number">1.6.8.</span> <span class="nav-text">A2.点击率模型的校准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-FM点击率模型"><span class="nav-number">1.6.9.</span> <span class="nav-text">A2.FM点击率模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-深度学习点击模型"><span class="nav-number">1.6.10.</span> <span class="nav-text">A2.深度学习点击模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A2-评测指标-PR曲线和ROC曲线"><span class="nav-number">1.6.11.</span> <span class="nav-text">A2.评测指标- PR曲线和ROC曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考：事件中点击率预估最有用的是哪类特征？"><span class="nav-number">1.6.12.</span> <span class="nav-text">思考：事件中点击率预估最有用的是哪类特征？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未知领域的冷启动：探索与利用"><span class="nav-number">1.7.</span> <span class="nav-text">未知领域的冷启动：探索与利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A5-探索与利用（E-amp-E）问题与思路"><span class="nav-number">1.7.1.</span> <span class="nav-text">A5. 探索与利用（E&amp;E）问题与思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何利用竞价市场：竞价广告需求方产品"><span class="nav-number">1.8.</span> <span class="nav-text">如何利用竞价市场：竞价广告需求方产品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索引擎营销（SEM）"><span class="nav-number">1.8.1.</span> <span class="nav-text">搜索引擎营销（SEM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广告购买平台（Trading-Desk）"><span class="nav-number">1.8.2.</span> <span class="nav-text">广告购买平台（Trading Desk）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非RTB流量的ROI优化"><span class="nav-number">1.8.3.</span> <span class="nav-text">非RTB流量的ROI优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考：在非RTB流量的ROI优化过程中，最重要的操作原则是什么？"><span class="nav-number">1.8.4.</span> <span class="nav-text">思考：在非RTB流量的ROI优化过程中，最重要的操作原则是什么？</span></a></li></ol></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="ZhangHao"
-      src="/images/avatar.png">
-  <p class="site-author-name" itemprop="name">ZhangHao</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">21</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/amberyic" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:zhanghaokdd@163.com" title="E-Mail → mailto:zhanghaokdd@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://weibo.com/chanming1989" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;chanming1989" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/amberyic" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-gratipay"></i>知乎</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://twitter.com/amberyic" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://instagram.com/amberyic" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
-      </span>
-  </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-      </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备20008129号 </a>
-  </div>
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">ZhangHao</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
-  </div>
-
-
-<div class="powered-by">
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <i class="fa fa-user-md"></i>
-    <span id="busuanzi_container_site_uv">
-        本站访客数:<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_pv">
-        本站访问量<span id="busuanzi_value_site_pv"></span>
-    </span>
-</div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
-
-  
-
 </body>
 </html>

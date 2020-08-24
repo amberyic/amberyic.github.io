@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>五大经典算法-1.穷举法</title>
+    <title>五大经典算法|1.穷举法</title>
     <url>/2020/04/10/5-classic-algorithms-1-exhaustive-method/</url>
     <content><![CDATA[<blockquote>
 <p>穷举法，又称枚举法，或称为暴力破解法.<br>经典例题：1)素数判断,2)鸡兔同笼,3)最大连续子序列,4)火柴棍等式,5)计算几何距离,6)计算几何,7)备选题目</p>
@@ -157,7 +157,7 @@
       </tags>
   </entry>
   <entry>
-    <title>五大经典算法-2.贪心算法</title>
+    <title>五大经典算法|2.贪心算法</title>
     <url>/2020/04/15/5-classic-algorithms-2-greedy-algorithm/</url>
     <content><![CDATA[<blockquote>
 <p>贪心算法在思想及其实现都比较简单易懂。我们数据结构中讲解过huffman tree构建及图的最小生成树涉及贪心算法。<br>经典例题:1)活动时间安排问题,2)背包问题,3)线段覆盖(lines cover),4)数字组合问题,5)找零钱的问题,6)多机调度问题,7)小船过河问题,8)销售比赛,9)Huffman编码,10)Dijkstra算法,11)最小生成树算法</p>
@@ -342,7 +342,7 @@
       </tags>
   </entry>
   <entry>
-    <title>五大经典算法-3.分治法</title>
+    <title>五大经典算法|3.分治法</title>
     <url>/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</url>
     <content><![CDATA[<blockquote>
 <p>分治算法是一种将大问题划分为小问题的算法，理解和实现起来比较抽象，在我们的数据结构课程中，讲解得比较多，主要涉及部分，二分查找、快速排序，归并排序，二叉树相关等。</p>
@@ -418,7 +418,7 @@
       </tags>
   </entry>
   <entry>
-    <title>五大经典算法-4.动态规划</title>
+    <title>五大经典算法|4.动态规划</title>
     <url>/2020/04/25/5-classic-algorithms-4-dynamic-programming/</url>
     <content><![CDATA[<blockquote>
 <p>dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.<br>动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推(或者说分治)的方式去解决。<br>经典例题: 1)最长公共子串LCS,2)最长递增子序列LIS,3)最大连续子序列之和,4)01背包问题,5)青蛙跳台阶问题,6)收集苹果,7)数塔取数问题,8)免费馅饼问题</p>
@@ -769,7 +769,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>五大经典算法-5.回溯法&amp;分支界定法</title>
+    <title>五大经典算法|5.回溯法&amp;分支界定法</title>
     <url>/2020/05/10/5-classic-algorithms-5-backtracking-branch-and-bound/</url>
     <content><![CDATA[<blockquote>
 <p>这个部分在我们的课程中主要是在树及图的深度广度搜索部分有涉及，另外迷宫问题求解也有涉及。<br>经典例题:1)迷宫问题(maze problem),2) 01背包问题,3)八皇后问题,4)幂集,5)子集和问题</p>
@@ -1649,14 +1649,14 @@
 <h2 id="直观认识在线广告：目的与形式"><a href="#直观认识在线广告：目的与形式" class="headerlink" title="直观认识在线广告：目的与形式"></a>直观认识在线广告：目的与形式</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>|品牌触达（Brand Awareness)  | 直接效果（Direct Response）<br>————- | ————- | ————-<br>诉求 | 创造独特良好的品牌形象，提升长时期内的<em>转化率<em>与</em>利润</em> | 有<em>短期内</em>明确用户<em>转化</em>行为诉求.（超市打折海报广告）<br>| 形式 |视频广告（Video ad）、富媒体广告（rich-media ad）、开屏广告 | 条幅广告（Banner）、文字广告（Textual）、邮件营销（Email Direct Marketing，EDM）</p>
 <ul>
 <li>广告的根本目的是什么？<ul>
-<li>传统视角： <ul>
-<li>1）广告的根本目的是广告主通过媒体达到低成本的用户接触； </li>
+<li>传统视角：<ul>
+<li>1）广告的根本目的是广告主通过媒体达到低成本的用户接触；</li>
 <li>2）广告的投入产出比（Return on Inverstment，ROI）相比于销售人员的劝服活动应该较高</li>
 </ul>
 </li>
 <li>互联网新视角：<ul>
 <li>1）一切付费的信息、产品或服务的传播渠道，都是广告；</li>
-<li>2）直接效果广告的ROI应该可衡量、可优化 </li>
+<li>2）直接效果广告的ROI应该可衡量、可优化</li>
 </ul>
 </li>
 </ul>
@@ -2599,7 +2599,7 @@
       </tags>
   </entry>
   <entry>
-    <title>计算广告|5.竞价广告 - 精细数据变现</title>
+    <title>计算广告|5.竞价广告-精细数据变现</title>
     <url>/2020/06/18/computing-advertising-5-lean-data-monetization/</url>
     <content><![CDATA[<h1 id="竞价广告-精细数据变现"><a href="#竞价广告-精细数据变现" class="headerlink" title="竞价广告 - 精细数据变现"></a>竞价广告 - 精细数据变现</h1><h2 id="市场经济的规则：机制设计问题"><a href="#市场经济的规则：机制设计问题" class="headerlink" title="市场经济的规则：机制设计问题"></a>市场经济的规则：机制设计问题</h2><h3 id="竞价交易问题"><a href="#竞价交易问题" class="headerlink" title="竞价交易问题"></a>竞价交易问题</h3><ul>
 <li>将对象a={1,2,…,A}排放到位置s={1,2,…,S}</li>
@@ -2645,7 +2645,7 @@
 <h2 id="最赚钱的广告产品：搜索广告"><a href="#最赚钱的广告产品：搜索广告" class="headerlink" title="最赚钱的广告产品：搜索广告"></a>最赚钱的广告产品：搜索广告</h2><h3 id="搜索广告基本产品形式"><a href="#搜索广告基本产品形式" class="headerlink" title="搜索广告基本产品形式"></a>搜索广告基本产品形式</h3><ul>
 <li>分为北（North）、东（East）、南（South）三个区域</li>
 <li>广告一般带有底色</li>
-<li>位置次序：North1，North2，…，East1，East2，East3… </li>
+<li>位置次序：North1，North2，…，East1，East2，East3…</li>
 <li>南区或重复北区、或重复东区</li>
 </ul>
 <h3 id="搜索广告产品新形式"><a href="#搜索广告产品新形式" class="headerlink" title="搜索广告产品新形式"></a>搜索广告产品新形式</h3><ul>
@@ -2690,7 +2690,7 @@
 <li>英语培训 -&gt; {外语培训班，四级证书，…}</li>
 </ul>
 </li>
-<li>否定匹配 </li>
+<li>否定匹配</li>
 </ul>
 <h3 id="查询扩展主要方法"><a href="#查询扩展主要方法" class="headerlink" title="查询扩展主要方法"></a>查询扩展主要方法</h3><ul>
 <li>基于推荐的方法<ul>
@@ -2705,7 +2705,7 @@
 </li>
 <li>基于历史效果的方法<ul>
 <li>记录某些对特定广告主eCPM较高的关键词</li>
-<li>利用广告本身的历史eCPM数据。  </li>
+<li>利用广告本身的历史eCPM数据。</li>
 </ul>
 </li>
 </ul>
@@ -2721,7 +2721,7 @@
 <li>广告放置策略优化</li>
 </ul>
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
-<li>1.搜索广告与展示广告最根本的技术区别是什么？ </li>
+<li>1.搜索广告与展示广告最根本的技术区别是什么？</li>
 <li>2.社交信息流的广告放置问题应该如何建模。</li>
 </ul>
 <h3 id="Google-AdWords"><a href="#Google-AdWords" class="headerlink" title="Google AdWords"></a>Google AdWords</h3><ul>
@@ -2897,7 +2897,7 @@
 <li>cookie（u）and creative（a）</li>
 <li>gender（u）and topic（c）</li>
 <li>category（a）and category（u）</li>
-<li>creative（a）and gender（u） </li>
+<li>creative（a）and gender（u）</li>
 </ul>
 </li>
 </ul>
@@ -3016,7 +3016,7 @@
       </tags>
   </entry>
   <entry>
-    <title>计算广告|6.多方数据变现 -- 程序化交易</title>
+    <title>计算广告|6.多方数据变现-程序化交易</title>
     <url>/2020/06/22/computing-advertising-6-programmatic-direct-buying/</url>
     <content><![CDATA[<p>#6.多方数据变现 – 程序化交易</p>
 <h2 id="与证券类似的交易：程序化交易若干模式"><a href="#与证券类似的交易：程序化交易若干模式" class="headerlink" title="与证券类似的交易：程序化交易若干模式"></a>与证券类似的交易：程序化交易若干模式</h2><h3 id="P5-IAB总结的程序化相关交易方式"><a href="#P5-IAB总结的程序化相关交易方式" class="headerlink" title="P5.IAB总结的程序化相关交易方式"></a>P5.IAB总结的程序化相关交易方式</h3><h3 id="P5-实时竞价过程示意"><a href="#P5-实时竞价过程示意" class="headerlink" title="P5.实时竞价过程示意"></a>P5.实时竞价过程示意</h3><h3 id="P5-实时竞价特点"><a href="#P5-实时竞价特点" class="headerlink" title="P5.实时竞价特点"></a>P5.实时竞价特点</h3><ul>
@@ -3026,7 +3026,7 @@
 </li>
 <li><p>原理上DSP可以以极低的出价参与竞价，这样虽不能获得流量，却可以低成本得到在媒体网站上的行为数据，这里存在着潜在的信息泄漏风险。</p>
 <ul>
-<li>Programmatic </li>
+<li>Programmatic</li>
 <li>RealTime</li>
 </ul>
 <h3 id="P5-优选（Preferred-Deal）"><a href="#P5-优选（Preferred-Deal）" class="headerlink" title="P5.优选（Preferred Deal）"></a>P5.优选（Preferred Deal）</h3><h3 id="P5-私有市场（PMP）"><a href="#P5-私有市场（PMP）" class="headerlink" title="P5.私有市场（PMP）"></a>P5.私有市场（PMP）</h3></li>
@@ -3105,7 +3105,7 @@
 <li>在带宽和服务成本的约束下，获得更高的eCPM</li>
 </ul>
 </li>
-<li><p>在线分配框架    </p>
+<li><p>在线分配框架</p>
 <h2 id="“券商下单系统”：需求方平台"><a href="#“券商下单系统”：需求方平台" class="headerlink" title="“券商下单系统”：需求方平台"></a>“券商下单系统”：需求方平台</h2><h3 id="定制化用户标签"><a href="#定制化用户标签" class="headerlink" title="定制化用户标签"></a>定制化用户标签</h3></li>
 <li><p>定制化标签</p>
 <ul>

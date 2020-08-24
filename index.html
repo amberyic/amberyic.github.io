@@ -1,1490 +1,174 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
-<meta name="baidu-site-verification" content="sQB1vh2KeG" />
-<meta name="shenma-site-verification" content="142706695a47156bb1eafc7c9cc28602_1590550933">
-<meta name="360-site-verification" content="f27b0d2d893155c9abee1f0021113a52" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<link rel="stylesheet" href="/css/main.css">
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Noto Sans SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <meta name="author" content="ZhangHao">
 
 
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://imzhanghao.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":true,"style":"default"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-166608124-1');
-</script>
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="张浩写字的地方">
-<meta property="og:url" content="https://imzhanghao.com/index.html">
-<meta property="og:site_name" content="张浩写字的地方">
-<meta property="article:author" content="ZhangHao">
-<meta property="article:tag" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="https://imzhanghao.com/">
+    <meta name="subtitle" content="算法工程师的世界">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: true,
-    isPost: false
-  };
-</script>
 
-  <title>张浩写字的地方</title>
-  
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-166608124-1');
-      }
-    </script>
+    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
+
+
+<title>张浩写字的地方</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
 
 
 
 
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
 
-<link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">张浩写字的地方</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <h1 class="site-subtitle" itemprop="description">算法工程师的世界</h1>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
-  </ul>
-
-</nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="Searching..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
-</div>
-    </header>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
             
-
-  <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/22/computing-advertising-6-programmatic-direct-buying/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/22/computing-advertising-6-programmatic-direct-buying/" class="post-title-link" itemprop="url">计算广告|6.多方数据变现 -- 程序化交易</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-22 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-22T00:00:00+08:00">2020-06-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-29 21:31:35" itemprop="dateModified" datetime="2020-07-29T21:31:35+08:00">2020-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">计算广告</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
+    <div class="container">
+    <div class="intro">
+        <div class="avatar">
+            <a href="/archives"><img src="/images/avatar.png"></a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>#6.多方数据变现 – 程序化交易</p>
-<h2 id="与证券类似的交易：程序化交易若干模式"><a href="#与证券类似的交易：程序化交易若干模式" class="headerlink" title="与证券类似的交易：程序化交易若干模式"></a>与证券类似的交易：程序化交易若干模式</h2><h3 id="P5-IAB总结的程序化相关交易方式"><a href="#P5-IAB总结的程序化相关交易方式" class="headerlink" title="P5.IAB总结的程序化相关交易方式"></a>P5.IAB总结的程序化相关交易方式</h3><h3 id="P5-实时竞价过程示意"><a href="#P5-实时竞价过程示意" class="headerlink" title="P5.实时竞价过程示意"></a>P5.实时竞价过程示意</h3><h3 id="P5-实时竞价特点"><a href="#P5-实时竞价特点" class="headerlink" title="P5.实时竞价特点"></a>P5.实时竞价特点</h3><ul>
-<li><p>每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这时的服务器与带宽成本大大增加。</p>
-</li>
-<li><p>在询价过程中，Ad Exchange要等待一个约定的时间片（一般情况为100ms），这使得用户看到的广告延迟增加，对CTR有负面影响。</p>
-</li>
-<li><p>原理上DSP可以以极低的出价参与竞价，这样虽不能获得流量，却可以低成本得到在媒体网站上的行为数据，这里存在着潜在的信息泄漏风险。</p>
-<ul>
-<li>Programmatic </li>
-<li>RealTime</li>
-</ul>
-<h3 id="P5-优选（Preferred-Deal）"><a href="#P5-优选（Preferred-Deal）" class="headerlink" title="P5.优选（Preferred Deal）"></a>P5.优选（Preferred Deal）</h3><h3 id="P5-私有市场（PMP）"><a href="#P5-私有市场（PMP）" class="headerlink" title="P5.私有市场（PMP）"></a>P5.私有市场（PMP）</h3></li>
-<li><p>媒体位了保证广告主的质量，希望将竞拍限制在一些被邀请需求方的小范围内。这种程序化交易，叫做私有市场。（Private Marketplace，PMP）</p>
-</li>
-<li><p>坚固了优选和实时竞价的好处</p>
-<ul>
-<li>广告主的质量可以由少量被邀请需求方很好地控制，这有利于确保媒体的价值不受伤害。</li>
-<li>在需求方之间保留了竞价关系，有利于提高媒体的变现能力</li>
-</ul>
-</li>
-<li><p>交易接口的形式与一般RTB一致</p>
-<h3 id="P5-程序化直投（PDB）"><a href="#P5-程序化直投（PDB）" class="headerlink" title="P5.程序化直投（PDB）"></a>P5.程序化直投（PDB）</h3></li>
-<li><p>DSP可根据广告主需求，进行媒介采买，并且将采买的广告资源二次分配给广告主的不同子品牌或产品，这叫程序化直投（Programmatic Direct Buy，PDB）</p>
-</li>
-<li><p>本质上是一种GD或Network的投放方式</p>
-<ul>
-<li>如果子品牌有保量需求，是GD市场</li>
-<li>如果子品牌没有保量需求，可以用竞价广告网络的方式运营</li>
-</ul>
-</li>
-<li><p>产品形式和前述的RTB/PMP完全不同，需要独立的广告投放系统，或者是自建一个专门的ADX，用DSP接入。</p>
-<h3 id="思考：对媒体和广告主而言，什么情况下需要程序化交易？"><a href="#思考：对媒体和广告主而言，什么情况下需要程序化交易？" class="headerlink" title="思考：对媒体和广告主而言，什么情况下需要程序化交易？"></a>思考：对媒体和广告主而言，什么情况下需要程序化交易？</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/22/computing-advertising-6-programmatic-direct-buying/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/18/computing-advertising-5-lean-data-monetization/" class="post-title-link" itemprop="url">计算广告|5.竞价广告 - 精细数据变现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-18 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-18T00:00:00+08:00">2020-06-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-25 15:50:00" itemprop="dateModified" datetime="2020-07-25T15:50:00+08:00">2020-07-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">计算广告</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="竞价广告-精细数据变现"><a href="#竞价广告-精细数据变现" class="headerlink" title="竞价广告 - 精细数据变现"></a>竞价广告 - 精细数据变现</h1><h2 id="市场经济的规则：机制设计问题"><a href="#市场经济的规则：机制设计问题" class="headerlink" title="市场经济的规则：机制设计问题"></a>市场经济的规则：机制设计问题</h2><h3 id="竞价交易问题"><a href="#竞价交易问题" class="headerlink" title="竞价交易问题"></a>竞价交易问题</h3><ul>
-<li>将对象a={1,2,…,A}排放到位置s={1,2,…,S}</li>
-<li>对象a的出价（bid）为$b_a$,而其对位置s的计价为$r_{as}=u_{s}v_{a}(u_1&gt;u_2&gt;…&gt;u_S)$</li>
-<li>$v_a$为点击价值,$u_s$视为点击率</li>
-<li>对称纳什均衡（Symmetric Nash equilibrium）<ul>
-<li>(vs-ps)xt &gt;= (vs-pt)xt,其中pt=bs+1</li>
-<li>寻找收入最大化且稳定的纳什均衡状态是竞价系统设计的关键</li>
-</ul>
-</li>
-</ul>
-<h3 id="P2-广义第二高价和VCG"><a href="#P2-广义第二高价和VCG" class="headerlink" title="P2.广义第二高价和VCG"></a>P2.广义第二高价和VCG</h3><ul>
-<li>广义第二高价（Generalized Second Pricing）<ul>
-<li>与VCG机制相比，会收取广告主更多的费用</li>
-<li>整体市场不是truth-telling的</li>
-<li>简单易行，为在线广告系统广泛采用</li>
-<li>CPM情形下：$q_s = b_{s+1}+1$</li>
-<li>CPC情形下：$q_s = r_{s+1}/u_+1=u_{s+1}b_{s+1}/u_s+1$</li>
-</ul>
-</li>
-<li>VCG(Vickrey-Clarke-Groves)机制<ul>
-<li>某对象的收费等于给他人带来的价值损害</li>
-<li>整体市场是truth-telling的
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/18/computing-advertising-5-lean-data-monetization/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/15/computing-advertising-4-agreement-based-advertising/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/15/computing-advertising-4-agreement-based-advertising/" class="post-title-link" itemprop="url">计算广告|4.合约广告</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-15 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-15T00:00:00+08:00">2020-06-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-25 14:54:23" itemprop="dateModified" datetime="2020-07-25T14:54:23+08:00">2020-07-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">计算广告</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="合约广告"><a href="#合约广告" class="headerlink" title="合约广告"></a>合约广告</h1><h2 id="广告位和展示量合约"><a href="#广告位和展示量合约" class="headerlink" title="广告位和展示量合约"></a>广告位和展示量合约</h2><h3 id="广告位（CPT）合约"><a href="#广告位（CPT）合约" class="headerlink" title="广告位（CPT）合约"></a>广告位（CPT）合约</h3><ul>
-<li>与线下广告交易类似的传统模式</li>
-<li>供给方产品：产品排期系统<ul>
-<li>帮助媒体自动执行多个合同的排期</li>
-<li>广告没有复杂的动态决策，因此可以将素材直接插入页面</li>
-</ul>
-</li>
-<li>流量选择的维度<ul>
-<li>时间段、地域、轮播</li>
-</ul>
-</li>
-<li>典型场景<ul>
-<li>高曝光广告位，开屏广告，应用市场头部位置，导航网址</li>
-</ul>
-</li>
-</ul>
-<h3 id="展示量合约与担保式投送"><a href="#展示量合约与担保式投送" class="headerlink" title="展示量合约与担保式投送"></a>展示量合约与担保式投送</h3><ul>
-<li>展示量合约<ul>
-<li>基于合约的广告机制，有时未完成约定量要向广告商补偿</li>
-<li>多采用千次展示付费（Cost per Mille，CPM）方式结算</li>
-</ul>
-</li>
-<li>担保式投送（Guaranteed Delivery，GD）引擎<ul>
-<li>CPM方式要求广告投送由服务器端完成决策</li>
-<li>三大技术基础：受众定向、流量预测、在线分配</li>
-</ul>
-</li>
-<li>典型场景<ul>
-<li>视频广告、富媒体广告、品牌横幅广告<h3 id="广告位合约-vs-展示量合约"><a href="#广告位合约-vs-展示量合约" class="headerlink" title="广告位合约 vs 展示量合约"></a>广告位合约 vs 展示量合约</h3></li>
-</ul>
-</li>
-<li>广告位合约<ul>
-<li>开辟了多个广告位</li>
-<li>分时段卖给不同的广告主。</li>
-</ul>
-</li>
-<li>展示量合约<ul>
-<li>仅需要开辟较少的广告位</li>
-<li>将用户流量卖给不同的广告主</li>
-</ul>
-</li>
-<li>展示量合约更先进，前提是需要支持受众定向</li>
-</ul>
-<h3 id="S1-如何高效混合静态与动态广告？"><a href="#S1-如何高效混合静态与动态广告？" class="headerlink" title="S1.如何高效混合静态与动态广告？"></a>S1.如何高效混合静态与动态广告？</h3><ul>
-<li>前端代码先去CDN上取一个默认广告，然后再去请求广告服务器。<ul>
-<li>前段代码先去CDN上获取默认广告。</li>
-<li>判断是否CPT广告，如果是，<strong>展示CDN广告</strong>，如果不是，请求广告服务器。</li>
-<li>判断广告服务器是否成功返回，如果是，<strong>展示服务器返回的广告</strong>；如果不是，<strong>展示CDN默认广告</strong>。<h3 id="思考：什么样的人群适合于在CPM广告中售卖？"><a href="#思考：什么样的人群适合于在CPM广告中售卖？" class="headerlink" title="思考：什么样的人群适合于在CPM广告中售卖？"></a>思考：什么样的人群适合于在CPM广告中售卖？</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/15/computing-advertising-4-agreement-based-advertising/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/12/computing-advertising-3-related-knowledge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/12/computing-advertising-3-related-knowledge/" class="post-title-link" itemprop="url">计算广告|3.相关方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-12 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-12T00:00:00+08:00">2020-06-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 17:13:32" itemprop="dateModified" datetime="2020-06-18T17:13:32+08:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">计算广告</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="3-相关知识"><a href="#3-相关知识" class="headerlink" title="3.相关知识"></a>3.相关知识</h1><h2 id="最优化Optimization"><a href="#最优化Optimization" class="headerlink" title="最优化Optimization"></a>最优化Optimization</h2><h3 id="什么是最优化问题"><a href="#什么是最优化问题" class="headerlink" title="什么是最优化问题"></a>什么是最优化问题</h3><ul>
-<li>无约束最优化问题：<br>$$ minf(x) $$</li>
-<li>带约束最优化问题：<br>$$ min f(x)  \s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0 $$</li>
-</ul>
-<h3 id="无约束优化问题一般思路"><a href="#无约束优化问题一般思路" class="headerlink" title="无约束优化问题一般思路"></a>无约束优化问题一般思路</h3><ul>
-<li>目标函数不可/不易求导<ul>
-<li>下降单纯形法（Ameoba变形虫法）</li>
-</ul>
-</li>
-<li>目标函数易求导<ul>
-<li>梯度下降法</li>
-<li>批处理模式：训练集上的梯度分解为各个样本梯度的和，可以并行实现。</li>
-<li>串行模式：随机梯度下降法（Stochastic Gradient Descent，SGD）【好用】</li>
-</ul>
-</li>
-</ul>
-<h3 id="批处理梯度法的问题与拟牛顿法"><a href="#批处理梯度法的问题与拟牛顿法" class="headerlink" title="批处理梯度法的问题与拟牛顿法"></a>批处理梯度法的问题与拟牛顿法</h3><ul>
-<li>梯度法zigzag更新过程<ul>
-<li>等高线和梯度垂直，因为等高线的形状是压扁的形状，所以会来回的跳，性能不好。</li>
-</ul>
-</li>
-<li>牛顿法：<ul>
-<li>不仅考虑一阶导，还考虑二阶导。但是Hession阵可能不正定。</li>
-</ul>
-</li>
-<li>拟牛顿法<ul>
-<li>用近似但正定的Hession阵确保稳定求解
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/12/computing-advertising-3-related-knowledge/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/11/computing-advertising-2-business-system/" class="post-title-link" itemprop="url">计算广告|2.认识商业体系</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-11 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-11T00:00:00+08:00">2020-06-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 16:43:48" itemprop="dateModified" datetime="2020-06-18T16:43:48+08:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">计算广告</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="认识商业化体系"><a href="#认识商业化体系" class="headerlink" title="认识商业化体系"></a>认识商业化体系</h1><h2 id="计算广告逻辑与挑战：六大算法问题"><a href="#计算广告逻辑与挑战：六大算法问题" class="headerlink" title="计算广告逻辑与挑战：六大算法问题"></a>计算广告逻辑与挑战：六大算法问题</h2><h3 id="商业化体系大闭环"><a href="#商业化体系大闭环" class="headerlink" title="商业化体系大闭环"></a>商业化体系大闭环</h3><p>广告点击以后，就从媒体网站到了广告主的网站上。</p>
-<h3 id="计算广告的核心挑战"><a href="#计算广告的核心挑战" class="headerlink" title="计算广告的核心挑战"></a>计算广告的核心挑战</h3><ul>
-<li>计算广告的核心问题，是为一系列用户与环境的组合，找到最合适的广告投放策略以优化整体广告活动的利润。</li>
-<li>优化问题描述：<br>$$\max \limits_{a_{1},…,T}\sum_{i=1}^{T}{r(a_{i},u_{i},c_{i}) - q(a_{i},u_{i},c_{i})} \    s.t.\sum_{i=1}^{T}d(a_{i},u_{i},c_{i},k) \leqslant D_{k},\forall k$$<ul>
-<li>决策对象：一组广告展示，a：广告，u：用户，c：上下文，r：收入(eCPM)，q：成本</li>
-<li>这个公式是一个普适性的公式，适合于广告主、媒体、ADX等等～</li>
-<li>优化的是一组广告的投放，后面预算的约束。</li>
-</ul>
-</li>
-</ul>
-<h3 id="广告业务的转化漏斗和目标"><a href="#广告业务的转化漏斗和目标" class="headerlink" title="广告业务的转化漏斗和目标"></a>广告业务的转化漏斗和目标</h3><ul>
-<li><p>展示页–点击–&gt;落地页–转化–&gt;转化页</p>
-<ul>
-<li>从媒体网站到广告主网站</li>
-<li>广告排序的唯一指标：u代表点击率，v代表转化率<br>$$eCPM=r(a,u,c)=u(a,u,c)*v(a,u)$$</li>
-</ul>
-</li>
-<li><p>如果标识一个用户？</p>
-<ul>
-<li>PC Web/Mobile Web环境 – Cookie:存续行差，跨域时需要映射。</li>
-<li>iOS应用 – IDFA：存续性好于cookie，但iOS10有更严格的政策。</li>
-<li>Android应用 – Android ID：存续性好于IDFA；IMEI：在中国有部分使用。</li>
-<li>无以上ID场景 – FingerPrint（IP+User Agent）：存在http头中，可作缺省标识。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/11/computing-advertising-2-business-system/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/06/10/computing-advertising-1-curriculum-structure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/10/computing-advertising-1-curriculum-structure/" class="post-title-link" itemprop="url">计算广告|1.课程体系</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-10 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-10T00:00:00+08:00">2020-06-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 16:43:48" itemprop="dateModified" datetime="2020-06-18T16:43:48+08:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">计算广告</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="课程体系"><a href="#课程体系" class="headerlink" title="课程体系"></a>课程体系</h1><p>计算广告研究的是商业化产品，本质是数据变现，技能要靠机器学习。</p>
-<h2 id="认识商业化体系"><a href="#认识商业化体系" class="headerlink" title="认识商业化体系"></a>认识商业化体系</h2><h3 id="Google／Facebook-以及BAT在2015年广告收入占总收入的70"><a href="#Google／Facebook-以及BAT在2015年广告收入占总收入的70" class="headerlink" title="Google／Facebook 以及BAT在2015年广告收入占总收入的70%+"></a>Google／Facebook 以及BAT在2015年广告收入占总收入的70%+</h3><ul>
-<li>从2007年到2015年<ul>
-<li>中国网络广告17亿–&gt;317亿 ，电视广告97亿-&gt;226亿</li>
-<li>美国网络广告增长迅猛，电视广告基本持平，报纸广告在缩水</li>
-<li>ps.电视广告的增长代表着市场经济的增长速度</li>
-</ul>
-</li>
-<li>与商业化相关的产品问题：商业模式探索、流量变现、数据变现、用户增长。</li>
-</ul>
-<h3 id="戏说互联网思维之“三个不要”（经典）"><a href="#戏说互联网思维之“三个不要”（经典）" class="headerlink" title="戏说互联网思维之“三个不要”（经典）"></a>戏说互联网思维之“三个不要”（经典）</h3><ul>
-<li>“不要命”：期权激励，996方式工作。<br></li>
-<li>“不要脸”：无底线迎合用户的产品与营销方式。<br></li>
-<li>“不要钱”：免费倾销加后向变现的商业模式。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/10/computing-advertising-1-curriculum-structure/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/05/25/make-money-online-8-affiliate-marketing-zero-to-one/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/25/make-money-online-8-affiliate-marketing-zero-to-one/" class="post-title-link" itemprop="url">联盟营销|8.从0到1实战联盟营销</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-25 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-25T00:00:00+08:00">2020-05-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 16:43:48" itemprop="dateModified" datetime="2020-06-18T16:43:48+08:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/" itemprop="url" rel="index">
-                    <span itemprop="name">联盟营销</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>网站如何推广<br>网站的流量和收益情况<br>Amz520网站的基本情况</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/25/make-money-online-8-affiliate-marketing-zero-to-one/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/05/23/make-money-online-7-affiliate-marketing-get-traffic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/23/make-money-online-7-affiliate-marketing-get-traffic/" class="post-title-link" itemprop="url">联盟营销|7.如何获取流量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-23 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-23T00:00:00+08:00">2020-05-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 16:43:48" itemprop="dateModified" datetime="2020-06-18T16:43:48+08:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/" itemprop="url" rel="index">
-                    <span itemprop="name">联盟营销</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>企业如何获取客户的思维模型？<br>如何取获取客户:Free/Paid</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/23/make-money-online-7-affiliate-marketing-get-traffic/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/05/22/make-money-online-6-affiliate-marketing-fail-reason/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/22/make-money-online-6-affiliate-marketing-fail-reason/" class="post-title-link" itemprop="url">联盟营销|6.为什么你做的联盟营销会失败</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-22 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-22T00:00:00+08:00">2020-05-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 16:43:48" itemprop="dateModified" datetime="2020-06-18T16:43:48+08:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/" itemprop="url" rel="index">
-                    <span itemprop="name">联盟营销</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>产品选错了<br>关键词选错了<br>语言问题<br>持续性的问题<br>网站问题</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/22/make-money-online-6-affiliate-marketing-fail-reason/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://imzhanghao.com/2020/05/21/make-money-online-5-affiliate-marketing-how-to-promote-products/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="ZhangHao">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张浩写字的地方">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/21/make-money-online-5-affiliate-marketing-how-to-promote-products/" class="post-title-link" itemprop="url">联盟营销|5.如何有效推广产品</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-21 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-21T00:00:00+08:00">2020-05-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-18 16:43:48" itemprop="dateModified" datetime="2020-06-18T16:43:48+08:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/" itemprop="url" rel="index">
-                    <span itemprop="name">联盟营销</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>免费的方式:SEO/内容营销/社交/博客论坛<br>付费的方式:广告/红人/联盟</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/21/make-money-online-5-affiliate-marketing-how-to-promote-products/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  </div>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="ZhangHao"
-      src="/images/avatar.png">
-  <p class="site-author-name" itemprop="name">ZhangHao</p>
-  <div class="site-description" itemprop="description"></div>
+        <div class="nickname">Hao Zhang</div>
+        <div class="description"><p>算法工程师，关注机器学习，计算广告，推荐系统.</p>
 </div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">21</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/amberyic" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:zhanghaokdd@163.com" title="E-Mail → mailto:zhanghaokdd@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://weibo.com/chanming1989" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;chanming1989" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/amberyic" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-gratipay"></i>知乎</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://twitter.com/amberyic" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://instagram.com/amberyic" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;amberyic" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
-      </span>
-  </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-      </div>
-
+        <div class="links">
+            
+                
+                    <a class="link-item" title="Blog" href="/archives">
+                        
+                        
+                            <i class="iconfont icon-blog"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="ZhiHu" href="https://www.zhihu.com/people/sirice" target="_blank" rel="noopener">
+                        
+                        
+                            <i class="iconfont icon-zhihu"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Instagram" href="https://instagram.com/amberyic" target="_blank" rel="noopener">
+                        
+                        
+                            <i class="iconfont icon-instagram"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Weibo" href="https://weibo.com/chanming1989" target="_blank" rel="noopener">
+                        
+                        
+                            <i class="iconfont icon-weibo"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Github" href="https://github.com/amberyic" target="_blank" rel="noopener">
+                        
+                        
+                            <i class="iconfont icon-github"></i>
+                        
+                    </a>
+                
+            
+        </div>
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备20008129号 </a>
-  </div>
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">ZhangHao</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
-  </div>
-
-
-<div class="powered-by">
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <i class="fa fa-user-md"></i>
-    <span id="busuanzi_container_site_uv">
-        本站访客数:<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_pv">
-        本站访问量<span id="busuanzi_value_site_pv"></span>
-    </span>
 </div>
 
-        
 
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
 
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
-
-  
-
+    </div>
 </body>
 </html>

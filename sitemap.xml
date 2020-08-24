@@ -2,30 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://imzhanghao.com/2020/05/10/5-classic-algorithms-5-backtracking-branch-and-bound/</loc>
+    
+    <lastmod>2020-08-24T14:42:34.669Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/2020/04/25/5-classic-algorithms-4-dynamic-programming/</loc>
+    
+    <lastmod>2020-08-24T14:42:25.495Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</loc>
+    
+    <lastmod>2020-08-24T14:42:16.922Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/2020/04/15/5-classic-algorithms-2-greedy-algorithm/</loc>
+    
+    <lastmod>2020-08-24T14:42:08.180Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/2020/04/10/5-classic-algorithms-1-exhaustive-method/</loc>
+    
+    <lastmod>2020-08-24T14:41:59.724Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://imzhanghao.com/2020/06/22/computing-advertising-6-programmatic-direct-buying/</loc>
     
-    <lastmod>2020-07-29T13:31:35.953Z</lastmod>
+    <lastmod>2020-08-24T14:41:49.144Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://imzhanghao.com/2020/06/18/computing-advertising-5-lean-data-monetization/</loc>
     
-    <lastmod>2020-07-25T07:50:00.825Z</lastmod>
+    <lastmod>2020-08-24T14:41:40.411Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://imzhanghao.com/2020/06/15/computing-advertising-4-agreement-based-advertising/</loc>
     
-    <lastmod>2020-07-25T06:54:23.810Z</lastmod>
+    <lastmod>2020-08-24T14:41:10.102Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://imzhanghao.com/2020/06/12/computing-advertising-3-related-knowledge/</loc>
     
-    <lastmod>2020-06-18T09:13:32.565Z</lastmod>
+    <lastmod>2020-08-24T14:41:02.255Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/</loc>
+    
+    <lastmod>2020-08-24T14:40:57.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/2020/06/10/computing-advertising-1-curriculum-structure/</loc>
+    
+    <lastmod>2020-08-24T14:40:52.024Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/categories/index.html</loc>
+    
+    <lastmod>2020-08-24T14:37:08.462Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://imzhanghao.com/tags/index.html</loc>
+    
+    <lastmod>2020-08-24T14:36:52.903Z</lastmod>
     
   </url>
   
@@ -86,34 +149,6 @@
   </url>
   
   <url>
-    <loc>https://imzhanghao.com/2020/06/10/computing-advertising-1-curriculum-structure/</loc>
-    
-    <lastmod>2020-06-18T08:43:48.583Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/</loc>
-    
-    <lastmod>2020-06-18T08:43:48.583Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/categories/index.html</loc>
-    
-    <lastmod>2020-06-18T08:42:20.328Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/tags/index.html</loc>
-    
-    <lastmod>2020-06-18T08:42:20.328Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://imzhanghao.com/about/index.html</loc>
     
     <lastmod>2020-06-18T08:42:20.328Z</lastmod>
@@ -128,44 +163,9 @@
   </url>
   
   <url>
-    <loc>https://imzhanghao.com/2020/05/10/5-classic-algorithms-5-backtracking-branch-and-bound/</loc>
-    
-    <lastmod>2020-06-18T08:42:20.326Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://imzhanghao.com/2020/03/21/hexo-github-deploy/</loc>
     
     <lastmod>2020-06-18T08:42:20.326Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</loc>
-    
-    <lastmod>2020-06-18T08:42:20.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/2020/04/25/5-classic-algorithms-4-dynamic-programming/</loc>
-    
-    <lastmod>2020-06-18T08:42:20.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/2020/04/10/5-classic-algorithms-1-exhaustive-method/</loc>
-    
-    <lastmod>2020-06-18T08:42:20.324Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/2020/04/15/5-classic-algorithms-2-greedy-algorithm/</loc>
-    
-    <lastmod>2020-06-18T08:42:20.324Z</lastmod>
     
   </url>
   
