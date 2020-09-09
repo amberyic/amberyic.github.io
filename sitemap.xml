@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://imzhanghao.com/2020/04/10/5-classic-algorithms-1-exhaustive-method/</loc>
+    
+    <lastmod>2020-09-09T07:33:21.148Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://imzhanghao.com/2020/05/10/5-classic-algorithms-5-backtracking-branch-and-bound/</loc>
     
     <lastmod>2020-08-24T14:42:34.669Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://imzhanghao.com/2020/04/15/5-classic-algorithms-2-greedy-algorithm/</loc>
     
     <lastmod>2020-08-24T14:42:08.180Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/2020/04/10/5-classic-algorithms-1-exhaustive-method/</loc>
-    
-    <lastmod>2020-08-24T14:41:59.724Z</lastmod>
     
   </url>
   
