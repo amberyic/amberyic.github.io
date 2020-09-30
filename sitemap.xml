@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://imzhanghao.com/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</loc>
+    
+    <lastmod>2020-09-30T06:36:16.721Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://imzhanghao.com/2020/04/15/5-classic-algorithms-2-greedy-algorithm/</loc>
     
     <lastmod>2020-09-14T08:30:20.466Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://imzhanghao.com/2020/04/25/5-classic-algorithms-4-dynamic-programming/</loc>
     
     <lastmod>2020-08-24T14:42:25.495Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://imzhanghao.com/2020/04/20/5-classic-algorithms-3-divide-and-conquer/</loc>
-    
-    <lastmod>2020-08-24T14:42:16.922Z</lastmod>
     
   </url>
   
