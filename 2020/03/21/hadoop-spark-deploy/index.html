@@ -218,7 +218,7 @@
 <ul>
 <li>修改/etc/sysconfig/network文件,将localhost.localdomain修改为指定hostname并保存文件退出</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">NETWORKING&#x3D;yes</span><br><span class="line">HOSTNAME&#x3D;localhost.localdomain</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">NETWORKING&#x3D;yes</span><br><span class="line">HOSTNAME&#x3D;localhost.localdomain</span><br></pre></td></tr></table></figure>
 <ul>
 <li>修改host</li>
 </ul>
@@ -265,150 +265,93 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">scala -version</span><br></pre></td></tr></table></figure>
 <h2 id="hadoop-amp-spark安装与配置"><a href="#hadoop-amp-spark安装与配置" class="headerlink" title="hadoop &amp; spark安装与配置"></a>hadoop &amp; spark安装与配置</h2><h3 id="hadoop的安装与配置"><a href="#hadoop的安装与配置" class="headerlink" title="hadoop的安装与配置"></a>hadoop的安装与配置</h3><ul>
-<li><ol>
-<li>下载hadoop2.7，放置在/opt目录下，并解压</li>
-</ol>
-</li>
+<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;archive.apache.org&#x2F;dist&#x2F;hadoop&#x2F;core&#x2F;hadoop-2.7.0&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ tar -zxvf .&#x2F;hadoop-2.7.0.tar.gz</span><br><span class="line">$ sudo mv hadoop-2.7.0 &#x2F;opt</span><br></pre></td></tr></table></figure>
 <ul>
-<li><ol start="2">
-<li>修改环境变量，编辑/etc/profile文件，添加如下程序</li>
-</ol>
-</li>
+<li>2) 修改环境变量，编辑/etc/profile文件，添加如下程序</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="3">
-<li>在hadoop-2.7.0目录下添加目录</li>
-</ol>
-</li>
+<li>3) 在hadoop-2.7.0目录下添加目录</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir tmp</span><br><span class="line">$ mkdir hdfs</span><br><span class="line">$ mkdir hdfs&#x2F;name</span><br><span class="line">$ mkdir hdfs&#x2F;data</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="4">
-<li>修改$HADOOP_HOME/etc/hadoop/hadoop-env.sh，修改JAVA_HOME 如下：</li>
-</ol>
-</li>
+<li>4) 修改$HADOOP_HOME/etc/hadoop/hadoop-env.sh，修改JAVA_HOME 如下：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="5">
-<li>修改$HADOOP_HOME/etc/hadoop/slaves，将原来的localhost删除，添加如下内容：</li>
-</ol>
-</li>
+<li>5) 修改$HADOOP_HOME/etc/hadoop/slaves，将原来的localhost删除，添加如下内容：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UbuntuSlaver1</span><br><span class="line">UbuntuSlaver2</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="6">
-<li>修改$HADOOP_HOME/etc/hadoop/core-site.xml，修改为如下内容：</li>
-</ol>
-</li>
+<li>6) 修改$HADOOP_HOME/etc/hadoop/core-site.xml，修改为如下内容：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;UbuntuMaster:9000&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;io.file.buffer.size&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;131072&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;tmp&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="7">
-<li>修改$HADOOP_HOME/etc/hadoop/hdfs-site.xml</li>
-</ol>
-</li>
+<li>7) 修改$HADOOP_HOME/etc/hadoop/hdfs-site.xml</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.secondary.http-address&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;UbuntuMaster:50090&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.replication&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;2&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.namenode.name.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;name&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.datanode.data.dir&lt;&#x2F;name&gt;</span><br><span class="line">      &lt;value&gt;file:&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;hdfs&#x2F;data&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="8">
-<li>在$HADOOP_HOME/etc/hadoop目录下复制template，生成xml，命令如下：</li>
-</ol>
-</li>
+<li>8) 在$HADOOP_HOME/etc/hadoop目录下复制template，生成xml，命令如下：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cp mapred-site.xml.template mapred-site.xml</span><br><span class="line">修改$HADOOP_HOME&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">            &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:10020&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.jobhistory.address&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;value&gt;UbuntuMaster:19888&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="9">
-<li>修改$HADOOP_HOME/etc/hadoop/yarn-site.xml</li>
-</ol>
-</li>
+<li>9) 修改$HADOOP_HOME/etc/hadoop/yarn-site.xml</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8032&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8030&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8031&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.admin.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8033&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.resourcemanager.webapp.address&lt;&#x2F;name&gt;</span><br><span class="line">         &lt;value&gt;UbuntuMaster:8088&lt;&#x2F;value&gt;</span><br><span class="line">     &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="spark的安装与配置"><a href="#spark的安装与配置" class="headerlink" title="spark的安装与配置"></a>spark的安装与配置</h3><ul>
-<li><ol>
-<li>下载hadoop2.7，放置在/opt目录下，并解压</li>
-</ol>
-</li>
+<li>1) 下载hadoop2.7，放置在/opt目录下，并解压</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ wget http:&#x2F;&#x2F;apache.communilink.net&#x2F;spark&#x2F;spark-2.4.5&#x2F;spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</span><br><span class="line">$ sudo mv spark-2.4.5-bin-hadoop2.7 &#x2F;opt</span><br></pre></td></tr></table></figure>
 <ul>
-<li><ol start="2">
-<li>修改/etc/profile，增加如下内容。</li>
-</ol>
-</li>
+<li>2) 修改/etc/profile，增加如下内容。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
 <ul>
-<li><ol start="3">
-<li>配置spark-env.sh文件</li>
-</ol>
-</li>
+<li>3) 配置spark-env.sh文件</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cp $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh.template $SPARK_HOME&#x2F;conf&#x2F;spark-env.sh</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export SPARK_WORKER_MEMORY&#x3D;6g</span><br><span class="line">export HADOOP_CONF_DIR&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;etc&#x2F;hadoop</span><br><span class="line">export SPARK_MASTER_IP&#x3D;172.30.50.42</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH:$HADOOP_HOME&#x2F;lib&#x2F;native</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="4">
-<li>配置slaves文件,添加如下内容</li>
-</ol>
-</li>
+<li>4) 配置slaves文件,添加如下内容</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp $SPARK_HOME&#x2F;conf&#x2F;slaves.template $SPARK_HOME&#x2F;conf&#x2F;slaves</span><br><span class="line">在文件末尾添加如下内容：</span><br><span class="line">UbuntuMaster</span><br><span class="line">UbuntuSlave1</span><br><span class="line">UbuntuSlave2</span><br></pre></td></tr></table></figure>
 
 <h3 id="同步配置-amp-初始化集群"><a href="#同步配置-amp-初始化集群" class="headerlink" title="同步配置&amp;初始化集群"></a>同步配置&amp;初始化集群</h3><ul>
-<li><ol>
-<li>拷贝软件配置</li>
-</ol>
-</li>
+<li>1) 拷贝软件配置</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;jdk1.8.0_241 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;hadoop-2.7.0 hadoop@UbuntuSlave2:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave1:&#x2F;opt</span><br><span class="line">$ scp -r &#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7 hadoop@UbuntuSlave2:&#x2F;opt</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="2">
-<li>复制/etc/profile的配置到Slave</li>
-</ol>
-</li>
+<li>2) 复制/etc/profile的配置到Slave</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># java</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;opt&#x2F;jdk1.8.0_241</span><br><span class="line">export CLASSPATH&#x3D;:$JAVA_HOME&#x2F;lib:$JAVA_HOME&#x2F;jre&#x2F;lib:$CLASSPATH</span><br><span class="line">export PATH&#x3D;$JAVA_HOME&#x2F;bin:$JAVA_HOME&#x2F;jre&#x2F;bin:$PATH</span><br><span class="line"></span><br><span class="line"># scala</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;opt&#x2F;scala-2.12.10</span><br><span class="line">export PATH&#x3D;$PATH:$SCALA_HOME&#x2F;bin</span><br><span class="line"></span><br><span class="line"># hadoop</span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;hadoop-2.7.0</span><br><span class="line">export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin</span><br><span class="line">export HADOOP_MAPRED_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export YARN_HOME&#x3D;$HADOOP_HOME</span><br><span class="line">export HADOOP_ROOT_LOGGER&#x3D;INFO,console</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native</span><br><span class="line">export HADOOP_OPTS&#x3D;&quot;-Djava.library.path&#x3D;$HADOOP_HOME&#x2F;lib&#x2F;native&quot;</span><br><span class="line"></span><br><span class="line"># spark</span><br><span class="line">export SPARK_HOME&#x3D;&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7</span><br><span class="line">export PATH&#x3D;$PATH:$SPARK_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><ol start="3">
-<li>初始化Hadoop集群</li>
-</ol>
-</li>
+<li>3) 初始化Hadoop集群</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop namenode -format</span><br></pre></td></tr></table></figure>
 
 <h2 id="集群启动-amp-部署验证"><a href="#集群启动-amp-部署验证" class="headerlink" title="集群启动&amp;部署验证"></a>集群启动&amp;部署验证</h2><h3 id="hadoop集群启动"><a href="#hadoop集群启动" class="headerlink" title="hadoop集群启动"></a>hadoop集群启动</h3><ul>
-<li><ol>
-<li>在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
+<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;opt&#x2F;hadoop-2.7.0&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
 <li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：SecondaryNameNode，ResourceManager，NameNode<br>Slaver显示：NodeManager，DataNode</li>
-<li><ol start="3">
-<li>管理界面<br>访问<a href="http://ubuntumaster:50070/" target="_blank" rel="noopener">http://UbuntuMaster:50070</a>, 查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</li>
-</ol>
-</li>
+<li>3) 管理界面<br>访问<a href="http://UbuntuMaster:50070" target="_blank" rel="noopener">http://UbuntuMaster:50070</a>, 查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</li>
 </ul>
 <h3 id="hadoop集群验证"><a href="#hadoop集群验证" class="headerlink" title="hadoop集群验证"></a>hadoop集群验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd  $HADOOP_HOME</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -rm -r &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -mkdir &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -put $HADOOP_HOME&#x2F;README.txt &#x2F;input</span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;input</span><br><span class="line">bin&#x2F;hadoop jar share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-2.7.0.jar wordcount  &#x2F;input&#x2F;README.txt  &#x2F;output</span><br><span class="line"></span><br><span class="line">bin&#x2F;hadoop fs -ls  &#x2F;output</span><br><span class="line">bin&#x2F;hadoop fs -cat &#x2F;output&#x2F;part-r-00000</span><br></pre></td></tr></table></figure>
 
 <h3 id="spark集群启动"><a href="#spark集群启动" class="headerlink" title="spark集群启动"></a>spark集群启动</h3><ul>
-<li><ol>
-<li>在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
+<li>1) 在Master节点，执行一下命令，启动集群。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;sbin&#x2F;start-all.sh</span><br></pre></td></tr></table></figure></li>
 <li>2）查看Hadoop是否启动成功，输入命令：jps<br>Master显示：Master<br>Slaver显示：Worker</li>
-<li>3）管理界面<br>访问<a href="http://ubuntumaster:8080/" target="_blank" rel="noopener">http://UbuntuMaster:8080</a>, 可以看到三个Worker</li>
+<li>3）管理界面<br>访问<a href="http://UbuntuMaster:8080" target="_blank" rel="noopener">http://UbuntuMaster:8080</a>, 可以看到三个Worker</li>
 </ul>
 <h3 id="spark集群验证"><a href="#spark集群验证" class="headerlink" title="spark集群验证"></a>spark集群验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark:&#x2F;&#x2F;UbuntuMaster:7077 \</span><br><span class="line">--executor-memory 1G --total-executor-cores 2 \</span><br><span class="line">&#x2F;opt&#x2F;spark-2.4.5-bin-hadoop2.7&#x2F;examples&#x2F;jars&#x2F;spark-examples_2.11-2.4.5.jar \</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
 
@@ -468,10 +411,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/04/10/5-classic-algorithms-1-exhaustive-method/">五大经典算法|1.穷举法</a>
+                <a class="prev" rel="prev" href="/2020/03/21/hexo-github-deploy/">Hexo + Github Page搭建博客</a>
             
-            
-            <a class="next" rel="next" href="/2020/03/21/hexo-github-deploy/">Hexo + Github Page搭建博客</a>
             
         </section>
 
