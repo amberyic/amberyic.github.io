@@ -1,286 +1,35 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="ZhangHao">
-
-
-    <meta name="subtitle" content="算法工程师的世界">
-
-
-
-    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
-
-
-<title>计算广告|7.永无止境的博弈 -- 流量保护和反作弊 | 张浩写字的地方</title>
-
-
-
-    <link rel="icon" href="/image/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-        
-    
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>计算广告|7.永无止境的博弈 -- 流量保护和反作弊</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
+</head><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'UA-166608124-1');
-</script>
-
-<!-- Google Adsense -->
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-
-<!-- Baidu TongJi -->
-<script>
-var _hmt = _hmt || [];
+}</script><script>var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4";
-  var s = document.getElementsByTagName("script")[0];
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4';
+  hm.async = true;
+
+  var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">计算广告|7.永无止境的博弈 -- 流量保护和反作弊</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">ZhangHao</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">July 3, 2020</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/">计算广告</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <h1 id="永无止境的博弈：流量保护和反作弊"><a href="#永无止境的博弈：流量保护和反作弊" class="headerlink" title="永无止境的博弈：流量保护和反作弊"></a>永无止境的博弈：流量保护和反作弊</h1><h3 id="作弊的分类"><a href="#作弊的分类" class="headerlink" title="作弊的分类"></a>作弊的分类</h3><ul>
+})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><body>　　<div class="inner"><h2>计算广告|7.永无止境的博弈 -- 流量保护和反作弊</h2><h1 id="永无止境的博弈流量保护和反作弊"><a class="markdownIt-Anchor" href="#永无止境的博弈流量保护和反作弊"></a> 永无止境的博弈：流量保护和反作弊</h1>
+<h3 id="作弊的分类"><a class="markdownIt-Anchor" href="#作弊的分类"></a> 作弊的分类</h3>
+<ul>
 <li>CPM/CPC作弊 【媒体网站】 &lt;–结算方式–&gt; CPA/CPS作弊【客户网站】</li>
 <li>虚假流量（NHT，Non-Human Traffic）【机器刷量】 &lt;–流量属性–&gt; 流量归因 【从别人那边抢过来的流量】</li>
 <li>机器作弊 &lt;–主体–&gt; 人工作弊</li>
 </ul>
-<h3 id="CPM-CPC广告监测"><a href="#CPM-CPC广告监测" class="headerlink" title="CPM/CPC广告监测"></a>CPM/CPC广告监测</h3><ul>
+<h3 id="cpmcpc广告监测"><a class="markdownIt-Anchor" href="#cpmcpc广告监测"></a> CPM/CPC广告监测</h3>
+<ul>
 <li>1.广告主与媒体签订广告合同，约定结算方式。</li>
 <li>2.第三方监测在广告展示环节添加检测代码/SDK，随着广告一起到达用户端。</li>
 <li>3.媒体展示广告，用户看到广告创意</li>
 <li>4.用户产生广告交互行为的被发送到第三方，第三方进行统计。</li>
 <li>5.第三方将统计数据交给广告主，广告主据此与媒体结算。</li>
 </ul>
-<h3 id="广告监测代码"><a href="#广告监测代码" class="headerlink" title="广告监测代码"></a>广告监测代码</h3><ul>
-<li>参数<ul>
+<h3 id="广告监测代码"><a class="markdownIt-Anchor" href="#广告监测代码"></a> 广告监测代码</h3>
+<p>参数</p>
+<ul>
 <li>OS：客户端操作系统的种类，0-Android，1-iOS，2-WP，3-Others</li>
 <li>IMEI：15位，适用于Android，需要MD5加密</li>
 <li>MAC：用户终端硬件地址，适用于Android和iOS，字母转换成大写后MD5加密</li>
@@ -288,123 +37,64 @@ var _hmt = _hmt || [];
 <li>IDFA：适用于iOS，保留原始值</li>
 <li>openUDID：适用于iOS，保留原始值</li>
 </ul>
-</li>
-</ul>
-<h3 id="CPA-CPS广告归因"><a href="#CPA-CPS广告归因" class="headerlink" title="CPA/CPS广告归因"></a>CPA/CPS广告归因</h3><ul>
+<h3 id="cpacps广告归因"><a class="markdownIt-Anchor" href="#cpacps广告归因"></a> CPA/CPS广告归因</h3>
+<ul>
 <li>1.用户ID碰撞归因</li>
 <li>2.直接访问归因：为每一个渠道分配一个渠道ID，放在落地页URL参数中，当用户在到达落地页以后的统一个session中完成转化行为，就记到该渠道上。（中国的安卓应用下载，采用的也是直接访问归因法，给每个渠道打不通的apk包，分别记录下载量）</li>
 </ul>
-<h3 id="刷监测代码作弊"><a href="#刷监测代码作弊" class="headerlink" title="刷监测代码作弊"></a>刷监测代码作弊</h3><ul>
+<h3 id="刷监测代码作弊"><a class="markdownIt-Anchor" href="#刷监测代码作弊"></a> 刷监测代码作弊</h3>
+<ul>
 <li>直接刷代码</li>
 <li>服务器刷代码</li>
 <li>客户端刷代码</li>
 </ul>
-<h3 id="iFrame虚假展示作弊"><a href="#iFrame虚假展示作弊" class="headerlink" title="iFrame虚假展示作弊"></a>iFrame虚假展示作弊</h3><ul>
+<h3 id="iframe虚假展示作弊"><a class="markdownIt-Anchor" href="#iframe虚假展示作弊"></a> iFrame虚假展示作弊</h3>
+<ul>
 <li>把iframe的尺寸变成1*1的，用户看不见。</li>
 </ul>
-<h3 id="诱骗用户点击"><a href="#诱骗用户点击" class="headerlink" title="诱骗用户点击"></a>诱骗用户点击</h3><ul>
+<h3 id="诱骗用户点击"><a class="markdownIt-Anchor" href="#诱骗用户点击"></a> 诱骗用户点击</h3>
+<ul>
 <li>软件下载网站</li>
 </ul>
-<h3 id="点击热力图检查作弊"><a href="#点击热力图检查作弊" class="headerlink" title="点击热力图检查作弊"></a>点击热力图检查作弊</h3><ul>
+<h3 id="点击热力图检查作弊"><a class="markdownIt-Anchor" href="#点击热力图检查作弊"></a> 点击热力图检查作弊</h3>
+<ul>
 <li>正常点击热力图</li>
 <li>作弊点击热力图</li>
 </ul>
-<h3 id="作弊中如何处理用户ID"><a href="#作弊中如何处理用户ID" class="headerlink" title="作弊中如何处理用户ID"></a>作弊中如何处理用户ID</h3><ul>
+<h3 id="作弊中如何处理用户id"><a class="markdownIt-Anchor" href="#作弊中如何处理用户id"></a> 作弊中如何处理用户ID</h3>
+<ul>
 <li>频繁更换用户ID</li>
-<li>Cloaking<ul>
+<li>Cloaking
+<ul>
 <li>伪装，定向屏蔽</li>
 </ul>
 </li>
 </ul>
-<h3 id="运营商弹窗"><a href="#运营商弹窗" class="headerlink" title="运营商弹窗"></a>运营商弹窗</h3><h3 id="CPS作弊手段"><a href="#CPS作弊手段" class="headerlink" title="CPS作弊手段"></a>CPS作弊手段</h3><ul>
-<li>运营商落地页劫持<ul>
-<li><a href="http://www.jd.com" target="_blank" rel="noopener">http://www.jd.com</a> –&gt; <a href="http://www.jd.com?utm_source=ABC" target="_blank" rel="noopener">http://www.jd.com?utm_source=ABC</a></li>
+<h3 id="运营商弹窗"><a class="markdownIt-Anchor" href="#运营商弹窗"></a> 运营商弹窗</h3>
+<h3 id="cps作弊手段"><a class="markdownIt-Anchor" href="#cps作弊手段"></a> CPS作弊手段</h3>
+<p>运营商落地页劫持</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.jd.com">http://www.jd.com</a> --&gt; <a target="_blank" rel="noopener" href="http://www.jd.com?utm_source=ABC">http://www.jd.com?utm_source=ABC</a></li>
 </ul>
-</li>
-<li>Cookie Stuffing<ul>
+<p>Cookie Stuffing</p>
+<ul>
 <li>在CPS联盟机制下，只要给用户打上标签标识媒体来源的Cookie，该用户的购买行为就会到该媒体</li>
 <li>基本原理是在浏览器上悄悄对推广链接发器HTTP请求，在用户不点击广告的情况下打上媒体的Cookie。</li>
 </ul>
-</li>
-</ul>
-<h3 id="CPI常见作弊手段"><a href="#CPI常见作弊手段" class="headerlink" title="CPI常见作弊手段"></a>CPI常见作弊手段</h3><ul>
+<h3 id="cpi常见作弊手段"><a class="markdownIt-Anchor" href="#cpi常见作弊手段"></a> CPI常见作弊手段</h3>
+<ul>
 <li>Click Spam（帮用户点击，转化率低，后续效果好）</li>
 <li>Click injection（国外 安卓）</li>
 <li>Ad stacking（蕾丝Click Spam）</li>
 <li>刷机（群控，转化率高，后续效果差）</li>
 </ul>
-<h3 id="常见人工作弊"><a href="#常见人工作弊" class="headerlink" title="常见人工作弊"></a>常见人工作弊</h3><ul>
+<h3 id="常见人工作弊"><a class="markdownIt-Anchor" href="#常见人工作弊"></a> 常见人工作弊</h3>
+<ul>
 <li>淘宝代销（不寄真实商品）</li>
 <li>羊毛党（P2P理财）</li>
 <li>买栗子（汽车行业，销售线索，宝马）</li>
 </ul>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>移动广告反作弊与PC相比有什么难易？</p>
-
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>ZhangHao</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://imzhanghao.com/2020/07/03/computing-advertising-7-fraud-detection/">https://imzhanghao.com/2020/07/03/computing-advertising-7-fraud-detection/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E6%B5%81%E9%87%8F%E4%BF%9D%E6%8A%A4/"># 流量保护</a>
-                    
-                        <a href="/tags/%E5%8F%8D%E4%BD%9C%E5%BC%8A/"># 反作弊</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/08/12/computing-advertising-8-native-ads/">计算广告|8.场景数据利用 -- 原生广告</a>
-            
-            
-            <a class="next" rel="next" href="/2020/06/22/computing-advertising-6-programmatic-direct-buying/">计算广告|6.多方数据变现-程序化交易</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a><a target="_blank" href="https://beian.miit.gov.cn/"> | 陕ICP备20008129号</a></span>
-    </div>
-</footer>
-
-    </div>
-</body>
-</html>
+<blockquote>
+<p>思考: 移动广告反作弊与PC相比有什么难易？</p>
+</blockquote>
+<hr><p><span>↶ </span><a href="/">返回首页</a><span></span></p></div><script src="/js/jquery.min.js"></script><script src="/js/main.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script></body></html>

@@ -1,246 +1,34 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="ZhangHao">
-
-
-    <meta name="subtitle" content="算法工程师的世界">
-
-
-
-    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
-
-
-<title>联盟营销|7.如何获取流量 | 张浩写字的地方</title>
-
-
-
-    <link rel="icon" href="/image/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>联盟营销|7.如何获取流量</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
+</head><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'UA-166608124-1');
-</script>
-
-<!-- Google Adsense -->
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-
-<!-- Baidu TongJi -->
-<script>
-var _hmt = _hmt || [];
+}</script><script>var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4";
-  var s = document.getElementsByTagName("script")[0];
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4';
+  hm.async = true;
+
+  var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">联盟营销|7.如何获取流量</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">ZhangHao</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">May 23, 2020</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/">联盟营销</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <p>企业如何获取客户的思维模型？<br>如何取获取客户:Free/Paid</p>
+})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><body>　　<div class="inner"><h2>联盟营销|7.如何获取流量</h2><p>企业如何获取客户的思维模型？<br />
+如何取获取客户:Free/Paid</p>
 <a id="more"></a>
-
-<h1 id="如何获取流量"><a href="#如何获取流量" class="headerlink" title="如何获取流量"></a>如何获取流量</h1><h2 id="企业如何获取客户的思维模型？"><a href="#企业如何获取客户的思维模型？" class="headerlink" title="企业如何获取客户的思维模型？"></a>企业如何获取客户的思维模型？</h2><h3 id="转化漏斗-四要素"><a href="#转化漏斗-四要素" class="headerlink" title="转化漏斗- 四要素"></a>转化漏斗- 四要素</h3><ul>
+<h1 id="如何获取流量"><a class="markdownIt-Anchor" href="#如何获取流量"></a> 如何获取流量</h1>
+<h2 id="企业如何获取客户的思维模型"><a class="markdownIt-Anchor" href="#企业如何获取客户的思维模型"></a> 企业如何获取客户的思维模型？</h2>
+<h3 id="转化漏斗-四要素"><a class="markdownIt-Anchor" href="#转化漏斗-四要素"></a> 转化漏斗- 四要素</h3>
+<ul>
 <li>拉新：干货内容、广告。冷流量～</li>
 <li>留存：eg.留邮箱，优惠、折扣。</li>
 <li>促活：EDM</li>
-<li>转化<blockquote>
+<li>转化</li>
+</ul>
+<blockquote>
 <p>需要明确客户目前处于转化的哪个漏斗阶段，针对性的开展运营策略。</p>
 </blockquote>
-</li>
-</ul>
-<h3 id="Stages-of-the-Customer-Buying-Cycle"><a href="#Stages-of-the-Customer-Buying-Cycle" class="headerlink" title="Stages of the Customer Buying Cycle"></a>Stages of the Customer Buying Cycle</h3><ul>
+<h3 id="stages-of-the-customer-buying-cycle"><a class="markdownIt-Anchor" href="#stages-of-the-customer-buying-cycle"></a> Stages of the Customer Buying Cycle</h3>
+<ul>
 <li>awareness:让人知道你的产品</li>
 <li>interest：让人们对你的产品或者服务感兴趣</li>
 <li>consideration：客户考虑，产生购买意向</li>
@@ -248,115 +36,60 @@ var _hmt = _hmt || [];
 <li>post-purchase：客户分享，晒朋友圈</li>
 <li>re-purchase：复购</li>
 </ul>
-<h2 id="Facebook-广告漏洞"><a href="#Facebook-广告漏洞" class="headerlink" title="Facebook 广告漏洞"></a>Facebook 广告漏洞</h2><ul>
+<h2 id="facebook-广告漏洞"><a class="markdownIt-Anchor" href="#facebook-广告漏洞"></a> Facebook 广告漏洞</h2>
+<ul>
 <li>品牌认知：对你的产品或者服务产生兴趣的目标，这个阶段是偏向于reach数量</li>
 <li>购买意向：让人们开始知道你的业务(增加流量，安装APP，帖子互动)</li>
 <li>行为转化：鼓励对你产品感兴趣的人，进行购买或者使用为目标</li>
 </ul>
-<h2 id="如何取获取客户"><a href="#如何取获取客户" class="headerlink" title="如何取获取客户"></a>如何取获取客户</h2><h3 id="Free"><a href="#Free" class="headerlink" title="Free"></a>Free</h3><ul>
-<li>操作方法<ul>
+<h2 id="如何取获取客户"><a class="markdownIt-Anchor" href="#如何取获取客户"></a> 如何取获取客户</h2>
+<h3 id="free"><a class="markdownIt-Anchor" href="#free"></a> Free</h3>
+<ul>
+<li>操作方法
+<ul>
 <li>内容营销</li>
 <li>SEO</li>
 <li>社群营销</li>
 </ul>
 </li>
-<li>优点<ul>
+<li>优点
+<ul>
 <li>获客相对来说比较精准</li>
 </ul>
 </li>
-<li>缺点：<ul>
+<li>缺点：
+<ul>
 <li>失效太慢了，耗费的周期很长，时间成本很大</li>
 </ul>
 </li>
 </ul>
-<h3 id="Paid"><a href="#Paid" class="headerlink" title="Paid"></a>Paid</h3><ul>
-<li>操作方法<ul>
+<h3 id="paid"><a class="markdownIt-Anchor" href="#paid"></a> Paid</h3>
+<ul>
+<li>操作方法
+<ul>
 <li>广告</li>
 <li>红人营销</li>
 </ul>
 </li>
-<li>优点<ul>
+<li>优点
+<ul>
 <li>速度快，见效快</li>
 </ul>
 </li>
-<li>缺点：<ul>
+<li>缺点：
+<ul>
 <li>广告成本大</li>
 <li>广告一停，流程下降很快</li>
 </ul>
 </li>
 </ul>
-<hr>
-<h2 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h2><ul>
+<hr />
+<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
+<ul>
 <li>要明确目前处于获客的什么阶段，然后明确使用什么策略</li>
 <li>如果做免费流量，就需要思考国平老师说的：让内容在渠道之间流动。</li>
 </ul>
 <blockquote>
 <p>本文系顾小北老师《联盟营销网络赚钱系列》的第7课笔记。</p>
 </blockquote>
-
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>ZhangHao</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://imzhanghao.com/2020/05/23/make-money-online-7-affiliate-marketing-get-traffic/">https://imzhanghao.com/2020/05/23/make-money-online-7-affiliate-marketing-get-traffic/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/"># 联盟营销</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/05/25/make-money-online-8-affiliate-marketing-zero-to-one/">联盟营销|8.从0到1实战联盟营销</a>
-            
-            
-            <a class="next" rel="next" href="/2020/05/22/make-money-online-6-affiliate-marketing-fail-reason/">联盟营销|6.为什么你做的联盟营销会失败</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a><a target="_blank" href="https://beian.miit.gov.cn/"> | 陕ICP备20008129号</a></span>
-    </div>
-</footer>
-
-    </div>
-</body>
-</html>
+<hr><p><span>↶ </span><a href="/">返回首页</a><span></span></p></div><script src="/js/jquery.min.js"></script><script src="/js/main.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script></body></html>

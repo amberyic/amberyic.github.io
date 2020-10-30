@@ -1,348 +1,74 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="ZhangHao">
-
-
-    <meta name="subtitle" content="算法工程师的世界">
-
-
-
-    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
-
-
-<title>联盟营销|3.Niche市场挖掘的实用工具介绍 | 张浩写字的地方</title>
-
-
-
-    <link rel="icon" href="/image/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>联盟营销|3.Niche市场挖掘的实用工具介绍</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
+</head><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'UA-166608124-1');
-</script>
-
-<!-- Google Adsense -->
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-
-<!-- Baidu TongJi -->
-<script>
-var _hmt = _hmt || [];
+}</script><script>var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4";
-  var s = document.getElementsByTagName("script")[0];
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4';
+  hm.async = true;
+
+  var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">联盟营销|3.Niche市场挖掘的实用工具介绍</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">ZhangHao</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">May 19, 2020</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/">联盟营销</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <p>1.如何挖掘Niche市场？<br>2.创作内容的工具有那些？<br>3.关键词的调研工具有哪些？</p>
+})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><body>　　<div class="inner"><h2>联盟营销|3.Niche市场挖掘的实用工具介绍</h2><p>1.如何挖掘Niche市场？<br />
+2.创作内容的工具有那些？<br />
+3.关键词的调研工具有哪些？</p>
 <a id="more"></a>
-
-<h1 id="Niche市场挖掘的实用工具介绍"><a href="#Niche市场挖掘的实用工具介绍" class="headerlink" title="Niche市场挖掘的实用工具介绍"></a>Niche市场挖掘的实用工具介绍</h1><h2 id="如何挖掘Niche市场？"><a href="#如何挖掘Niche市场？" class="headerlink" title="如何挖掘Niche市场？"></a>如何挖掘Niche市场？</h2><ul>
+<h1 id="niche市场挖掘的实用工具介绍"><a class="markdownIt-Anchor" href="#niche市场挖掘的实用工具介绍"></a> Niche市场挖掘的实用工具介绍</h1>
+<h2 id="如何挖掘niche市场"><a class="markdownIt-Anchor" href="#如何挖掘niche市场"></a> 如何挖掘Niche市场？</h2>
+<ul>
 <li>产品挖掘的方法和工具很多，渠道很多。</li>
 <li>选一个走上升趋势的产品</li>
-<li>工具<ul>
+<li>工具
+<ul>
 <li>Google Trends</li>
 <li>JungleScout：简称JS，对口亚马逊</li>
 <li>Ecomhunt：产品的利润，Facebook广告，定位，受众</li>
 <li>Findinche：免费，分析速卖通，对口Shopify。(每天的用量有限制)</li>
 <li>Cool Hunt：记者&amp;时尚博主&amp;KOC，专业人士的推荐。</li>
-<li>thisiswhyimbroke：ttps://<a href="http://www.thisiswhyimbroke.com/，" target="_blank" rel="noopener">www.thisiswhyimbroke.com/，</a> 好玩有趣的网站<blockquote>
+<li>thisiswhyimbroke：ttps://www.thisiswhyimbroke.com/， 好玩有趣的网站</li>
+</ul>
+</li>
+</ul>
+<blockquote>
 <p>产品挖掘好以后，需要靠内容和关键词来吸引流量。</p>
 </blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="创作内容的工具有那些？"><a href="#创作内容的工具有那些？" class="headerlink" title="创作内容的工具有那些？"></a>创作内容的工具有那些？</h2><ul>
+<h2 id="创作内容的工具有那些"><a class="markdownIt-Anchor" href="#创作内容的工具有那些"></a> 创作内容的工具有那些？</h2>
+<ul>
 <li>有内容才能吸引用户，内容创作需要紧跟潮流。</li>
-<li>工具<ul>
-<li>Keyword Tool：<a href="https://keywordtool.io/" target="_blank" rel="noopener">https://keywordtool.io/</a></li>
-<li>AnswerThePublic： <a href="https://answerthepublic.com/" target="_blank" rel="noopener">https://answerthepublic.com/</a></li>
-<li>BuzzSumo：<a href="https://buzzsumo.com/" target="_blank" rel="noopener">https://buzzsumo.com/</a> 社交内容抓去</li>
-<li>portent： <a href="https://www.portent.com/tools/title-maker" target="_blank" rel="noopener">https://www.portent.com/tools/title-maker</a></li>
+<li>工具
+<ul>
+<li>Keyword Tool：<a target="_blank" rel="noopener" href="https://keywordtool.io/">https://keywordtool.io/</a></li>
+<li>AnswerThePublic： <a target="_blank" rel="noopener" href="https://answerthepublic.com/">https://answerthepublic.com/</a></li>
+<li>BuzzSumo：<a target="_blank" rel="noopener" href="https://buzzsumo.com/">https://buzzsumo.com/</a> 社交内容抓去</li>
+<li>portent： <a target="_blank" rel="noopener" href="https://www.portent.com/tools/title-maker">https://www.portent.com/tools/title-maker</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="关键词的调研工具有哪些？"><a href="#关键词的调研工具有哪些？" class="headerlink" title="关键词的调研工具有哪些？"></a>关键词的调研工具有哪些？</h2><ul>
-<li>amz520.com 上面提供的关键词工具</li>
-<li>两个非常专业的关键词挖掘工具<ul>
+<h2 id="关键词的调研工具有哪些"><a class="markdownIt-Anchor" href="#关键词的调研工具有哪些"></a> 关键词的调研工具有哪些？</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://amz520.com">amz520.com</a> 上面提供的关键词工具</li>
+<li>两个非常专业的关键词挖掘工具
+<ul>
 <li>Ahrefs</li>
 <li>Semrush</li>
 </ul>
 </li>
 </ul>
-<h2 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h2><ul>
+<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
+<ul>
 <li>这一节的内容开始到了实操的部分。</li>
 <li>我们能够接触到的人和事其实都是很局限的，要能找到一般人找不到的市场和机会，就需要依靠工具，帮助我们开拓思路，并且去验证我们的想法，所以工具是必须要用的。好工具更是能够大大提升效率。</li>
-<li>打Niche市场关键点就两个：<ul>
-<li>1.选择一个上升趋势的产品。– 需要使用第一小节的选品工具</li>
-<li>2.吸引精准流量进行营销。–  用户永远都是因为内容才会来到你这里，所以什么样内容就能引来什么样的流量。需要实用二三小节的工具，进行内容创作。</li>
+<li>打Niche市场关键点就两个：
+<ul>
+<li>1.选择一个上升趋势的产品。-- 需要使用第一小节的选品工具</li>
+<li>2.吸引精准流量进行营销。--  用户永远都是因为内容才会来到你这里，所以什么样内容就能引来什么样的流量。需要实用二三小节的工具，进行内容创作。</li>
 </ul>
 </li>
 </ul>
 <blockquote>
 <p>本文系顾小北老师《联盟营销网络赚钱系列》的第3课笔记。</p>
 </blockquote>
-
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>ZhangHao</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://imzhanghao.com/2020/05/19/make-money-online-3-affiliate-marketing-practical-tools-for-niche-market-mining/">https://imzhanghao.com/2020/05/19/make-money-online-3-affiliate-marketing-practical-tools-for-niche-market-mining/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/"># 联盟营销</a>
-                    
-                        <a href="/tags/Niche/"># Niche</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/05/20/make-money-online-4-affiliate-marketing-earning-commissions-website/">联盟营销|4.如何开展赚取佣金之路</a>
-            
-            
-            <a class="next" rel="next" href="/2020/05/18/make-money-online-2-affiliate-marketing-how-to-choose-a-niche/">联盟营销|2.如何挖掘到有竞争力的Niche市场</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a><a target="_blank" href="https://beian.miit.gov.cn/"> | 陕ICP备20008129号</a></span>
-    </div>
-</footer>
-
-    </div>
-</body>
-</html>
+<hr><p><span>↶ </span><a href="/">返回首页</a><span></span></p></div><script src="/js/jquery.min.js"></script><script src="/js/main.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script></body></html>

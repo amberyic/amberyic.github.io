@@ -1,245 +1,37 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="ZhangHao">
-
-
-    <meta name="subtitle" content="算法工程师的世界">
-
-
-
-    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
-
-
-<title>联盟营销|1.联盟营销的工作原理 | 张浩写字的地方</title>
-
-
-
-    <link rel="icon" href="/image/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>联盟营销|1.联盟营销的工作原理</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
+</head><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'UA-166608124-1');
-</script>
-
-<!-- Google Adsense -->
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-
-<!-- Baidu TongJi -->
-<script>
-var _hmt = _hmt || [];
+}</script><script>var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4";
-  var s = document.getElementsByTagName("script")[0];
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4';
+  hm.async = true;
+
+  var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">联盟营销|1.联盟营销的工作原理</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">ZhangHao</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">May 17, 2020</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/">联盟营销</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <p>联盟营销的工作原理<br>1.什么是联盟营销<br>2.为什么选择联盟营销来赚钱<br>3.联盟营销的运作流程<br>4.联盟营销赚钱的案例</p>
+})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><body>　　<div class="inner"><h2>联盟营销|1.联盟营销的工作原理</h2><p>联盟营销的工作原理<br />
+1.什么是联盟营销<br />
+2.为什么选择联盟营销来赚钱<br />
+3.联盟营销的运作流程<br />
+4.联盟营销赚钱的案例</p>
 <a id="more"></a>
-<h1 id="联盟营销的工作原理"><a href="#联盟营销的工作原理" class="headerlink" title="联盟营销的工作原理"></a>联盟营销的工作原理</h1><h2 id="什么是联盟营销"><a href="#什么是联盟营销" class="headerlink" title="什么是联盟营销"></a>什么是联盟营销</h2><ul>
+<h1 id="联盟营销的工作原理"><a class="markdownIt-Anchor" href="#联盟营销的工作原理"></a> 联盟营销的工作原理</h1>
+<h2 id="什么是联盟营销"><a class="markdownIt-Anchor" href="#什么是联盟营销"></a> 什么是联盟营销</h2>
+<ul>
 <li>Affiliate Marketing:通常是指网络联盟营销，其实是一种按营销效果付费的新型网络营销方式。</li>
 </ul>
 <blockquote>
-<p> Affiliate marketing is a type of performance-based marketing in which a business rewards one or more affiliates for each visitor or customer brought by the affiliate’s own marketing efforts. The industry has four core players: the merchant (also known as ‘retailer’ or ‘brand’), the network (that contains offers for the affiliate to choose from and also takes care of the payments), the publisher (also known as ‘the affiliate’), and the customer.</p>
+<p>Affiliate marketing is a type of performance-based marketing in which a business rewards one or more affiliates for each visitor or customer brought by the affiliate’s own marketing efforts. The industry has four core players: the merchant (also known as ‘retailer’ or ‘brand’), the network (that contains offers for the affiliate to choose from and also takes care of the payments), the publisher (also known as ‘the affiliate’), and the customer.</p>
 </blockquote>
 <ul>
-<li><p>商家利用网站联盟服务，扩展其线上及线下业务扩大销售空间和销售渠道，按照营销世纪效果支付费用。</p>
+<li>
+<p>商家利用网站联盟服务，扩展其线上及线下业务扩大销售空间和销售渠道，按照营销世纪效果支付费用。</p>
 </li>
-<li><p>affiliate marketing这种网络联盟营销模式大致有四个要素：</p>
+<li>
+<p>affiliate marketing这种网络联盟营销模式大致有四个要素：</p>
 <ul>
 <li>Merchant:产品的广告商，有的也称之为advertiser</li>
 <li>Publisher:发布商，也就是通常我们所说的网络加盟经销商。通常意义上讲，这个角色就是想要通过联盟营销赚钱的你。</li>
@@ -251,20 +43,23 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>简单来讲：商家给你一件商品，如果你把这个产品推广出去，并且有人下单付费了，那么你就可以赚到佣金。</p>
 </blockquote>
-<h2 id="为什么选择联盟营销来赚钱"><a href="#为什么选择联盟营销来赚钱" class="headerlink" title="为什么选择联盟营销来赚钱"></a>为什么选择联盟营销来赚钱</h2><ul>
+<h2 id="为什么选择联盟营销来赚钱"><a class="markdownIt-Anchor" href="#为什么选择联盟营销来赚钱"></a> 为什么选择联盟营销来赚钱</h2>
+<ul>
 <li>起步门槛底，没有任何风险</li>
 <li>没有库存，没有资金压力</li>
 <li>不需要客服，维护起来方便</li>
 <li>办公地点不限制</li>
 <li>收益是可持续的。</li>
-<li>潜力无限大<blockquote>
+<li>潜力无限大</li>
+</ul>
+<blockquote>
 <p>中国生产的货品，老外通过包装可以获得很大的溢价空间，我们其实可以取赚这部分钱。</p>
 </blockquote>
-</li>
-</ul>
-<h2 id="联盟营销的运作流程"><a href="#联盟营销的运作流程" class="headerlink" title="联盟营销的运作流程"></a>联盟营销的运作流程</h2><ul>
+<h2 id="联盟营销的运作流程"><a class="markdownIt-Anchor" href="#联盟营销的运作流程"></a> 联盟营销的运作流程</h2>
+<ul>
 <li>选取产品-&gt;进行推广-&gt;客户购买-&gt;获取佣金</li>
-<li>基本过程：<ul>
+<li>基本过程：
+<ul>
 <li>1.建好网站（利用网站推广联盟及其产品这是最常规的方法），然后至少加入1-3个联盟项目（对于新手，建议初期先加入一个，先熟悉一下），然后获得对方批准。</li>
 <li>2.写几篇文章来介绍产品，就是product review</li>
 <li>3.把得到批准的联盟链接加到产品上（这是一个很特殊的链接，包含你的ID，商家用来识别加盟商的）</li>
@@ -275,21 +70,26 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
-<h2 id="4-联盟营销赚钱的案例"><a href="#4-联盟营销赚钱的案例" class="headerlink" title="4.联盟营销赚钱的案例"></a>4.联盟营销赚钱的案例</h2><ul>
-<li>网站类（博客,独立站）<ul>
+<h2 id="4联盟营销赚钱的案例"><a class="markdownIt-Anchor" href="#4联盟营销赚钱的案例"></a> 4.联盟营销赚钱的案例</h2>
+<ul>
+<li>网站类（博客,独立站）
+<ul>
 <li>通过SEO倒流</li>
 </ul>
 </li>
 <li>商城类(Shein， 北美省钱快报…)</li>
 <li>工具类</li>
 </ul>
-<hr>
-<h2 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h2><ul>
-<li>1.这是一门赚钱的生意<ul>
+<hr />
+<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
+<ul>
+<li>1.这是一门赚钱的生意
+<ul>
 <li>联盟营销起源于亚马逊，他提高了营销的效率，在整个营销过程中的参与者都能够获得利润。</li>
 </ul>
 </li>
-<li>2.这是一件有趣的事情<ul>
+<li>2.这是一件有趣的事情
+<ul>
 <li>中间有很多的套路，需要对于规则和人性有很深入的理解才能赚到钱，一旦掌握了这门技术，可以在多个领域里面应用。</li>
 </ul>
 </li>
@@ -297,70 +97,4 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>本文系顾小北老师《联盟营销网络赚钱系列》的第一课笔记。</p>
 </blockquote>
-
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>ZhangHao</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://imzhanghao.com/2020/05/17/make-money-online-1-affiliate-marketing-process-and-working-principle/">https://imzhanghao.com/2020/05/17/make-money-online-1-affiliate-marketing-process-and-working-principle/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/"># 联盟营销</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/05/18/make-money-online-2-affiliate-marketing-how-to-choose-a-niche/">联盟营销|2.如何挖掘到有竞争力的Niche市场</a>
-            
-            
-            <a class="next" rel="next" href="/2020/05/10/5-classic-algorithms-5-backtracking-branch-and-bound/">五大经典算法|5.回溯法&分支界定法</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a><a target="_blank" href="https://beian.miit.gov.cn/"> | 陕ICP备20008129号</a></span>
-    </div>
-</footer>
-
-    </div>
-</body>
-</html>
+<hr><p><span>↶ </span><a href="/">返回首页</a><span></span></p></div><script src="/js/jquery.min.js"></script><script src="/js/main.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script></body></html>

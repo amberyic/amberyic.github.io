@@ -1,298 +1,51 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="ZhangHao">
-
-
-    <meta name="subtitle" content="算法工程师的世界">
-
-
-
-    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
-
-
-<title>计算广告|2.认识商业体系 | 张浩写字的地方</title>
-
-
-
-    <link rel="icon" href="/image/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-        
-    
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>计算广告|2.认识商业体系</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
+</head><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'UA-166608124-1');
-</script>
-
-<!-- Google Adsense -->
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-
-<!-- Baidu TongJi -->
-<script>
-var _hmt = _hmt || [];
+}</script><script>var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4";
-  var s = document.getElementsByTagName("script")[0];
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4';
+  hm.async = true;
+
+  var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">计算广告|2.认识商业体系</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">ZhangHao</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">June 11, 2020</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/">计算广告</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <h1 id="认识商业化体系"><a href="#认识商业化体系" class="headerlink" title="认识商业化体系"></a>认识商业化体系</h1><h2 id="计算广告逻辑与挑战：六大算法问题"><a href="#计算广告逻辑与挑战：六大算法问题" class="headerlink" title="计算广告逻辑与挑战：六大算法问题"></a>计算广告逻辑与挑战：六大算法问题</h2><h3 id="商业化体系大闭环"><a href="#商业化体系大闭环" class="headerlink" title="商业化体系大闭环"></a>商业化体系大闭环</h3><p>广告点击以后，就从媒体网站到了广告主的网站上。</p>
-<h3 id="计算广告的核心挑战"><a href="#计算广告的核心挑战" class="headerlink" title="计算广告的核心挑战"></a>计算广告的核心挑战</h3><ul>
-<li>计算广告的核心问题，是为一系列用户与环境的组合，找到最合适的广告投放策略以优化整体广告活动的利润。</li>
-<li>优化问题描述：<br>$$\max \limits_{a_{1},…,T}\sum_{i=1}^{T}{r(a_{i},u_{i},c_{i}) - q(a_{i},u_{i},c_{i})} \    s.t.\sum_{i=1}^{T}d(a_{i},u_{i},c_{i},k) \leqslant D_{k},\forall k$$<ul>
+})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><body>　　<div class="inner"><h2>计算广告|2.认识商业体系</h2><h1 id="认识商业化体系"><a class="markdownIt-Anchor" href="#认识商业化体系"></a> 认识商业化体系</h1>
+<h2 id="计算广告逻辑与挑战六大算法问题"><a class="markdownIt-Anchor" href="#计算广告逻辑与挑战六大算法问题"></a> 计算广告逻辑与挑战：六大算法问题</h2>
+<h3 id="商业化体系大闭环"><a class="markdownIt-Anchor" href="#商业化体系大闭环"></a> 商业化体系大闭环</h3>
+<p>广告点击以后，就从媒体网站到了广告主的网站上。</p>
+<h3 id="计算广告的核心挑战"><a class="markdownIt-Anchor" href="#计算广告的核心挑战"></a> 计算广告的核心挑战</h3>
+<p>计算广告的核心问题，是为一系列用户与环境的组合，找到最合适的广告投放策略以优化整体广告活动的利润。</p>
+<p>优化问题描述：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><munder><mo><mi>max</mi><mo>⁡</mo></mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>T</mi></mrow></munder><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></munderover><mrow><mi>r</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>u</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>−</mo><mi>q</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>u</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>s</mi><mi mathvariant="normal">.</mi><mi>t</mi><mi mathvariant="normal">.</mi><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></munderover><mi>d</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>u</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>c</mi><mi>i</mi></msub><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">)</mo><mo>⩽</mo><msub><mi>D</mi><mi>k</mi></msub><mo separator="true">,</mo><mi mathvariant="normal">∀</mi><mi>k</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\max \limits_{a_{1},...,T}\sum_{i=1}^{T}{r(a_{i},u_{i},c_{i}) - q(a_{i},u_{i},c_{i})} \\
+s.t.\sum_{i=1}^{T}d(a_{i},u_{i},c_{i},k) \leqslant D_{k},\forall k
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6.812010000000001em;vertical-align:-3.1560050000000004em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.6560050000000004em;"><span style="top:-5.656005em;"><span class="pstrut" style="height:3.828336em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.43055999999999994em;"><span style="top:-2.0556690000000004em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mtight">.</span><span class="mord mtight">.</span><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.880439em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.828336em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="mord">.</span><span class="mord mathdefault">t</span><span class="mord">.</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∀</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.1560050000000004em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
 <li>决策对象：一组广告展示，a：广告，u：用户，c：上下文，r：收入(eCPM)，q：成本</li>
 <li>这个公式是一个普适性的公式，适合于广告主、媒体、ADX等等～</li>
 <li>优化的是一组广告的投放，后面预算的约束。</li>
 </ul>
-</li>
-</ul>
-<h3 id="广告业务的转化漏斗和目标"><a href="#广告业务的转化漏斗和目标" class="headerlink" title="广告业务的转化漏斗和目标"></a>广告业务的转化漏斗和目标</h3><ul>
-<li><p>展示页–点击–&gt;落地页–转化–&gt;转化页</p>
+<h3 id="广告业务的转化漏斗和目标"><a class="markdownIt-Anchor" href="#广告业务的转化漏斗和目标"></a> 广告业务的转化漏斗和目标</h3>
+<p>展示页–点击–&gt;落地页–转化–&gt;转化页</p>
 <ul>
 <li>从媒体网站到广告主网站</li>
-<li>广告排序的唯一指标：u代表点击率，v代表转化率<br>$$eCPM=r(a,u,c)=u(a,u,c)*v(a,u)$$</li>
+<li>广告排序的唯一指标：u代表点击率，v代表转化率</li>
 </ul>
-</li>
-<li><p>如果标识一个用户？</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>C</mi><mi>P</mi><mi>M</mi><mo>=</mo><mi>r</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>u</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mi>u</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>u</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>∗</mo><mi>v</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">eCPM=r(a,u,c)=u(a,u,c)*v(a,u)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">u</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">u</span><span class="mclose">)</span></span></span></span></span></p>
+<p>如果标识一个用户？</p>
 <ul>
 <li>PC Web/Mobile Web环境 – Cookie:存续行差，跨域时需要映射。</li>
 <li>iOS应用 – IDFA：存续性好于cookie，但iOS10有更严格的政策。</li>
 <li>Android应用 – Android ID：存续性好于IDFA；IMEI：在中国有部分使用。</li>
-<li>无以上ID场景 – FingerPrint（IP+User Agent）：存在http头中，可作缺省标识。<a id="more"></a></li>
+<li>无以上ID场景 – FingerPrint（IP+User Agent）：存在http头中，可作缺省标识。</li>
 </ul>
-</li>
-<li><p>商业化体系六大算法问题</p>
+<a id="more"></a>
+<p>商业化体系六大算法问题</p>
 <ul>
 <li>A1.特征提取：受众定向</li>
 <li>A2.微观优化：eCPM估计</li>
@@ -301,8 +54,7 @@ var _hmt = _hmt || [];
 <li>A5.强化学习：探索与利用</li>
 <li>A6.重定向：个性化推荐</li>
 </ul>
-</li>
-<li><p>用户决策的转化漏斗模型</p>
+<p>用户决策的转化漏斗模型</p>
 <ul>
 <li>【选择】曝光（exposure）1.1主要取决于广告位的天然属性。</li>
 <li>【选择】关注（attention）2.1不要干扰或者打断用户的任务；2.2明确揭示推荐的原因；2.3符合用户兴趣或者需求。</li>
@@ -311,9 +63,8 @@ var _hmt = _hmt || [];
 <li>【态度】保持（retention）5.1艺术性带来的记忆效果</li>
 <li>【态度】购买（purchase）6.1在用户的价格敏感接收范围内</li>
 </ul>
-</li>
-</ul>
-<h3 id="在线广告主要结算方式详解"><a href="#在线广告主要结算方式详解" class="headerlink" title="在线广告主要结算方式详解"></a>在线广告主要结算方式详解</h3><table>
+<h3 id="在线广告主要结算方式详解"><a class="markdownIt-Anchor" href="#在线广告主要结算方式详解"></a> 在线广告主要结算方式详解</h3>
+<table>
 <thead>
 <tr>
 <th>结算方式</th>
@@ -322,7 +73,8 @@ var _hmt = _hmt || [];
 <th>使用场景</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>CPT</td>
 <td>需求方</td>
 <td>1.可以充分发挥橱窗效应。<br>2.无法利用受众定向技术</td>
@@ -346,31 +98,30 @@ var _hmt = _hmt || [];
 <td>1.需求方无任何风险。<br>2.供给方运营难度加大.</td>
 <td>1.效果类广告联盟<br>2.效果类DSP</td>
 </tr>
-</tbody></table>
-<h3 id="CPA-CPS的问题与合理场景"><a href="#CPA-CPS的问题与合理场景" class="headerlink" title="CPA/CPS的问题与合理场景"></a>CPA/CPS的问题与合理场景</h3><ul>
-<li>存在的问题<ul>
+</tbody>
+</table>
+<h3 id="cpacps的问题与合理场景"><a class="markdownIt-Anchor" href="#cpacps的问题与合理场景"></a> CPA/CPS的问题与合理场景</h3>
+<p>存在的问题</p>
+<ul>
 <li>由供给方同时负责优化点击和转化率，并非普适的合理模式<br></li>
 <li>存在劫持、代销等多种相应的灰色手段<br></li>
 <li>用于优化的数据对于单个广告主来说严重不足<br></li>
 </ul>
-</li>
-<li>适用的场景<ul>
+<p>适用的场景</p>
+<ul>
 <li>转化过程一致且规范的广告市场<br></li>
 <li>例：淘宝客（转化流程为淘宝统一提供）、APP下载（转化流程在Apple Store或Google Play）<br></li>
 <li>在大多数场景下，CPC可能更合理<br></li>
 </ul>
-</li>
-</ul>
-<h2 id="商业化产品体系概览：六大产品问题"><a href="#商业化产品体系概览：六大产品问题" class="headerlink" title="商业化产品体系概览：六大产品问题"></a>商业化产品体系概览：六大产品问题</h2><ul>
-<li><p>商业产品设计运营原则</p>
+<h2 id="商业化产品体系概览六大产品问题"><a class="markdownIt-Anchor" href="#商业化产品体系概览六大产品问题"></a> 商业化产品体系概览：六大产品问题</h2>
+<p>商业产品设计运营原则</p>
 <ul>
 <li>商业产品，即面向产品客户而非一般用户的产品，其中最典型的代表就是广告产品。</li>
 <li>相对于产品功能，要特别关注产品中的策略部分。</li>
 <li>要特别关注数据，让运营和产品优化形成闭环。所有产品特征和策略的成功与否，要严格根据数据的反馈来判断。</li>
 <li>优化的是确定的商业目标，而非使用便捷性。</li>
 </ul>
-</li>
-<li><p>商业化体系六大产品问题</p>
+<p>商业化体系六大产品问题</p>
 <ul>
 <li>P1.供需接口</li>
 <li>P2.竞价机制</li>
@@ -379,64 +130,53 @@ var _hmt = _hmt || [];
 <li>P5.程序化交易</li>
 <li>P6.原生广告</li>
 </ul>
-</li>
-<li><p>需求方层级组织</p>
+<p>需求方层级组织</p>
 <ul>
 <li>广告主–&gt;广告计划–&gt;广告组–&gt;广告创意.</li>
 <li>广告活动（Campaign）概念上对应于广告主的一次投放合同，其中包括了预算、时间范围等基本信息。</li>
 <li>广告组（Ad Group）对于于一个具体的广告投放策略，主要是设定受众定向条件和出价。</li>
 <li>广告创意（Creative）则是最终展示出来的素材，可能在同一个组策略下有不同尺寸的创意存在。</li>
 </ul>
-</li>
-</ul>
-<h2 id="商业化产品系统框架：六大系统技术"><a href="#商业化产品系统框架：六大系统技术" class="headerlink" title="商业化产品系统框架：六大系统技术"></a>商业化产品系统框架：六大系统技术</h2><ul>
-<li><p>个性化系统一般框架: 主要组成模块</p>
+<h2 id="商业化产品系统框架六大系统技术"><a class="markdownIt-Anchor" href="#商业化产品系统框架六大系统技术"></a> 商业化产品系统框架：六大系统技术</h2>
+<p>个性化系统一般框架: 主要组成模块</p>
 <ul>
 <li>【受众定向平台】分布式计算平台：灵活的海量数据挖掘平台，机器学习算法的分布式架构</li>
 <li>【高并发投送系统】在线投放引擎：十毫秒级别的实时决策，百亿次/天的投放系统</li>
 <li>【流式计算平台】流计算平台：日志的准实时挖掘和反馈</li>
 <li>【数据高速公路】数据高速公路：内部及外部TB级数据实时收集</li>
 </ul>
-</li>
-<li><p>Web-scale技术问题比较</p>
+<p>Web-scale技术问题比较</p>
 <table align="center">
-<tr><td></td><td>搜索</td><td>搜索广告</td><td>显示广告</td><td>个性化推荐</td></tr>
-<tr><td>主要准则</td><td>相关性</td><td colspan=2>利润</td><td>用户兴趣</td></tr>
-<tr><td>其他目标</td><td>垂直领域决定</td><td colspan=2>质量、安全性</td><td>多样性、新鲜度</td></tr>
-<tr><td>索引规模</td><td>十亿级</td><td>百万/千万级</td><td>千万级</td><td>百万级 亿级</td></tr>
-<tr><td>个性化</td><td colspan=2>较少的个性化需求</td><td colspan=2>亿级规模用户上的个性化</td></tr>
-<tr><td>检索信号</td><td colspan=2>较明确</td><td colspan=2>较分散</td></tr>
-<tr><td>DownStream优化</td><td colspan=3>不适用</td><td>适用</td></tr>
+  <tr><td></td><td>搜索</td><td>搜索广告</td><td>显示广告</td><td>个性化推荐</td></tr>
+  <tr><td>主要准则</td><td>相关性</td><td colspan=2>利润</td><td>用户兴趣</td></tr>
+  <tr><td>其他目标</td><td>垂直领域决定</td><td colspan=2>质量、安全性</td><td>多样性、新鲜度</td></tr>
+  <tr><td>索引规模</td><td>十亿级</td><td>百万/千万级</td><td>千万级</td><td>百万级 亿级</td></tr>
+  <tr><td>个性化</td><td colspan=2>较少的个性化需求</td><td colspan=2>亿级规模用户上的个性化</td></tr>
+  <tr><td>检索信号</td><td colspan=2>较明确</td><td colspan=2>较分散</td></tr>
+  <tr><td>DownStream优化</td><td colspan=3>不适用</td><td>适用</td></tr>
 </table>
-</li>
-<li><p>广告系统有什么特点？</p>
+<p>广告系统有什么特点？</p>
 <ul>
 <li>高并发、低延迟的要求 –  同时关注QPS和Latency</li>
 <li>数据处理的规模很大 – （用户、环境、信息）三元组上的数据建模</li>
 <li>数据处理的速度优于精度</li>
 <li>主流程的一致性要求不高</li>
 </ul>
-</li>
-</ul>
+<p>广告系统有什么设计原则？</p>
 <ul>
-<li>广告系统有什么设计原则？<ul>
 <li>建立弱一致性系统的设计思维方式。 – 例：Near-line page fetcher</li>
-<li>大量数据尽量环形单向流动。– 避免集中读写形成的单点性能瓶颈</li>
+<li>大量数据尽量环形单向流动。-- 避免集中读写形成的单点性能瓶颈</li>
 <li>在线时不要发生与关系行数据库的交互 – 增删改查的传统需求实际上不存在</li>
 <li>充分利用开源社区的成熟技术</li>
 </ul>
-</li>
-</ul>
+<p>开源软件的优势与顾虑</p>
 <ul>
-<li>开源软件的优势与顾虑<ul>
 <li>优势 - 1.大量细分使用场景都有开源方案. 2.大型互联网公司的开源产品经过充分测试.</li>
 <li>顾虑 - 1.需要仔细甄别好的和不太好的开源项目. 2.在遇到深层次bug时无能为力.</li>
 <li>核心业务逻辑不应该是选择开源.</li>
 </ul>
-</li>
-</ul>
+<p>商业化产品六大系统技术</p>
 <ul>
-<li>商业化产品六大系统技术<ul>
 <li>S1.流量接入：代码和SDK</li>
 <li>S2.投放引擎：高并发服务</li>
 <li>S3.侯选查询：实施索引</li>
@@ -444,72 +184,4 @@ var _hmt = _hmt || [];
 <li>S5.离线学习：分布式计算</li>
 <li>S6.在线学习：流式计算</li>
 </ul>
-</li>
-</ul>
-
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>ZhangHao</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/">https://imzhanghao.com/2020/06/11/computing-advertising-2-business-system/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"># 计算广告</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/06/12/computing-advertising-3-related-knowledge/">计算广告|3.相关方法</a>
-            
-            
-            <a class="next" rel="next" href="/2020/06/10/computing-advertising-1-curriculum-structure/">计算广告|1.课程体系</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a><a target="_blank" href="https://beian.miit.gov.cn/"> | 陕ICP备20008129号</a></span>
-    </div>
-</footer>
-
-    </div>
-</body>
-</html>
+<hr><p><span>↶ </span><a href="/">返回首页</a><span></span></p></div><script src="/js/jquery.min.js"></script><script src="/js/main.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script></body></html>

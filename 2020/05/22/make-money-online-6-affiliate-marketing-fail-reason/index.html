@@ -1,337 +1,67 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="ZhangHao">
-
-
-    <meta name="subtitle" content="算法工程师的世界">
-
-
-
-    <meta name="keywords" content="算法工程师 机器学习 深度学习 推荐系统 计算广告">
-
-
-<title>联盟营销|6.为什么你做的联盟营销会失败 | 张浩写字的地方</title>
-
-
-
-    <link rel="icon" href="/image/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1"></script>
-<script>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>联盟营销|6.为什么你做的联盟营销会失败</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
+</head><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'UA-166608124-1');
-</script>
-
-<!-- Google Adsense -->
-<script data-ad-client="ca-pub-4128258433761966" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-
-<!-- Baidu TongJi -->
-<script>
-var _hmt = _hmt || [];
+}</script><script>var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4";
-  var s = document.getElementsByTagName("script")[0];
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?0c64a5657309290fd8f5efe33fcbcdb4';
+  hm.async = true;
+
+  var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="张浩写字的地方" type="application/atom+xml">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">ZhangHao&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">ZhangHao&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/categories">Categories</a>
-                
-                    <a class="menu-item" href="/tags">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">联盟营销|6.为什么你做的联盟营销会失败</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">ZhangHao</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">May 22, 2020</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/">联盟营销</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <p>产品选错了<br>关键词选错了<br>语言问题<br>持续性的问题<br>网站问题</p>
+})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><body>　　<div class="inner"><h2>联盟营销|6.为什么你做的联盟营销会失败</h2><p>产品选错了<br />
+关键词选错了<br />
+语言问题<br />
+持续性的问题<br />
+网站问题</p>
 <a id="more"></a>
-
-<h1 id="为什么你做的联盟营销会失败"><a href="#为什么你做的联盟营销会失败" class="headerlink" title="为什么你做的联盟营销会失败"></a>为什么你做的联盟营销会失败</h1><h2 id="产品选错了"><a href="#产品选错了" class="headerlink" title="产品选错了"></a>产品选错了</h2><ul>
+<h1 id="为什么你做的联盟营销会失败"><a class="markdownIt-Anchor" href="#为什么你做的联盟营销会失败"></a> 为什么你做的联盟营销会失败</h1>
+<h2 id="产品选错了"><a class="markdownIt-Anchor" href="#产品选错了"></a> 产品选错了</h2>
+<ul>
 <li>选品要多花时间</li>
 <li>这是联盟营销的第一步，一步错，步步错。</li>
 </ul>
-<h2 id="关键词选错了"><a href="#关键词选错了" class="headerlink" title="关键词选错了"></a>关键词选错了</h2><ul>
+<h2 id="关键词选错了"><a class="markdownIt-Anchor" href="#关键词选错了"></a> 关键词选错了</h2>
+<ul>
 <li>竞争太高or太热，导致自己的内容一直排不到前面</li>
 <li>关键词选错直接会导致拿不到流量。</li>
 </ul>
-<h2 id="语言问题"><a href="#语言问题" class="headerlink" title="语言问题"></a>语言问题</h2><ul>
+<h2 id="语言问题"><a class="markdownIt-Anchor" href="#语言问题"></a> 语言问题</h2>
+<ul>
 <li>专八也不一定能搞定地道的英语。</li>
 <li>自己去解决语言问题太难了，要借助外力。</li>
 <li>外包是一个方案</li>
 </ul>
-<h2 id="持续性的问题"><a href="#持续性的问题" class="headerlink" title="持续性的问题"></a>持续性的问题</h2><ul>
+<h2 id="持续性的问题"><a class="markdownIt-Anchor" href="#持续性的问题"></a> 持续性的问题</h2>
+<ul>
 <li>如果是免费的方法，是一个长期的事情，如果一直没有起色的话，会丧失信心。</li>
 </ul>
-<h2 id="网站问题"><a href="#网站问题" class="headerlink" title="网站问题"></a>网站问题</h2><ul>
+<h2 id="网站问题"><a class="markdownIt-Anchor" href="#网站问题"></a> 网站问题</h2>
+<ul>
 <li>网站风格，如果你面向的外国人，就需要符合外国人的审美和风格。</li>
 </ul>
-<h2 id="着陆页"><a href="#着陆页" class="headerlink" title="着陆页"></a>着陆页</h2><ul>
+<h2 id="着陆页"><a class="markdownIt-Anchor" href="#着陆页"></a> 着陆页</h2>
+<ul>
 <li>需要专门进行设计</li>
 </ul>
-<h2 id="考虑问题不够全面"><a href="#考虑问题不够全面" class="headerlink" title="考虑问题不够全面"></a>考虑问题不够全面</h2><ul>
+<h2 id="考虑问题不够全面"><a class="markdownIt-Anchor" href="#考虑问题不够全面"></a> 考虑问题不够全面</h2>
+<ul>
 <li>思路要开阔</li>
 <li>变现思路是多样化的</li>
 </ul>
 <blockquote>
 <p>最重要的还是要学会搞流量</p>
 </blockquote>
-<hr>
-<h2 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h2><ul>
+<hr />
+<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
+<ul>
 <li>这是一个问题排查列表，当你已经运转起来的时候，发现并没有成功的时候，就需要按照上面罗列的东西一一排查。</li>
 <li>再一次强调流量的重要性，这个是整个流程里面最核心的部分。</li>
 </ul>
 <blockquote>
 <p>本文系顾小北老师《联盟营销网络赚钱系列》的第六课笔记。</p>
 </blockquote>
-
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>ZhangHao</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://imzhanghao.com/2020/05/22/make-money-online-6-affiliate-marketing-fail-reason/">https://imzhanghao.com/2020/05/22/make-money-online-6-affiliate-marketing-fail-reason/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E8%81%94%E7%9B%9F%E8%90%A5%E9%94%80/"># 联盟营销</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/05/23/make-money-online-7-affiliate-marketing-get-traffic/">联盟营销|7.如何获取流量</a>
-            
-            
-            <a class="next" rel="next" href="/2020/05/21/make-money-online-5-affiliate-marketing-how-to-promote-products/">联盟营销|5.如何有效推广产品</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© ZhangHao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a><a target="_blank" href="https://beian.miit.gov.cn/"> | 陕ICP备20008129号</a></span>
-    </div>
-</footer>
-
-    </div>
-</body>
-</html>
+<hr><p><span>↶ </span><a href="/">返回首页</a><span></span></p></div><script src="/js/jquery.min.js"></script><script src="/js/main.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script></body></html>
