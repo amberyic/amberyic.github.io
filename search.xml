@@ -341,8 +341,7 @@ dp[x][y] = max( if(x&gt;0) dp[x-1][y] , if(y&gt;0) dp[x][y-1])</p>
   <entry>
     <title>计算广告|1.课程体系</title>
     <url>/2020/06/10/computing-advertising-1-curriculum-structure/</url>
-    <content><![CDATA[<h1 id="课程体系"><a class="markdownIt-Anchor" href="#课程体系"></a> 课程体系</h1>
-<p>计算广告研究的是商业化产品，本质是数据变现，技能要靠机器学习。</p>
+    <content><![CDATA[<p>计算广告研究的是商业化产品，本质是数据变现，技能要靠机器学习。</p>
 <h2 id="认识商业化体系"><a class="markdownIt-Anchor" href="#认识商业化体系"></a> 认识商业化体系</h2>
 <h3 id="googlefacebook-以及bat在2015年广告收入占总收入的70"><a class="markdownIt-Anchor" href="#googlefacebook-以及bat在2015年广告收入占总收入的70"></a> Google／Facebook 以及BAT在2015年广告收入占总收入的70%+</h3>
 <p>从2007年到2015年</p>
@@ -548,8 +547,7 @@ dp[x][y] = max( if(x&gt;0) dp[x-1][y] , if(y&gt;0) dp[x][y-1])</p>
   <entry>
     <title>计算广告|2.认识商业体系</title>
     <url>/2020/06/11/computing-advertising-2-business-system/</url>
-    <content><![CDATA[<h1 id="认识商业化体系"><a class="markdownIt-Anchor" href="#认识商业化体系"></a> 认识商业化体系</h1>
-<h2 id="计算广告逻辑与挑战六大算法问题"><a class="markdownIt-Anchor" href="#计算广告逻辑与挑战六大算法问题"></a> 计算广告逻辑与挑战：六大算法问题</h2>
+    <content><![CDATA[<h2 id="计算广告逻辑与挑战六大算法问题"><a class="markdownIt-Anchor" href="#计算广告逻辑与挑战六大算法问题"></a> 计算广告逻辑与挑战：六大算法问题</h2>
 <h3 id="商业化体系大闭环"><a class="markdownIt-Anchor" href="#商业化体系大闭环"></a> 商业化体系大闭环</h3>
 <p>广告点击以后，就从媒体网站到了广告主的网站上。<br />
 <img src="https://imzhanghao.oss-cn-qingdao.aliyuncs.com/img/%E5%95%86%E4%B8%9A%E5%8C%96%E4%BD%93%E7%B3%BB%E5%A4%A7%E9%97%AD%E7%8E%AF.png" alt="商业化体系大闭环" /></p>
@@ -732,8 +730,7 @@ s.t.\sum_{i=1}^{T}d(a_{i},u_{i},c_{i},k) \leqslant D_{k},\forall k
   <entry>
     <title>计算广告|4.合约广告</title>
     <url>/2020/06/15/computing-advertising-4-agreement-based-advertising/</url>
-    <content><![CDATA[<h1 id="合约广告"><a class="markdownIt-Anchor" href="#合约广告"></a> 合约广告</h1>
-<h2 id="广告位和展示量合约"><a class="markdownIt-Anchor" href="#广告位和展示量合约"></a> 广告位和展示量合约</h2>
+    <content><![CDATA[<h2 id="广告位和展示量合约"><a class="markdownIt-Anchor" href="#广告位和展示量合约"></a> 广告位和展示量合约</h2>
 <h3 id="广告位cpt合约"><a class="markdownIt-Anchor" href="#广告位cpt合约"></a> 广告位（CPT）合约</h3>
 <p>与线下广告交易类似的传统模式</p>
 <p>供给方产品：产品排期系统</p>
@@ -1193,8 +1190,7 @@ s.t.\sum_{i=1}^{T}d(a_{i},u_{i},c_{i},k) \leqslant D_{k},\forall k
   <entry>
     <title>计算广告|3.相关方法</title>
     <url>/2020/06/12/computing-advertising-3-related-knowledge/</url>
-    <content><![CDATA[<h1 id="计算广告相关知识"><a class="markdownIt-Anchor" href="#计算广告相关知识"></a> 计算广告相关知识</h1>
-<h2 id="最优化optimization"><a class="markdownIt-Anchor" href="#最优化optimization"></a> 最优化Optimization</h2>
+    <content><![CDATA[<h2 id="最优化optimization"><a class="markdownIt-Anchor" href="#最优化optimization"></a> 最优化Optimization</h2>
 <h3 id="什么是最优化问题"><a class="markdownIt-Anchor" href="#什么是最优化问题"></a> 什么是最优化问题</h3>
 <p>无约束最优化问题：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">minf(x) 
@@ -1438,25 +1434,19 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
   <entry>
     <title>计算广告|6.多方数据变现-程序化交易</title>
     <url>/2020/06/22/computing-advertising-6-programmatic-direct-buying/</url>
-    <content><![CDATA[<h1 id="多方数据变现-程序化交易"><a class="markdownIt-Anchor" href="#多方数据变现-程序化交易"></a> 多方数据变现 – 程序化交易</h1>
-<h2 id="与证券类似的交易程序化交易若干模式"><a class="markdownIt-Anchor" href="#与证券类似的交易程序化交易若干模式"></a> 与证券类似的交易：程序化交易若干模式</h2>
+    <content><![CDATA[<h2 id="与证券类似的交易程序化交易若干模式"><a class="markdownIt-Anchor" href="#与证券类似的交易程序化交易若干模式"></a> 与证券类似的交易：程序化交易若干模式</h2>
 <h3 id="p5iab总结的程序化相关交易方式"><a class="markdownIt-Anchor" href="#p5iab总结的程序化相关交易方式"></a> P5.IAB总结的程序化相关交易方式</h3>
 <h3 id="p5实时竞价过程示意"><a class="markdownIt-Anchor" href="#p5实时竞价过程示意"></a> P5.实时竞价过程示意</h3>
 <h3 id="p5实时竞价特点"><a class="markdownIt-Anchor" href="#p5实时竞价特点"></a> P5.实时竞价特点</h3>
 <ul>
-<li>
-<p>每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这时的服务器与带宽成本大大增加。</p>
-</li>
-<li>
-<p>在询价过程中，Ad Exchange要等待一个约定的时间片（一般情况为100ms），这使得用户看到的广告延迟增加，对CTR有负面影响。</p>
-</li>
-<li>
-<p>原理上DSP可以以极低的出价参与竞价，这样虽不能获得流量，却可以低成本得到在媒体网站上的行为数据，这里存在着潜在的信息泄漏风险。</p>
-</li>
-</ul>
+<li>每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这时的服务器与带宽成本大大增加。</li>
+<li>在询价过程中，Ad Exchange要等待一个约定的时间片（一般情况为100ms），这使得用户看到的广告延迟增加，对CTR有负面影响。</li>
+<li>原理上DSP可以以极低的出价参与竞价，这样虽不能获得流量，却可以低成本得到在媒体网站上的行为数据，这里存在着潜在的信息泄漏风险。
 <ul>
 <li>Programmatic</li>
 <li>RealTime</li>
+</ul>
+</li>
 </ul>
 <h3 id="p5优选preferred-deal"><a class="markdownIt-Anchor" href="#p5优选preferred-deal"></a> P5.优选（Preferred Deal）</h3>
 <h3 id="p5私有市场pmp"><a class="markdownIt-Anchor" href="#p5私有市场pmp"></a> P5.私有市场（PMP）</h3>
@@ -1832,8 +1822,7 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
   <entry>
     <title>计算广告|5.竞价广告-精细数据变现</title>
     <url>/2020/06/18/computing-advertising-5-lean-data-monetization/</url>
-    <content><![CDATA[<h1 id="竞价广告-精细数据变现"><a class="markdownIt-Anchor" href="#竞价广告-精细数据变现"></a> 竞价广告 - 精细数据变现</h1>
-<h2 id="市场经济的规则机制设计问题"><a class="markdownIt-Anchor" href="#市场经济的规则机制设计问题"></a> 市场经济的规则：机制设计问题</h2>
+    <content><![CDATA[<h2 id="市场经济的规则机制设计问题"><a class="markdownIt-Anchor" href="#市场经济的规则机制设计问题"></a> 市场经济的规则：机制设计问题</h2>
 <h3 id="竞价交易问题"><a class="markdownIt-Anchor" href="#竞价交易问题"></a> 竞价交易问题</h3>
 <ul>
 <li>将对象a={1,2,…,A}排放到位置s={1,2,…,S}</li>
@@ -2276,8 +2265,7 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
   <entry>
     <title>计算广告|7.永无止境的博弈 -- 流量保护和反作弊</title>
     <url>/2020/07/03/computing-advertising-7-fraud-detection/</url>
-    <content><![CDATA[<h1 id="永无止境的博弈流量保护和反作弊"><a class="markdownIt-Anchor" href="#永无止境的博弈流量保护和反作弊"></a> 永无止境的博弈：流量保护和反作弊</h1>
-<h3 id="作弊的分类"><a class="markdownIt-Anchor" href="#作弊的分类"></a> 作弊的分类</h3>
+    <content><![CDATA[<h3 id="作弊的分类"><a class="markdownIt-Anchor" href="#作弊的分类"></a> 作弊的分类</h3>
 <ul>
 <li>CPM/CPC作弊 【媒体网站】 &lt;–结算方式–&gt; CPA/CPS作弊【客户网站】</li>
 <li>虚假流量（NHT，Non-Human Traffic）【机器刷量】 &lt;–流量属性–&gt; 流量归因 【从别人那边抢过来的流量】</li>
@@ -2374,46 +2362,25 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
   <entry>
     <title>计算广告|8.场景数据利用 -- 原生广告</title>
     <url>/2020/08/12/computing-advertising-8-native-ads/</url>
-    <content><![CDATA[<h1 id="场景数据利用-原生广告"><a class="markdownIt-Anchor" href="#场景数据利用-原生广告"></a> 场景数据利用 – 原生广告</h1>
-<h2 id="原生不是新问题原生广告初级形态"><a class="markdownIt-Anchor" href="#原生不是新问题原生广告初级形态"></a> 原生不是新问题：原生广告初级形态</h2>
+    <content><![CDATA[<h2 id="原生不是新问题原生广告初级形态"><a class="markdownIt-Anchor" href="#原生不是新问题原生广告初级形态"></a> 原生不是新问题：原生广告初级形态</h2>
 <h3 id="搜索广告的原生性"><a class="markdownIt-Anchor" href="#搜索广告的原生性"></a> 搜索广告的原生性</h3>
-<p>表现形式</p>
-<ul>
-<li>广告结果和自然结果非常接近</li>
-</ul>
-<p>触发原则</p>
-<ul>
-<li>同样根据关键词出发，与自然结果也保持一致</li>
-</ul>
+<p><strong>表现形式</strong>：广告结果和自然结果非常接近<br />
+<strong>触发原则</strong>：同样根据关键词出发，与自然结果也保持一致</p>
 <h3 id="信息流广告"><a class="markdownIt-Anchor" href="#信息流广告"></a> 信息流广告</h3>
-<p>表现形式</p>
-<ul>
-<li>广告结果和自然结果基本一致</li>
-</ul>
-<p>触发原则</p>
-<ul>
-<li>在社交类媒体中，用户往往无明确意图，因此根据投放条件触发</li>
-</ul>
+<p><strong>表现形式</strong>：广告结果和自然结果基本一致<br />
+<strong>触发原则</strong>：在社交类媒体中，用户往往无明确意图，因此根据投放条件触发</p>
 <h3 id="软文"><a class="markdownIt-Anchor" href="#软文"></a> 软文</h3>
-<p>表现形式</p>
-<ul>
-<li>与自然结果非常一致地呈现</li>
-</ul>
-<p>触发原则</p>
-<ul>
-<li>内容本身即按广告主需求生产</li>
-</ul>
+<p><strong>表现形式</strong>：与自然结果非常一致地呈现<br />
+<strong>触发原则</strong>：内容本身即按广告主需求生产</p>
+<blockquote>
 <p>规模化比较困难</p>
+</blockquote>
 <h3 id="cpscpa联盟affilicate"><a class="markdownIt-Anchor" href="#cpscpa联盟affilicate"></a> CPS/CPA联盟（Affilicate）</h3>
-<p>表现形式</p>
-<ul>
-<li>渠道可以灵活决定，比较容易适配环境</li>
-</ul>
-<p>触发原则</p>
-<ul>
-<li>可以完全融入到垂直内容当中</li>
-</ul>
+<p><strong>表现形式</strong>:渠道可以灵活决定，比较容易适配环境<br />
+<strong>触发原则</strong>:可以完全融入到垂直内容当中</p>
+<blockquote>
 <p>平台不易控制作弊</p>
+</blockquote>
 <blockquote>
 <p>思考：信息流中的显示广告和普通横幅相比，有什么本质区别？</p>
 </blockquote>
@@ -2440,13 +2407,13 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
 </ul>
 <h3 id="应用下载归因attribution"><a class="markdownIt-Anchor" href="#应用下载归因attribution"></a> 应用下载归因（Attribution）</h3>
 <p>归因于最后一次点击，一般1～3天内有效</p>
-<p>应用下载归因原理</p>
+<p><strong>应用下载归因原理</strong></p>
 <ul>
 <li>iOS：点击时向检测商发送iDFA</li>
 <li>Android：利用Google Play的refer机制</li>
 <li>WAP：根据点击和转化的fingerprint进行匹配</li>
 </ul>
-<p>主要技术提供商</p>
+<p><strong>主要技术提供商</strong></p>
 <ul>
 <li>全球：Appsflyer，Adjust 点击、转化都收费</li>
 <li>国内：TalkingData 只有转化收费</li>
@@ -2517,13 +2484,13 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
 </ul>
 <p>情景二：根据数据来判断用户场景，进而提供相应的付费内容</p>
 <h3 id="原生广告方向与挑战"><a class="markdownIt-Anchor" href="#原生广告方向与挑战"></a> 原生广告方向与挑战</h3>
-<p>方向：</p>
+<p><strong>方向</strong>：</p>
 <ul>
 <li>让媒体深入参与广告交易，而不是像传统广告系统那样只在平台和需求方之间交易。</li>
 <li>将数据驱动的受众定向展示广告，变成以媒体内容为导向的，不触及用户隐私的精准广告</li>
 <li>让高相关的付费内容代替广告成为媒体变现主要形式</li>
 </ul>
-<p>挑战：</p>
+<p><strong>挑战</strong>：</p>
 <ul>
 <li>媒体参与让广告多了个自由度，运营难度增大</li>
 <li>大量分行业、结构化广告信息的建立需要时间</li>
@@ -2554,13 +2521,13 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
 <li>在相近的广告诉求下，通过创意内容优化效果</li>
 </ul>
 <h3 id="创意优化主要思路"><a class="markdownIt-Anchor" href="#创意优化主要思路"></a> 创意优化主要思路</h3>
-<p>程序化创意</p>
+<p><strong>程序化创意</strong></p>
 <ul>
 <li>网站重定向广告加入广告主logo</li>
 <li>搜索重定向广告加入搜索框</li>
 <li>地域定向明示地点或本地电话</li>
 </ul>
-<p>充分利用点击热点图</p>
+<p><strong>充分利用点击热点图</strong></p>
 <ul>
 <li>是否创意中的关键诉求确实吸引了用户的注意？</li>
 </ul>
@@ -2569,25 +2536,25 @@ s.t. \textbf{g}(x)\leqslant 0,\textbf{h}(x)=0
 <li>越来越动态、越来越多的交互</li>
 </ul>
 <h3 id="applovin"><a class="markdownIt-Anchor" href="#applovin"></a> APPLOVIN</h3>
-<p>核心业务：</p>
+<p><strong>核心业务</strong></p>
 <ul>
 <li>移动广告网络，向APP同时提供变现和推广服务</li>
 <li>主要营收来源于游戏内激励视频广告</li>
 <li>程序化业务并不发达</li>
 </ul>
-<p>其他点评</p>
+<p><strong>其他点评</strong></p>
 <ul>
 <li>2016.9以14亿美金价格被中国基金收购</li>
 <li>Casino游戏收入占比很高，原因不详</li>
 </ul>
 <h3 id="crossinstall"><a class="markdownIt-Anchor" href="#crossinstall"></a> CROSSINSTALL</h3>
-<p>核心业务：</p>
+<p><strong>核心业务</strong></p>
 <ul>
 <li>H5 Playable Ads + DSP</li>
 <li>以游戏类CPA广告主为主</li>
 <li>关键能力是通过A/B测试调整和H5创意中的参数</li>
 </ul>
-<p>其他点评</p>
+<p><strong>其他点评</strong></p>
 <ul>
 <li>为数不多的成功投放移动CPA广告的DSP</li>
 </ul>
@@ -2752,675 +2719,6 @@ Hexo是基于Node.js驱动的一款博客框架<br />
 <p>切换到hexo分支，执行以下命令</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>联盟营销|1.联盟营销的工作原理</title>
-    <url>/2020/05/17/make-money-online-1-affiliate-marketing-process-and-working-principle/</url>
-    <content><![CDATA[<p>联盟营销的工作原理<br />
-1.什么是联盟营销<br />
-2.为什么选择联盟营销来赚钱<br />
-3.联盟营销的运作流程<br />
-4.联盟营销赚钱的案例</p>
-<a id="more"></a>
-<h1 id="联盟营销的工作原理"><a class="markdownIt-Anchor" href="#联盟营销的工作原理"></a> 联盟营销的工作原理</h1>
-<h2 id="什么是联盟营销"><a class="markdownIt-Anchor" href="#什么是联盟营销"></a> 什么是联盟营销</h2>
-<ul>
-<li>Affiliate Marketing:通常是指网络联盟营销，其实是一种按营销效果付费的新型网络营销方式。</li>
-</ul>
-<blockquote>
-<p>Affiliate marketing is a type of performance-based marketing in which a business rewards one or more affiliates for each visitor or customer brought by the affiliate’s own marketing efforts. The industry has four core players: the merchant (also known as ‘retailer’ or ‘brand’), the network (that contains offers for the affiliate to choose from and also takes care of the payments), the publisher (also known as ‘the affiliate’), and the customer.</p>
-</blockquote>
-<ul>
-<li>
-<p>商家利用网站联盟服务，扩展其线上及线下业务扩大销售空间和销售渠道，按照营销世纪效果支付费用。</p>
-</li>
-<li>
-<p>affiliate marketing这种网络联盟营销模式大致有四个要素：</p>
-<ul>
-<li>Merchant:产品的广告商，有的也称之为advertiser</li>
-<li>Publisher:发布商，也就是通常我们所说的网络加盟经销商。通常意义上讲，这个角色就是想要通过联盟营销赚钱的你。</li>
-<li>Customer:顾客，这个不用解释了</li>
-<li>Affiliate Network:联盟平台，通过这个将以上三者联系在一起</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>简单来讲：商家给你一件商品，如果你把这个产品推广出去，并且有人下单付费了，那么你就可以赚到佣金。</p>
-</blockquote>
-<h2 id="为什么选择联盟营销来赚钱"><a class="markdownIt-Anchor" href="#为什么选择联盟营销来赚钱"></a> 为什么选择联盟营销来赚钱</h2>
-<ul>
-<li>起步门槛底，没有任何风险</li>
-<li>没有库存，没有资金压力</li>
-<li>不需要客服，维护起来方便</li>
-<li>办公地点不限制</li>
-<li>收益是可持续的。</li>
-<li>潜力无限大</li>
-</ul>
-<blockquote>
-<p>中国生产的货品，老外通过包装可以获得很大的溢价空间，我们其实可以取赚这部分钱。</p>
-</blockquote>
-<h2 id="联盟营销的运作流程"><a class="markdownIt-Anchor" href="#联盟营销的运作流程"></a> 联盟营销的运作流程</h2>
-<ul>
-<li>选取产品-&gt;进行推广-&gt;客户购买-&gt;获取佣金</li>
-<li>基本过程：
-<ul>
-<li>1.建好网站（利用网站推广联盟及其产品这是最常规的方法），然后至少加入1-3个联盟项目（对于新手，建议初期先加入一个，先熟悉一下），然后获得对方批准。</li>
-<li>2.写几篇文章来介绍产品，就是product review</li>
-<li>3.把得到批准的联盟链接加到产品上（这是一个很特殊的链接，包含你的ID，商家用来识别加盟商的）</li>
-<li>4.吸引目标客户流量到你的网站上，使你的网站在google或主要搜索引擎中排名前列（在某些特定的关键词下）</li>
-<li>5.客户在搜索引擎输入产品关键词，访问你的产品介绍页面</li>
-<li>6.从你的联盟链接中购买产品</li>
-<li>7.挣到佣金</li>
-</ul>
-</li>
-</ul>
-<h2 id="4联盟营销赚钱的案例"><a class="markdownIt-Anchor" href="#4联盟营销赚钱的案例"></a> 4.联盟营销赚钱的案例</h2>
-<ul>
-<li>网站类（博客,独立站）
-<ul>
-<li>通过SEO倒流</li>
-</ul>
-</li>
-<li>商城类(Shein， 北美省钱快报…)</li>
-<li>工具类</li>
-</ul>
-<hr />
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<ul>
-<li>1.这是一门赚钱的生意
-<ul>
-<li>联盟营销起源于亚马逊，他提高了营销的效率，在整个营销过程中的参与者都能够获得利润。</li>
-</ul>
-</li>
-<li>2.这是一件有趣的事情
-<ul>
-<li>中间有很多的套路，需要对于规则和人性有很深入的理解才能赚到钱，一旦掌握了这门技术，可以在多个领域里面应用。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第1课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联盟营销|2.如何挖掘到有竞争力的Niche市场</title>
-    <url>/2020/05/18/make-money-online-2-affiliate-marketing-how-to-choose-a-niche/</url>
-    <content><![CDATA[<p>如何挖掘到有竞争力的Niche市场？<br />
-1.什么是Niche市场？<br />
-2.Niche市场要怎么选？<br />
-3.做Niche市场要考虑的点有那些？<br />
-4.选一个Niche市场要注意的原则有哪些？</p>
-<a id="more"></a>
-<h1 id="如何挖掘到有竞争力的niche市场"><a class="markdownIt-Anchor" href="#如何挖掘到有竞争力的niche市场"></a> 如何挖掘到有竞争力的Niche市场？</h1>
-<h2 id="什么是niche市场"><a class="markdownIt-Anchor" href="#什么是niche市场"></a> 什么是Niche市场？</h2>
-<ul>
-<li>Niche中文是利基，Niche来源于法语，法国人信奉天主教，在建造房屋时，常常在外墙上凿出一个不大的神龛，以供放圣母玛利亚。它虽然小，但边界清晰，洞里乾坤，因而后来被引来形容大市场中的缝隙市场。
-<ul>
-<li>niche利基就是市场方向， 一个细分化的市场</li>
-<li>niche利基是一类人群，要购买特定产品的人群</li>
-<li>niche就是解决问题的方法</li>
-<li>Niche就是你的兴趣爱好或特长</li>
-<li>Niche利基是一组和你推广产品相关的关键词</li>
-</ul>
-</li>
-</ul>
-<h2 id="niche市场要怎么选"><a class="markdownIt-Anchor" href="#niche市场要怎么选"></a> Niche市场要怎么选？</h2>
-<ul>
-<li>理想的利基市场具有的特征
-<ul>
-<li>狭小的产品市场，宽广的地域市场。</li>
-<li>具有持续发展的潜力。</li>
-<li>市场过小、差异性较大，以至于强大的竞争者对该市场不屑一顾。</li>
-<li>企业所具备的能力和资源与对这个市场提供优质的产品或服务相称。</li>
-<li>企业已在客户中建立了良好的品牌声誉，能够以此抵挡强大竞争者的入侵。</li>
-<li>这个行业最好还没有统治者。</li>
-</ul>
-</li>
-<li>不断细分市场
-<ul>
-<li>服装 --&gt; 韩版服装 --&gt; 韩版夏日服装 --&gt; 韩版夏日5～6岁服装</li>
-<li>瑜伽服 --&gt; 孕妇瑜伽服 --&gt; 孕妇塑形瑜伽服 --&gt; 孕妇塑形速干瑜伽服</li>
-</ul>
-</li>
-</ul>
-<h2 id="做niche市场要考虑的点有那些"><a class="markdownIt-Anchor" href="#做niche市场要考虑的点有那些"></a> 做Niche市场要考虑的点有那些？</h2>
-<ul>
-<li>兴趣：没有兴趣是没法坚持下去的。</li>
-<li>优势：区别于竞争对手，你的优势是什么？如果没有思考这块，你赢不了市场上已有的玩家。</li>
-<li>受众：你的目标人群，这个是首先要考虑的。</li>
-<li>话题：源源不断的能够产出内容的话题。</li>
-</ul>
-<h2 id="选一个niche市场要注意的原则有哪些"><a class="markdownIt-Anchor" href="#选一个niche市场要注意的原则有哪些"></a> 选一个Niche市场要注意的原则有哪些？</h2>
-<ul>
-<li>选择那些客单价比较高的产品</li>
-<li>选择那些不需要做培育用户的产品</li>
-<li>尽量选择标品</li>
-<li>尽量选择刚需产品</li>
-<li>尽量选择那些受季节性影响较小的产品</li>
-<li>可持续的产品</li>
-<li>一定市场的讨论，比如论坛，群</li>
-<li>比较容易能再线上找到客户</li>
-<li>产品有系列可以做延伸的</li>
-</ul>
-<hr />
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<ul>
-<li>1.niche是在细分市场占山为王的机会。</li>
-<li>2.寻找合适的Niche站，基本决定了成功的一半，前期的调研必须认真去做。</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第2课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-        <tag>Niche</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联盟营销|3.Niche市场挖掘的实用工具介绍</title>
-    <url>/2020/05/19/make-money-online-3-affiliate-marketing-practical-tools-for-niche-market-mining/</url>
-    <content><![CDATA[<p>1.如何挖掘Niche市场？<br />
-2.创作内容的工具有那些？<br />
-3.关键词的调研工具有哪些？</p>
-<a id="more"></a>
-<h1 id="niche市场挖掘的实用工具介绍"><a class="markdownIt-Anchor" href="#niche市场挖掘的实用工具介绍"></a> Niche市场挖掘的实用工具介绍</h1>
-<h2 id="如何挖掘niche市场"><a class="markdownIt-Anchor" href="#如何挖掘niche市场"></a> 如何挖掘Niche市场？</h2>
-<ul>
-<li>产品挖掘的方法和工具很多，渠道很多。</li>
-<li>选一个走上升趋势的产品</li>
-<li>工具
-<ul>
-<li>Google Trends</li>
-<li>JungleScout：简称JS，对口亚马逊</li>
-<li>Ecomhunt：产品的利润，Facebook广告，定位，受众</li>
-<li>Findinche：免费，分析速卖通，对口Shopify。(每天的用量有限制)</li>
-<li>Cool Hunt：记者&amp;时尚博主&amp;KOC，专业人士的推荐。</li>
-<li>thisiswhyimbroke：ttps://www.thisiswhyimbroke.com/， 好玩有趣的网站</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>产品挖掘好以后，需要靠内容和关键词来吸引流量。</p>
-</blockquote>
-<h2 id="创作内容的工具有那些"><a class="markdownIt-Anchor" href="#创作内容的工具有那些"></a> 创作内容的工具有那些？</h2>
-<ul>
-<li>有内容才能吸引用户，内容创作需要紧跟潮流。</li>
-<li>工具
-<ul>
-<li>Keyword Tool：<a href="https://keywordtool.io/">https://keywordtool.io/</a></li>
-<li>AnswerThePublic： <a href="https://answerthepublic.com/">https://answerthepublic.com/</a></li>
-<li>BuzzSumo：<a href="https://buzzsumo.com/">https://buzzsumo.com/</a> 社交内容抓去</li>
-<li>portent： <a href="https://www.portent.com/tools/title-maker">https://www.portent.com/tools/title-maker</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="关键词的调研工具有哪些"><a class="markdownIt-Anchor" href="#关键词的调研工具有哪些"></a> 关键词的调研工具有哪些？</h2>
-<ul>
-<li><a href="http://amz520.com">amz520.com</a> 上面提供的关键词工具</li>
-<li>两个非常专业的关键词挖掘工具
-<ul>
-<li>Ahrefs</li>
-<li>Semrush</li>
-</ul>
-</li>
-</ul>
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<ul>
-<li>这一节的内容开始到了实操的部分。</li>
-<li>我们能够接触到的人和事其实都是很局限的，要能找到一般人找不到的市场和机会，就需要依靠工具，帮助我们开拓思路，并且去验证我们的想法，所以工具是必须要用的。好工具更是能够大大提升效率。</li>
-<li>打Niche市场关键点就两个：
-<ul>
-<li>1.选择一个上升趋势的产品。-- 需要使用第一小节的选品工具</li>
-<li>2.吸引精准流量进行营销。--  用户永远都是因为内容才会来到你这里，所以什么样内容就能引来什么样的流量。需要实用二三小节的工具，进行内容创作。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第3课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-        <tag>Niche</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联盟营销|4.如何开展赚取佣金之路</title>
-    <url>/2020/05/20/make-money-online-4-affiliate-marketing-earning-commissions-website/</url>
-    <content><![CDATA[<p>1.自己建一个网站<br />
-shein/Anker<br />
-2.依托于第三方渠道<br />
-亚马逊联盟amazon associate/ShareAsale/Clickbank/Commission Junction(CJ)<br />
-3.总结</p>
-<a id="more"></a>
-<h1 id="如何开启赚取佣金之路"><a class="markdownIt-Anchor" href="#如何开启赚取佣金之路"></a> 如何开启赚取佣金之路</h1>
-<h2 id="自己建一个网站"><a class="markdownIt-Anchor" href="#自己建一个网站"></a> 自己建一个网站</h2>
-<h3 id="shein"><a class="markdownIt-Anchor" href="#shein"></a> shein</h3>
-<ul>
-<li>有自己的Affiliate联盟渠道</li>
-<li>也有入驻其他的第三方渠道平台</li>
-</ul>
-<h3 id="anker"><a class="markdownIt-Anchor" href="#anker"></a> Anker</h3>
-<ul>
-<li>从Anker的独立站进去，进入到amazon，购买，amazon要给anker佣金。</li>
-<li>如果客户通过amazon搜索进入Anker的店铺进行购买，anker需要给平台佣金。</li>
-<li>开通独立站帮助Anker省钱</li>
-</ul>
-<h2 id="依托于第三方渠道"><a class="markdownIt-Anchor" href="#依托于第三方渠道"></a> 依托于第三方渠道</h2>
-<h3 id="亚马逊联盟amazon-associate"><a class="markdownIt-Anchor" href="#亚马逊联盟amazon-associate"></a> 亚马逊联盟amazon associate</h3>
-<h3 id="shareasale"><a class="markdownIt-Anchor" href="#shareasale"></a> ShareAsale</h3>
-<ul>
-<li>4000多件商品入住到网站，1000多件是平台独一无二的产品。</li>
-<li>审核非常严格</li>
-<li>优点
-<ul>
-<li>付款比较可靠</li>
-<li>反欺诈功能比较强大</li>
-<li>费用比较低</li>
-<li>Trackiing system是实时而且可靠</li>
-<li>支付方式：直接付款和支票</li>
-<li>有推荐奖励</li>
-</ul>
-</li>
-<li>缺点
-<ul>
-<li>不好管理，不能约束别人怎么推广你的商品。</li>
-<li>没有PayPal支付款项</li>
-</ul>
-</li>
-</ul>
-<h3 id="clickbank"><a class="markdownIt-Anchor" href="#clickbank"></a> Clickbank</h3>
-<ul>
-<li>虚拟产品比较多，电子书，减肥类，工具类，还有会员等等</li>
-<li>佣金很高，70%+。一本万利的产品，边际成本极低。</li>
-<li>优点
-<ul>
-<li>任何人都可以注册affiliates</li>
-<li>佣金比例高</li>
-<li>产品范围极广</li>
-</ul>
-</li>
-<li>缺点
-<ul>
-<li>退款比例太高：60天无条件退款</li>
-<li>产品的竞争激烈(不适合新手)</li>
-<li>客服回复慢，有时要一周。</li>
-</ul>
-</li>
-</ul>
-<h3 id="commission-junctioncj"><a class="markdownIt-Anchor" href="#commission-junctioncj"></a> Commission Junction(CJ)</h3>
-<ul>
-<li>优点
-<ul>
-<li>免费加入</li>
-<li>信誉高，付款客户服务及时</li>
-<li>产品佣金率较高，部分商品超过50%</li>
-</ul>
-</li>
-<li>缺点
-<ul>
-<li>追踪系统不是实时的</li>
-<li>账户会进入休眠状态(6个月无销售的话)</li>
-<li>客服对接比较麻烦。只能用邮箱</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
-<ul>
-<li>大家要选择自己最适合的渠道进入推广/入驻</li>
-<li>对于推广的人来说，要选择那些佣金比较高，渠道比较好推广的产品</li>
-<li>如果是商家，要多做一些减少推广人员的工作的事情，比如你给 他们准备些banner、文案。</li>
-</ul>
-<blockquote>
-<p>只要你拥有流量，那么你的变现方式就是多样的，联盟营销只是你获利的其中一个途径而已。</p>
-</blockquote>
-<blockquote>
-<p>流量是最重要的</p>
-</blockquote>
-<blockquote>
-<p>联盟营销避免了库存、客服等环节，专注到营销推广上，可以让自己轻装上阵，关注做好一件事，同时也规避了风险。</p>
-</blockquote>
-<hr />
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<ul>
-<li>这些平台都是需要仔细研究的，自己要注册账户，实操起来。</li>
-<li>流量的重要性是最重要的，不论使用的是免费的SEO方法还是还是付费的Media Buy手段，都需要定位好受众，靠内容去进行营销。</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第4课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-        <tag>ShareAsale</tag>
-        <tag>Clickbank</tag>
-        <tag>Commission Junction(CJ)</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联盟营销|6.为什么你做的联盟营销会失败</title>
-    <url>/2020/05/22/make-money-online-6-affiliate-marketing-fail-reason/</url>
-    <content><![CDATA[<p>产品选错了<br />
-关键词选错了<br />
-语言问题<br />
-持续性的问题<br />
-网站问题</p>
-<a id="more"></a>
-<h1 id="为什么你做的联盟营销会失败"><a class="markdownIt-Anchor" href="#为什么你做的联盟营销会失败"></a> 为什么你做的联盟营销会失败</h1>
-<h2 id="产品选错了"><a class="markdownIt-Anchor" href="#产品选错了"></a> 产品选错了</h2>
-<ul>
-<li>选品要多花时间</li>
-<li>这是联盟营销的第一步，一步错，步步错。</li>
-</ul>
-<h2 id="关键词选错了"><a class="markdownIt-Anchor" href="#关键词选错了"></a> 关键词选错了</h2>
-<ul>
-<li>竞争太高or太热，导致自己的内容一直排不到前面</li>
-<li>关键词选错直接会导致拿不到流量。</li>
-</ul>
-<h2 id="语言问题"><a class="markdownIt-Anchor" href="#语言问题"></a> 语言问题</h2>
-<ul>
-<li>专八也不一定能搞定地道的英语。</li>
-<li>自己去解决语言问题太难了，要借助外力。</li>
-<li>外包是一个方案</li>
-</ul>
-<h2 id="持续性的问题"><a class="markdownIt-Anchor" href="#持续性的问题"></a> 持续性的问题</h2>
-<ul>
-<li>如果是免费的方法，是一个长期的事情，如果一直没有起色的话，会丧失信心。</li>
-</ul>
-<h2 id="网站问题"><a class="markdownIt-Anchor" href="#网站问题"></a> 网站问题</h2>
-<ul>
-<li>网站风格，如果你面向的外国人，就需要符合外国人的审美和风格。</li>
-</ul>
-<h2 id="着陆页"><a class="markdownIt-Anchor" href="#着陆页"></a> 着陆页</h2>
-<ul>
-<li>需要专门进行设计</li>
-</ul>
-<h2 id="考虑问题不够全面"><a class="markdownIt-Anchor" href="#考虑问题不够全面"></a> 考虑问题不够全面</h2>
-<ul>
-<li>思路要开阔</li>
-<li>变现思路是多样化的</li>
-</ul>
-<blockquote>
-<p>最重要的还是要学会搞流量</p>
-</blockquote>
-<hr />
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<ul>
-<li>这是一个问题排查列表，当你已经运转起来的时候，发现并没有成功的时候，就需要按照上面罗列的东西一一排查。</li>
-<li>再一次强调流量的重要性，这个是整个流程里面最核心的部分。</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第6课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联盟营销|5.如何有效推广产品</title>
-    <url>/2020/05/21/make-money-online-5-affiliate-marketing-how-to-promote-products/</url>
-    <content><![CDATA[<p>免费的方式:SEO/内容营销/社交/博客论坛<br />
-付费的方式:广告/红人/联盟</p>
-<a id="more"></a>
-<h1 id="如何有效推广产品"><a class="markdownIt-Anchor" href="#如何有效推广产品"></a> 如何有效推广产品</h1>
-<blockquote>
-<p>电商核心的点:产品/渠道/流量/供应链，今天来讲如何获得流量。</p>
-</blockquote>
-<h2 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h2>
-<ul>
-<li>需要配合高质量的内容来做</li>
-<li>优质的外链
-<ul>
-<li>和你推广的产品相关的行业</li>
-<li>对方的网站需要有一定的权威度</li>
-</ul>
-</li>
-</ul>
-<h2 id="内容营销"><a class="markdownIt-Anchor" href="#内容营销"></a> 内容营销</h2>
-<ul>
-<li>SEO肯定是要配合内容来做的。</li>
-</ul>
-<h2 id="广告"><a class="markdownIt-Anchor" href="#广告"></a> 广告</h2>
-<ul>
-<li>经典的付费推广模式</li>
-<li>花钱就能买进来流量，重点要关注ROI</li>
-<li>广告投放停止后，立刻就没有流量了。</li>
-</ul>
-<h2 id="红人"><a class="markdownIt-Anchor" href="#红人"></a> 红人</h2>
-<ul>
-<li>KOL&amp;KOC的粉丝能够带来高质量的用户</li>
-</ul>
-<h2 id="社交"><a class="markdownIt-Anchor" href="#社交"></a> 社交</h2>
-<ul>
-<li>Facebook：广告+Group，涨粉已经没有用。</li>
-<li>Instagram：用户参与度高。</li>
-<li>Pinterest：中产女性的用户，女性的产品可以在上面入驻</li>
-<li>Youtube：亚马逊的商家</li>
-</ul>
-<h2 id="联盟"><a class="markdownIt-Anchor" href="#联盟"></a> 联盟</h2>
-<ul>
-<li>在联盟中进行推广，通过Lead来获取流量。</li>
-</ul>
-<h2 id="博客论坛"><a class="markdownIt-Anchor" href="#博客论坛"></a> 博客论坛</h2>
-<ul>
-<li>Quora</li>
-<li>Redit</li>
-</ul>
-<hr />
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<ul>
-<li>流量获取的方式大体分两种：付费核免费的，各种利弊要自己权衡。</li>
-<li>硬广是最容易被人反感的，需要把广告和内容结合，才会有持续不断的流量。</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第5课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联盟营销|7.如何获取流量</title>
-    <url>/2020/05/23/make-money-online-7-affiliate-marketing-get-traffic/</url>
-    <content><![CDATA[<p>企业如何获取客户的思维模型？<br />
-如何取获取客户:Free/Paid</p>
-<a id="more"></a>
-<h1 id="如何获取流量"><a class="markdownIt-Anchor" href="#如何获取流量"></a> 如何获取流量</h1>
-<h2 id="企业如何获取客户的思维模型"><a class="markdownIt-Anchor" href="#企业如何获取客户的思维模型"></a> 企业如何获取客户的思维模型？</h2>
-<h3 id="转化漏斗-四要素"><a class="markdownIt-Anchor" href="#转化漏斗-四要素"></a> 转化漏斗- 四要素</h3>
-<ul>
-<li>拉新：干货内容、广告。冷流量～</li>
-<li>留存：eg.留邮箱，优惠、折扣。</li>
-<li>促活：EDM</li>
-<li>转化</li>
-</ul>
-<blockquote>
-<p>需要明确客户目前处于转化的哪个漏斗阶段，针对性的开展运营策略。</p>
-</blockquote>
-<h3 id="stages-of-the-customer-buying-cycle"><a class="markdownIt-Anchor" href="#stages-of-the-customer-buying-cycle"></a> Stages of the Customer Buying Cycle</h3>
-<ul>
-<li>awareness:让人知道你的产品</li>
-<li>interest：让人们对你的产品或者服务感兴趣</li>
-<li>consideration：客户考虑，产生购买意向</li>
-<li>purchase：客户购买，成交</li>
-<li>post-purchase：客户分享，晒朋友圈</li>
-<li>re-purchase：复购</li>
-</ul>
-<h2 id="facebook-广告漏洞"><a class="markdownIt-Anchor" href="#facebook-广告漏洞"></a> Facebook 广告漏洞</h2>
-<ul>
-<li>品牌认知：对你的产品或者服务产生兴趣的目标，这个阶段是偏向于reach数量</li>
-<li>购买意向：让人们开始知道你的业务(增加流量，安装APP，帖子互动)</li>
-<li>行为转化：鼓励对你产品感兴趣的人，进行购买或者使用为目标</li>
-</ul>
-<h2 id="如何取获取客户"><a class="markdownIt-Anchor" href="#如何取获取客户"></a> 如何取获取客户</h2>
-<h3 id="free"><a class="markdownIt-Anchor" href="#free"></a> Free</h3>
-<ul>
-<li>操作方法
-<ul>
-<li>内容营销</li>
-<li>SEO</li>
-<li>社群营销</li>
-</ul>
-</li>
-<li>优点
-<ul>
-<li>获客相对来说比较精准</li>
-</ul>
-</li>
-<li>缺点：
-<ul>
-<li>失效太慢了，耗费的周期很长，时间成本很大</li>
-</ul>
-</li>
-</ul>
-<h3 id="paid"><a class="markdownIt-Anchor" href="#paid"></a> Paid</h3>
-<ul>
-<li>操作方法
-<ul>
-<li>广告</li>
-<li>红人营销</li>
-</ul>
-</li>
-<li>优点
-<ul>
-<li>速度快，见效快</li>
-</ul>
-</li>
-<li>缺点：
-<ul>
-<li>广告成本大</li>
-<li>广告一停，流程下降很快</li>
-</ul>
-</li>
-</ul>
-<hr />
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<ul>
-<li>要明确目前处于获客的什么阶段，然后明确使用什么策略</li>
-<li>如果做免费流量，就需要思考国平老师说的：让内容在渠道之间流动。</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第7课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联盟营销|8.从0到1实战联盟营销</title>
-    <url>/2020/05/25/make-money-online-8-affiliate-marketing-zero-to-one/</url>
-    <content><![CDATA[<p>网站如何推广<br />
-网站的流量和收益情况<br />
-Amz520网站的基本情况</p>
-<a id="more"></a>
-<h1 id="amz520网站一个月的复盘成绩"><a class="markdownIt-Anchor" href="#amz520网站一个月的复盘成绩"></a> Amz520网站一个月的复盘成绩</h1>
-<h2 id="缘起"><a class="markdownIt-Anchor" href="#缘起"></a> 缘起</h2>
-<ul>
-<li>需求
-<ul>
-<li>来自于自己在做独立站运营过程中反复使用各种工具都需要自己打开，</li>
-</ul>
-</li>
-<li>优势
-<ul>
-<li>自己有博客、公众号、社群，在跨境电商领域有大量的读者。</li>
-<li>软件破解需求</li>
-</ul>
-</li>
-<li>变现
-<ul>
-<li>流量住的服务，对工具进行联盟营销</li>
-<li>广告</li>
-<li>对接好的项目&amp;需求，反哺我的项目和团队</li>
-</ul>
-</li>
-</ul>
-<h2 id="网站如何推广"><a class="markdownIt-Anchor" href="#网站如何推广"></a> 网站如何推广</h2>
-<ul>
-<li>工具裂变
-<ul>
-<li>破解keepas，免费使用</li>
-<li>破解Merchantwords，免费使用</li>
-</ul>
-</li>
-<li>文章推广
-<ul>
-<li>公众号文章，利用已有的公众号</li>
-</ul>
-</li>
-<li>社群推广
-<ul>
-<li>社群，微信群&amp;QQ群</li>
-<li>社群口令红包</li>
-</ul>
-</li>
-<li>行业刷脸
-<ul>
-<li>朋友圈刷脸海报</li>
-</ul>
-</li>
-<li>seo外链推广
-<ul>
-<li>知乎，红人，讲产品植入红人的回答中</li>
-</ul>
-</li>
-</ul>
-<h2 id="网站的流量和收益情况"><a class="markdownIt-Anchor" href="#网站的流量和收益情况"></a> 网站的流量和收益情况</h2>
-<ul>
-<li>1w+独立pv</li>
-<li>10w+收入</li>
-</ul>
-<h2 id="amz520网站的基本情况"><a class="markdownIt-Anchor" href="#amz520网站的基本情况"></a> Amz520网站的基本情况</h2>
-<ul>
-<li>发布时间：2019.05.07</li>
-<li>复盘时间：2020.05.06～2020.06.06</li>
-<li>人员配置情况：前端、美工、后段、顾小北</li>
-</ul>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第8课笔记。</p>
-</blockquote>
-<hr />
-<h2 id="我的理解"><a class="markdownIt-Anchor" href="#我的理解"></a> 我的理解</h2>
-<p>一个需要被满足的需求 + 推广 = 稳定的现金流</p>
-<blockquote>
-<p>本文系顾小北老师《联盟营销网络赚钱系列》的第8课笔记。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>联盟营销</category>
-      </categories>
-      <tags>
-        <tag>联盟营销</tag>
-      </tags>
   </entry>
   <entry>
     <title>五大经典算法|2.贪心算法</title>
