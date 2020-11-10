@@ -21,7 +21,28 @@
   <meta name="robots" content="index,follow"/>
 </head>
 <body>
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homePageUrl="https://imzhanghao.com/" homePageName="回到我的主页"></script>
+<!-- markdownlint-disable MD039 MD033 -->
+<h2 id="这是一个不存在的页面"><a class="markdownIt-Anchor" href="#这是一个不存在的页面"></a> 这是一个不存在的页面</h2>
+<p>很抱歉，你目前访问的页面并不存在。</p>
+<p>预计将在约 <span id="timeout">5</span> 秒后返回首页。</p>
+<p>如果你很急著想看文章，你可以 <strong><a href="https://imzhanghao.com/">点这里</a></strong> 返回首页。</p>
+<script>
+let countTime = 5;
+
+function count() {
+  
+  document.getElementById('timeout').textContent = countTime;
+  countTime -= 1;
+  if(countTime === 0){
+    location.href = 'https://imzhanghao.com/';
+  }
+  setTimeout(() => {
+    count();
+  }, 1000);
+}
+
+count();
+</script>
 </body>
 </html>
 </div><script src="/js/jquery.min.js"></script><script src="/js/main.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script></body></html>
