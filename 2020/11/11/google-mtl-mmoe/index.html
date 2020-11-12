@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>Google多任务学习模型MMoE</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
-</head><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=0.5"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=UA-166608124-1" async=""></script><script>if (window.location.hostname !== 'localhost') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
@@ -12,7 +11,8 @@
 
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
-})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><body>　　<div class="inner"><h2>Google多任务学习模型MMoE</h2><h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+})();</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-4128258433761966" async=""></script><link rel="stylesheet" href="/css/post.css"><link rel="icon" href="/img/favicon.png"><title>Google多任务学习模型MMoE</title><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="张浩在路上" type="application/atom+xml">
+</head><body>　　<div class="inner"><h2>Google多任务学习模型MMoE</h2><h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
 <p>基于神经网络的多任务学习已成功用于工业界的大规模应用程序中，例如在视频推荐中，只考虑点击转化率时，会倾向推荐包含标题党、擦边海报的视频；只考虑完成度时，会倾向推荐时间比较短的视频等等。而这些倾向都会影响用户体验，并且可能导致业务长期目标的下降。因此，大家开始尝试引入多个相互关联但又不一致的目标来进行综合考虑建模，并且实践表示，多任务学习在推荐系统中能够提升上下文推荐的效果。但是，<strong>常用的多任务模型的预测质量通常对任务之间的关系很敏感</strong>，因此，研究特定于任务的目标与任务间关系之间的建模折衷至关重要。</p>
 <p>Multi-gate Mixture-of-Experts (MMoE)通过在多任务学习中引入Mixture-of-Experts（MoE）层，显式的学习了各个子任务之间关系，同时利用门限网络以优化每个任务。</p>
 <p>实验表明，当任务相关性较低时，MMoE比基线方法具有更好的效果，并且会带来额外的可训练性好处，具体取决于训练数据和模型初始化中不同程度的随机性。</p>

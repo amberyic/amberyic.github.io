@@ -70,11 +70,11 @@
       <category term="机器学习" scheme="https://imzhanghao.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
+      <category term="ESMM" scheme="https://imzhanghao.com/tags/ESMM/"/>
+    
       <category term="Multi-Task Learning" scheme="https://imzhanghao.com/tags/Multi-Task-Learning/"/>
     
       <category term="MTL" scheme="https://imzhanghao.com/tags/MTL/"/>
-    
-      <category term="ESMM" scheme="https://imzhanghao.com/tags/ESMM/"/>
     
       <category term="CVR" scheme="https://imzhanghao.com/tags/CVR/"/>
     
@@ -103,13 +103,13 @@
       <category term="机器学习" scheme="https://imzhanghao.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="多目标学习" scheme="https://imzhanghao.com/tags/%E5%A4%9A%E7%9B%AE%E6%A0%87%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="多任务学习" scheme="https://imzhanghao.com/tags/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="Multi-Task Learning" scheme="https://imzhanghao.com/tags/Multi-Task-Learning/"/>
     
       <category term="MTL" scheme="https://imzhanghao.com/tags/MTL/"/>
+    
+      <category term="多目标学习" scheme="https://imzhanghao.com/tags/%E5%A4%9A%E7%9B%AE%E6%A0%87%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="多任务学习" scheme="https://imzhanghao.com/tags/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
